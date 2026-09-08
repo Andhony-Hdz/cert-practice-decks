@@ -7,28 +7,32 @@
       "description": "Responsible AI, model concepts, and Foundry implementation — prompts & agents, SDK, speech, vision, and information extraction.",
       "cardCount": 104,
       "updated": "2026-09-07",
-      "status": "available"
+      "status": "available",
+      "categories": { "platform": "Azure", "role": "AI Engineer", "level": "Beginner" }
     },
     {
       "id": "ai-103",
       "code": "AI-103",
       "title": "Azure AI Apps and Agents Developer Associate",
       "description": "Designing and building AI-powered applications and agents on Azure AI Foundry — integrating language, vision, and tool-calling into production apps.",
-      "status": "soon"
+      "status": "soon",
+      "categories": { "platform": "Azure", "role": "AI Engineer", "level": "Intermediate" }
     },
     {
       "id": "ai-300",
       "code": "AI-300",
       "title": "Machine Learning Operations Engineer Associate",
       "description": "Deploying, monitoring, and operating machine learning and generative AI solutions in production — MLOps pipelines, CI/CD, and responsible operations at scale.",
-      "status": "soon"
+      "status": "soon",
+      "categories": { "platform": "Azure", "role": "AI Engineer", "level": "Intermediate" }
     },
     {
       "id": "ai-500",
       "code": "AI-500",
       "title": "Multi-Agent AI Solutions Expert",
       "description": "Designing and orchestrating multi-agent AI systems — agent-to-agent coordination, advanced tool use, and complex agentic architectures. (Beta exam)",
-      "status": "soon"
+      "status": "soon",
+      "categories": { "platform": "Azure", "role": "AI Edge Engineer", "level": "Advanced" }
     }
   ]
 }

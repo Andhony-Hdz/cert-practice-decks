@@ -33,6 +33,32 @@
 }
 .intro p{color:var(--muted);font-size:15px;max-width:62ch;margin:0 0 34px;line-height:1.6}
 
+.toolbar{display:flex;flex-direction:column;gap:14px;margin-bottom:22px}
+.search{
+  width:100%;font-family:var(--font-body);font-size:14px;
+  background:var(--surface);color:var(--ink);
+  border:1px solid var(--line);border-radius:8px;padding:10px 14px;
+}
+.search::placeholder{color:var(--muted)}
+.filter-groups{display:flex;flex-wrap:wrap;gap:8px 26px}
+.filter-group{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.filter-group .flabel{
+  font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-right:2px;
+}
+.filter-chip{
+  font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.03em;
+  color:var(--muted);background:var(--surface);border:1px solid var(--line);
+  border-radius:20px;padding:5px 12px;cursor:pointer;white-space:nowrap;
+}
+.filter-chip:hover{border-color:var(--accent);color:var(--ink)}
+.filter-chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.results-note{font-size:11.5px;color:var(--muted);margin:0}
+.results-note button{
+  font-family:inherit;font-size:inherit;color:var(--accent-ink);background:none;border:0;
+  padding:0;cursor:pointer;text-decoration:underline;
+}
+
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
 .deck{
   background:var(--surface);border:1px solid var(--line);border-radius:12px;
@@ -51,6 +77,10 @@
 .deck-badge{
   margin-left:auto;font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:.08em;
   text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:2px 6px;
+}
+.deck-cats{
+  font-family:var(--font-mono);font-size:10.5px;font-weight:500;letter-spacing:.03em;
+  color:var(--muted);
 }
 .deck h2{
   font-family:var(--font-display);font-weight:600;font-size:18px;
@@ -104,6 +134,11 @@
     <h1>Pick a certification to study</h1>
     <p>Free, exam-style practice decks — timed drill sessions, flashcards, and progress tracking, kept entirely in your browser. Choose a deck below to get started. More certifications are on the way.</p>
   </div>
+  <div class="toolbar">
+    <input type="search" id="search" class="search" placeholder="Search by name, code, or keyword…" aria-label="Search certifications">
+    <div class="filter-groups" id="filterGroups"></div>
+  </div>
+
   <div class="grid" id="grid"><p class="empty">Loading decks…</p></div>
 
   <section class="roadmap">
@@ -124,6 +159,96 @@
 </main>
 
 <script>
+const esc=s=>String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+const fmtUpdated=iso=>{
+  if(!iso) return "";
+  const d=new Date(iso+"T00:00:00");
+  if(isNaN(d)) return "";
+  return "Updated "+d.toLocaleDateString(undefined,{month:"short",year:"numeric"});
+};
+
+let ALL_CERTS=[];
+const filters={q:"",platform:"",role:"",level:""};
+// Filter dimensions are declared with a display label; a chip group only
+// renders for a dimension once two or more distinct values actually exist
+// in the loaded manifest, so this stays correct as certs are added.
+const DIMENSIONS=[["platform","Platform"],["role","Role"],["level","Level"]];
+
+function deckCard(c){
+  const available = c.status!=="soon";
+  const tag = available ? "a" : "div";
+  const href = available ? ` href="app/quiz/?cert=${encodeURIComponent(c.id)}"` : "";
+  const updated=fmtUpdated(c.updated);
+  const cats=c.categories||{};
+  const catLine=[cats.platform,cats.role,cats.level].filter(Boolean).join(" · ");
+  return `<${tag} class="deck"${href}${available?"":' aria-disabled="true"'}>
+    <div class="deck-top">
+      <span class="deck-code">${esc(c.code||c.id)}</span>
+      ${available?"":'<span class="deck-badge">Coming soon</span>'}
+    </div>
+    ${catLine?`<span class="deck-cats">${esc(catLine)}</span>`:""}
+    <h2>${esc(c.title||c.id)}</h2>
+    <p>${esc(c.description||"")}</p>
+    <div class="deck-foot">
+      <span class="deck-meta">
+        <span>${c.cardCount?c.cardCount+" questions":""}</span>
+        ${updated?`<span class="deck-updated">${esc(updated)}</span>`:""}
+      </span>
+      <span class="deck-cta">${available?"Study now →":"Not yet available"}</span>
+    </div>
+  </${tag}>`;
+}
+
+function matchesFilters(c){
+  const cats=c.categories||{};
+  for(const [dim] of DIMENSIONS){
+    if(filters[dim] && cats[dim]!==filters[dim]) return false;
+  }
+  if(filters.q){
+    const hay=[c.code,c.title,c.description].filter(Boolean).join(" ").toLowerCase();
+    if(!hay.includes(filters.q.toLowerCase())) return false;
+  }
+  return true;
+}
+
+function renderGrid(){
+  const grid=document.getElementById("grid");
+  const filtered=ALL_CERTS.filter(matchesFilters);
+  const anyFilterActive = filters.q || DIMENSIONS.some(([dim])=>filters[dim]);
+  if(!filtered.length){
+    grid.innerHTML=`<p class="empty">No certifications match your search/filters.${
+      anyFilterActive ? ' <button class="results-note" id="clearFilters" style="display:inline">Clear filters</button>' : ""}</p>`;
+    const btn=document.getElementById("clearFilters");
+    if(btn) btn.onclick=clearFilters;
+    return;
+  }
+  grid.innerHTML=filtered.map(deckCard).join("");
+}
+
+function renderFilterChips(){
+  const box=document.getElementById("filterGroups");
+  box.innerHTML=DIMENSIONS.map(([dim,label])=>{
+    const values=[...new Set(ALL_CERTS.map(c=>(c.categories||{})[dim]).filter(Boolean))];
+    if(values.length<2) return ""; // not worth a filter row until it can actually discriminate
+    const chips=[{v:"",label:"All"},...values.map(v=>({v,label:v}))].map(o=>
+      `<button class="filter-chip" data-dim="${dim}" data-value="${esc(o.v)}" aria-pressed="${filters[dim]===o.v}">${esc(o.label)}</button>`
+    ).join("");
+    return `<div class="filter-group"><span class="flabel">${esc(label)}</span>${chips}</div>`;
+  }).join("");
+  box.querySelectorAll(".filter-chip").forEach(b=>b.onclick=()=>{
+    filters[b.dataset.dim]=b.dataset.value;
+    renderFilterChips();
+    renderGrid();
+  });
+}
+
+function clearFilters(){
+  filters.q=""; DIMENSIONS.forEach(([dim])=>filters[dim]="");
+  document.getElementById("search").value="";
+  renderFilterChips();
+  renderGrid();
+}
+
 async function boot(){
   const grid=document.getElementById("grid");
   let data;
@@ -135,37 +260,12 @@ async function boot(){
     grid.innerHTML=`<p class="err">Couldn't load the deck list. If you're opening this file directly from disk, serve it over a local server instead (fetch of local JSON is blocked from file://).</p>`;
     return;
   }
-  const certs=data.certs||[];
-  if(!certs.length){ grid.innerHTML=`<p class="empty">No decks published yet.</p>`; return; }
+  ALL_CERTS=data.certs||[];
+  if(!ALL_CERTS.length){ grid.innerHTML=`<p class="empty">No decks published yet.</p>`; return; }
 
-  const esc=s=>String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
-  const fmtUpdated=iso=>{
-    if(!iso) return "";
-    const d=new Date(iso+"T00:00:00");
-    if(isNaN(d)) return "";
-    return "Updated "+d.toLocaleDateString(undefined,{month:"short",year:"numeric"});
-  };
-  grid.innerHTML=certs.map(c=>{
-    const available = c.status!=="soon";
-    const tag = available ? "a" : "div";
-    const href = available ? ` href="app/quiz/?cert=${encodeURIComponent(c.id)}"` : "";
-    const updated=fmtUpdated(c.updated);
-    return `<${tag} class="deck"${href}${available?"":' aria-disabled="true"'}>
-      <div class="deck-top">
-        <span class="deck-code">${esc(c.code||c.id)}</span>
-        ${available?"":'<span class="deck-badge">Coming soon</span>'}
-      </div>
-      <h2>${esc(c.title||c.id)}</h2>
-      <p>${esc(c.description||"")}</p>
-      <div class="deck-foot">
-        <span class="deck-meta">
-          <span>${c.cardCount?c.cardCount+" questions":""}</span>
-          ${updated?`<span class="deck-updated">${esc(updated)}</span>`:""}
-        </span>
-        <span class="deck-cta">${available?"Study now →":"Not yet available"}</span>
-      </div>
-    </${tag}>`;
-  }).join("");
+  renderFilterChips();
+  renderGrid();
+  document.getElementById("search").oninput=e=>{ filters.q=e.target.value; renderGrid(); };
 }
 boot();
 </script>

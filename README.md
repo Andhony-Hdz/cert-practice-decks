@@ -49,6 +49,14 @@ are duplicated there for display. Keep them in sync with the matching deck's
 `"status": "soon"` on a manifest entry to show it as a disabled "Coming soon"
 card before its JSON exists.
 
+Each manifest entry also takes a `categories` object — `platform`, `role`,
+`level` — used for the search/filter bar and shown on the card itself (e.g.
+"Azure · AI Engineer · Beginner"). `categories` is manifest-only; it doesn't
+need to be duplicated into the deck's own `meta`. A filter row for a given
+dimension (Platform/Role/Level) only appears once two or more distinct
+values for it exist across all certs, so adding your first non-Azure cert
+is what makes the Platform filter show up — no code change required.
+
 ```jsonc
 {
   "meta": {
