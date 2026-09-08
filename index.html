@@ -40,16 +40,20 @@
   border:1px solid var(--line);border-radius:8px;padding:10px 14px;
 }
 .search::placeholder{color:var(--muted)}
-.filter-groups{display:flex;flex-wrap:wrap;gap:8px 26px}
-.filter-group{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.filter-groups{display:flex;flex-wrap:wrap;gap:10px 14px}
+.filter-group{
+  display:flex;flex-wrap:wrap;align-items:center;gap:5px;
+  background:var(--raise);border:1px solid var(--line);
+  border-radius:22px;padding:5px 8px 5px 14px;
+}
 .filter-group .flabel{
-  font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--muted);margin-right:2px;
+  font-family:var(--font-mono);font-size:9.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--accent-ink);margin-right:5px;white-space:nowrap;
 }
 .filter-chip{
   font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.03em;
   color:var(--muted);background:var(--surface);border:1px solid var(--line);
-  border-radius:20px;padding:5px 12px;cursor:pointer;white-space:nowrap;
+  border-radius:16px;padding:4px 11px;cursor:pointer;white-space:nowrap;
 }
 .filter-chip:hover{border-color:var(--accent);color:var(--ink)}
 .filter-chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
