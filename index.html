@@ -66,6 +66,25 @@
 .deck-cta{font-weight:600;color:var(--accent-ink);white-space:nowrap}
 .deck[aria-disabled="true"] .deck-cta{color:var(--muted)}
 .empty,.err{color:var(--muted);font-size:14px;padding:20px 0}
+
+.roadmap{
+  margin-top:22px;background:var(--surface);border:1px solid var(--line);
+  border-radius:12px;padding:20px 22px;
+}
+.roadmap h2{
+  font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 14px;
+}
+.roadmap-list{display:flex;flex-direction:column;gap:12px;margin:0;padding:0;list-style:none}
+.roadmap-item{display:flex;align-items:baseline;gap:11px}
+.roadmap-item .tag{
+  font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--accent-ink);background:var(--accent-soft);
+  border-radius:4px;padding:2px 7px;flex:none;white-space:nowrap;
+}
+.roadmap-item p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.5}
+.roadmap-item p b{color:var(--ink);font-weight:600}
+
 .foot-note{margin-top:40px;font-size:12px;color:var(--muted);max-width:70ch;line-height:1.6}
 .foot-note a{color:var(--accent-ink)}
 </style>
@@ -86,6 +105,21 @@
     <p>Free, exam-style practice decks — timed drill sessions, flashcards, and progress tracking, kept entirely in your browser. Choose a deck below to get started. More certifications are on the way.</p>
   </div>
   <div class="grid" id="grid"><p class="empty">Loading decks…</p></div>
+
+  <section class="roadmap">
+    <h2>Coming soon</h2>
+    <ul class="roadmap-list">
+      <li class="roadmap-item">
+        <span class="tag">Language</span>
+        <p><b>Spanish interface</b> — switch the app's buttons, tabs, and labels to Español.</p>
+      </li>
+      <li class="roadmap-item">
+        <span class="tag">Certifications</span>
+        <p><b>AZ-900, SC-900, DP-900, and MS-900</b> — see the disabled cards above for what's next.</p>
+      </li>
+    </ul>
+  </section>
+
   <p class="foot-note">Progress is stored locally in your browser per deck and never leaves your device. Have a certification you'd like added? Open an issue on the repository.</p>
 </main>
 
