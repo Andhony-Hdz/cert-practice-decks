@@ -10,31 +10,24 @@
       "status": "available"
     },
     {
-      "id": "az-900",
-      "code": "AZ-900",
-      "title": "Azure Fundamentals",
-      "description": "Cloud concepts, core Azure services, pricing, and governance — the entry point into Microsoft Azure.",
+      "id": "ai-103",
+      "code": "AI-103",
+      "title": "Azure AI Apps and Agents Developer Associate",
+      "description": "Designing and building AI-powered applications and agents on Azure AI Foundry — integrating language, vision, and tool-calling into production apps.",
       "status": "soon"
     },
     {
-      "id": "sc-900",
-      "code": "SC-900",
-      "title": "Security, Compliance, and Identity Fundamentals",
-      "description": "Zero Trust, Microsoft Entra ID, and compliance and information protection basics across Microsoft's security stack.",
+      "id": "ai-300",
+      "code": "AI-300",
+      "title": "Machine Learning Operations Engineer Associate",
+      "description": "Deploying, monitoring, and operating machine learning and generative AI solutions in production — MLOps pipelines, CI/CD, and responsible operations at scale.",
       "status": "soon"
     },
     {
-      "id": "dp-900",
-      "code": "DP-900",
-      "title": "Data Fundamentals",
-      "description": "Core data concepts across relational, non-relational, and analytics workloads on Azure.",
-      "status": "soon"
-    },
-    {
-      "id": "ms-900",
-      "code": "MS-900",
-      "title": "Microsoft 365 Fundamentals",
-      "description": "Cloud concepts, Microsoft 365 apps and services, security, compliance, and licensing.",
+      "id": "ai-500",
+      "code": "AI-500",
+      "title": "Multi-Agent AI Solutions Expert",
+      "description": "Designing and orchestrating multi-agent AI systems — agent-to-agent coordination, advanced tool use, and complex agentic architectures. (Beta exam)",
       "status": "soon"
     }
   ]
