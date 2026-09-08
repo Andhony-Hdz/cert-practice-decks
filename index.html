@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Free practice decks for Microsoft certification exams: exam-style questions, timed sessions, and explanations.">
+<title>Certification Practice Decks</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/theme.css">
+<style>
+.topbar{
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+}
+.topbar-in{max-width:960px;margin:0 auto;padding:16px 20px}
+.brand{
+  font-family:var(--font-display);font-weight:700;font-size:17px;
+  letter-spacing:-.015em;
+}
+.wrap{max-width:960px;margin:0 auto;padding:44px 20px 64px}
+.intro h1{
+  font-family:var(--font-display);font-weight:700;font-size:34px;
+  letter-spacing:-.02em;margin:0 0 10px;line-height:1.2;
+}
+.intro p{color:var(--muted);font-size:15px;max-width:62ch;margin:0 0 34px;line-height:1.6}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.deck{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow);padding:22px 22px 20px;
+  display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit;
+  transition:border-color .14s,transform .14s;
+}
+.deck:hover{border-color:var(--accent)}
+.deck[aria-disabled="true"]{cursor:default;opacity:.6}
+.deck[aria-disabled="true"]:hover{border-color:var(--line)}
+.deck-top{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.deck-code{
+  font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.08em;
+  background:var(--accent-soft);color:var(--accent-ink);border-radius:4px;padding:3px 8px;
+}
+.deck-badge{
+  margin-left:auto;font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:2px 6px;
+}
+.deck h2{
+  font-family:var(--font-display);font-weight:600;font-size:18px;
+  letter-spacing:-.01em;margin:0;line-height:1.3;
+}
+.deck p{font-size:13.5px;color:var(--muted);margin:0;line-height:1.5;max-width:44ch}
+.deck-foot{
+  margin-top:auto;padding-top:10px;display:flex;align-items:center;justify-content:space-between;
+  font-family:var(--font-mono);font-size:11.5px;color:var(--muted);
+}
+.deck-cta{font-weight:600;color:var(--accent-ink)}
+.deck[aria-disabled="true"] .deck-cta{color:var(--muted)}
+.empty,.err{color:var(--muted);font-size:14px;padding:20px 0}
+.foot-note{margin-top:40px;font-size:12px;color:var(--muted);max-width:70ch;line-height:1.6}
+.foot-note a{color:var(--accent-ink)}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <span class="brand">Certification Practice Decks</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="intro">
+    <h1>Pick a certification to study</h1>
+    <p>Free, exam-style practice decks — timed drill sessions, flashcards, and progress tracking, kept entirely in your browser. Choose a deck below to get started.</p>
+  </div>
+  <div class="grid" id="grid"><p class="empty">Loading decks…</p></div>
+  <p class="foot-note">Progress is stored locally in your browser per deck and never leaves your device. Have a certification you'd like added? Open an issue on the repository.</p>
+</main>
+
+<script>
+async function boot(){
+  const grid=document.getElementById("grid");
+  let data;
+  try{
+    const res=await fetch("certs/manifest.json");
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    data=await res.json();
+  }catch(err){
+    grid.innerHTML=`<p class="err">Couldn't load the deck list. If you're opening this file directly from disk, serve it over a local server instead (fetch of local JSON is blocked from file://).</p>`;
+    return;
+  }
+  const certs=data.certs||[];
+  if(!certs.length){ grid.innerHTML=`<p class="empty">No decks published yet.</p>`; return; }
+
+  const esc=s=>String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+  grid.innerHTML=certs.map(c=>{
+    const available = c.status!=="soon";
+    const tag = available ? "a" : "div";
+    const href = available ? ` href="app/quiz.html?cert=${encodeURIComponent(c.id)}"` : "";
+    return `<${tag} class="deck"${href}${available?"":' aria-disabled="true"'}>
+      <div class="deck-top">
+        <span class="deck-code">${esc(c.code||c.id)}</span>
+        ${available?"":'<span class="deck-badge">Coming soon</span>'}
+      </div>
+      <h2>${esc(c.title||c.id)}</h2>
+      <p>${esc(c.description||"")}</p>
+      <div class="deck-foot">
+        <span>${c.cardCount?c.cardCount+" questions":""}</span>
+        <span class="deck-cta">${available?"Study now →":"Not yet available"}</span>
+      </div>
+    </${tag}>`;
+  }).join("");
+}
+boot();
+</script>
+
+</body>
+</html>

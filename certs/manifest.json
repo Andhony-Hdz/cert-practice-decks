@@ -1,0 +1,12 @@
+{
+  "certs": [
+    {
+      "id": "ai-901",
+      "code": "AI-901",
+      "title": "Azure AI Fundamentals",
+      "description": "Responsible AI, model concepts, and Foundry implementation — prompts & agents, SDK, speech, vision, and information extraction.",
+      "cardCount": 104,
+      "status": "available"
+    }
+  ]
+}
