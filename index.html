@@ -115,7 +115,7 @@ async function boot(){
   grid.innerHTML=certs.map(c=>{
     const available = c.status!=="soon";
     const tag = available ? "a" : "div";
-    const href = available ? ` href="app/quiz.html?cert=${encodeURIComponent(c.id)}"` : "";
+    const href = available ? ` href="app/quiz/?cert=${encodeURIComponent(c.id)}"` : "";
     const updated=fmtUpdated(c.updated);
     return `<${tag} class="deck"${href}${available?"":' aria-disabled="true"'}>
       <div class="deck-top">

@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Practice deck for a certification exam: exam-style questions, timed sessions, and explanations.">
 <title>Practice Deck</title>
-<script src="../assets/theme.js"></script>
+<script src="../../assets/theme.js"></script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../../assets/theme.css">
 <style>
 /* ---------- chrome ---------- */
 .topbar{
@@ -399,7 +399,7 @@ select.combo:disabled{opacity:1;cursor:default;background:transparent;border-sty
 <header class="topbar">
   <div class="topbar-in">
     <div class="brand">
-      <a class="back" href="../index.html" title="All certifications" aria-label="All certifications">←</a>
+      <a class="back" href="../../" title="All certifications" aria-label="All certifications">←</a>
       <h1></h1>
       <span class="code" id="deckSize">cards</span>
     </div>
@@ -1116,7 +1116,7 @@ function bootError(msg){
     <h2 class="q">Couldn't load this deck</h2>
     <p style="color:var(--muted);margin:0">${msg}</p>
   </div>
-  <div class="card-foot"><a class="btn primary" href="../index.html">Back to all certifications</a></div>
+  <div class="card-foot"><a class="btn primary" href="../../">Back to all certifications</a></div>
   </article>`;
   document.getElementById("side").innerHTML="";
 }
@@ -1125,7 +1125,7 @@ async function boot(){
   if(!certId){ bootError("No certification was specified in the link."); return; }
   let data;
   try{
-    const res=await fetch(`../certs/${encodeURIComponent(certId)}.json`);
+    const res=await fetch(`../../certs/${encodeURIComponent(certId)}.json`);
     if(!res.ok) throw new Error("HTTP "+res.status);
     data=await res.json();
   }catch(err){

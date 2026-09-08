@@ -10,22 +10,27 @@ in `localStorage`). Built to be published as a static site on GitHub Pages.
 /
 ├─ index.html            Landing page — lets the user pick a certification
 ├─ assets/
-│  └─ theme.css           Shared design tokens (colors, fonts, base reset)
+│  ├─ theme.css           Shared design tokens (colors, fonts, base reset)
+│  └─ theme.js            Light/dark theme toggle, shared by both pages
 ├─ certs/
 │  ├─ manifest.json       List of published decks, shown on the landing page
 │  └─ <cert-id>.json      One file per certification (data contract below)
 └─ app/
-   └─ quiz.html            The generic quiz engine — reads ?cert=<id> and
+   └─ quiz/
+      └─ index.html        The generic quiz engine — reads ?cert=<id> and
                             renders whatever deck it finds; no cert-specific
-                            code lives here
+                            code lives here. Lives in its own folder (rather
+                            than app/quiz.html) so the URL has no .html —
+                            GitHub Pages serves a folder's index.html for
+                            free, same as it does for the site root.
 ```
 
 ## How it works
 
 1. `index.html` fetches `certs/manifest.json` and renders one card per
    certification.
-2. Clicking a card opens `app/quiz.html?cert=<id>`.
-3. `quiz.html` fetches `certs/<id>.json`, uses it to set the page title,
+2. Clicking a card opens `app/quiz/?cert=<id>`.
+3. `app/quiz/index.html` fetches `certs/<id>.json`, uses it to set the page title,
    heading, footer note, and pass mark, and builds the question pool from
    `cards`/`domains`. Progress is saved under a per-deck localStorage key
    (`meta.lsKey`), so each certification's progress is independent.
@@ -33,8 +38,8 @@ in `localStorage`). Built to be published as a static site on GitHub Pages.
 ## Adding a new certification
 
 Create `certs/<new-id>.json` following this contract, then add an entry to
-`certs/manifest.json`. No changes to `app/quiz.html` or `index.html` are
-needed.
+`certs/manifest.json`. No changes to `app/quiz/index.html` or `index.html`
+are needed.
 
 The landing page only fetches `manifest.json` (not every deck's full JSON),
 so a few fields — `code`, `title`, `description`, `cardCount`, `updated` —
