@@ -89,6 +89,27 @@ listed **first** — the UI shuffles display order at runtime). Dropdown
 `rows` array; see any existing entry in `certs/ai-901.json` for the exact
 shape.
 
+## Social share image
+
+`assets/og-image.png` is the card shown when a link to the site is shared
+(LinkedIn, Slack, Discord, Twitter/X, etc.) — referenced by `og:image` /
+`twitter:image` on both the landing page and the quiz engine. It's one
+generic image for the whole site (not per-certification).
+
+Its source is `assets/og-image.html`, styled with the same dark-theme
+tokens as `assets/theme.css` inlined for a self-contained render. To change
+it, edit that file, then regenerate the PNG:
+
+```
+npm install --no-save playwright-chromium
+node scripts/render-og-image.js
+```
+
+Link-preview bots cache aggressively per-URL — after changing the image (or
+any OG/Twitter meta tag), force a re-crawl instead of waiting:
+[LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/),
+[Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/).
+
 ## Local development
 
 Because the pages fetch JSON via `fetch()`, opening `index.html` directly

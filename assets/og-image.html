@@ -1,0 +1,89 @@
+<!doctype html>
+<!--
+  Source for assets/og-image.png (the social share card used by
+  og:image / twitter:image). Not part of the live site — rendered
+  once to a static PNG via scripts/render-og-image.js. Edit this file
+  and re-run that script to regenerate the PNG after any brand change.
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@600&family=IBM+Plex+Sans:wght@400;500&display=swap');
+
+:root{
+  /* Same palette as assets/theme.css's dark theme, inlined so this
+     file renders identically with no other stylesheet dependency. */
+  --paper:#0B0F16;
+  --surface:#151B25;
+  --line:#2A3441;
+  --ink:#F3F6FB;
+  --muted:#93A0B1;
+  --accent:#8C97FF;
+  --accent-ink:#AAB2FF;
+  --accent-soft:#212747;
+  --gold:#D9AE55;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1200px;height:630px}
+body{
+  background:
+    radial-gradient(900px 520px at 88% -12%, rgba(140,151,255,.20), transparent 60%),
+    radial-gradient(700px 420px at 8% 118%, rgba(217,174,85,.10), transparent 60%),
+    var(--paper);
+  font-family:"IBM Plex Sans",sans-serif;
+  color:var(--ink);
+  position:relative;
+  overflow:hidden;
+}
+.grid-overlay{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size:60px 60px;
+  opacity:.14;
+  -webkit-mask-image:linear-gradient(180deg, black, transparent 85%);
+          mask-image:linear-gradient(180deg, black, transparent 85%);
+}
+.content{position:relative;padding:80px 88px;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.eyebrow{
+  display:flex;align-items:center;gap:10px;
+  font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:19px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent-ink);
+}
+.eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--gold);flex:none}
+h1{
+  font-family:"Archivo",sans-serif;font-weight:800;font-size:62px;line-height:1.1;
+  letter-spacing:-.02em;margin-top:26px;max-width:900px;
+}
+p.sub{
+  font-family:"IBM Plex Sans";font-weight:400;font-size:25px;line-height:1.55;
+  color:var(--muted);margin-top:22px;max-width:760px;
+}
+.chips{display:flex;gap:14px;flex-wrap:wrap}
+.chip{
+  font-family:"IBM Plex Mono";font-weight:600;font-size:20px;letter-spacing:.04em;
+  color:var(--accent-ink);background:var(--accent-soft);border:1px solid var(--line);
+  border-radius:8px;padding:11px 20px;
+}
+.chip.soon{color:var(--muted);background:transparent;border-style:dashed}
+</style>
+</head>
+<body>
+  <div class="grid-overlay"></div>
+  <div class="content">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>Certification Practice Decks</span>
+      <h1>Free, exam-style practice decks</h1>
+      <p class="sub">Timed drill sessions, flashcards, and progress tracking — kept entirely in your browser.</p>
+    </div>
+    <div class="chips">
+      <span class="chip">AI-901</span>
+      <span class="chip soon">AI-103</span>
+      <span class="chip soon">AI-300</span>
+      <span class="chip soon">AI-500</span>
+    </div>
+  </div>
+</body>
+</html>
