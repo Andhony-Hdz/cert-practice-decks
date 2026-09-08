@@ -5,6 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Practice deck for a certification exam: exam-style questions, timed sessions, and explanations.">
 <title>Practice Deck</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Certification Practice Decks">
+<meta property="og:title" content="Practice Deck">
+<meta property="og:description" content="Free, exam-style practice questions with timed sessions and explanations — part of Certification Practice Decks.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Practice Deck">
+<meta name="twitter:description" content="Free, exam-style practice questions with timed sessions and explanations — part of Certification Practice Decks.">
+<!--
+  These tags are placeholders on purpose: link-preview bots (Slack,
+  Discord, Twitter/X, Facebook) don't run JavaScript, so whatever is
+  in the raw HTML at request time is what they show — the per-deck
+  values set in boot() below only ever reach browsers and JS-capable
+  crawlers (e.g. Googlebot), never a chat-app link preview. Getting
+  exact per-deck OG tags into the initial HTML would need a prerender
+  step at deploy time, which this project deliberately doesn't have.
+-->
 <script src="../../assets/theme.js"></script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -49,9 +65,7 @@
   font-family:var(--font-mono);font-size:10.5px;font-weight:500;
   letter-spacing:.05em;color:var(--muted);
 }
-.sync .dot{width:6px;height:6px;border-radius:50%;background:var(--muted);flex:none}
-.sync[data-state="synced"] .dot{background:var(--ok)}
-.sync[data-state="local"] .dot{background:var(--gold)}
+.sync .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex:none}
 
 .wrap{max-width:1120px;margin:0 auto;padding:22px 20px 64px;display:grid;grid-template-columns:minmax(0,1fr) 268px;gap:26px;align-items:start}
 @media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr);gap:20px}}
@@ -408,8 +422,8 @@ select.combo:disabled{opacity:1;cursor:default;background:transparent;border-sty
       <button class="tab" role="tab" id="tab-cards" aria-selected="false" data-view="cards">Flashcards</button>
       <button class="tab" role="tab" id="tab-prog" aria-selected="false" data-view="prog">Progress</button>
     </div>
-    <div class="sync" id="sync" data-state="local" title="Where your progress is stored">
-      <span class="dot"></span><span id="syncLabel">Local</span>
+    <div class="sync" title="Progress is saved in this browser only — it stays on this device">
+      <span class="dot"></span><span>Local</span>
     </div>
     <button class="theme-toggle" data-theme-toggle aria-pressed="false"></button>
   </div>
@@ -436,28 +450,14 @@ let PASS_PCT=70;   // overridden by meta.passPct once the deck loads
    ============================================================ */
 const fresh=()=>({v:1,updatedAt:0,cards:{},stats:{answered:0,correct:0,bestStreak:0},attempts:[]});
 let state=fresh();
-let docRef=null, pushTimer=null, applyingRemote=false;
 
+/* This build has no server-side storage — progress lives only in this
+   browser's localStorage, which is what the "Local" indicator in the
+   topbar communicates (it's static markup, not driven from here). */
 function persist(){
   state.updatedAt=Date.now();
   try{ localStorage.setItem(LS_KEY,JSON.stringify(state)); }catch(e){}
-  if(docRef && !applyingRemote){
-    clearTimeout(pushTimer);
-    pushTimer=setTimeout(()=>{
-      docRef.set({v:1,updatedAt:state.updatedAt,cards:state.cards,stats:state.stats,attempts:state.attempts||[]})
-        .catch(()=>setSync("local","Local only"));
-    },700);
-  }
 }
-function setSync(s,label){
-  const el=document.getElementById("sync");
-  el.dataset.state=s;
-  document.getElementById("syncLabel").textContent=label;
-  el.title = s==="synced"
-    ? "Progress is saved to this artifact and follows you across devices"
-    : "Progress is saved in this browser only — it stays on this device";
-}
-/* Public build: no server-side storage. Progress stays in this browser. */
 
 const cardState=id=>state.cards[id]||{status:"unseen",seen:0,right:0,wrong:0};
 /* frac is 0–1: multiple choice scores 0 or 1, dropdown items score
@@ -1136,17 +1136,28 @@ async function boot(){
   LS_KEY = META.lsKey || `progress.${META.id||certId}.v1`;
   PASS_PCT = META.passPct || 70;
 
-  document.title = META.title || "Practice Deck";
-  const descTag=document.querySelector('meta[name="description"]');
-  if(descTag && META.description) descTag.setAttribute("content", META.description);
-  document.querySelector(".brand h1").textContent = META.deckLabel || META.title || "Practice Deck";
+  const pageTitle = META.title || "Practice Deck";
+  const pageDesc = META.description || "";
+  document.title = pageTitle;
+  // Note: these updates reach the browser tab and JS-capable crawlers
+  // (Googlebot) but not link-preview bots — see the head comment above.
+  [['meta[name="description"]','content',pageDesc],
+   ['meta[property="og:title"]','content',pageTitle],
+   ['meta[property="og:description"]','content',pageDesc],
+   ['meta[name="twitter:title"]','content',pageTitle],
+   ['meta[name="twitter:description"]','content',pageDesc]
+  ].forEach(([sel,attr,val])=>{
+    if(!val) return;
+    const el=document.querySelector(sel);
+    if(el) el.setAttribute(attr,val);
+  });
+  document.querySelector(".brand h1").textContent = META.deckLabel || pageTitle;
 
   try{ const raw=localStorage.getItem(LS_KEY); if(raw) state=Object.assign(fresh(),JSON.parse(raw)); }catch(e){}
 
   document.getElementById("deckSize").textContent=CARDS.length+" cards";
   rebuild();
   render();
-  setSync("local","Local only");
 }
 boot();
 </script>
