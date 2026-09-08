@@ -8,6 +8,7 @@
     "description": "Free practice deck for Microsoft's AI-901 Azure AI Fundamentals certification: 104 exam-style questions, timed sessions, and explanations.",
     "lsKey": "ai901.progress.v1",
     "passPct": 70,
+    "updated": "2026-09-07",
     "officialGuideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-901",
     "footNote": "Content follows the official AI-901 skills-measured outline (updated April 2026). AI-900 retired on 30 June 2026 — AI-901 is the exam that now earns the Azure AI Fundamentals credential. Always confirm against the <a href=\"https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-901\" target=\"_blank\" rel=\"noopener\">Microsoft study guide</a>."
   },

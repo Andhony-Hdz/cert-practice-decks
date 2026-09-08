@@ -36,6 +36,14 @@ Create `certs/<new-id>.json` following this contract, then add an entry to
 `certs/manifest.json`. No changes to `app/quiz.html` or `index.html` are
 needed.
 
+The landing page only fetches `manifest.json` (not every deck's full JSON),
+so a few fields — `code`, `title`, `description`, `cardCount`, `updated` —
+are duplicated there for display. Keep them in sync with the matching deck's
+`meta` whenever you edit questions; bump `updated` in both places so the
+"Updated <month year>" shown on the landing card stays accurate. Set
+`"status": "soon"` on a manifest entry to show it as a disabled "Coming soon"
+card before its JSON exists.
+
 ```jsonc
 {
   "meta": {
@@ -47,6 +55,7 @@ needed.
     "description": "…",              // used for the meta description
     "lsKey": "az900.progress.v1",    // localStorage key (keep unique per deck)
     "passPct": 70,                   // pass mark, as a percentage
+    "updated": "2026-09-07",         // last time the question bank changed (YYYY-MM-DD)
     "officialGuideUrl": "https://…",
     "footNote": "…HTML string, shown at the bottom of the Progress tab…"
   },
