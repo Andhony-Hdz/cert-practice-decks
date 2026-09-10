@@ -15,7 +15,9 @@
       "code": "AI-103",
       "title": "Azure AI Apps and Agents Developer Associate",
       "description": "Designing and building AI-powered applications and agents on Azure AI Foundry — integrating language, vision, and tool-calling into production apps.",
-      "status": "soon",
+      "cardCount": 81,
+      "updated": "2026-09-09",
+      "status": "available",
       "categories": { "platform": "Azure", "role": "AI Engineer", "level": "Intermediate" }
     },
     {

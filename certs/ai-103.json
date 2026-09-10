@@ -1,0 +1,1453 @@
+{
+  "meta": {
+    "id": "ai-103",
+    "title": "AI-103 Practice Deck",
+    "examCode": "AI-103",
+    "deckLabel": "AI-103 Drill Deck",
+    "examName": "Azure AI Apps and Agents Developer Associate",
+    "description": "Free practice deck for Microsoft's AI-103 (beta) certification — Developing AI Apps and Agents on Azure: planning Foundry solutions, building generative apps and agents, computer vision, text analysis, and information extraction.",
+    "lsKey": "ai103.progress.v1",
+    "passPct": 70,
+    "updated": "2026-09-09",
+    "officialGuideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103",
+    "footNote": "Content follows the official AI-103 skills-measured outline (updated April 16, 2026) for Exam AI-103: Developing AI Apps and Agents on Azure — currently a beta exam. Always confirm against the <a href=\"https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103\" target=\"_blank\" rel=\"noopener\">Microsoft study guide</a>, since beta exam content is more likely to change."
+  },
+  "domains": {
+    "plan": {
+      "label": "Plan & manage",
+      "weight": "25–30%",
+      "topics": {
+        "choose": "Choosing Foundry services",
+        "setup": "Setting up AI solutions",
+        "manage": "Manage, monitor & secure",
+        "rai": "Responsible AI (agentic)"
+      }
+    },
+    "genai": {
+      "label": "Generative AI & agents",
+      "weight": "30–35%",
+      "topics": {
+        "genapp": "Generative apps",
+        "agents": "Building agents",
+        "optimize": "Optimize & operationalize"
+      }
+    },
+    "vision": {
+      "label": "Computer vision",
+      "weight": "10–15%",
+      "topics": {
+        "gen": "Image & video generation",
+        "understand": "Multimodal understanding",
+        "rai": "Responsible AI (multimodal)"
+      }
+    },
+    "text": {
+      "label": "Text analysis",
+      "weight": "10–15%",
+      "topics": {
+        "analysis": "Language model text analysis",
+        "speech": "Speech solutions"
+      }
+    },
+    "extract": {
+      "label": "Information extraction",
+      "weight": "10–15%",
+      "topics": {
+        "retrieval": "Retrieval & grounding",
+        "documents": "Extract from documents"
+      }
+    }
+  },
+  "cards": [
+    {
+      "id": "ch1",
+      "d": "plan",
+      "t": "choose",
+      "q": "You need an app to find internal policy passages whose meaning matches a user's question, even when no keywords overlap, so an agent can ground its answer. Which service produces the values that make this possible?",
+      "o": [
+        "An embedding model, for semantic vector search",
+        "A code-generation model",
+        "A video-generation model",
+        "A speech-to-text model"
+      ],
+      "a": 0,
+      "s": "An embedding model — text as vectors for semantic search",
+      "e": "Embedding models turn text into vectors so similarity can be computed mathematically, which is the foundation of semantic and hybrid search used for grounding. The other model types don't produce comparable vector representations of meaning."
+    },
+    {
+      "id": "ch2",
+      "d": "plan",
+      "t": "choose",
+      "q": "A support agent must run a narrow FAQ-answering task on a resource-constrained edge device with tight latency and cost limits. Which model class fits best?",
+      "o": [
+        "A small language model (SLM)",
+        "A large frontier reasoning model",
+        "A multimodal image-generation model",
+        "An embedding model"
+      ],
+      "a": 0,
+      "s": "A small language model",
+      "e": "SLMs trade breadth of knowledge for low latency, low cost, and edge/on-device viability — the right fit for a narrow, resource-constrained task. A large reasoning model would add cost and latency the scenario cannot absorb."
+    },
+    {
+      "id": "ch3",
+      "d": "plan",
+      "t": "choose",
+      "q": "You are grounding an agent's answers in your organization's document library and want managed vector storage plus hybrid keyword-and-vector retrieval, without standing up your own search infrastructure. Which Foundry service should you choose?",
+      "o": [
+        "Azure AI Search, connected as the agent's retrieval/vector store",
+        "Azure Content Safety",
+        "Azure Translator",
+        "Code Interpreter"
+      ],
+      "a": 0,
+      "s": "Azure AI Search — managed vector + hybrid retrieval",
+      "e": "Azure AI Search provides managed indexing, vector storage, and hybrid (keyword plus vector) retrieval, and plugs directly into Foundry agents and RAG pipelines. Content Safety screens content; it doesn't index or retrieve it."
+    },
+    {
+      "id": "ch4",
+      "d": "plan",
+      "t": "choose",
+      "q": "An agent must remember prior turns in a conversation, call your internal ticketing API, and answer from an uploaded knowledge base. Which three service categories are you combining?",
+      "o": [
+        "Conversation memory (server-side conversation state), a custom function tool, and a knowledge source (File Search)",
+        "Three separate model deployments, one per capability",
+        "A single embedding model handling all three needs",
+        "Content Safety, Translator, and Speech"
+      ],
+      "a": 0,
+      "s": "Memory + tool + knowledge — the three integration points of an agent",
+      "e": "An agent's capabilities beyond the base model come from memory (retained conversation state), tools (functions or APIs it can call), and knowledge (grounding sources like File Search). Mixing these three is the normal shape of a real agent, not a limitation to work around."
+    },
+    {
+      "id": "ch5",
+      "d": "plan",
+      "t": "choose",
+      "q": "A quality team wants each defect photo scored with a structured JSON severity field, a confidence value, and the pixel region the defect was found in — not a free-text description. Which approach should you choose over prompting a multimodal chat model?",
+      "o": [
+        "A dedicated extraction/vision service such as Content Understanding, for schema-shaped, scored, located output",
+        "A multimodal chat model prompted to describe the defect",
+        "An image-generation model",
+        "A speech recognition model"
+      ],
+      "a": 0,
+      "s": "A dedicated service — schema, confidence, and grounding location",
+      "e": "Dedicated vision/extraction services return deterministic, auditable output: a fixed schema, a confidence score, and a bounding region. A multimodal chat model gives flexible prose but no guaranteed schema or coordinates."
+    },
+    {
+      "id": "su1",
+      "d": "plan",
+      "t": "setup",
+      "q": "Your team needs one governance boundary holding security, networking, and model deployments, with several isolated developer workspaces for different agent projects underneath it, each with its own files and evaluations. What should you create?",
+      "o": [
+        "One Foundry resource with multiple Foundry projects beneath it",
+        "A separate Foundry resource per developer",
+        "A single Foundry project with no parent resource",
+        "A Foundry project nested inside another project"
+      ],
+      "a": 0,
+      "s": "One resource, several projects beneath it",
+      "e": "The Foundry resource is the governance boundary (security, networking, deployments); projects are development boundaries beneath it, isolated from each other but sharing the resource's deployments. This is the standard shape for multiple teams or agents in one organization."
+    },
+    {
+      "id": "su2",
+      "d": "plan",
+      "t": "setup",
+      "q": "A new agent-hosting workload needs steady, predictable throughput for a high and constant request volume in production. Which deployment type should you provision?",
+      "o": [
+        "Provisioned (reserved throughput units)",
+        "Global Standard (pay-per-token)",
+        "Batch",
+        "Data Zone Standard"
+      ],
+      "a": 0,
+      "s": "Provisioned — reserved capacity, predictable performance",
+      "e": "Provisioned deployments reserve throughput units so latency and throughput stay predictable under steady, high-volume load. Standard tiers share capacity and vary with demand, which is fine for bursty or low-volume traffic but not for this scenario."
+    },
+    {
+      "id": "su3",
+      "d": "plan",
+      "t": "setup",
+      "q": "You want new versions of an agent's instructions and tools to move automatically from a dev Foundry project to a production project only after passing automated evaluations. What should you build?",
+      "o": [
+        "A CI/CD pipeline integrated with the Foundry project, gating promotion on evaluation results",
+        "A manual copy-paste process between portals",
+        "A single shared project for dev and production",
+        "An agent that redeploys itself"
+      ],
+      "a": 0,
+      "s": "CI/CD integrated with the Foundry project",
+      "e": "Foundry projects integrate with CI/CD pipelines so agent versions can be built, evaluated, and promoted automatically, the same discipline used for application code. Sharing one project for dev and prod removes the isolation that makes safe iteration possible."
+    },
+    {
+      "id": "su4",
+      "d": "plan",
+      "t": "setup",
+      "q": "After deploying gpt-4o under the deployment name support-agent-v3, your application calls the model and gets a 'model not found' error even though gpt-4o appears in the catalog. What is the most likely cause?",
+      "o": [
+        "The code passed the catalog model name instead of the deployment name",
+        "The Foundry resource is in the wrong Azure subscription",
+        "The API key expired",
+        "The project endpoint is missing a port number"
+      ],
+      "a": 0,
+      "s": "Catalog name used instead of the deployment name",
+      "e": "Inference calls always address the deployment you created, not the catalog model — a model can exist in the catalog without being deployed in your project at all. Passing the catalog name instead of support-agent-v3 is the most common first-run error."
+    },
+    {
+      "id": "su5",
+      "d": "plan",
+      "t": "setup",
+      "q": "A financial services customer requires that all model inference for a new agent happen only within a specific national boundary for regulatory reasons. Which factor should most directly drive your infrastructure design?",
+      "o": [
+        "Selecting a deployment type and region combination that keeps processing inside that geography",
+        "Choosing the largest available context window",
+        "Maximizing tokens-per-minute quota",
+        "Enabling the most Foundry Tools possible"
+      ],
+      "a": 0,
+      "s": "Region/data-residency choice in the deployment design",
+      "e": "Meeting a data-residency requirement is primarily an infrastructure design decision — picking a regional or data-zone deployment that keeps processing inside the required boundary. Model capability or quota settings don't address a legal residency constraint."
+    },
+    {
+      "id": "mn1",
+      "d": "plan",
+      "t": "manage",
+      "q": "Your agent deployment starts returning rate-limit errors during a marketing campaign traffic spike. Which deployment property should you review first?",
+      "o": [
+        "The tokens-per-minute (TPM) quota assigned to the deployment",
+        "The system message length",
+        "The number of tools registered on the agent",
+        "The embedding model's dimensionality"
+      ],
+      "a": 0,
+      "s": "TPM quota",
+      "e": "Each deployment gets an allocated share of quota, usually expressed as tokens per minute; traffic beyond it is throttled. You'd address it by raising quota, spreading load across deployments, or moving to provisioned capacity — none of which are about the agent's configuration."
+    },
+    {
+      "id": "mn2",
+      "d": "plan",
+      "t": "manage",
+      "q": "Over several weeks, a production agent's answers gradually become less accurate even though nothing in your code changed. Which practice would have surfaced this early?",
+      "o": [
+        "Monitoring for model drift and quality regression over time",
+        "Increasing max_tokens",
+        "Rotating the API key",
+        "Adding more few-shot examples"
+      ],
+      "a": 0,
+      "s": "Drift monitoring",
+      "e": "Model drift — a gradual decline in output quality as real-world inputs or the underlying model shift — needs ongoing monitoring to catch, since nothing about your own code changes when it happens. Reactive fixes like more examples don't address a monitoring gap."
+    },
+    {
+      "id": "mn3",
+      "d": "plan",
+      "t": "manage",
+      "q": "Users report that a RAG-powered agent increasingly cites the wrong document section for correct-sounding answers. Which signal should you monitor to catch this class of problem?",
+      "o": [
+        "Search index health and retrieval relevance performance",
+        "Token-per-minute quota",
+        "Model deployment region",
+        "Speech recognition confidence"
+      ],
+      "a": 0,
+      "s": "Index health and relevance",
+      "e": "When retrieval quality degrades — stale indexes, poor relevance ranking, missing content — grounded answers start citing the wrong material even if the language model itself is unchanged. Quota and region have no bearing on retrieval accuracy."
+    },
+    {
+      "id": "mn4",
+      "d": "plan",
+      "t": "manage",
+      "q": "Microsoft's recommended way to authenticate a production application to a Foundry project, avoiding any secret stored in the app, is which of the following?",
+      "o": [
+        "Managed identity with keyless credentials via Entra ID (DefaultAzureCredential)",
+        "A long-lived API key embedded in application settings",
+        "A shared access signature copied into source control",
+        "Basic auth with a service account password"
+      ],
+      "a": 0,
+      "s": "Managed identity + keyless Entra ID auth",
+      "e": "Managed identity paired with DefaultAzureCredential is the recommended, keyless path: no secret ever lives in the app, in dev or production. API keys still work but are the fallback, not the default recommendation."
+    },
+    {
+      "id": "mn5",
+      "d": "plan",
+      "t": "manage",
+      "q": "A healthcare customer requires that traffic to their Foundry resource never traverse the public internet. Which configuration addresses this?",
+      "o": [
+        "Private networking, using private endpoints for the Foundry resource",
+        "A higher TPM quota",
+        "A Data Zone Standard deployment",
+        "Enabling more Content Safety categories"
+      ],
+      "a": 0,
+      "s": "Private endpoints / private networking",
+      "e": "Private networking (private endpoints, VNet integration) keeps traffic to the resource off the public internet, which is what a no-public-egress requirement calls for. Quota, deployment type, and safety categories are unrelated controls."
+    },
+    {
+      "id": "pr1",
+      "d": "plan",
+      "t": "rai",
+      "q": "You need to automatically screen both user prompts and an agent's responses for harmful content categories before they reach the user. What should you configure?",
+      "o": [
+        "Content Safety filters attached to the deployment",
+        "A higher temperature setting",
+        "A longer system message",
+        "Batch transcription"
+      ],
+      "a": 0,
+      "s": "Content Safety filters",
+      "e": "Content Safety filters run alongside a deployment, screening input and output across harm categories and flagging prompt-injection attempts, enforcing policy at runtime rather than relying on the model alone."
+    },
+    {
+      "id": "pr2",
+      "d": "plan",
+      "t": "rai",
+      "q": "Before widening an agent's rollout, you want a systematic, repeatable score of its answers for fabrication, relevance, and safety against a fixed dataset — not just a few manual tries in the playground. What should you use?",
+      "o": [
+        "Foundry Evaluations, with quality and safety evaluators run against a dataset",
+        "The model catalog's licensing page",
+        "Provisioned throughput",
+        "A longer conversation history window"
+      ],
+      "a": 0,
+      "s": "Evaluations with evaluators over a dataset",
+      "e": "Evaluations score outputs systematically with quality and safety evaluators over a dataset, catching regressions between versions. Manual playground testing is useful but anecdotal — it only proves the handful of prompts you happened to try."
+    },
+    {
+      "id": "pr3",
+      "d": "plan",
+      "t": "rai",
+      "q": "A compliance reviewer needs to trace, after the fact, exactly which source a specific agent answer was grounded in and which tool calls led to it. Which capability provides this?",
+      "o": [
+        "Trace logging and provenance metadata as part of auditing",
+        "A higher reasoning_effort setting",
+        "Batch transcription of audio",
+        "A larger embedding model"
+      ],
+      "a": 0,
+      "s": "Trace logging + provenance metadata",
+      "e": "Auditing an agent's behavior after the fact depends on trace logs and provenance metadata that record sources, tool calls, and decisions along the way — the mechanism that makes a specific answer explainable and reviewable later."
+    },
+    {
+      "id": "pr4",
+      "d": "plan",
+      "t": "rai",
+      "q": "An autonomous agent can call a function that issues customer refunds. What is the most appropriate responsible-AI control to place around that specific tool?",
+      "o": [
+        "Tool-access constraints and an approval workflow requiring human sign-off before the refund executes",
+        "Raising the model's context window",
+        "Disabling Content Safety for that tool only",
+        "Increasing the agent's temperature"
+      ],
+      "a": 0,
+      "s": "Tool-access controls + human approval for high-risk actions",
+      "e": "Governing agent behavior means constraining which tools it may call and under what oversight — a financially consequential action like issuing a refund is exactly the case for a required approval step before execution, not a purely autonomous one."
+    },
+    {
+      "id": "pr5",
+      "d": "plan",
+      "t": "rai",
+      "q": "Which best describes 'oversight modes' as applied to agent governance?",
+      "o": [
+        "Configurable levels of human involvement — from full autonomy to mandatory approval — applied to an agent's actions",
+        "A logging level setting for developers",
+        "A metric of model accuracy",
+        "A speech-to-text confidence threshold"
+      ],
+      "a": 0,
+      "s": "Configurable human-involvement levels over agent actions",
+      "e": "Oversight modes let you dial how much a human must be in the loop for an agent's actions, from fully autonomous for low-risk tasks to mandatory approval for high-risk ones — a core lever for governing agentic systems responsibly."
+    },
+    {
+      "id": "ga1",
+      "d": "genai",
+      "t": "genapp",
+      "q": "A feature must generate working Python functions from natural-language descriptions inside a developer tool. Which model class is the most direct fit?",
+      "o": [
+        "A code-generation model",
+        "A speech synthesis model",
+        "An image-generation model",
+        "An embedding model"
+      ],
+      "a": 0,
+      "s": "A code model",
+      "e": "Code-generation models are trained specifically on source code and are the right choice for producing working code from a description. A general chat model could attempt this too, but a dedicated code model is tuned for it."
+    },
+    {
+      "id": "ga2",
+      "d": "genai",
+      "t": "genapp",
+      "q": "Put these RAG steps in the order they actually happen when a user asks a question: (1) embed and search the knowledge base, (2) insert retrieved passages into the prompt, (3) the model generates an answer from that augmented prompt. Which statement is correct?",
+      "o": [
+        "Retrieve first, then augment the prompt, then generate — in that order",
+        "Generate first, then retrieve to fact-check afterward",
+        "Augment the prompt before any retrieval happens",
+        "Retrieval and generation happen in parallel with no dependency"
+      ],
+      "a": 0,
+      "s": "Retrieve → augment → generate",
+      "e": "RAG's defining property is that retrieval happens before generation: relevant passages are found first, inserted into the prompt, and only then does the model generate from that grounded context — which is what keeps answers current without retraining."
+    },
+    {
+      "id": "ga3",
+      "d": "genai",
+      "t": "genapp",
+      "q": "A workflow must call a web search tool, then a calculator tool, then synthesize both results into a final answer — more than a single prompt-response turn. What are you designing?",
+      "o": [
+        "A tool-augmented, multistep reasoning pipeline",
+        "A single embedding lookup",
+        "A batch transcription job",
+        "A static few-shot prompt"
+      ],
+      "a": 0,
+      "s": "A multistep, tool-augmented pipeline",
+      "e": "Chaining multiple tool calls and reasoning steps toward one final answer is a multistep, tool-augmented pipeline — distinct from a single-turn prompt-response exchange, and the basic shape of most non-trivial agent workflows."
+    },
+    {
+      "id": "ga4",
+      "d": "genai",
+      "t": "genapp",
+      "q": "During evaluation, your app's answers sound fluent and confident but state facts that don't appear anywhere in the retrieved source documents. What is this being evaluated for?",
+      "o": [
+        "Fabrication (hallucination) relative to the grounding source",
+        "Latency",
+        "Token cost",
+        "Translation accuracy"
+      ],
+      "a": 0,
+      "s": "Fabrication / hallucination",
+      "e": "Evaluating for fabrication checks whether the model invents facts not supported by its grounding context — a distinct failure mode from being slow, expensive, or mistranslated, and one evaluators specifically score for."
+    },
+    {
+      "id": "ga5",
+      "d": "genai",
+      "t": "genapp",
+      "q": "Which two packages does a Python application typically install to call a Foundry project using keyless authentication?",
+      "o": [
+        "azure-ai-projects and azure-identity",
+        "openai and requests only",
+        "azure-storage-blob and azure-identity",
+        "azure-ai-projects and azure-mgmt-resource"
+      ],
+      "a": 0,
+      "s": "azure-ai-projects + azure-identity",
+      "e": "azure-ai-projects supplies the project client (AIProjectClient); azure-identity supplies credential classes such as DefaultAzureCredential. azure-mgmt-* packages manage Azure resources themselves, not inference calls."
+    },
+    {
+      "id": "ga6",
+      "d": "genai",
+      "t": "genapp",
+      "q": "What value does your Python client need to connect to a specific Foundry project?",
+      "o": [
+        "The project endpoint, paired with a credential such as DefaultAzureCredential",
+        "Only a storage connection string",
+        "The subscription ID by itself",
+        "The model catalog's public URL"
+      ],
+      "a": 0,
+      "s": "The project endpoint + a credential",
+      "e": "You construct AIProjectClient with the project endpoint (shown on the project overview page) and a credential. A connection string plus ChatCompletionsClient is the older azure-ai-inference pattern, not the current one."
+    },
+    {
+      "id": "ga7",
+      "d": "genai",
+      "t": "genapp",
+      "q": "A grounded question-answering evaluation reports high 'groundedness'. What does that score indicate?",
+      "o": [
+        "The answer's claims are well-supported by the retrieved source content",
+        "The answer was generated quickly",
+        "The answer used few tokens",
+        "The answer was translated correctly"
+      ],
+      "a": 0,
+      "s": "Claims are supported by the retrieved sources",
+      "e": "Groundedness measures how well an answer's claims trace back to the retrieved context, which is the core signal for whether a RAG app is behaving (versus fabricating). It says nothing about speed, cost, or language."
+    },
+    {
+      "id": "ga8",
+      "d": "genai",
+      "t": "genapp",
+      "q": "Current Foundry sample code sends a prompt with openai.responses.create(model=..., input=...) and reads response.output_text. A tutorial you're following instead uses ChatCompletionsClient from azure-ai-inference with a connection string. What does this tell you?",
+      "o": [
+        "The tutorial reflects the older, classic pattern that predates the current Foundry SDK",
+        "The tutorial is for a different programming language",
+        "The tutorial only works with open-source models",
+        "The tutorial is describing an agent, not a plain model call"
+      ],
+      "a": 0,
+      "s": "It's the older, pre-Foundry-rename pattern",
+      "e": "Connection string plus azure-ai-inference and ChatCompletionsClient is the previous generation. The current pattern is a project endpoint plus azure-ai-projects and AIProjectClient, with model calls through the Responses API."
+    },
+    {
+      "id": "ag1",
+      "d": "genai",
+      "t": "agents",
+      "q": "Before writing any code, you're documenting what an agent is for, what success looks like, how it tracks a conversation, and the exact schema of each function it can call. What are you defining?",
+      "o": [
+        "The agent's role, goals, conversation-tracking approach, and tool schemas",
+        "The Foundry resource's networking configuration",
+        "The evaluation dataset only",
+        "The deployment's TPM quota"
+      ],
+      "a": 0,
+      "s": "Role, goals, conversation approach, and tool schemas",
+      "e": "Designing an agent starts with its role and goals, how it will track a conversation over turns, and the precise schema each tool expects — the blueprint that everything else (prompts, tools, evaluations) gets built against."
+    },
+    {
+      "id": "ag2",
+      "d": "genai",
+      "t": "agents",
+      "q": "An agent needs to recall earlier turns of the current conversation, call a function to check order status, and answer from an uploaded returns-policy document. Which three agent capabilities are being combined?",
+      "o": [
+        "Conversation memory, function calling, and retrieval (knowledge)",
+        "Three separate deployments, each handling one capability",
+        "A single tool that does all three",
+        "Only a longer context window, nothing else"
+      ],
+      "a": 0,
+      "s": "Memory + function calling + retrieval",
+      "e": "This is the standard three-part shape of a capable agent: retained conversation memory, one or more callable tools (here, a function), and a knowledge source it can retrieve from. None of these are optional add-ons — they're the core building blocks."
+    },
+    {
+      "id": "ag3",
+      "d": "genai",
+      "t": "agents",
+      "q": "An agent must compute statistics from an uploaded CSV, answer from your internal PDF handbooks, and look up today's exchange rate from the public web. Which three tools does it need?",
+      "o": [
+        "Code Interpreter, File Search, and a web (Bing) grounding tool",
+        "Function calling only, for all three tasks",
+        "Content Understanding for all three tasks",
+        "Three copies of the same File Search tool"
+      ],
+      "a": 0,
+      "s": "Code Interpreter + File Search + web grounding",
+      "e": "Code Interpreter runs computations over uploaded files, File Search retrieves from documents you supplied, and web grounding reaches current public information beyond training data or your own files — each tool covers a distinct need here."
+    },
+    {
+      "id": "ag4",
+      "d": "genai",
+      "t": "agents",
+      "q": "A complex support request needs a triage agent to classify the issue, then hand off to either a billing specialist agent or a technical specialist agent, each with different tools and instructions. What pattern is this?",
+      "o": [
+        "Orchestrated multi-agent solution",
+        "A single agent with more few-shot examples",
+        "Batch transcription",
+        "Fine-tuning one model for every issue type"
+      ],
+      "a": 0,
+      "s": "Multi-agent orchestration",
+      "e": "Coordinating multiple specialized agents — one to triage, others to handle specific domains — is multi-agent orchestration. It keeps each agent's instructions and tools focused, rather than overloading one agent with every possible responsibility."
+    },
+    {
+      "id": "ag5",
+      "d": "genai",
+      "t": "agents",
+      "q": "An agent can autonomously draft a customer email, but must never send it without a person clicking approve first. What are you implementing?",
+      "o": [
+        "A semiautonomous workflow with an approval safeguard",
+        "A fully autonomous workflow",
+        "A read-only agent with no tools",
+        "A batch processing pipeline"
+      ],
+      "a": 0,
+      "s": "Semiautonomous, with an approval gate",
+      "e": "Letting an agent act up to a point, then requiring explicit human approval before a consequential step, is a semiautonomous workflow with a safeguard — distinct from full autonomy (no gate) or a purely read-only agent (no action capability at all)."
+    },
+    {
+      "id": "ag6",
+      "d": "genai",
+      "t": "agents",
+      "q": "After deploying an agent, you want to catch cases where it calls the wrong tool or loops without making progress. What should you set up?",
+      "o": [
+        "Monitoring and error analysis on the deployed agent's behavior",
+        "A higher max_tokens limit",
+        "A larger embedding model",
+        "Batch transcription of its outputs"
+      ],
+      "a": 0,
+      "s": "Behavior monitoring + error analysis",
+      "e": "Once an agent is live, ongoing monitoring and error analysis are what surface misbehavior like wrong tool choices or unproductive loops — problems that a one-time evaluation before launch wouldn't necessarily catch."
+    },
+    {
+      "id": "ag7",
+      "d": "genai",
+      "t": "agents",
+      "q": "How does a client application keep multi-turn context for an agent without resending the entire transcript on every request?",
+      "o": [
+        "Create a conversation and pass its ID with each subsequent request; history is retained server-side",
+        "Store the whole transcript in the system message every time",
+        "Increase the model's context window setting",
+        "Re-authenticate before each turn"
+      ],
+      "a": 0,
+      "s": "Reuse a server-side conversation ID",
+      "e": "Foundry keeps durable, server-side conversation state: you create a conversation once, then reference its ID on each later call, and prior turns are retained for you automatically — no need to resend history."
+    },
+    {
+      "id": "ag8",
+      "d": "genai",
+      "t": "agents",
+      "q": "When you define a function tool for an agent, what must you specify so the model knows exactly how to call it?",
+      "o": [
+        "A schema describing the function's name, parameters, types, and description",
+        "Only the function's programming language",
+        "The function's line count",
+        "The deployment's region"
+      ],
+      "a": 0,
+      "s": "A structured schema (name, parameters, types, description)",
+      "e": "A tool schema tells the model what the function is called, what arguments it takes and their types, and what it does — the contract the model uses to decide when and how to call it correctly."
+    },
+    {
+      "id": "ag9",
+      "d": "genai",
+      "t": "agents",
+      "q": "In a multi-agent solution, a triage agent determines a request needs specialist handling and transfers the conversation, with its context, to a billing agent. What is this transfer called?",
+      "o": [
+        "A handoff",
+        "A rollback",
+        "A fine-tune",
+        "A batch job"
+      ],
+      "a": 0,
+      "s": "A handoff",
+      "e": "Passing an in-progress conversation and its context from one agent to another, more suited agent, is a handoff — the mechanism that makes multi-agent orchestration coherent instead of restarting context from zero each time."
+    },
+    {
+      "id": "ag10",
+      "d": "genai",
+      "t": "agents",
+      "q": "Which call creates a new version of an agent from Python, describing its model, instructions, and tools?",
+      "o": [
+        "project.agents.create_version, passing a PromptAgentDefinition",
+        "project.deploy_agent, passing a YAML manifest",
+        "openai.agents.new, passing a single string prompt",
+        "AIProjectClient.create_agent_resource, passing a resource ID"
+      ],
+      "a": 0,
+      "s": "create_version with a PromptAgentDefinition",
+      "e": "A prompt agent is declarative: a PromptAgentDefinition names the model, instructions, and tools, and create_version reflects that agents are versioned — so instructions can iterate without breaking callers already pointed at a prior version."
+    },
+    {
+      "id": "op1",
+      "d": "genai",
+      "t": "optimize",
+      "q": "A summarization feature must produce the same wording for the same input every time. Which parameter should you tune down?",
+      "o": [
+        "Temperature, toward 0",
+        "max_tokens, toward 0",
+        "top_p, toward 1.5 (above its valid range)",
+        "frequency_penalty, toward its maximum"
+      ],
+      "a": 0,
+      "s": "Low temperature for determinism",
+      "e": "Temperature controls sampling randomness; near 0 the model favors its most probable wording, which suits tasks that need consistent, repeatable output. Note that even at 0, output isn't guaranteed to be byte-identical every run."
+    },
+    {
+      "id": "op2",
+      "d": "genai",
+      "t": "optimize",
+      "q": "You want a model to critique and revise its own draft answer before returning a final response, rather than answering once and stopping. What technique are you implementing?",
+      "o": [
+        "A self-critique (reflection) loop",
+        "Batch transcription",
+        "Speech translation",
+        "Fine-tuning on labelled data"
+      ],
+      "a": 0,
+      "s": "Self-critique / reflection loop",
+      "e": "A reflection or self-critique loop has the model evaluate and revise its own output before finalizing it, which can catch errors a single pass would miss — distinct from one-shot generation or techniques that require training data."
+    },
+    {
+      "id": "op3",
+      "d": "genai",
+      "t": "optimize",
+      "q": "In production you need to see, for a slow agent response, exactly how much time each tool call and model call took, plus how many tokens each step consumed. What should you set up?",
+      "o": [
+        "Tracing with token analytics and latency breakdowns",
+        "A higher temperature setting",
+        "A larger context window",
+        "More few-shot examples in the prompt"
+      ],
+      "a": 0,
+      "s": "Tracing + token analytics + latency breakdowns",
+      "e": "Observability tooling — tracing individual steps, token analytics, and latency breakdowns — is what lets you see where time and cost actually go inside a multistep agent call, rather than only the final wall-clock time."
+    },
+    {
+      "id": "op4",
+      "d": "genai",
+      "t": "optimize",
+      "q": "A workflow uses a large language model for open-ended requests but routes simple, well-defined requests to a deterministic rules engine for speed and cost. What is this an example of?",
+      "o": [
+        "Orchestrating a hybrid of an LLM and a rules engine",
+        "Fine-tuning a single model for all cases",
+        "Increasing one model's temperature to add variety",
+        "Disabling Content Safety for the simple requests"
+      ],
+      "a": 0,
+      "s": "Hybrid LLM + rules engine orchestration",
+      "e": "Routing between a language model and a deterministic system based on request type is hybrid orchestration — using each tool where it's strongest, rather than forcing every request through the most expensive path."
+    },
+    {
+      "id": "op5",
+      "d": "genai",
+      "t": "optimize",
+      "q": "You deploy a reasoning model and find temperature and top_p are rejected by the API. Which parameter should you tune instead to trade reasoning depth against cost and latency?",
+      "o": [
+        "reasoning_effort",
+        "frequency_penalty",
+        "logit_bias",
+        "best_of"
+      ],
+      "a": 0,
+      "s": "reasoning_effort",
+      "e": "Reasoning models generate internal reasoning tokens and don't accept the usual sampling parameters. reasoning_effort (e.g. low/medium/high) is how you control how much internal reasoning the model performs before answering."
+    },
+    {
+      "id": "op6",
+      "d": "genai",
+      "t": "optimize",
+      "q": "A dashboard shows a sudden spike in flagged unsafe outputs from a production agent overnight. What kind of monitoring surfaced this?",
+      "o": [
+        "Safety signal monitoring",
+        "Token cost monitoring only",
+        "Region availability monitoring",
+        "Search index size monitoring"
+      ],
+      "a": 0,
+      "s": "Safety signal monitoring",
+      "e": "Safety signals are a dedicated monitoring stream that flags unsafe or policy-violating outputs as they happen in production, which is exactly the kind of spike that needs fast attention and is distinct from cost or infrastructure metrics."
+    },
+    {
+      "id": "vg1",
+      "d": "vision",
+      "t": "gen",
+      "q": "A design team wants brand-new product concept art generated purely from a written description. Which capability should they use?",
+      "o": [
+        "An image-generation model",
+        "A multimodal chat model describing an existing photo",
+        "Optical character recognition",
+        "Azure Face"
+      ],
+      "a": 0,
+      "s": "Image generation",
+      "e": "Image-generation models create new visual content from a text prompt. A multimodal chat model can describe an image that already exists, but it doesn't create new pixels — that's the generation model's job."
+    },
+    {
+      "id": "vg2",
+      "d": "vision",
+      "t": "gen",
+      "q": "A marketing team wants a short video clip produced from a written scene description, with no existing footage to start from. What should they use?",
+      "o": [
+        "A video-generation model from the Foundry catalog",
+        "An image-generation model, called once per frame manually",
+        "Content Understanding's video analyzer",
+        "Azure Video Indexer's summary feature"
+      ],
+      "a": 0,
+      "s": "A video-generation model",
+      "e": "Video generation is its own model class, producing new video from a text prompt, exercised through the portal's video playground. Content Understanding and Video Indexer analyze video that already exists; they don't create it."
+    },
+    {
+      "id": "vg3",
+      "d": "vision",
+      "t": "gen",
+      "q": "You must change only the background of an existing product photo while keeping the product itself pixel-identical. Which capability does this?",
+      "o": [
+        "Masked image editing (inpainting)",
+        "Generating a brand-new image from a text prompt",
+        "Object detection",
+        "Video generation"
+      ],
+      "a": 0,
+      "s": "Inpainting with a mask",
+      "e": "Inpainting takes the original image plus a mask marking the region to change, preserving everything outside the mask exactly. Generating a fresh image from a prompt provides no such guarantee that the product stays identical."
+    },
+    {
+      "id": "vg4",
+      "d": "vision",
+      "t": "gen",
+      "q": "After generating a short product video, you need to trim a scene and swap the background music without regenerating the whole clip. What are you performing?",
+      "o": [
+        "A video-editing workflow on the generated output",
+        "A fresh video generation from a new prompt",
+        "OCR on the video's frames",
+        "Speaker diarization"
+      ],
+      "a": 0,
+      "s": "Editing the generated video",
+      "e": "Editing workflows operate on video you already generated — trimming, swapping elements — without starting over from a prompt. Regenerating from scratch would be wasteful and might not preserve the parts you wanted to keep."
+    },
+    {
+      "id": "vu1",
+      "d": "vision",
+      "t": "understand",
+      "q": "An inspector uploads a photo and asks, in natural language, 'what safety issues do you see here?' Which kind of model must process this?",
+      "o": [
+        "A multimodal model that accepts image input alongside text",
+        "An embedding model",
+        "A video-generation model",
+        "A text-to-speech model"
+      ],
+      "a": 0,
+      "s": "A multimodal model",
+      "e": "Multimodal models accept images in the prompt alongside text and reason over both, which is how current Foundry guidance frames most visual question-answering. The other model types either don't take images at all or run in the opposite direction."
+    },
+    {
+      "id": "vu2",
+      "d": "vision",
+      "t": "understand",
+      "q": "A catalog team needs short, consistent captions generated for 50,000 product photos, with control over tone and level of detail. What is the recommended approach?",
+      "o": [
+        "Prompt a deployed multimodal model to caption each image with the desired style",
+        "Use the retired standalone Image Analysis captioning API",
+        "Use Azure Face",
+        "Use an image-generation model"
+      ],
+      "a": 0,
+      "s": "A prompted multimodal model",
+      "e": "With the standalone Image Analysis API on a retirement path, general image-understanding work is directed to multimodal models — which also let you steer caption length and tone through the prompt, something a fixed captioning API can't do."
+    },
+    {
+      "id": "vu3",
+      "d": "vision",
+      "t": "understand",
+      "q": "A user uploads a photo of a circuit board and asks 'which component is likely causing this burn mark?' The app must answer using visual evidence in the image. What capability is this?",
+      "o": [
+        "Visual question-answering grounded in the image",
+        "Image generation",
+        "Speech-to-text",
+        "Batch document translation"
+      ],
+      "a": 0,
+      "s": "Grounded visual question-answering",
+      "e": "This is visual question-answering: the model reasons over the specific image content to answer a natural-language question, grounding its answer in what it actually sees rather than general knowledge alone."
+    },
+    {
+      "id": "vu4",
+      "d": "vision",
+      "t": "understand",
+      "q": "You need to extract a large set of structured visual characteristics (color, condition, defect type) from thousands of images in one governed, repeatable pipeline, reusing the same configuration each run. Which approach fits best?",
+      "o": [
+        "A Content Understanding analyzer configured for the task, run in single-task or pro-mode as needed",
+        "A one-off prompt typed manually for each image",
+        "Azure Face identification",
+        "Batch transcription"
+      ],
+      "a": 0,
+      "s": "A configured Content Understanding analyzer",
+      "e": "Content Understanding analyzers bundle content type, schema, and settings into a reusable, governed pipeline — single-task mode for one focused extraction, pro-mode for more complex multi-field pipelines — rather than ad hoc prompting per image."
+    },
+    {
+      "id": "vr1",
+      "d": "vision",
+      "t": "rai",
+      "q": "An attacker embeds hidden instructions as text inside an uploaded image, hoping a multimodal model will read and obey them as if they were the user's real request. What is this, and how is it best mitigated?",
+      "o": [
+        "Indirect prompt injection via image content — mitigated with filters that detect and treat embedded text as untrusted, not as instructions",
+        "A hallucination — mitigated by lowering temperature",
+        "A quota violation — mitigated by raising TPM",
+        "A translation error — mitigated by switching models"
+      ],
+      "a": 0,
+      "s": "Indirect prompt injection through an image",
+      "e": "Embedding instructions in content the model processes — including text baked into an image — is a form of prompt injection. Mitigation treats content pulled from images (or documents) as untrusted data, not as commands the model should follow."
+    },
+    {
+      "id": "vr2",
+      "d": "vision",
+      "t": "rai",
+      "q": "A brand wants every AI-generated marketing image to carry a visible mark identifying it as AI-generated, and wants prohibited symbols automatically flagged before publishing. What are you enforcing?",
+      "o": [
+        "Visual policy rules, such as watermarking and prohibited-symbol detection",
+        "A higher image resolution setting",
+        "A larger context window",
+        "A stricter TPM quota"
+      ],
+      "a": 0,
+      "s": "Visual policy enforcement",
+      "e": "Enforcing visual policy — watermarking generated images, flagging disallowed symbols, upholding brand rules — is a responsible-AI control specific to multimodal content, applied before publication rather than left to reviewers to catch manually."
+    },
+    {
+      "id": "ta1",
+      "d": "text",
+      "t": "analysis",
+      "q": "You need a custom set of fields extracted from support tickets — urgency, product line, and a one-sentence root cause — none of which match Azure Language's built-in entity types. What is the most direct approach?",
+      "o": [
+        "Generative prompting against a language model, asking for the exact structured JSON schema you need",
+        "Only prebuilt named entity recognition",
+        "Only key phrase extraction",
+        "Only sentiment analysis"
+      ],
+      "a": 0,
+      "s": "Generative prompting for a custom schema",
+      "e": "When the fields you need don't map to a prebuilt entity type, prompting a generative model for a specific JSON schema is more flexible than prebuilt NER, which only returns its fixed set of entity categories."
+    },
+    {
+      "id": "ta2",
+      "d": "text",
+      "t": "analysis",
+      "q": "You need to flag support messages that are angry, contain profanity, or hint at self-harm, all in one pass over the text. Which combination are you configuring?",
+      "o": [
+        "Sentiment, tone, and safety/sensitive-content detection together",
+        "Only translation",
+        "Only OCR",
+        "Only speech synthesis"
+      ],
+      "a": 0,
+      "s": "Sentiment + tone + safety detection",
+      "e": "Detecting emotional tone, sentiment, and safety-relevant sensitive content are related but distinct signals you can configure together over the same text, giving a fuller picture than sentiment alone."
+    },
+    {
+      "id": "ta3",
+      "d": "text",
+      "t": "analysis",
+      "q": "You must translate a knowledge base into eleven languages while preserving exact terminology from a glossary your company maintains. Which approach is most appropriate?",
+      "o": [
+        "Azure Translator with a custom glossary/custom translation model",
+        "An LLM prompted with no additional instructions",
+        "Speech translation",
+        "Batch transcription"
+      ],
+      "a": 0,
+      "s": "Azure Translator with custom terminology",
+      "e": "Translator supports custom translation and glossaries for exact terminology control at scale, which is harder to guarantee from a general LLM prompt alone. LLM-powered translation is a valid alternative when flexibility matters more than strict glossary adherence."
+    },
+    {
+      "id": "ta4",
+      "d": "text",
+      "t": "analysis",
+      "q": "A compliance team needs incoming contracts summarized specifically around obligations and penalty clauses, in a fixed structure their reviewers expect — a task no out-of-the-box service offers directly. What should you do?",
+      "o": [
+        "Customize a language model's output for the domain task with targeted prompting and examples",
+        "Wait for a prebuilt compliance-summarization API",
+        "Use only key phrase extraction",
+        "Use only OCR"
+      ],
+      "a": 0,
+      "s": "Customize the LLM's output for the domain",
+      "e": "Domain-specific summarization needs — a fixed structure, a particular focus like obligations and penalties — are typically met by customizing a language model's prompting and examples for that exact task, since no generic prebuilt service targets it."
+    },
+    {
+      "id": "ta5",
+      "d": "text",
+      "t": "analysis",
+      "q": "Your app needs the model's output to always be valid JSON matching a fixed set of fields, so downstream code can parse it without extra cleanup. What should you configure?",
+      "o": [
+        "A structured output / response-format constraint on the model call",
+        "A higher temperature",
+        "A shorter system message",
+        "Batch transcription"
+      ],
+      "a": 0,
+      "s": "A structured-output constraint",
+      "e": "Constraining the response format forces the model's output into valid JSON matching your schema, removing the need for fragile downstream parsing of free-form text. Temperature and message length don't guarantee structural validity."
+    },
+    {
+      "id": "sp1",
+      "d": "text",
+      "t": "speech",
+      "q": "A voice-driven support agent must transcribe what the caller says and speak its reply back, as part of a multi-turn conversation. Which two capabilities are combined?",
+      "o": [
+        "Speech recognition (speech to text) and speech synthesis (text to speech)",
+        "Speech translation and OCR",
+        "Batch transcription and image generation",
+        "Custom neural voice and Content Safety only"
+      ],
+      "a": 0,
+      "s": "Speech-to-text + text-to-speech",
+      "e": "A voice conversation needs both directions: recognizing what was said, and synthesizing spoken audio for the reply. Batch transcription is for stored audio processed asynchronously, not a live back-and-forth conversation."
+    },
+    {
+      "id": "sp2",
+      "d": "text",
+      "t": "speech",
+      "q": "A brand wants its IVR agent to speak in a unique voice trained from its own voice talent's recordings, rather than an off-the-shelf voice. What must you use?",
+      "o": [
+        "A custom neural voice (access-restricted)",
+        "A prebuilt neural voice",
+        "Batch transcription",
+        "Speech translation"
+      ],
+      "a": 0,
+      "s": "Custom neural voice",
+      "e": "Custom neural voice trains a synthetic voice from consented recordings of a specific speaker, and is gated behind limited-access review given the impersonation risk — prebuilt neural voices need no such training or review."
+    },
+    {
+      "id": "sp3",
+      "d": "text",
+      "t": "speech",
+      "q": "A user speaks a question aloud and a deployed multimodal model answers directly from the audio, without a separate transcription step first. What is the key advantage over the classic speech-then-text-model pipeline?",
+      "o": [
+        "One call handles reasoning over the audio directly, preserving tone and cutting a step, versus transcribe-then-reason",
+        "It removes the need to deploy any model at all",
+        "It guarantees lower cost than every other approach",
+        "It removes the need for a Foundry resource"
+      ],
+      "a": 0,
+      "s": "Audio reasoning in one call, no separate transcript step",
+      "e": "A multimodal model that accepts audio directly collapses transcribe-then-reason into a single call and keeps delivery cues a transcript would discard. The classic Speech-then-text-model path is still valid when you need an auditable, controllable transcript."
+    },
+    {
+      "id": "sp4",
+      "d": "text",
+      "t": "speech",
+      "q": "During a live multilingual call center session, spoken Spanish must become spoken English in near real time. Which capability fits best?",
+      "o": [
+        "Speech translation",
+        "Batch transcription",
+        "Text analytics summarization",
+        "Custom neural voice alone"
+      ],
+      "a": 0,
+      "s": "Speech translation",
+      "e": "Speech translation is built for live, cross-language spoken exchanges. Batch transcription is asynchronous and not real-time; custom neural voice controls whose voice speaks, not the translation itself."
+    },
+    {
+      "id": "sp5",
+      "d": "text",
+      "t": "speech",
+      "q": "Generated audio must pause at specific points and pronounce a product name a particular way. What should you use?",
+      "o": [
+        "Speech Synthesis Markup Language (SSML)",
+        "A higher temperature setting",
+        "Batch transcription",
+        "Pronunciation assessment"
+      ],
+      "a": 0,
+      "s": "SSML",
+      "e": "SSML gives fine control over synthesized speech — pauses, rate, pitch, and phoneme-level pronunciation. Pronunciation assessment is the reverse direction: it scores a learner's spoken audio, not generated output."
+    },
+    {
+      "id": "rg1",
+      "d": "extract",
+      "t": "retrieval",
+      "q": "You need one pipeline that ingests and indexes PDFs, product photos, call recordings, and training videos so an agent can retrieve across all of them. What are you building?",
+      "o": [
+        "A multimodal ingestion and indexing pipeline for grounding",
+        "A single-format text-only index",
+        "An image-generation pipeline",
+        "A speech-only transcription pipeline"
+      ],
+      "a": 0,
+      "s": "Multimodal ingestion and indexing",
+      "e": "Grounding pipelines often need to ingest and index several content types — documents, images, audio, video — into one retrievable store, rather than being limited to a single format like text alone."
+    },
+    {
+      "id": "rg2",
+      "d": "extract",
+      "t": "retrieval",
+      "q": "For grounding, you want results that combine exact keyword matches with semantic similarity, since users sometimes search exact product codes and sometimes describe what they need in their own words. Which search approach fits?",
+      "o": [
+        "Hybrid search (keyword plus vector)",
+        "Vector search alone",
+        "Keyword search alone",
+        "OCR-only search"
+      ],
+      "a": 0,
+      "s": "Hybrid search",
+      "e": "Hybrid search combines keyword and vector retrieval, covering both exact-match needs (like a product code) and semantic/natural-language queries in the same index — better than either approach alone for mixed query styles."
+    },
+    {
+      "id": "rg3",
+      "d": "extract",
+      "t": "retrieval",
+      "q": "You want documents automatically enriched with extracted entities and OCR text as they're indexed, without writing a custom pipeline for every content type. What should you configure?",
+      "o": [
+        "Built-in (or custom) enrichment skills as part of the indexing pipeline",
+        "A separate manual review step for every document",
+        "A single embedding model with no indexing",
+        "A video-generation model"
+      ],
+      "a": 0,
+      "s": "Built-in/custom enrichment skills",
+      "e": "Enrichment skills — built-in ones for common tasks or custom ones for specialized needs — run automatically during indexing to add extracted text, entities, and other derived fields, avoiding a bespoke pipeline per content type."
+    },
+    {
+      "id": "rg4",
+      "d": "extract",
+      "t": "retrieval",
+      "q": "Your RAG ingestion flow must handle scanned PDF contracts that have no selectable text layer. What must the ingestion flow include?",
+      "o": [
+        "OCR, to extract text from the scanned pages before indexing",
+        "Speech translation",
+        "Video generation",
+        "Custom neural voice"
+      ],
+      "a": 0,
+      "s": "OCR as part of ingestion",
+      "e": "Scanned documents have no text layer to index directly, so OCR must run first to extract readable text before it can be embedded and indexed for retrieval — a required ingestion step, not an optional add-on."
+    },
+    {
+      "id": "rg5",
+      "d": "extract",
+      "t": "retrieval",
+      "q": "An agent's function tool should query your search index directly at answer time, rather than the application pre-fetching results and pasting them into the prompt. What are you implementing?",
+      "o": [
+        "Connecting the retrieval pipeline directly to the agent as a tool",
+        "A static prompt with hardcoded search results",
+        "A separate model fine-tuned on the index contents",
+        "Batch transcription of the index"
+      ],
+      "a": 0,
+      "s": "Retrieval pipeline wired in as an agent tool",
+      "e": "Wiring the search/retrieval pipeline directly into the agent as a callable tool lets the agent decide when and what to query at run time, rather than the application always pre-fetching a fixed set of results before the model ever runs."
+    },
+    {
+      "id": "ed1",
+      "d": "extract",
+      "t": "documents",
+      "q": "You must pull the total, vendor name, and line items from scanned invoices in dozens of different layouts, combining text reading with page layout awareness. What kind of pipeline is this?",
+      "o": [
+        "A multimodal pipeline combining OCR, layout analysis, and field extraction",
+        "OCR alone with no layout awareness",
+        "A pure text-classification model",
+        "A translation pipeline"
+      ],
+      "a": 0,
+      "s": "OCR + layout + field extraction combined",
+      "e": "Reliable extraction from varied real-world documents needs more than raw OCR text — it needs layout analysis to understand where fields sit on the page, combined into one pipeline that outputs the specific fields you asked for."
+    },
+    {
+      "id": "ed2",
+      "d": "extract",
+      "t": "documents",
+      "q": "You need a clean, structured representation of long policy documents — headings, tables, and reading order intact — ready to feed into a chunking-and-embedding pipeline for RAG. Which output should you request from Content Understanding?",
+      "o": [
+        "Markdown, alongside the structured JSON fields",
+        "Only a plain confidence score",
+        "Only a bounding-box list with no text",
+        "A binary image render of each page"
+      ],
+      "a": 0,
+      "s": "Markdown output",
+      "e": "Content Understanding can return Markdown that preserves headings, tables, and reading order — exactly what a chunking-and-embedding pipeline needs for good retrieval, while the structured JSON fields answer specific targeted questions."
+    },
+    {
+      "id": "ed3",
+      "d": "extract",
+      "t": "documents",
+      "q": "You're configuring a Content Understanding analyzer and need one field to return a two-sentence summary that appears nowhere verbatim in the source, another to pick from Resolved/Escalated/Abandoned, and a third to copy the invoice total exactly as printed. Which three field methods do these need, in order?",
+      "o": [
+        "Generate, Classify, Extract",
+        "Extract, Generate, Classify",
+        "Classify, Extract, Generate",
+        "Extract, Classify, Generate"
+      ],
+      "a": 0,
+      "s": "Generate → Classify → Extract",
+      "e": "Generate composes a value not literally present (a summary), Classify constrains output to a predefined category list, and Extract copies a value that appears verbatim in the source (the printed total) — matching each need to its field method avoids the model paraphrasing a figure that should be copied exactly."
+    },
+    {
+      "id": "ed4",
+      "d": "extract",
+      "t": "documents",
+      "q": "Your invoices arrive in hundreds of vendor-specific layouts and you don't have time to label training samples per layout. Which approach is the better fit?",
+      "o": [
+        "Content Understanding, describing the fields you want in natural language",
+        "A custom Document Intelligence model trained per layout",
+        "OCR alone plus regular expressions",
+        "An image-generation model"
+      ],
+      "a": 0,
+      "s": "Content Understanding — no per-layout training",
+      "e": "Content Understanding's generative approach lets you describe fields in plain language and generalizes across layouts with no labelling. Custom Document Intelligence models are excellent for standardized, high-volume forms, but need labelled samples per layout variation."
+    },
+    {
+      "id": "ed5",
+      "d": "extract",
+      "t": "documents",
+      "q": "Which pairing of extraction service to workload is correct?",
+      "o": [
+        "Standardized, high-volume, fixed-layout forms → Document Intelligence; varied multimodal content → Content Understanding",
+        "Standardized forms → Content Understanding; varied multimodal content → Document Intelligence",
+        "Both services only handle plain text documents",
+        "Both services require labelled training data for every use case"
+      ],
+      "a": 0,
+      "s": "Fixed layouts → Document Intelligence; varied/multimodal → Content Understanding",
+      "e": "Document Intelligence gives deterministic, highly reliable extraction from consistent document types at low latency. Content Understanding adds generative flexibility and spans images, audio, and video too — the better fit when content varies or crosses modalities."
+    },
+    {
+      "id": "cb1",
+      "d": "plan",
+      "t": "rai",
+      "type": "combo",
+      "q": "Select the responsible-AI/governance control each scenario calls for.",
+      "rows": [
+        {
+          "label": "An agent must get human sign-off before issuing a refund",
+          "o": [
+            "Approval workflow / oversight mode",
+            "Content Safety filter",
+            "Trace logging",
+            "TPM quota increase"
+          ],
+          "a": 0
+        },
+        {
+          "label": "A reviewer must trace which source grounded a specific past answer",
+          "o": [
+            "Trace logging and provenance metadata",
+            "A higher reasoning_effort",
+            "Batch transcription",
+            "Custom neural voice"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Screening both prompts and responses for harmful content in real time",
+          "o": [
+            "Content Safety filters",
+            "Search index health monitoring",
+            "Data Zone Standard deployment",
+            "Speech translation"
+          ],
+          "a": 0
+        }
+      ],
+      "e": "Approval workflows and oversight modes govern high-risk actions before they execute; trace logging and provenance metadata make past decisions auditable; Content Safety filters screen content in real time. Each control answers a different question — permission, explainability, or in-the-moment safety."
+    },
+    {
+      "id": "cb2",
+      "d": "genai",
+      "t": "agents",
+      "type": "combo",
+      "q": "Select the agent tool each task requires.",
+      "rows": [
+        {
+          "label": "Compute totals and plot a chart from an uploaded spreadsheet",
+          "o": [
+            "Code Interpreter",
+            "File Search",
+            "Web grounding",
+            "Function calling"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Answer from a set of internal PDF policies you uploaded",
+          "o": [
+            "File Search",
+            "Code Interpreter",
+            "Web grounding",
+            "Image generation"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Look up today's exchange rate from the public web",
+          "o": [
+            "Web (Bing) grounding",
+            "File Search",
+            "Code Interpreter",
+            "An embedding model"
+          ],
+          "a": 0
+        }
+      ],
+      "e": "Compute means Code Interpreter, retrieval from your own documents means File Search, and current public information means web grounding. Function calling is for reaching your own external systems (like issuing a refund), not for any of these three."
+    },
+    {
+      "id": "cb3",
+      "d": "plan",
+      "t": "manage",
+      "type": "combo",
+      "q": "Select what each monitoring signal is meant to catch.",
+      "rows": [
+        {
+          "label": "Gradual decline in answer quality as the model or real-world inputs shift",
+          "o": [
+            "Model drift",
+            "TPM quota exhaustion",
+            "Search index staleness",
+            "Safety signal spike"
+          ],
+          "a": 0
+        },
+        {
+          "label": "A retrieval pipeline citing the wrong document section",
+          "o": [
+            "Search index health / relevance performance",
+            "Model drift",
+            "TPM quota",
+            "Region outage"
+          ],
+          "a": 0
+        },
+        {
+          "label": "A sudden spike in flagged unsafe outputs overnight",
+          "o": [
+            "Safety signal monitoring",
+            "Token cost monitoring",
+            "Deployment region monitoring",
+            "Embedding dimensionality"
+          ],
+          "a": 0
+        }
+      ],
+      "e": "Drift monitoring catches slow quality decay, index/relevance monitoring catches retrieval problems, and safety signal monitoring catches unsafe-output spikes — three distinct monitoring streams for three distinct failure modes in a production AI system."
+    },
+    {
+      "id": "cb4",
+      "d": "vision",
+      "t": "gen",
+      "type": "combo",
+      "q": "Select the computer-vision capability each task requires.",
+      "rows": [
+        {
+          "label": "Produce a brand-new product image from a written description",
+          "o": [
+            "Image generation",
+            "Inpainting",
+            "Video generation",
+            "Object detection"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Replace only the background of an existing photo, keeping the product identical",
+          "o": [
+            "Inpainting (masked editing)",
+            "Image generation from scratch",
+            "OCR",
+            "Azure Face"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Produce a short video clip from a text description, no existing footage",
+          "o": [
+            "Video generation",
+            "Image generation called repeatedly",
+            "Content Understanding's video analyzer",
+            "Speech synthesis"
+          ],
+          "a": 0
+        }
+      ],
+      "e": "Generation creates new content from a prompt, inpainting edits an existing image within a mask while preserving the rest, and video generation is its own model class — not a trick played with repeated image calls."
+    },
+    {
+      "id": "cb5",
+      "d": "text",
+      "t": "analysis",
+      "type": "combo",
+      "q": "Select the capability that fits each requirement.",
+      "rows": [
+        {
+          "label": "Translate a knowledge base into eleven languages with exact glossary terms preserved",
+          "o": [
+            "Azure Translator with a custom glossary",
+            "Sentiment analysis",
+            "OCR",
+            "Speech recognition"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Flag messages that are angry, profane, or hint at self-harm in one pass",
+          "o": [
+            "Sentiment, tone, and safety/sensitive-content detection",
+            "Key phrase extraction alone",
+            "Translation alone",
+            "Batch transcription"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Answer a spoken question directly from the audio, no separate transcript step",
+          "o": [
+            "A multimodal model accepting audio input",
+            "Speech translation only",
+            "Custom neural voice only",
+            "SSML only"
+          ],
+          "a": 0
+        }
+      ],
+      "e": "Glossary-accurate translation points to Translator's custom terminology features; multi-signal content screening needs sentiment, tone, and safety detection together; and reasoning straight from audio is what a multimodal model with audio input uniquely offers over a transcribe-then-reason pipeline."
+    },
+    {
+      "id": "cb6",
+      "d": "extract",
+      "t": "documents",
+      "type": "combo",
+      "q": "Select the Content Understanding field method for each field.",
+      "rows": [
+        {
+          "label": "The invoice total, printed on the page",
+          "o": [
+            "Extract",
+            "Generate",
+            "Classify",
+            "Read"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Call outcome, as one of Resolved / Escalated / Abandoned",
+          "o": [
+            "Classify",
+            "Extract",
+            "Generate",
+            "Detect"
+          ],
+          "a": 0
+        },
+        {
+          "label": "A two-sentence summary of a contract, worded freshly",
+          "o": [
+            "Generate",
+            "Extract",
+            "Classify",
+            "Read"
+          ],
+          "a": 0
+        }
+      ],
+      "e": "Extract copies a value present verbatim in the content, Classify constrains output to a predefined category list, and Generate composes a value that appears nowhere verbatim — picking Generate where Extract belongs invites paraphrasing a figure that should be copied exactly."
+    },
+    {
+      "id": "cb7",
+      "d": "genai",
+      "t": "optimize",
+      "type": "combo",
+      "q": "Select the optimization/operability concept each scenario calls for.",
+      "rows": [
+        {
+          "label": "A reasoning model rejects temperature and top_p; you need to trade depth of reasoning for cost",
+          "o": [
+            "reasoning_effort",
+            "frequency_penalty",
+            "logit_bias",
+            "best_of"
+          ],
+          "a": 0
+        },
+        {
+          "label": "You need per-step timing and token counts for a slow multistep agent call",
+          "o": [
+            "Tracing with token analytics and latency breakdowns",
+            "A higher temperature",
+            "A longer system message",
+            "More few-shot examples"
+          ],
+          "a": 0
+        },
+        {
+          "label": "The model should critique and revise its own draft before returning a final answer",
+          "o": [
+            "A self-critique (reflection) loop",
+            "Fine-tuning on labelled data",
+            "Batch transcription",
+            "Speech translation"
+          ],
+          "a": 0
+        }
+      ],
+      "e": "reasoning_effort is the reasoning-model-specific lever for depth versus cost; tracing plus token analytics is how you see where time and tokens actually go in a multistep call; and a reflection loop is what makes a model revise itself before finalizing, distinct from all of these."
+    }
+  ]
+}
