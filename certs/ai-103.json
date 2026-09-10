@@ -10,7 +10,7 @@
     "passPct": 70,
     "updated": "2026-09-09",
     "officialGuideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103",
-    "footNote": "Content follows the official AI-103 skills-measured outline (updated April 16, 2026) for Exam AI-103: Developing AI Apps and Agents on Azure — currently a beta exam. Always confirm against the <a href=\"https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103\" target=\"_blank\" rel=\"noopener\">Microsoft study guide</a>, since beta exam content is more likely to change."
+    "footNote": "Content follows the official AI-103 skills-measured outline (updated April 16, 2026) for Exam AI-103: Developing AI Apps and Agents on Azure — currently a beta exam — and is enriched with the \"Knowledge check\" questions from every module across the official Microsoft Learn training paths behind this certification. Always confirm against the <a href=\"https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103\" target=\"_blank\" rel=\"noopener\">Microsoft study guide</a>, since beta exam content is more likely to change."
   },
   "domains": {
     "plan": {
@@ -1448,6 +1448,1446 @@
         }
       ],
       "e": "reasoning_effort is the reasoning-model-specific lever for depth versus cost; tracing plus token analytics is how you see where time and tokens actually go in a multistep call; and a reflection loop is what makes a model revise itself before finalizing, distinct from all of these."
+    },
+    {
+      "id": "mq1",
+      "d": "plan",
+      "t": "setup",
+      "q": "Which web portal should you use to work with assets in a Microsoft Foundry project?",
+      "o": [
+        "The Microsoft Foundry portal",
+        "The Azure portal",
+        "Microsoft Copilot",
+        "GitHub"
+      ],
+      "a": 0,
+      "s": "The Microsoft Foundry portal",
+      "e": "Models, agents, files, and evaluations for a project are managed in the Microsoft Foundry portal. The Azure portal manages the underlying Azure resource (networking, access, billing), not day-to-day project assets."
+    },
+    {
+      "id": "mq2",
+      "d": "plan",
+      "t": "choose",
+      "q": "Which component of Microsoft Foundry provides pre-built services for common AI tasks?",
+      "o": [
+        "Foundry Tools",
+        "Foundry Models",
+        "Foundry IQ",
+        "Foundry Agent Service"
+      ],
+      "a": 0,
+      "s": "Foundry Tools",
+      "e": "Foundry Tools bundles ready-made AI services — Language, Speech, Vision, Translator, Content Safety, and more — for common tasks. Foundry Models is the catalog of deployable LLMs/SLMs, a different layer of the platform."
+    },
+    {
+      "id": "mq3",
+      "d": "plan",
+      "t": "setup",
+      "q": "Which extension should you use in Visual Studio Code to work with Foundry projects?",
+      "o": [
+        "Foundry Toolkit for Visual Studio Code",
+        "Python extension for Visual Studio Code",
+        "GitHub Copilot",
+        "Azure Functions Core Tools"
+      ],
+      "a": 0,
+      "s": "Foundry Toolkit for Visual Studio Code",
+      "e": "The Foundry Toolkit extension brings project, model, and agent management into VS Code. The Python extension and GitHub Copilot are general-purpose dev tools, not Foundry-specific."
+    },
+    {
+      "id": "mq4",
+      "d": "plan",
+      "t": "choose",
+      "q": "Which model benchmark indicates the model's ability to process prompts and return comprehensive responses quickly?",
+      "o": [
+        "Throughput",
+        "Quality index",
+        "Cost",
+        "Fluency"
+      ],
+      "a": 0,
+      "s": "Throughput",
+      "e": "Throughput measures how fast a model processes input and returns output — the speed-of-response benchmark. Quality index and cost are separate benchmark dimensions covering accuracy and price, not speed."
+    },
+    {
+      "id": "mq5",
+      "d": "plan",
+      "t": "setup",
+      "q": "Which deployment type in Microsoft Foundry is best for general use while offering the largest quota?",
+      "o": [
+        "Global Standard",
+        "Data Zone Batch",
+        "Developer",
+        "Provisioned"
+      ],
+      "a": 0,
+      "s": "Global Standard",
+      "e": "Global Standard routes across Microsoft's global capacity, which is what gives it the largest available quota for general-purpose use. Data-residency-constrained tiers and Developer/trial tiers trade that quota away for other guarantees."
+    },
+    {
+      "id": "mq6",
+      "d": "genai",
+      "t": "genapp",
+      "q": "Which evaluation metric measures linguistic correctness and natural language quality?",
+      "o": [
+        "Fluency",
+        "Groundedness",
+        "Relevance",
+        "Throughput"
+      ],
+      "a": 0,
+      "s": "Fluency",
+      "e": "Fluency scores how grammatically correct and natural the generated language reads. Groundedness and relevance are about whether the content is supported by sources and on-topic — different, complementary evaluation dimensions."
+    },
+    {
+      "id": "mq7",
+      "d": "genai",
+      "t": "genapp",
+      "q": "Which endpoint offers the broadest support for OpenAI APIs with Foundry Models?",
+      "o": [
+        "The Azure OpenAI endpoint",
+        "The Foundry project endpoint",
+        "The Foundry Tools endpoint",
+        "The Azure Resource Manager endpoint"
+      ],
+      "a": 0,
+      "s": "The Azure OpenAI endpoint",
+      "e": "The Azure OpenAI endpoint is the OpenAI-API-compatible surface with the widest coverage of the OpenAI API set. The Foundry project endpoint is convenient for project-scoped access but doesn't expose the full OpenAI API surface."
+    },
+    {
+      "id": "mq8",
+      "d": "genai",
+      "t": "genapp",
+      "q": "Which package must you install to use the Microsoft Foundry SDK in Python?",
+      "o": [
+        "azure-ai-projects",
+        "azure-foundry",
+        "microsoft-foundry-sdk",
+        "azure-ai-inference"
+      ],
+      "a": 0,
+      "s": "azure-ai-projects",
+      "e": "azure-ai-projects is the current Foundry SDK package, providing AIProjectClient. The other package names either don't exist or belong to the older, classic azure-ai-inference pattern."
+    },
+    {
+      "id": "mq9",
+      "d": "genai",
+      "t": "genapp",
+      "q": "Which method do you use to generate responses with the Responses API?",
+      "o": [
+        "client.responses.create()",
+        "client.chat.completions.create()",
+        "client.get_response_id()",
+        "client.agents.run()"
+      ],
+      "a": 0,
+      "s": "client.responses.create()",
+      "e": "responses.create() is the current, recommended call for generating a response. chat.completions.create() is the older Chat Completions shape that still works but isn't the current default recommendation."
+    },
+    {
+      "id": "mq10",
+      "d": "genai",
+      "t": "genapp",
+      "q": "Which tool should you use when a model needs to answer questions from your own uploaded policy documents?",
+      "o": [
+        "file_search",
+        "web_search",
+        "code_interpreter",
+        "function"
+      ],
+      "a": 0,
+      "s": "file_search",
+      "e": "file_search retrieves from documents you've uploaded as grounding knowledge. web_search reaches the public internet, and code_interpreter executes code — neither reads your uploaded policy files."
+    },
+    {
+      "id": "mq11",
+      "d": "genai",
+      "t": "genapp",
+      "q": "In a function-calling workflow, what should your application do after the model returns a function_call item?",
+      "o": [
+        "Run the function in your code and send a function_call_output back to the model",
+        "Wait for the model to run the function automatically",
+        "Convert the function call into a web_search request",
+        "Discard it and continue the conversation"
+      ],
+      "a": 0,
+      "s": "Run the function yourself, then return the output",
+      "e": "Function calling is a two-step handoff: the model asks for a function call, but your application code actually executes it and sends the result back as a function_call_output so the model can incorporate it. The model never runs your code itself."
+    },
+    {
+      "id": "mq12",
+      "d": "genai",
+      "t": "genapp",
+      "q": "Which statement about the code_interpreter tool is correct?",
+      "o": [
+        "It can run Python code in a sandboxed runtime to help solve tasks",
+        "It can browse external websites directly during code execution",
+        "It only supports file uploads and can't perform calculations",
+        "It requires a separate Azure Functions deployment"
+      ],
+      "a": 0,
+      "s": "Runs Python in a sandbox",
+      "e": "Code Interpreter executes Python in a managed sandbox — computing over data, generating charts and files. It doesn't have general internet access during execution, and it does perform real calculations, not just handle uploads."
+    },
+    {
+      "id": "mq13",
+      "d": "genai",
+      "t": "optimize",
+      "q": "What is the primary purpose of a system message in a prompt?",
+      "o": [
+        "To define the model's role, behavior, and output constraints",
+        "To provide training data that permanently changes the model",
+        "To retrieve data from an external data source",
+        "To limit the maximum response length"
+      ],
+      "a": 0,
+      "s": "Frames role, behavior, and constraints",
+      "e": "The system message sets persona, rules, and output expectations for the whole exchange. It doesn't retrain the model (that's fine-tuning) or fetch external data (that's a retrieval/tool step)."
+    },
+    {
+      "id": "mq14",
+      "d": "genai",
+      "t": "optimize",
+      "q": "When should you use Retrieval Augmented Generation (RAG) instead of relying on prompt engineering alone?",
+      "o": [
+        "When the model needs access to domain-specific or current data that it wasn't trained on",
+        "When you want the model to respond in a consistent style and format",
+        "When you want to reduce the length of prompts sent to the model",
+        "When you only need the model to follow a specific output format"
+      ],
+      "a": 0,
+      "s": "When you need current or domain-specific data",
+      "e": "RAG's job is supplying facts the model doesn't already know from training — current or proprietary data. Consistent style/format is a prompt-engineering (or fine-tuning) concern, not a retrieval one."
+    },
+    {
+      "id": "mq15",
+      "d": "genai",
+      "t": "optimize",
+      "q": "What does the temperature parameter control in a language model?",
+      "o": [
+        "The randomness and creativity of the model's responses",
+        "The maximum number of tokens the model can generate",
+        "The speed at which the model processes requests",
+        "The number of tools the model can call"
+      ],
+      "a": 0,
+      "s": "Randomness of token selection",
+      "e": "Temperature controls how much the model favors its single most likely next token (low) versus a wider spread of plausible ones (high) — creativity/randomness, not length, speed, or tool access."
+    },
+    {
+      "id": "mq16",
+      "d": "genai",
+      "t": "optimize",
+      "q": "What does fine-tuning optimize in a language model?",
+      "o": [
+        "The consistency of the model's behavior, style, and output format",
+        "The factual accuracy of responses by connecting to external data",
+        "The number of tokens the model can process in a single request",
+        "The model's ability to call external tools"
+      ],
+      "a": 0,
+      "s": "Behavioral/style consistency",
+      "e": "Fine-tuning updates model weights to make behavior, tone, and output format more consistent for a task. It doesn't give the model new facts — that's what grounding/RAG is for."
+    },
+    {
+      "id": "mq17",
+      "d": "genai",
+      "t": "optimize",
+      "q": "You're building a chat application that needs to answer questions using your company's product catalog while maintaining a specific brand voice. Which combination of strategies is most appropriate?",
+      "o": [
+        "RAG for the product catalog data, fine-tuning for the brand voice, and prompt engineering for conversation-specific instructions",
+        "Prompt engineering only, with detailed system messages",
+        "Fine-tuning only, with the product catalog included in the training data",
+        "RAG only, with brand voice instructions repeated in every retrieved chunk"
+      ],
+      "a": 0,
+      "s": "Combine RAG + fine-tuning + prompt engineering",
+      "e": "Each technique solves a different problem: RAG supplies current catalog facts, fine-tuning bakes in consistent brand voice, and prompt engineering handles per-conversation instructions. Real applications usually combine, rather than pick just one."
+    },
+    {
+      "id": "mq18",
+      "d": "plan",
+      "t": "rai",
+      "q": "Why should you consider creating an AI Impact Assessment when designing a generative AI solution?",
+      "o": [
+        "To document the purpose, expected use, and potential harms for the solution",
+        "To make a legal case that indemnifies you from responsibility for harms caused by the solution",
+        "To evaluate the cost of cloud services required to implement your solution",
+        "To generate marketing material describing the solution's capabilities"
+      ],
+      "a": 0,
+      "s": "Documents purpose, use, and potential harms",
+      "e": "An AI Impact Assessment is a planning artifact that records intended use, users, and foreseeable harms early, so mitigations can be designed in from the start — not a liability shield or a cost estimate."
+    },
+    {
+      "id": "mq19",
+      "d": "plan",
+      "t": "rai",
+      "q": "What capability of Microsoft Foundry helps mitigate harmful content generation at the Safety System level?",
+      "o": [
+        "Guardrails",
+        "Fine-tuning",
+        "DALL-E model support",
+        "Provisioned throughput"
+      ],
+      "a": 0,
+      "s": "Guardrails",
+      "e": "Guardrails (content filters and related safety controls) operate at the safety-system layer, screening prompts and outputs regardless of which model is deployed. Fine-tuning changes model behavior but isn't itself a runtime safety control."
+    },
+    {
+      "id": "mq20",
+      "d": "plan",
+      "t": "rai",
+      "q": "Why should you consider a phased delivery plan for your generative AI solution?",
+      "o": [
+        "To enable you to gather feedback and identify issues before releasing the solution more broadly",
+        "To eliminate the need to map, measure, mitigate, and manage potential harms",
+        "To enable you to charge more for the solution",
+        "To avoid having to perform any responsible AI evaluations"
+      ],
+      "a": 0,
+      "s": "Catch issues before broad release",
+      "e": "Phased delivery — limited pilot, then wider rollout — lets you observe real behavior and catch problems while the blast radius is small. It doesn't replace the map/measure/mitigate/manage responsible-AI cycle; it's a delivery pattern that works alongside it."
+    },
+    {
+      "id": "mq21",
+      "d": "genai",
+      "t": "agents",
+      "q": "What is the primary benefit of using Microsoft Foundry Agent Service compared to building agents with standard APIs?",
+      "o": [
+        "It handles tool calling, state management, and infrastructure automatically",
+        "It provides access to more powerful AI models",
+        "It requires no Azure subscription",
+        "It only works with the Azure portal"
+      ],
+      "a": 0,
+      "s": "Managed tool calling, state, and infrastructure",
+      "e": "Agent Service takes over the plumbing — invoking tools, keeping conversation state, running infrastructure — that you'd otherwise hand-build against raw APIs. Model access and subscription requirements are unrelated to this benefit."
+    },
+    {
+      "id": "mq22",
+      "d": "genai",
+      "t": "agents",
+      "q": "How does Microsoft Foundry Agent Service handle conversation state?",
+      "o": [
+        "Through the Responses API, which automatically manages conversation context",
+        "By requiring developers to manually manage conversation history",
+        "Through external database connections you must configure yourself",
+        "Using local file storage on the client device"
+      ],
+      "a": 0,
+      "s": "Automatically, via the Responses API",
+      "e": "Conversation state is kept server-side and managed automatically once you're working through the Responses API — you don't hand-roll history storage or wire up your own database."
+    },
+    {
+      "id": "mq23",
+      "d": "plan",
+      "t": "rai",
+      "q": "Which of the following is NOT a recommended security practice for AI agents?",
+      "o": [
+        "Allowing agents unrestricted access to all enterprise data",
+        "Using role-based access controls",
+        "Implementing prompt filtering and validation",
+        "Maintaining comprehensive logging and traceability"
+      ],
+      "a": 0,
+      "s": "Unrestricted data access is the bad practice",
+      "e": "Least-privilege access is a core agent-governance principle — giving an agent unrestricted access to all enterprise data is exactly what you should avoid. RBAC, prompt filtering, and logging are all genuinely recommended controls."
+    },
+    {
+      "id": "mq24",
+      "d": "genai",
+      "t": "agents",
+      "q": "What happens when an agent determines it needs a tool to respond to a user request?",
+      "o": [
+        "The agent automatically invokes the tool, processes results, and incorporates them into its response",
+        "The agent asks the user for permission to use the tool every time",
+        "The agent stops processing and waits for developer input",
+        "The agent sends the request to a separate processing queue"
+      ],
+      "a": 0,
+      "s": "The agent invokes it and incorporates the result",
+      "e": "By default an agent calls a tool it decides it needs, folds the result back into its reasoning, and continues — that automatic loop is the point of giving it tools. (Higher-risk actions can still be gated behind an approval workflow as a separate governance control.)"
+    },
+    {
+      "id": "mq25",
+      "d": "genai",
+      "t": "agents",
+      "q": "What are custom tools, and how can they help you develop effective agents with Microsoft Foundry Agent Service?",
+      "o": [
+        "Callable functions that an agent can use to extend its capabilities",
+        "Extensions for Visual Studio Code that make it easier to create and deploy agents",
+        "Fine-tuned models that the agent can use to generate custom output",
+        "Prebuilt Foundry Tools with custom pricing"
+      ],
+      "a": 0,
+      "s": "Callable functions extending the agent",
+      "e": "Custom tools are functions you define and register so the agent can call them — reaching your own APIs or logic beyond what built-in tools cover. They aren't an IDE extension or a model variant."
+    },
+    {
+      "id": "mq26",
+      "d": "genai",
+      "t": "agents",
+      "q": "You need to integrate functionality from an OpenAPI 3.0-based web service into an agent solution. What should you do?",
+      "o": [
+        "Add the web service as an OpenAPI specification tool to the agent definition",
+        "Rewrite the web service as a Python function and hard-code it in your agent app",
+        "Add the JSON schema of the web service to the agent's instructions",
+        "Deploy the web service as a separate Foundry project"
+      ],
+      "a": 0,
+      "s": "Add it as an OpenAPI spec tool",
+      "e": "Agents can consume an existing OpenAPI 3.0 spec directly as a tool definition, so there's no need to rewrite the service as a hard-coded function or manually paste its schema into instructions."
+    },
+    {
+      "id": "mq27",
+      "d": "genai",
+      "t": "agents",
+      "q": "Your agent application code includes a local function that you want the agent to call. What kind of tool should you add to the agent's definition?",
+      "o": [
+        "Function calling",
+        "Code interpreter",
+        "Azure Functions",
+        "File search"
+      ],
+      "a": 0,
+      "s": "Function calling",
+      "e": "Function calling is exactly the mechanism for exposing a function that lives in your own application code to the agent. Code Interpreter runs sandboxed Python the agent writes itself, not your existing function."
+    },
+    {
+      "id": "mq28",
+      "d": "genai",
+      "t": "agents",
+      "q": "What role does the MCP server play in the MCP agent tool integration?",
+      "o": [
+        "Hosts tool definitions and makes them available for discovery by the client",
+        "Runs the AI agent and processes user prompts directly",
+        "Manages network connections between multiple agents",
+        "Stores the conversation transcript on behalf of the agent"
+      ],
+      "a": 0,
+      "s": "Hosts and exposes tool definitions",
+      "e": "An MCP server's job is to host tool definitions so a client (the agent side) can discover and invoke them — it isn't itself running the agent's reasoning or acting as a general network manager."
+    },
+    {
+      "id": "mq29",
+      "d": "genai",
+      "t": "agents",
+      "q": "How does an MCP client retrieve available tools from the MCP server?",
+      "o": [
+        "By calling session.list_tools() to get the current tool catalog",
+        "By reading a static JSON file from the server directory",
+        "By subscribing to server events via a WebSocket connection",
+        "By parsing the server's OpenAPI documentation"
+      ],
+      "a": 0,
+      "s": "session.list_tools()",
+      "e": "MCP clients query the server's live tool catalog through a call like session.list_tools(), rather than relying on a static file or a documentation page that could drift out of sync with what the server actually offers."
+    },
+    {
+      "id": "mq30",
+      "d": "genai",
+      "t": "agents",
+      "q": "Why should MCP tools be wrapped in async functions on the client-side?",
+      "o": [
+        "To enable asynchronous invocation so the agent can call tools without blocking",
+        "To allow the agent to wait for user input mid-call",
+        "To convert the functions into REST API endpoints automatically",
+        "To satisfy a hard requirement of the Python type system"
+      ],
+      "a": 0,
+      "s": "Non-blocking tool invocation",
+      "e": "Wrapping MCP tool calls as async lets the agent invoke them without blocking the rest of its execution — important when tools involve network round-trips to the MCP server."
+    },
+    {
+      "id": "mq31",
+      "d": "genai",
+      "t": "agents",
+      "q": "What is the primary advantage of Retrieval Augmented Generation (RAG) over simple AI agents?",
+      "o": [
+        "RAG enables agents to ground responses in current organizational information and provide source transparency",
+        "RAG eliminates the need for large language models by relying entirely on document retrieval",
+        "RAG automatically retrains the language model whenever organizational documents change",
+        "RAG removes the need for any agent instructions"
+      ],
+      "a": 0,
+      "s": "Grounded, source-transparent answers",
+      "e": "RAG's value is grounding — answers backed by current organizational content with traceable sources — not replacing the language model or auto-retraining it whenever documents change."
+    },
+    {
+      "id": "mq32",
+      "d": "genai",
+      "t": "agents",
+      "q": "Which data source option provides real-time access to SharePoint content with Microsoft 365 governance?",
+      "o": [
+        "SharePoint Remote, which queries SharePoint sites and libraries in real time",
+        "SharePoint Indexed, which pre-processes SharePoint content into Azure AI Search",
+        "Azure Blob Storage, which connects to SharePoint files stored as blobs",
+        "A nightly export job that copies SharePoint content into a knowledge base"
+      ],
+      "a": 0,
+      "s": "SharePoint Remote — live, governed queries",
+      "e": "SharePoint Remote queries content live, preserving Microsoft 365 permissions and governance at query time. An indexed/pre-processed copy trades that real-time governance for retrieval speed."
+    },
+    {
+      "id": "mq33",
+      "d": "genai",
+      "t": "agents",
+      "q": "What is the purpose of scoring profiles in Foundry IQ knowledge bases?",
+      "o": [
+        "To boost specific fields or attributes so more important results surface first",
+        "To encrypt sensitive fields and protect confidential information during retrieval",
+        "To configure how documents are chunked and embedded for semantic search",
+        "To limit which users can query the knowledge base"
+      ],
+      "a": 0,
+      "s": "Boost important fields in ranking",
+      "e": "Scoring profiles let you weight certain fields or attributes more heavily in ranking, so the most relevant results surface first — a relevance-tuning tool, not an encryption or access-control mechanism."
+    },
+    {
+      "id": "mq34",
+      "d": "genai",
+      "t": "agents",
+      "q": "Why is it critical to specify retrieval behavior in agent instructions?",
+      "o": [
+        "Without proper instructions, agents might answer from training data instead of the knowledge base, provide unverifiable responses, or fail to cite sources",
+        "Instructions determine the semantic ranking algorithm that Foundry IQ applies to search results",
+        "Instructions enable the agent to automatically update knowledge base content when it detects outdated information",
+        "Instructions are only cosmetic and don't affect retrieval behavior"
+      ],
+      "a": 0,
+      "s": "Prevents ungrounded, uncited answers",
+      "e": "Explicit retrieval instructions push the agent to actually use the knowledge base and cite it, instead of quietly falling back on what it learned in training — a real failure mode if left unaddressed. They don't change the underlying ranking algorithm or auto-update content."
+    },
+    {
+      "id": "mq35",
+      "d": "genai",
+      "t": "agents",
+      "q": "What Azure resource does the Foundry portal automatically create when you publish an agent to Microsoft Teams?",
+      "o": [
+        "Azure Bot Service",
+        "Azure Functions",
+        "Azure Cosmos DB",
+        "Azure Logic Apps"
+      ],
+      "a": 0,
+      "s": "Azure Bot Service",
+      "e": "Publishing a Foundry agent to Teams provisions an Azure Bot Service resource behind the scenes, since that's the standard integration surface for Teams-facing bots."
+    },
+    {
+      "id": "mq36",
+      "d": "genai",
+      "t": "agents",
+      "q": "What is the main difference between shared scope and organization scope when publishing an agent?",
+      "o": [
+        "Organization scope requires admin approval before the agent is available to all users",
+        "Shared scope requires more Azure resources",
+        "Shared scope only works in the Foundry playground",
+        "Organization scope provides better agent performance"
+      ],
+      "a": 0,
+      "s": "Org scope needs admin approval",
+      "e": "Organization-wide publishing goes through an admin approval gate before every user in the tenant can reach the agent; shared scope is a lighter-weight distribution option without that org-wide review step."
+    },
+    {
+      "id": "mq37",
+      "d": "genai",
+      "t": "agents",
+      "q": "What happens to tool permissions when you publish an agent from Foundry to Teams?",
+      "o": [
+        "Permissions are automatically transferred to the published agent",
+        "Tools are disabled after publishing",
+        "The published agent gets a new identity and needs permissions reassigned",
+        "Permissions only work in organization scope"
+      ],
+      "a": 0,
+      "s": "Permissions transfer automatically",
+      "e": "Publishing carries the agent's existing tool permissions over to the Teams-published version automatically — you don't need to manually reconfigure access or reassign a new identity."
+    },
+    {
+      "id": "mq38",
+      "d": "genai",
+      "t": "agents",
+      "q": "What is Microsoft Work IQ?",
+      "o": [
+        "A CLI and MCP server that connects AI agents to Microsoft 365 data",
+        "A machine learning model for workplace analytics",
+        "A replacement for Microsoft Teams",
+        "A Visual Studio Code extension for building agents"
+      ],
+      "a": 0,
+      "s": "CLI + MCP server for M365 data access",
+      "e": "Work IQ is the CLI/MCP-server layer that lets agents reach Microsoft 365 workplace data with proper governance — not an analytics model, a Teams replacement, or an IDE extension."
+    },
+    {
+      "id": "mq39",
+      "d": "genai",
+      "t": "agents",
+      "q": "When should you consider using the Microsoft 365 Agents Toolkit instead of direct publishing from Foundry?",
+      "o": [
+        "When you need custom SSO, middleware logic, or multi-environment deployment",
+        "For all production deployments, without exception",
+        "When publishing to shared scope only",
+        "When your agent doesn't use any tools"
+      ],
+      "a": 0,
+      "s": "When you need customization beyond direct publish",
+      "e": "Direct publishing from Foundry covers the common case; the Agents Toolkit is for when you need more control — custom single sign-on, middleware, or promoting through multiple environments — not a blanket replacement for every deployment."
+    },
+    {
+      "id": "mq40",
+      "d": "genai",
+      "t": "agents",
+      "q": "Which type of node in a Foundry workflow is used to invoke an AI agent?",
+      "o": [
+        "Agent node",
+        "Logic node",
+        "Data transformation node",
+        "Send message node"
+      ],
+      "a": 0,
+      "s": "Agent node",
+      "e": "An Agent node is the workflow building block that calls into a specific agent. Logic and data-transformation nodes handle branching and reshaping data, not invoking an agent."
+    },
+    {
+      "id": "mq41",
+      "d": "genai",
+      "t": "agents",
+      "q": "Which node type would you use to handle multiple tickets in a workflow without duplicating nodes?",
+      "o": [
+        "For-Each node",
+        "If/Else node",
+        "Send message node",
+        "Agent node"
+      ],
+      "a": 0,
+      "s": "For-Each node",
+      "e": "A For-Each node loops the same set of steps over a collection of items — exactly what avoids hand-duplicating the same nodes once per ticket. If/Else handles branching, not iteration."
+    },
+    {
+      "id": "mq42",
+      "d": "genai",
+      "t": "agents",
+      "q": "Which of the following best describes how structured agent outputs are used in workflows?",
+      "o": [
+        "They provide predictable data that can be stored in variables, evaluated with conditions, and trigger workflow steps",
+        "They are ignored once generated, since agents always handle routing automatically",
+        "They replace the need for loops and If/Else nodes entirely",
+        "They can only be logged, not acted upon"
+      ],
+      "a": 0,
+      "s": "Predictable data driving variables/conditions/steps",
+      "e": "Structured outputs give a workflow something reliable to act on — stored in variables, checked in conditions, used to trigger the next step — rather than replacing control-flow nodes or being purely for logging."
+    },
+    {
+      "id": "mq43",
+      "d": "genai",
+      "t": "agents",
+      "q": "What are the key steps to create a Microsoft Foundry Agent using the Microsoft Agent Framework?",
+      "o": [
+        "Create an AzureAIAgentClient, define a ChatAgent with instructions and tools, and create an AgentThread for conversations",
+        "Deploy a custom AI model before creating an agent definition in the Azure portal",
+        "Initialize the agent by defining a model in the AgentThread constructor",
+        "Register the agent directly in the Foundry resource's networking settings"
+      ],
+      "a": 0,
+      "s": "AzureAIAgentClient → ChatAgent → AgentThread",
+      "e": "The Agent Framework's flow is: build a client, define a ChatAgent with its instructions and tools, then create an AgentThread to carry a conversation — the model and tools live on the ChatAgent, not the thread."
+    },
+    {
+      "id": "mq44",
+      "d": "genai",
+      "t": "agents",
+      "q": "Which component in the Microsoft Agent Framework manages conversation state and stores messages?",
+      "o": [
+        "AgentThread",
+        "ChatAgent",
+        "AzureAIAgentClient",
+        "A separate database you configure yourself"
+      ],
+      "a": 0,
+      "s": "AgentThread",
+      "e": "AgentThread is the object responsible for holding conversation state and message history. ChatAgent defines behavior (instructions, tools); AzureAIAgentClient is the connection to the Foundry project."
+    },
+    {
+      "id": "mq45",
+      "d": "genai",
+      "t": "agents",
+      "q": "How do you add custom functionality to a Microsoft Foundry Agent in the Microsoft Agent Framework?",
+      "o": [
+        "Create Python functions with proper type annotations and descriptions, then pass them to the ChatAgent's tools parameter",
+        "Configure custom functions in the Azure portal and link them to the agent through connection strings",
+        "Modify the AI model's architecture to integrate the custom functionality directly",
+        "Write the functionality as an OpenAPI spec and upload it as a separate resource"
+      ],
+      "a": 0,
+      "s": "Typed Python functions passed as tools",
+      "e": "Custom functionality is added the same way as function calling generally: well-typed, well-described Python functions handed to the agent's tools parameter — no portal configuration or model surgery involved."
+    },
+    {
+      "id": "mq46",
+      "d": "genai",
+      "t": "agents",
+      "q": "What's the first step in the Microsoft Agent Framework's unified orchestration workflow?",
+      "o": [
+        "Define your agents and describe their capabilities",
+        "Select and create an orchestration pattern",
+        "Start a runtime to manage execution",
+        "Deploy each agent to its own Foundry project"
+      ],
+      "a": 0,
+      "s": "Define your agents first",
+      "e": "Before you can orchestrate agents together, you first define each agent and what it can do — the orchestration pattern (sequential, group chat, etc.) and the runtime come after that foundation is in place."
+    },
+    {
+      "id": "mq47",
+      "d": "genai",
+      "t": "agents",
+      "q": "For brainstorming and collaborative problem solving among multiple agents, which orchestration pattern is most suitable?",
+      "o": [
+        "Group Chat",
+        "Sequential",
+        "Concurrent",
+        "Handoff"
+      ],
+      "a": 0,
+      "s": "Group Chat",
+      "e": "Group Chat orchestration lets multiple agents converse with each other in a shared thread, which fits open-ended brainstorming. Sequential and concurrent patterns are for ordered or parallel task execution, not free-form discussion."
+    },
+    {
+      "id": "mq48",
+      "d": "genai",
+      "t": "agents",
+      "q": "Which pattern dynamically transfers control between agents based on context or rules?",
+      "o": [
+        "Handoff",
+        "Concurrent",
+        "Sequential",
+        "Group Chat"
+      ],
+      "a": 0,
+      "s": "Handoff",
+      "e": "Handoff orchestration is specifically about passing control from one agent to another as context changes — e.g., triage to specialist — which is different from running agents in parallel (concurrent) or strict order (sequential)."
+    },
+    {
+      "id": "mq49",
+      "d": "genai",
+      "t": "agents",
+      "q": "What is the primary role of an A2A server?",
+      "o": [
+        "It routes requests between clients and connected agents",
+        "It executes business logic for the agent directly",
+        "It stores static agent responses for reuse",
+        "It replaces the need for an agent's own model"
+      ],
+      "a": 0,
+      "s": "Routes requests between clients and agents",
+      "e": "An A2A server's job is routing and connecting — mediating requests between a client and the remote agents it can reach — not running the agent's own business logic itself."
+    },
+    {
+      "id": "mq50",
+      "d": "genai",
+      "t": "agents",
+      "q": "What does the Agent Executor do in an A2A agent?",
+      "o": [
+        "Processes incoming requests and generates responses or events",
+        "Manages network connections between clients and servers",
+        "Provides a GUI for monitoring agent activity",
+        "Stores the agent's long-term memory"
+      ],
+      "a": 0,
+      "s": "Processes requests, generates responses/events",
+      "e": "The Agent Executor is where the actual work happens — taking an incoming request and producing a response or event. Network management and monitoring UIs are separate concerns handled elsewhere in the stack."
+    },
+    {
+      "id": "mq51",
+      "d": "genai",
+      "t": "agents",
+      "q": "What is an agent card used for in A2A?",
+      "o": [
+        "It provides metadata about the agent, such as its capabilities and available functions",
+        "It stores the agent's API key for authentication",
+        "It visualizes the agent's workflow in a GUI dashboard",
+        "It logs every request the agent has processed"
+      ],
+      "a": 0,
+      "s": "Metadata: capabilities and functions",
+      "e": "An agent card is a discovery artifact — metadata describing what an agent can do — which is how other agents or clients find out its capabilities before invoking it. It isn't a credential, a dashboard, or a log."
+    },
+    {
+      "id": "mq52",
+      "d": "text",
+      "t": "analysis",
+      "q": "How should you create an application that analyzes news articles and extracts key people, places, and dates that are mentioned for indexing?",
+      "o": [
+        "Use Azure Language in Foundry Tools to extract named entities",
+        "Use Azure Language in Foundry Tools to extract PII entities",
+        "Use a generative AI model with a custom function tool that matches strings using a regular expression",
+        "Use key phrase extraction only"
+      ],
+      "a": 0,
+      "s": "Named entity recognition",
+      "e": "Named entity recognition finds and types exactly this kind of content — people, places, dates — for indexing. PII extraction is built for redacting personal data, a different goal even though some entity types overlap."
+    },
+    {
+      "id": "mq53",
+      "d": "text",
+      "t": "analysis",
+      "q": "You want to publish extracts from customer testimonials on a web site. You need to remove personal details from the text before publishing it. What should you do?",
+      "o": [
+        "Use Azure Language in Foundry Tools to find and redact PII entities",
+        "Use Azure Language in Foundry Tools to detect the language and publish only the testimonials in English",
+        "Use a gpt-4.1 model to create new AI-generated customer reviews",
+        "Use key phrase extraction to summarize the testimonials"
+      ],
+      "a": 0,
+      "s": "PII detection and redaction",
+      "e": "PII detection and redaction is purpose-built for finding and removing personal details before publishing text — language detection and summarization don't address the privacy requirement at all."
+    },
+    {
+      "id": "mq54",
+      "d": "text",
+      "t": "analysis",
+      "q": "What is the primary role of the Azure Language MCP server?",
+      "o": [
+        "To expose Azure Language text analysis capabilities as MCP tools for agents",
+        "To train and fine-tune custom language models for use by AI agents",
+        "To deploy and manage large language models in an Azure subscription",
+        "To store transcripts of every text analysis request"
+      ],
+      "a": 0,
+      "s": "Exposes Azure Language as MCP tools",
+      "e": "The Language MCP server's job is making Azure Language's text analysis capabilities discoverable and callable as MCP tools for an agent — not training models or managing deployments."
+    },
+    {
+      "id": "mq55",
+      "d": "text",
+      "t": "analysis",
+      "q": "How does an agent determine which Azure Language MCP tool to call when processing a user's prompt?",
+      "o": [
+        "The agent matches the prompt to tool descriptions received from the MCP server",
+        "The developer writes routing logic to direct each prompt to a specific tool",
+        "The MCP server analyzes the prompt and automatically routes it to a tool",
+        "The agent always calls every available tool and picks the best result"
+      ],
+      "a": 0,
+      "s": "Matches prompt intent to tool descriptions",
+      "e": "The agent itself reasons over the tool descriptions the MCP server exposes and picks the matching one — no hand-written routing logic from the developer, and the server itself doesn't do the routing."
+    },
+    {
+      "id": "mq56",
+      "d": "genai",
+      "t": "genapp",
+      "q": "When building a Python client application, how do you reference a Foundry agent when calling the OpenAI Responses API?",
+      "o": [
+        "By specifying the agent name in the agent_reference field in extra_body",
+        "By passing the agent's endpoint URL as the model parameter value",
+        "By passing the agent's API key as a request header to the endpoint",
+        "By importing a separate AgentClient class instead of the OpenAI client"
+      ],
+      "a": 0,
+      "s": "agent_reference in extra_body",
+      "e": "You keep calling the same OpenAI-compatible client and target a specific agent through the agent_reference field in extra_body, rather than switching to a different client type or repurposing the model parameter."
+    },
+    {
+      "id": "mq57",
+      "d": "plan",
+      "t": "manage",
+      "q": "What authentication method is used when connecting the Azure Language MCP server to a Foundry agent?",
+      "o": [
+        "Key-based authentication using the Ocp-Apim-Subscription-Key credential",
+        "OAuth 2.0 authentication with a client certificate and tenant ID",
+        "Anonymous access that requires no authentication or credentials",
+        "Managed identity only, with no key ever issued"
+      ],
+      "a": 0,
+      "s": "Key-based (Ocp-Apim-Subscription-Key)",
+      "e": "The Language MCP server connection uses the standard Cognitive Services key header (Ocp-Apim-Subscription-Key) for authentication — simpler than a full OAuth client-certificate flow, and not anonymous."
+    },
+    {
+      "id": "mq58",
+      "d": "text",
+      "t": "speech",
+      "q": "Which model can you use to generate text from speech?",
+      "o": [
+        "gpt-4o-mini-transcribe",
+        "gpt-4o-mini-tts",
+        "gpt-4o-mini",
+        "gpt-image-1"
+      ],
+      "a": 0,
+      "s": "gpt-4o-mini-transcribe",
+      "e": "The -transcribe variant is built for speech-to-text. The -tts variant runs the opposite direction, turning text into speech — easy to mix up by name alone."
+    },
+    {
+      "id": "mq59",
+      "d": "text",
+      "t": "speech",
+      "q": "Which model can you use to synthesize speech from text?",
+      "o": [
+        "gpt-4o-mini-tts",
+        "gpt-4o-mini-transcribe",
+        "gpt-4o-mini",
+        "text-embedding-3-small"
+      ],
+      "a": 0,
+      "s": "gpt-4o-mini-tts",
+      "e": "The -tts variant generates spoken audio from text. -transcribe does the reverse (audio to text) — the naming keeps the two directions distinct."
+    },
+    {
+      "id": "mq60",
+      "d": "text",
+      "t": "speech",
+      "q": "What information do you need from your Microsoft Foundry resource to consume it using the Azure Speech SDK?",
+      "o": [
+        "The endpoint and key",
+        "The Azure subscription ID and resource group name",
+        "The primary and secondary keys only, with no endpoint",
+        "The project name and tenant ID"
+      ],
+      "a": 0,
+      "s": "Endpoint + key",
+      "e": "The Speech SDK, like most Foundry Tools, is wired up with the resource's endpoint and a key (or a keyless credential). Subscription/resource-group identifiers are Azure-management concepts, not what the SDK itself needs to make calls."
+    },
+    {
+      "id": "mq61",
+      "d": "text",
+      "t": "speech",
+      "q": "Which object should you use to specify that the speech input to be transcribed to text is in an audio file?",
+      "o": [
+        "AudioConfig",
+        "SpeechConfig",
+        "SpeechRecognizer",
+        "SpeechTranslationConfig"
+      ],
+      "a": 0,
+      "s": "AudioConfig",
+      "e": "AudioConfig specifies the audio source — a file, the microphone, or a stream. SpeechConfig carries resource/auth and language settings; SpeechRecognizer is the object that actually performs recognition using both."
+    },
+    {
+      "id": "mq62",
+      "d": "text",
+      "t": "speech",
+      "q": "How can you change the voice used in speech synthesis?",
+      "o": [
+        "Set the speech_synthesis_voice_name property of the SpeechConfig object to the desired voice name",
+        "Specify a SpeechSynthesisOutputFormat enumeration in the SpeechConfig object",
+        "Specify a filename in the AudioConfig object",
+        "Pass the voice name as an argument to SpeechRecognizer"
+      ],
+      "a": 0,
+      "s": "speech_synthesis_voice_name on SpeechConfig",
+      "e": "Voice selection is a property on SpeechConfig (speech_synthesis_voice_name). Output format controls the audio encoding, not which voice speaks, and AudioConfig is about the audio source/destination, not voice choice."
+    },
+    {
+      "id": "mq63",
+      "d": "text",
+      "t": "speech",
+      "q": "What two core capabilities does the Azure Speech MCP server expose to agents?",
+      "o": [
+        "Speech-to-text recognition and text-to-speech synthesis",
+        "Language translation and text summarization",
+        "Named entity recognition and sentiment analysis",
+        "Image captioning and OCR"
+      ],
+      "a": 0,
+      "s": "Speech recognition + speech synthesis",
+      "e": "The Speech MCP server's whole purpose is exposing the two core speech directions — recognition and synthesis — as callable MCP tools. Translation, NER, and OCR belong to other services entirely."
+    },
+    {
+      "id": "mq64",
+      "d": "text",
+      "t": "speech",
+      "q": "Why does the Azure Speech MCP server require an Azure Storage account?",
+      "o": [
+        "To store input audio files and output audio files generated by the speech tools",
+        "To store the agent's instructions and configuration settings",
+        "To cache the MCP server's tool definitions for faster discovery",
+        "To log every conversation transcript permanently"
+      ],
+      "a": 0,
+      "s": "Stores input/output audio files",
+      "e": "Audio in and out needs somewhere to live during processing, so the Speech MCP server relies on Blob Storage for that — not for holding agent configuration or tool metadata, which live elsewhere."
+    },
+    {
+      "id": "mq65",
+      "d": "text",
+      "t": "speech",
+      "q": "What credentials are needed when connecting the Azure Speech MCP server to a Foundry agent?",
+      "o": [
+        "A Foundry resource key and a SAS URL for a blob container",
+        "An OAuth 2.0 token and a managed identity endpoint URL",
+        "A client certificate and the Azure subscription ID",
+        "No credentials — the connection is anonymous by default"
+      ],
+      "a": 0,
+      "s": "Resource key + blob container SAS URL",
+      "e": "The connection needs both a key for the Foundry/Speech resource itself and a SAS URL so the server can read and write audio files in blob storage — two distinct credentials for two distinct responsibilities."
+    },
+    {
+      "id": "mq66",
+      "d": "text",
+      "t": "speech",
+      "q": "How can you specify a particular voice when using the text-to-speech tool through the agent?",
+      "o": [
+        "By including the voice name in your natural language prompt to the agent",
+        "By configuring the voice in the MCP server settings before connecting",
+        "By setting an environment variable in the client application code",
+        "Voice selection isn't possible through an agent, only through the raw SDK"
+      ],
+      "a": 0,
+      "s": "Name the voice in your prompt",
+      "e": "Since the agent interprets natural-language requests, you can simply ask for a specific voice by name in your prompt — no separate server configuration or environment variable required for a per-request choice."
+    },
+    {
+      "id": "mq67",
+      "d": "text",
+      "t": "speech",
+      "q": "What are the two authentication methods supported by the Voice Live API?",
+      "o": [
+        "Microsoft Entra (keyless) and API key",
+        "OAuth 2.0 and JWT (JSON Web Tokens)",
+        "Basic authentication and API keys",
+        "Anonymous access and API key"
+      ],
+      "a": 0,
+      "s": "Entra ID (keyless) + API key",
+      "e": "Voice Live supports the same two-track pattern as most Foundry Tools: keyless Entra ID auth as the recommended path, with an API key as the fallback — not OAuth/JWT or basic auth."
+    },
+    {
+      "id": "mq68",
+      "d": "text",
+      "t": "speech",
+      "q": "Which protocol is used for avatar streaming integration in Voice Live API?",
+      "o": [
+        "WebRTC",
+        "HTTP/2",
+        "gRPC",
+        "MQTT"
+      ],
+      "a": 0,
+      "s": "WebRTC",
+      "e": "WebRTC is the real-time streaming protocol used for avatar video/audio in Voice Live, suited to low-latency bidirectional media — not a general-purpose protocol like HTTP/2 or gRPC."
+    },
+    {
+      "id": "mq69",
+      "d": "text",
+      "t": "speech",
+      "q": "How do you configure and test Voice Live agent integration in the Foundry Portal?",
+      "o": [
+        "In the Azure Speech in Foundry Tools Voice Live playground",
+        "Enable Voice mode in the agent playground",
+        "You can't — Voice Live is only accessible through the REST API or Python SDK",
+        "Through the Azure portal's networking blade"
+      ],
+      "a": 0,
+      "s": "The Voice Live playground",
+      "e": "Foundry provides a dedicated Voice Live playground under Azure Speech in Foundry Tools specifically for configuring and testing this integration in the portal, not just via raw API/SDK access."
+    },
+    {
+      "id": "mq70",
+      "d": "text",
+      "t": "speech",
+      "q": "How can you stop audio playback when a user interrupts the voice agent?",
+      "o": [
+        "Handle the ServerEventType.INPUT_AUDIO_BUFFER_SPEECH_STARTED event",
+        "Reset the Voice Live session and clear the conversation history",
+        "You can't — the user must wait for the agent to finish",
+        "Close and reopen the WebRTC connection"
+      ],
+      "a": 0,
+      "s": "Handle the speech-started server event",
+      "e": "Voice Live emits a server event when it detects the user starting to speak; handling that event is how you interrupt (barge in on) ongoing playback, rather than resetting the whole session."
+    },
+    {
+      "id": "mq71",
+      "d": "text",
+      "t": "analysis",
+      "q": "What function of an Azure Translator TextTranslationClient object should you use to convert the Chinese word \"你好\" to the English word \"Hello\"?",
+      "o": [
+        "translate",
+        "transliterate",
+        "get_supported_language",
+        "detect_language"
+      ],
+      "a": 0,
+      "s": "translate",
+      "e": "translate() converts meaning between languages (Chinese to English). transliterate() instead converts the same language's text between scripts — it wouldn't change the meaning to English at all."
+    },
+    {
+      "id": "mq72",
+      "d": "text",
+      "t": "analysis",
+      "q": "What function of an Azure Translator TextTranslationClient object should you use to convert the Russian word \"спасибо\" in Cyrillic characters to \"spasibo\" in Latin characters?",
+      "o": [
+        "transliterate",
+        "translate",
+        "get_supported_language",
+        "detect_language"
+      ],
+      "a": 0,
+      "s": "transliterate",
+      "e": "Converting the same word between scripts (Cyrillic to Latin) without changing its meaning or language is transliteration, not translation — translate() would instead produce the English word \"thank you\"."
+    },
+    {
+      "id": "mq73",
+      "d": "text",
+      "t": "speech",
+      "q": "Which Azure Speech SDK object should you use to specify the language(s) into which you want speech translated?",
+      "o": [
+        "SpeechTranslationConfig",
+        "SpeechConfig",
+        "AudioConfig",
+        "SpeechRecognizer"
+      ],
+      "a": 0,
+      "s": "SpeechTranslationConfig",
+      "e": "SpeechTranslationConfig extends the base config specifically to add target translation languages. Plain SpeechConfig covers recognition/synthesis settings but has no notion of a translation target."
+    },
+    {
+      "id": "mq74",
+      "d": "vision",
+      "t": "understand",
+      "q": "Which kind of model can you use to respond to visual input?",
+      "o": [
+        "Multimodal models",
+        "Embedding models",
+        "Only OpenAI GPT models specifically",
+        "Speech recognition models"
+      ],
+      "a": 0,
+      "s": "Multimodal models",
+      "e": "Multimodal models accept image input alongside text and reason over both. Embedding models produce vectors for similarity search — they don't 'respond' to a visual prompt in conversation."
+    },
+    {
+      "id": "mq75",
+      "d": "vision",
+      "t": "understand",
+      "q": "How can you submit a prompt that asks a model to analyze an image?",
+      "o": [
+        "Submit a prompt that contains a multi-part user message, containing both text content and image content",
+        "Submit one prompt with an image-based message followed by another prompt with a text-based message",
+        "Submit the image as the system message and the instruction as the user message",
+        "Upload the image as a separate file attachment outside the message array"
+      ],
+      "a": 0,
+      "s": "One multi-part user message: text + image",
+      "e": "A single user message can carry multiple content parts — text and image together — so the model sees both in the same turn, rather than needing two separate prompts or misusing the system message for image content."
+    },
+    {
+      "id": "mq76",
+      "d": "vision",
+      "t": "understand",
+      "q": "How can you include an image in a message?",
+      "o": [
+        "As a URL or as binary data",
+        "Only as a URL",
+        "Only as binary (base64-encoded) data",
+        "Only by referencing an uploaded file ID"
+      ],
+      "a": 0,
+      "s": "URL or binary data",
+      "e": "Multimodal messages accept an image either by reference (a URL) or inline as binary/base64 data — both paths are supported, not just one."
+    },
+    {
+      "id": "mq77",
+      "d": "vision",
+      "t": "gen",
+      "q": "You want to find a model in Microsoft Foundry to generate images. Which inference task should you filter by?",
+      "o": [
+        "Text to image",
+        "Image to text",
+        "Embeddings",
+        "Image classification"
+      ],
+      "a": 0,
+      "s": "Text to image",
+      "e": "Image-generation models are catalogued under the text-to-image inference task — the direction from a written prompt to a picture. Image-to-text is the reverse (captioning), a different task filter entirely."
+    },
+    {
+      "id": "mq78",
+      "d": "vision",
+      "t": "gen",
+      "q": "Which OpenAI API can you use with image-generation models?",
+      "o": [
+        "Image",
+        "Video",
+        "Graphics",
+        "Embeddings"
+      ],
+      "a": 0,
+      "s": "The Image API",
+      "e": "Image-generation models are called through the dedicated Image API. Video generation has its own separate API surface, and there's no generic 'Graphics' API."
+    },
+    {
+      "id": "mq79",
+      "d": "vision",
+      "t": "gen",
+      "q": "What video durations does Sora 2 support?",
+      "o": [
+        "4, 8, or 12 seconds",
+        "1 to 20 seconds in 1-second increments",
+        "Any duration up to 60 seconds",
+        "Only exactly 10 seconds"
+      ],
+      "a": 0,
+      "s": "4, 8, or 12 seconds",
+      "e": "Sora 2 in Foundry generates clips at fixed duration options — 4, 8, or 12 seconds — rather than an arbitrary continuous range."
+    },
+    {
+      "id": "mq80",
+      "d": "vision",
+      "t": "gen",
+      "q": "What is required when using a reference image with Sora 2?",
+      "o": [
+        "The image resolution must match the target video size",
+        "The image must be smaller than 1 MB",
+        "The image must contain at least one human face",
+        "The image must be in PNG format specifically"
+      ],
+      "a": 0,
+      "s": "Resolution must match the target video size",
+      "e": "A reference image used to seed or guide Sora 2 generation needs to match the output video's resolution — a technical constraint of how the model conditions on it, unrelated to file size or subject matter."
+    },
+    {
+      "id": "mq81",
+      "d": "vision",
+      "t": "gen",
+      "q": "What is the remix feature used for in Sora 2?",
+      "o": [
+        "Making targeted adjustments to an existing video without regenerating from scratch",
+        "Combining multiple videos into one longer clip",
+        "Adding background music to generated videos",
+        "Converting a video into a series of still images"
+      ],
+      "a": 0,
+      "s": "Targeted edits without full regeneration",
+      "e": "Remix lets you adjust specific aspects of a video you already generated — a scene detail, an element — without discarding it and starting over, similar in spirit to inpainting for images but applied to video."
+    },
+    {
+      "id": "mq82",
+      "d": "vision",
+      "t": "understand",
+      "q": "What is the purpose of grounding in Content Understanding?",
+      "o": [
+        "To identify the specific regions in content where each value was extracted",
+        "To connect Content Understanding to Azure storage",
+        "To filter out harmful content from images",
+        "To compress images before analysis"
+      ],
+      "a": 0,
+      "s": "Locates the source region behind a value",
+      "e": "Grounding points to exactly where in the content — which region of an image, frame, or page — an extracted value came from, which is what makes human review and audit practical."
+    },
+    {
+      "id": "mq83",
+      "d": "vision",
+      "t": "understand",
+      "q": "What does a confidence score of 0.95 indicate for an extracted field?",
+      "o": [
+        "The value can be trusted for automated processing",
+        "The extraction failed and needs manual review",
+        "The field was classified rather than extracted",
+        "The value is exactly 95% complete"
+      ],
+      "a": 0,
+      "s": "High confidence — safe for automation",
+      "e": "A confidence score close to 1.0 signals the extracted value is reliable enough to accept automatically, versus routing lower-confidence extractions to a human reviewer. It says nothing about the extraction method used."
+    },
+    {
+      "id": "mq84",
+      "d": "extract",
+      "t": "documents",
+      "q": "Which prebuilt analyzer would you use to extract vendor names and item totals from a purchase receipt?",
+      "o": [
+        "prebuilt-receipt",
+        "prebuilt-invoice",
+        "prebuilt-image",
+        "prebuilt-layout"
+      ],
+      "a": 0,
+      "s": "prebuilt-receipt",
+      "e": "The prebuilt-receipt analyzer is purpose-built for retail receipt fields like vendor and totals. prebuilt-invoice targets a different (though related) document type with its own field set."
+    },
+    {
+      "id": "mq85",
+      "d": "extract",
+      "t": "documents",
+      "q": "What kinds of AI solution is Azure Content Understanding designed to help you build?",
+      "o": [
+        "Analyzers that extract information from documents, images, videos, and audio files",
+        "Chatbots that automatically translate between multiple spoken and written languages",
+        "Image generators that create visualizations based on descriptions",
+        "Search engines that index only plain-text web pages"
+      ],
+      "a": 0,
+      "s": "Multimodal extraction analyzers",
+      "e": "Content Understanding's whole premise is building analyzers across all four modalities — documents, images, video, audio — not translation, image generation, or plain-text web indexing."
+    },
+    {
+      "id": "mq86",
+      "d": "extract",
+      "t": "documents",
+      "q": "Which graphical tool should you use to create an Azure Content Understanding project?",
+      "o": [
+        "Content Understanding Studio",
+        "Microsoft Visual Studio",
+        "Azure Machine Learning studio",
+        "Document Intelligence Studio"
+      ],
+      "a": 0,
+      "s": "Content Understanding Studio",
+      "e": "Content Understanding has its own dedicated portal experience — Content Understanding Studio — distinct from Visual Studio, Azure ML studio, or Document Intelligence Studio (which targets a related but separate service)."
+    },
+    {
+      "id": "mq87",
+      "d": "extract",
+      "t": "documents",
+      "q": "What should you define for the information you want to extract from content?",
+      "o": [
+        "A schema",
+        "An index",
+        "A cluster",
+        "A pipeline"
+      ],
+      "a": 0,
+      "s": "A schema",
+      "e": "You describe the fields you want as a schema, which the analyzer then extracts, generates, or classifies against — indexes and clusters are concepts from search and data science, not how Content Understanding is configured."
+    },
+    {
+      "id": "mq88",
+      "d": "extract",
+      "t": "documents",
+      "q": "What configuration values are needed to use the Azure Content Understanding API?",
+      "o": [
+        "The endpoint and key for the Foundry resource",
+        "The name of the resource group where the Azure service is deployed",
+        "The Azure subscription ID and tenant ID",
+        "Only the analyzer name, with no other configuration"
+      ],
+      "a": 0,
+      "s": "Endpoint + key",
+      "e": "Like other Foundry Tools APIs, the Content Understanding API is called using the resource's endpoint and a key (or keyless credential) — not management-plane identifiers like a resource group or subscription ID."
+    },
+    {
+      "id": "mq89",
+      "d": "extract",
+      "t": "documents",
+      "q": "What must be specified when calling the analyze method to extract fields from content?",
+      "o": [
+        "The name of the analyzer",
+        "The name of the Foundry resource",
+        "The Azure subscription ID",
+        "The output file format only"
+      ],
+      "a": 0,
+      "s": "The analyzer's name",
+      "e": "Calling analyze requires naming which analyzer configuration to run against the content — the resource name and subscription ID are connection-level details set up earlier, not per-call parameters."
+    },
+    {
+      "id": "mq90",
+      "d": "extract",
+      "t": "documents",
+      "q": "How are the extracted fields returned?",
+      "o": [
+        "As type-specific values",
+        "As a list of strings only",
+        "As a single opaque blob",
+        "As raw XML"
+      ],
+      "a": 0,
+      "s": "Type-specific values",
+      "e": "Extracted fields come back typed to match what was requested — a number, a date, a string, and so on — rather than everything flattened to plain strings or bundled into one undifferentiated blob."
+    },
+    {
+      "id": "mq91",
+      "d": "extract",
+      "t": "documents",
+      "q": "You need to extract text and table structure from a set of documents that have varying formats. You don't need to identify specific labeled fields. Which Document Intelligence model should you use?",
+      "o": [
+        "The layout model",
+        "The read model",
+        "The invoice model",
+        "A custom neural model"
+      ],
+      "a": 0,
+      "s": "The layout model",
+      "e": "The layout model extracts text plus structural elements like tables, independent of a fixed field schema — a good fit for varied formats where you don't need named fields. The read model gets you text but not table structure; invoice/custom models assume a specific document type."
+    },
+    {
+      "id": "mq92",
+      "d": "extract",
+      "t": "documents",
+      "q": "You're building a custom model in Azure Document Intelligence. What training artifacts are required when training with the REST API?",
+      "o": [
+        "Sample forms along with ocr.json, labels.json, and fields.json files in a blob container",
+        "Only the sample form documents in a blob container",
+        "A minimum of 100 labeled forms and a trained classifier",
+        "A pretrained model checkpoint plus a single labels.json file"
+      ],
+      "a": 0,
+      "s": "Sample forms + ocr.json + labels.json + fields.json",
+      "e": "Training a custom model via the REST API needs the sample documents plus the supporting OCR, label, and field-definition JSON files together in blob storage — sample forms alone aren't enough."
+    },
+    {
+      "id": "mq93",
+      "d": "extract",
+      "t": "documents",
+      "q": "A company processes both invoices and receipts. They want a single endpoint that routes each document to the correct extraction model. What should they use?",
+      "o": [
+        "A composed model or a custom classifier paired with extraction models",
+        "A custom neural model trained on both document types combined",
+        "A prebuilt read model applied to every document",
+        "Two separate applications, one per document type"
+      ],
+      "a": 0,
+      "s": "A composed model / classifier + extraction models",
+      "e": "Composed models (or a classifier in front of dedicated extraction models) route each incoming document to the right extraction model automatically behind one endpoint — cleaner than merging document types into a single custom model or maintaining separate apps."
+    },
+    {
+      "id": "mq94",
+      "d": "extract",
+      "t": "retrieval",
+      "q": "Which component of an Azure AI Search solution is scheduled to extract and enrich data to populate an index?",
+      "o": [
+        "Indexer",
+        "Projection",
+        "Query",
+        "Skillset alone, with no scheduling component"
+      ],
+      "a": 0,
+      "s": "Indexer",
+      "e": "The indexer is the component that runs (on a schedule or on demand) to pull data from a source, run enrichment, and populate the index. Projections shape enriched output for storage; queries happen after the index already exists."
+    },
+    {
+      "id": "mq95",
+      "d": "extract",
+      "t": "retrieval",
+      "q": "Which service supports built-in AI skills in Azure AI Search?",
+      "o": [
+        "Foundry Tools",
+        "Azure Functions",
+        "Azure Cosmos DB",
+        "Azure Key Vault"
+      ],
+      "a": 0,
+      "s": "Foundry Tools",
+      "e": "Azure AI Search's built-in cognitive skills (entity recognition, translation, image analysis, and so on) are backed by Foundry Tools. Azure Functions is what you'd use for a *custom* skill instead of a built-in one."
+    },
+    {
+      "id": "mq96",
+      "d": "extract",
+      "t": "retrieval",
+      "q": "Which kind of projection results in a relational data schema for extracted fields?",
+      "o": [
+        "Table",
+        "File",
+        "Object",
+        "Vector"
+      ],
+      "a": 0,
+      "s": "Table projection",
+      "e": "A table projection shapes enriched data into a relational schema suitable for structured storage. Object and file projections instead produce JSON documents or files, not relational tables."
     }
   ]
 }
