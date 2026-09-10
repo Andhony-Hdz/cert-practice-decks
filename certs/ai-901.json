@@ -8,9 +8,9 @@
     "description": "Free practice deck for Microsoft's AI-901 Azure AI Fundamentals certification: 104 exam-style questions, timed sessions, and explanations.",
     "lsKey": "ai901.progress.v1",
     "passPct": 70,
-    "updated": "2026-09-07",
+    "updated": "2026-09-09",
     "officialGuideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-901",
-    "footNote": "Content follows the official AI-901 skills-measured outline (updated April 2026). AI-900 retired on 30 June 2026 — AI-901 is the exam that now earns the Azure AI Fundamentals credential. Always confirm against the <a href=\"https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-901\" target=\"_blank\" rel=\"noopener\">Microsoft study guide</a>."
+    "footNote": "Content follows the official AI-901 skills-measured outline (updated April 2026) and is enriched with the \"Knowledge check\" questions from every module across the official Microsoft Learn training paths behind this certification. AI-900 retired on 30 June 2026 — AI-901 is the exam that now earns the Azure AI Fundamentals credential. Always confirm against the <a href=\"https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-901\" target=\"_blank\" rel=\"noopener\">Microsoft study guide</a>."
   },
   "domains": {
     "concepts": {
@@ -1846,6 +1846,800 @@
         }
       ],
       "e": "The trap here is assuming Language covers translation — it does not; that is Translator's job. Language analyses text you already have, Translator converts between languages, and Content Safety screens for harm across categories."
+    },
+    {
+      "id": "mq1",
+      "d": "concepts",
+      "t": "work",
+      "q": "Which is the most accurate description of generative AI?",
+      "o": [
+        "Generative AI uses a language model to create original content in response to a prompt",
+        "Generative AI is an older form of AI that's superseded by machine learning",
+        "Generative AI is a complex form of AI that can only be used by specialists such as data scientists",
+        "Generative AI only works by looking up pre-written answers in a database"
+      ],
+      "a": 0,
+      "s": "Creates original content from a prompt",
+      "e": "Generative AI models produce new content — text, images, code — in response to a prompt, using patterns learned during training. It's not an older or outdated technique, and modern tools put it within reach of non-specialists too."
+    },
+    {
+      "id": "mq2",
+      "d": "concepts",
+      "t": "work",
+      "q": "What is an AI agent?",
+      "o": [
+        "An AI application that can perform tasks on behalf of a user",
+        "A technology professional who builds AI applications",
+        "Anyone who uses AI applications",
+        "A dataset used to train a machine learning model"
+      ],
+      "a": 0,
+      "s": "An AI application acting on a user's behalf",
+      "e": "An agent is software that can reason about a goal and act — not a job title for the humans who build or use AI systems, and not a dataset."
+    },
+    {
+      "id": "mq3",
+      "d": "foundry",
+      "t": "speech",
+      "q": "An AI application reads email aloud to a user. Which AI speech capability is being used?",
+      "o": [
+        "Speech synthesis",
+        "Speech recognition",
+        "Sentiment analysis",
+        "Speech translation"
+      ],
+      "a": 0,
+      "s": "Speech synthesis",
+      "e": "Speech synthesis (text to speech) generates spoken audio from text — reading email aloud. Speech recognition runs the opposite direction (audio to text), which questions frequently swap."
+    },
+    {
+      "id": "mq4",
+      "d": "concepts",
+      "t": "model",
+      "q": "What is a large language model (LLM)?",
+      "o": [
+        "A type of AI model designed to generate human-like text",
+        "A model that only processes images, not text",
+        "A small, efficient model for mobile devices",
+        "A database that stores pre-written responses"
+      ],
+      "a": 0,
+      "s": "A model designed to generate human-like text",
+      "e": "LLMs are trained on huge amounts of text to predict and generate human-like language. A model built for images isn't an LLM, and 'small, efficient, for mobile devices' describes the opposite class — small language models."
+    },
+    {
+      "id": "mq5",
+      "d": "concepts",
+      "t": "model",
+      "q": "What is the purpose of tokenization?",
+      "o": [
+        "To break down text into smaller units",
+        "To translate text into another language",
+        "To sort the words in a sentence alphabetically",
+        "To convert text into binary code for processing by computers"
+      ],
+      "a": 0,
+      "s": "Breaks text into smaller units",
+      "e": "Tokenization splits text into the word- or sub-word-sized units a model actually processes. It has nothing to do with translation, alphabetizing, or raw binary encoding."
+    },
+    {
+      "id": "mq6",
+      "d": "concepts",
+      "t": "model",
+      "q": "What are embeddings?",
+      "o": [
+        "Vector-based representations of tokens that capture their semantic meaning",
+        "Extra words added by a transformer model to enhance text generation",
+        "Small language models used for specific tasks",
+        "A technique for compressing audio files"
+      ],
+      "a": 0,
+      "s": "Vector representations capturing meaning",
+      "e": "Embeddings represent tokens as vectors positioned so that semantically similar meanings end up close together — the foundation of semantic search, not a text-generation trick or a model class of their own."
+    },
+    {
+      "id": "mq7",
+      "d": "concepts",
+      "t": "model",
+      "q": "What does an attention layer do in a transformer model?",
+      "o": [
+        "Examines the relationships between each token and the tokens around it",
+        "Removes irrelevant words from the input text",
+        "Flags inappropriate content in the generated text",
+        "Converts the model's output into audio"
+      ],
+      "a": 0,
+      "s": "Weighs relationships between tokens",
+      "e": "Attention is what lets a transformer weigh how relevant every other token is to the one it's currently processing — the core mechanism behind capturing context, not a content filter or a cleanup step."
+    },
+    {
+      "id": "mq8",
+      "d": "concepts",
+      "t": "model",
+      "q": "What is the purpose of a system prompt?",
+      "o": [
+        "To provide context and instructions to the AI model",
+        "To configure a generative AI model to run on a particular operating system",
+        "To store user preferences for future interactions",
+        "To limit the number of tokens a model can generate"
+      ],
+      "a": 0,
+      "s": "Provides context and instructions",
+      "e": "The system prompt (or system message) sets persona, rules, and context that frame the whole exchange. It isn't an OS setting, a preferences store, or a length limiter."
+    },
+    {
+      "id": "mq9",
+      "d": "foundry",
+      "t": "agents",
+      "q": "What is an agent in the context of AI?",
+      "o": [
+        "An AI system that can perform tasks on behalf of a user",
+        "A generative AI model that operates in secret",
+        "A human operator to whom generative AI models escalate requests they can't handle",
+        "A fixed script that always produces the same output"
+      ],
+      "a": 0,
+      "s": "An AI system acting on a user's behalf",
+      "e": "Agents reason about a goal and take action — calling tools, using knowledge — on a user's behalf, distinct from a human escalation contact or a static script with no autonomy."
+    },
+    {
+      "id": "mq10",
+      "d": "concepts",
+      "t": "work",
+      "q": "What is the purpose of tokenization (in NLP text analysis)?",
+      "o": [
+        "To break down text into smaller units for analysis",
+        "To translate text into another language",
+        "To summarize large documents"
+      ],
+      "a": 0,
+      "s": "Breaks text into analyzable units",
+      "e": "In NLP specifically, tokenization is the first step that turns raw text into units — words or sub-words — that statistical and semantic techniques can then analyze. It doesn't translate or summarize on its own."
+    },
+    {
+      "id": "mq11",
+      "d": "concepts",
+      "t": "work",
+      "q": "Which of the following techniques is used to determine the importance of words in a specific document within the context of a larger collection of documents?",
+      "o": [
+        "TF-IDF (Term Frequency-Inverse Document Frequency)",
+        "Naïve Bayes",
+        "Word2Vec",
+        "Attention"
+      ],
+      "a": 0,
+      "s": "TF-IDF",
+      "e": "TF-IDF specifically scores how important a term is to one document relative to a larger corpus — high frequency in this document, low frequency elsewhere. Naïve Bayes is a classifier, and Word2Vec/attention are about representing meaning, not scoring document-relative importance."
+    },
+    {
+      "id": "mq12",
+      "d": "concepts",
+      "t": "work",
+      "q": "Which of the following best describes the role of embedding vectors in natural language processing (NLP)?",
+      "o": [
+        "They capture semantic token relationships in multiple dimensions",
+        "They duplicate tokens in multiple languages",
+        "They define stopwords that should be ignored",
+        "They compress text files for storage"
+      ],
+      "a": 0,
+      "s": "Capture semantic relationships in vector space",
+      "e": "Embedding vectors place tokens in a multi-dimensional space so that semantically related tokens land near each other — not a translation mechanism, a stopword list, or a compression technique."
+    },
+    {
+      "id": "mq13",
+      "d": "foundry",
+      "t": "speech",
+      "q": "What activity happens during the pre-processing stage of speech recognition?",
+      "o": [
+        "Feature vectors are extracted from the audio waveform for modeling",
+        "The audio is converted to .wmv format",
+        "Background noise is added to the audio signal",
+        "The recognized text is translated into another language"
+      ],
+      "a": 0,
+      "s": "Extracting feature vectors from the waveform",
+      "e": "Pre-processing turns the raw audio waveform into feature vectors a model can work with — it doesn't convert to a video container format, deliberately add noise, or translate (that's a separate, later capability)."
+    },
+    {
+      "id": "mq14",
+      "d": "foundry",
+      "t": "speech",
+      "q": "What are phonemes?",
+      "o": [
+        "The smallest unit of sound in speech",
+        "Artifacts removed from the audio signal during clean-up",
+        "AI models that generate audio",
+        "Written punctuation marks used in transcripts"
+      ],
+      "a": 0,
+      "s": "The smallest unit of speech sound",
+      "e": "Phonemes are the basic distinct sound units that make up spoken language — a linguistics concept, not audio-cleanup artifacts or a class of model."
+    },
+    {
+      "id": "mq15",
+      "d": "foundry",
+      "t": "speech",
+      "q": "Why is it important to generate prosody in speech synthesis?",
+      "o": [
+        "Prosody ensures natural pronunciation and speech cadence",
+        "Prosody maximizes the volume of the audio output",
+        "Prosody translates the speech to the language of the listener",
+        "Prosody compresses the audio file for faster streaming"
+      ],
+      "a": 0,
+      "s": "Natural pronunciation and cadence",
+      "e": "Prosody covers the rhythm, stress, and intonation that make synthesized speech sound natural rather than flat and robotic — unrelated to volume, translation, or file compression."
+    },
+    {
+      "id": "mq16",
+      "d": "foundry",
+      "t": "vision",
+      "q": "Computer vision is based on the manipulation and analysis of what kinds of values in an image?",
+      "o": [
+        "Pixels",
+        "Timestamps in photograph metadata",
+        "Image file names",
+        "The camera's lens specifications"
+      ],
+      "a": 0,
+      "s": "Pixels",
+      "e": "Computer vision techniques operate on pixel values — the actual visual data — not file metadata like timestamps, filenames, or the capturing device's specs."
+    },
+    {
+      "id": "mq17",
+      "d": "foundry",
+      "t": "vision",
+      "q": "What is the primary role of filters in a convolutional neural network (CNN) used for image classification?",
+      "o": [
+        "To extract numeric features from images for use in a neural network",
+        "To apply visual effects to enhance image appearance",
+        "To compress image size for faster processing",
+        "To detect the camera settings used to capture the image"
+      ],
+      "a": 0,
+      "s": "Extract numeric features for the network",
+      "e": "CNN filters (kernels) slide across the image to extract numeric features — edges, textures, shapes — that feed the network's classification decision. They aren't cosmetic effects, a compression step, or metadata readers."
+    },
+    {
+      "id": "mq18",
+      "d": "foundry",
+      "t": "vision",
+      "q": "Which description best matches a Vision Transformer (ViT)?",
+      "o": [
+        "A model that uses attention to process image patches and create contextual embeddings",
+        "A tool that applies filters to images, changing their visual appearance",
+        "An AI agent that converts a large language model to a vision model",
+        "A compression algorithm for reducing image file size"
+      ],
+      "a": 0,
+      "s": "Attention over image patches",
+      "e": "A Vision Transformer splits an image into patches and applies the same attention mechanism transformers use for text, producing contextual embeddings — not a visual filter, a model converter, or a compression tool."
+    },
+    {
+      "id": "mq19",
+      "d": "foundry",
+      "t": "extract",
+      "q": "Which of these statements accurately defines AI information extraction?",
+      "o": [
+        "Analyzing unstructured content to identify and extract relevant fields and values",
+        "Using SQL code to query a database",
+        "Copying files from cloud storage to local disks",
+        "Compressing documents to reduce storage size"
+      ],
+      "a": 0,
+      "s": "Extracting fields/values from unstructured content",
+      "e": "Information extraction turns unstructured content — documents, images — into structured fields and values. It isn't database querying, file copying, or compression, even though all of those might appear in a broader pipeline."
+    },
+    {
+      "id": "mq20",
+      "d": "foundry",
+      "t": "extract",
+      "q": "How is OCR used in the information extraction process?",
+      "o": [
+        "Optical character recognition (OCR) is used to convert images of text into machine-readable text data",
+        "Online Content Retrieval (OCR) is used to copy cloud data to a local device for processing",
+        "Open Conversion Routine (OCR) is a method for converting JSON data into images",
+        "OCR analyzes audio to detect spoken keywords"
+      ],
+      "a": 0,
+      "s": "Converts images of text to machine-readable text",
+      "e": "OCR (optical character recognition) is specifically about reading text out of images — the necessary first step before you can extract structured fields from a scanned document. The other expansions of the acronym here are invented distractors."
+    },
+    {
+      "id": "mq21",
+      "d": "foundry",
+      "t": "extract",
+      "q": "How does generative AI enhance the data extraction process?",
+      "o": [
+        "By using semantic language models to accurately match extracted values to data fields",
+        "By manually coding extraction rules for each document type",
+        "By generating new documents from scratch",
+        "By replacing OCR entirely with audio transcription"
+      ],
+      "a": 0,
+      "s": "Semantic matching of values to fields",
+      "e": "Generative, semantic models can understand field intent well enough to map extracted values to the right schema fields without hand-coded rules per document type — a flexibility classic rules-based extraction lacks."
+    },
+    {
+      "id": "mq22",
+      "d": "concepts",
+      "t": "model",
+      "q": "What is the main purpose of retrieval-augmented generation (RAG)?",
+      "o": [
+        "To ground generated responses in relevant information retrieved from a data source",
+        "To retrain a language model whenever source information changes",
+        "To replace a language model with a search engine",
+        "To reduce the number of tokens a prompt uses"
+      ],
+      "a": 0,
+      "s": "Grounds responses in retrieved data",
+      "e": "RAG retrieves relevant content at query time and feeds it into the prompt so the model answers from real, current information — without retraining the model or discarding it in favor of a plain search engine."
+    },
+    {
+      "id": "mq23",
+      "d": "concepts",
+      "t": "model",
+      "q": "Why are large documents commonly divided into chunks before they're indexed?",
+      "o": [
+        "So the solution can retrieve focused passages that fit efficiently into a prompt",
+        "So every chunk can be used to train a separate language model",
+        "So the original documents no longer need to be stored",
+        "So each chunk can be translated into a different language"
+      ],
+      "a": 0,
+      "s": "Focused, prompt-sized retrievable passages",
+      "e": "Chunking keeps each retrievable unit small and focused enough to fit efficiently into a prompt alongside the user's question — it's a retrieval-efficiency technique, not a training or storage strategy."
+    },
+    {
+      "id": "mq24",
+      "d": "concepts",
+      "t": "model",
+      "q": "What does an embedding represent in a RAG solution?",
+      "o": [
+        "A numerical vector that captures semantic characteristics of content",
+        "A set of instructions that defines the model's behavior",
+        "A final answer generated for a user",
+        "A cached copy of a previous API response"
+      ],
+      "a": 0,
+      "s": "A vector capturing semantic meaning",
+      "e": "In RAG, embeddings are the numeric vectors used to find semantically similar content at retrieval time — not instructions, not the final answer, and not a response cache."
+    },
+    {
+      "id": "mq25",
+      "d": "concepts",
+      "t": "model",
+      "q": "Which search approach can find a passage about 'company travel costs' when the query asks about 'business trip expenses,' even if the words differ?",
+      "o": [
+        "Semantic vector search",
+        "An exact filename match",
+        "Random document selection",
+        "Alphabetical sorting of results"
+      ],
+      "a": 0,
+      "s": "Semantic vector search",
+      "e": "Semantic search matches based on meaning captured in embeddings, so differently worded but conceptually related queries and passages still connect — something purely keyword- or filename-based matching would miss."
+    },
+    {
+      "id": "mq26",
+      "d": "concepts",
+      "t": "model",
+      "q": "A RAG response is fluent but contains an incorrect policy limit. What should be examined first?",
+      "o": [
+        "Whether the correct and current policy passage was retrieved and supplied as context",
+        "Whether the language model can produce a longer response",
+        "Whether more unrelated documents can be added to the prompt",
+        "Whether the response was generated quickly enough"
+      ],
+      "a": 0,
+      "s": "Check what was actually retrieved",
+      "e": "A fluent-but-wrong RAG answer usually traces back to a retrieval problem — the wrong or stale passage was supplied as context — which is the first thing to check, well before response length, unrelated documents, or speed."
+    },
+    {
+      "id": "mq27",
+      "d": "concepts",
+      "t": "work",
+      "q": "Which statement best explains the relationship between AI and ML?",
+      "o": [
+        "AI is the overarching goal of creating systems that exhibit human-like intelligence, while ML is a data-driven method used to achieve AI by learning patterns from data",
+        "AI and ML are interchangeable terms; both refer to systems that mimic human intelligence without distinction",
+        "ML focuses exclusively on generative tasks like creating text and images, whereas AI is limited to decision-making and planning",
+        "AI only refers to robotics, while ML refers to all software"
+      ],
+      "a": 0,
+      "s": "AI is the goal; ML is a method to get there",
+      "e": "AI is the broad goal of building systems with human-like intelligence; machine learning is one (very successful) data-driven approach to reaching that goal. The terms aren't interchangeable, and neither is limited the way the distractors claim."
+    },
+    {
+      "id": "mq28",
+      "d": "foundry",
+      "t": "agents",
+      "q": "How does Microsoft Foundry relate to Azure?",
+      "o": [
+        "Foundry is built on top of Azure and uses Azure resources such as compute, networking, identity, and security to host and operate AI applications",
+        "Foundry runs independently from Azure and doesn't require Azure resources to deploy models or agents",
+        "Foundry replaces Azure services entirely, serving as a standalone cloud platform for running AI workloads",
+        "Foundry is a separate company unrelated to Microsoft Azure"
+      ],
+      "a": 0,
+      "s": "Foundry is built on Azure infrastructure",
+      "e": "Foundry is a platform layered on top of Azure, relying on core Azure resources — compute, networking, identity, security — rather than replacing Azure or running independently of it."
+    },
+    {
+      "id": "mq29",
+      "d": "foundry",
+      "t": "sdk",
+      "q": "Which statement best describes how keys, secrets, and endpoints work together in an Azure-based AI application?",
+      "o": [
+        "The endpoint is a URL for calling a deployed model, and the key (stored as a secret in Azure Key Vault) authenticates the request made to that endpoint",
+        "The key is the location where model responses are stored, and the endpoint retrieves those responses from Azure Key Vault",
+        "The endpoint stores sensitive values for an AI application, and the key determines how much data the endpoint can return",
+        "The key defines the model's temperature, and the endpoint stores the conversation history"
+      ],
+      "a": 0,
+      "s": "Endpoint = URL; key = authentication credential",
+      "e": "The endpoint is where you send the request; the key (ideally kept as a secret, e.g. in Key Vault) authenticates that request. Neither one stores responses, controls data volume, or configures model parameters."
+    },
+    {
+      "id": "mq30",
+      "d": "foundry",
+      "t": "sdk",
+      "q": "Which statement best describes a client application in the context of an AI solution built with Foundry?",
+      "o": [
+        "A client application is a program the user interacts with — such as a web app or mobile app — that sends requests to a model endpoint and displays the response",
+        "A client application is the environment that hosts the model, runs inference, and returns results",
+        "A client application is a standalone Azure service that automatically generates API keys for model deployments",
+        "A client application is the Foundry portal itself"
+      ],
+      "a": 0,
+      "s": "The user-facing app calling the endpoint",
+      "e": "The client application is what the user actually interacts with — it sends requests to a model endpoint and shows the response. Hosting and running inference is the deployment's job, not the client's."
+    },
+    {
+      "id": "mq31",
+      "d": "foundry",
+      "t": "agents",
+      "q": "What best describes Foundry's model catalog?",
+      "o": [
+        "A central hub to discover, filter, compare, and test many generative AI models from multiple providers",
+        "A catalog consisting of only Microsoft-exclusive foundation models",
+        "A tool that replaces the need for an Azure subscription",
+        "A billing dashboard for tracking token usage"
+      ],
+      "a": 0,
+      "s": "A hub to discover and compare many providers' models",
+      "e": "The model catalog spans models from multiple providers, not just Microsoft's own, letting you filter and compare before deploying — it doesn't touch subscription or billing management."
+    },
+    {
+      "id": "mq32",
+      "d": "concepts",
+      "t": "model",
+      "q": "Which statement best describes a foundation model in Microsoft Foundry?",
+      "o": [
+        "A large, pretrained model that provides general capabilities and can be used immediately or customized",
+        "A small, task-specific model that must be fine-tuned before it can perform any useful function",
+        "A benchmarking tool used to compare different model families",
+        "A model that only runs locally, never in the cloud"
+      ],
+      "a": 0,
+      "s": "Large, pretrained, usable immediately or customized",
+      "e": "Foundation models are large and pretrained on broad data, so they're useful out of the box and can optionally be customized further — the opposite of a small model that's useless until fine-tuned."
+    },
+    {
+      "id": "mq33",
+      "d": "foundry",
+      "t": "agents",
+      "q": "In the Foundry portal, what is the primary benefit of using the Model Playground before writing code?",
+      "o": [
+        "It lets you test prompts, compare models, and capture working settings that you can reuse in code",
+        "It deploys the model for you and removes the need to use an API",
+        "It replaces system instructions by automatically generating the best system prompt for every scenario",
+        "It permanently disables the model's default safety filters"
+      ],
+      "a": 0,
+      "s": "Test and capture settings before coding",
+      "e": "The playground lets you iterate on prompts and settings interactively, then carry proven settings into code — it doesn't remove the need for an API, write your system prompt for you, or touch safety filters."
+    },
+    {
+      "id": "mq34",
+      "d": "foundry",
+      "t": "agents",
+      "q": "What is the primary outcome of publishing an agent in Microsoft Foundry?",
+      "o": [
+        "It converts the agent into a managed Azure resource with a stable endpoint that you can share and integrate without exposing your Foundry project or source code",
+        "It automatically reduces costs by making the agent free to run, regardless of model tokens, tools, or connected data services",
+        "It replaces the need for the Project API by allowing the agent to be called only through the Foundry portal UI",
+        "It converts the agent into a static webpage"
+      ],
+      "a": 0,
+      "s": "A managed, shareable resource with a stable endpoint",
+      "e": "Publishing gives an agent a stable, shareable endpoint as a managed resource — callers don't need access to your project or source. It doesn't make usage free, and the Project API remains the way to call it programmatically."
+    },
+    {
+      "id": "mq35",
+      "d": "foundry",
+      "t": "sdk",
+      "q": "In a Python example, which line is responsible for calling the published agent (rather than calling a model deployment directly) when generating a response?",
+      "o": [
+        "response = openai_client.responses.create(input=[...], extra_body={'agent': {'name': agent.name, 'type': 'agent_reference'}})",
+        "agent = project_client.agents.get(agent_name=myAgent)",
+        "openai_client = project_client.get_openai_client()",
+        "response = openai_client.chat.completions.create(model=agent.name)"
+      ],
+      "a": 0,
+      "s": "responses.create with an agent_reference in extra_body",
+      "e": "Passing agent_reference in extra_body on responses.create is what targets a published agent instead of a bare model deployment. Getting the agent object or the OpenAI client are earlier setup steps, not the call that actually invokes the agent."
+    },
+    {
+      "id": "mq36",
+      "d": "foundry",
+      "t": "speech",
+      "q": "You need to analyze text where the same input must return structured results based on statistical techniques. Which approach is most appropriate?",
+      "o": [
+        "The Azure Language SDK, because it returns deterministic, structured output",
+        "The OpenAI Responses API, because it can follow natural language instructions",
+        "The chat playground in Foundry, because it supports follow-up questions",
+        "A speech-to-text API, because it processes any input format"
+      ],
+      "a": 0,
+      "s": "Azure Language SDK for deterministic output",
+      "e": "When you need the same input to reliably produce the same structured result, a deterministic, statistically-grounded service like Azure Language is the right fit — a generative model can vary its wording run to run."
+    },
+    {
+      "id": "mq37",
+      "d": "foundry",
+      "t": "sdk",
+      "q": "What is the purpose of the client object in the Azure Language SDK?",
+      "o": [
+        "It helps application code communicate with the Azure Language service",
+        "It stores the application's user interface settings",
+        "It stores the text that needs to be analyzed",
+        "It automatically translates the analyzed text"
+      ],
+      "a": 0,
+      "s": "Mediates calls to the service",
+      "e": "A service client object is the code-level handle that sends requests to and receives results from the Azure Language service — it doesn't hold UI settings, the raw text itself, or perform translation."
+    },
+    {
+      "id": "mq38",
+      "d": "foundry",
+      "t": "speech",
+      "q": "What is the main purpose of the Azure Language MCP server?",
+      "o": [
+        "To expose Azure Language capabilities to agents through the Model Context Protocol",
+        "To automatically generate website layouts for an agent",
+        "To replace all generative AI models inside an agent",
+        "To store the agent's authentication credentials"
+      ],
+      "a": 0,
+      "s": "Exposes Language capabilities via MCP",
+      "e": "The Language MCP server's job is making Azure Language's text-analysis capabilities available to an agent as MCP tools — it doesn't generate UI, replace the agent's model, or manage its credentials."
+    },
+    {
+      "id": "mq39",
+      "d": "foundry",
+      "t": "speech",
+      "q": "Why would a developer use the Azure Speech-to-Text SDK instead of only using the Foundry playground?",
+      "o": [
+        "The SDK allows speech recognition to be added directly into application code",
+        "The SDK replaces the need for Azure Speech models",
+        "The SDK is required to upload audio files to the Foundry portal",
+        "The SDK is the only way to test different voices"
+      ],
+      "a": 0,
+      "s": "Integrates recognition into real application code",
+      "e": "The playground is for interactive testing; the SDK is what actually lets you embed speech recognition into a real application. It doesn't replace the underlying speech models or gate portal uploads."
+    },
+    {
+      "id": "mq40",
+      "d": "foundry",
+      "t": "speech",
+      "q": "What does the Azure Text-to-Speech SDK handle for developers?",
+      "o": [
+        "Authentication, network communication, and audio generation",
+        "Only selecting the voice and writing audio files manually",
+        "Storing synthesized audio permanently in Azure Storage",
+        "Translating the text before synthesizing it"
+      ],
+      "a": 0,
+      "s": "Auth, networking, and audio generation",
+      "e": "The SDK handles the full mechanics of calling the service and producing audio — authentication, network calls, and generation — sparing you from wiring that up by hand. It doesn't manage long-term storage or translation on its own."
+    },
+    {
+      "id": "mq41",
+      "d": "foundry",
+      "t": "speech",
+      "q": "What role does the Voice Live Python SDK (azure-ai-voicelive) play in a voice-enabled agent?",
+      "o": [
+        "It opens a real-time connection, streams audio, and handles spoken responses and interruptions",
+        "It stores audio recordings permanently in Azure Storage",
+        "It replaces the need for microphones and speakers on the user's device",
+        "It only works with pre-recorded audio files, not live conversations"
+      ],
+      "a": 0,
+      "s": "Real-time streaming, responses, and interruptions",
+      "e": "The Voice Live SDK manages the live, real-time conversational loop — streaming audio both ways and handling interruptions — rather than device hardware, permanent storage, or offline file processing."
+    },
+    {
+      "id": "mq42",
+      "d": "foundry",
+      "t": "vision",
+      "q": "What is a multimodal model?",
+      "o": [
+        "A model that can understand and work with more than one type of data, such as text and images",
+        "A model that can only process images but not text",
+        "A model that generates video content only",
+        "A model that combines several smaller models into one file"
+      ],
+      "a": 0,
+      "s": "Understands more than one data type",
+      "e": "Multimodal means the model handles multiple kinds of input/output together — text and images being the common case — not a single-modality (image-only or video-only) model, and not merely a bundle of smaller model files."
+    },
+    {
+      "id": "mq43",
+      "d": "foundry",
+      "t": "vision",
+      "q": "How can developers programmatically generate images using Foundry image generation models?",
+      "o": [
+        "By sending text prompts through the OpenAI Responses API using a deployed image model",
+        "By uploading images through the Foundry Playground UI",
+        "By calling the GPT-4.1 model endpoint",
+        "By writing a Python function that assembles pixels manually"
+      ],
+      "a": 0,
+      "s": "Text prompts via the Responses API",
+      "e": "Programmatic image generation goes through the same API pattern as text — sending a prompt via the Responses API to a deployed image-generation model — not by manual UI uploads or calling an unrelated text model's endpoint."
+    },
+    {
+      "id": "mq44",
+      "d": "foundry",
+      "t": "sdk",
+      "q": "When you generate images programmatically using the OpenAI Python SDK with Microsoft Foundry, which value should you pass as the model parameter in the request?",
+      "o": [
+        "The deployment name you gave the image generation model in your Foundry resource",
+        "The original base model name (for example, gpt-image-1.5)",
+        "The name you gave your Foundry resource",
+        "The Azure subscription ID"
+      ],
+      "a": 0,
+      "s": "Your deployment name",
+      "e": "Just like text models, image-generation calls address the deployment name you chose, not the catalog's base model name — passing the catalog name instead of the deployment name is a common first-run error."
+    },
+    {
+      "id": "mq45",
+      "d": "foundry",
+      "t": "vision",
+      "q": "Why is video generation with Sora models in Microsoft Foundry handled as an asynchronous job?",
+      "o": [
+        "Because video generation is resource-intensive and takes time to complete",
+        "Because the REST API doesn't support synchronous requests at all",
+        "Because video generation requires user interaction during rendering",
+        "Because Sora models can only run overnight in batch mode"
+      ],
+      "a": 0,
+      "s": "Resource-intensive and time-consuming",
+      "e": "Generating video is far heavier and slower than generating text or a single image, so it's run as an async job you poll for completion rather than blocking the caller — it's a practical necessity, not an API limitation."
+    },
+    {
+      "id": "mq46",
+      "d": "foundry",
+      "t": "extract",
+      "q": "What is the key advantage of using Azure Content Understanding over basic Optical Character Recognition (OCR)?",
+      "o": [
+        "Azure Content Understanding understands document structure and maps extracted data to a defined schema",
+        "Azure Content Understanding extracts text faster by skipping image preprocessing",
+        "Azure Content Understanding extracts structured data, while OCR extracts the relationship between words in text",
+        "Azure Content Understanding only works on typed text, unlike OCR"
+      ],
+      "a": 0,
+      "s": "Understands structure, maps to a schema",
+      "e": "OCR alone gives you the raw text on a page; Content Understanding goes further, understanding structure and mapping values to the specific schema you define — the real differentiator, not raw speed."
+    },
+    {
+      "id": "mq47",
+      "d": "foundry",
+      "t": "extract",
+      "q": "What is the primary role of an analyzer in Azure Content Understanding?",
+      "o": [
+        "It defines how content is processed and what structured data is returned",
+        "It stores extracted data in a database",
+        "It converts JSON output into human-readable text",
+        "It generates new synthetic documents for testing"
+      ],
+      "a": 0,
+      "s": "Defines processing and the output schema",
+      "e": "An analyzer bundles the content type, field schema, and processing settings into a reusable configuration — it doesn't itself store results, reformat JSON into prose, or generate test documents."
+    },
+    {
+      "id": "mq48",
+      "d": "foundry",
+      "t": "extract",
+      "q": "When you use the Azure Content Understanding Python SDK, what happens after you submit content for analysis?",
+      "o": [
+        "You must poll a URL until the analysis job completes",
+        "The results are returned immediately in the same request",
+        "The analyzer retrains itself on the submitted content",
+        "The content is automatically deleted after submission"
+      ],
+      "a": 0,
+      "s": "Poll the operation URL until done",
+      "e": "Analysis runs asynchronously — you submit the job and poll an operation URL until it completes — rather than blocking for an immediate synchronous result. Nothing about submission retrains the analyzer."
+    },
+    {
+      "id": "mq49",
+      "d": "foundry",
+      "t": "agents",
+      "q": "What is the primary purpose of Microsoft Foundry IQ?",
+      "o": [
+        "To provide a managed knowledge layer that agents can use to retrieve permission-aware enterprise information",
+        "To train a new foundation model from every document in an organization",
+        "To replace AI agents with a traditional keyword search page",
+        "To automatically summarize every document in a data source"
+      ],
+      "a": 0,
+      "s": "A managed, permission-aware knowledge layer",
+      "e": "Foundry IQ gives agents a shared, managed way to retrieve enterprise information while respecting access permissions — it doesn't train new models from your documents or replace agents with plain keyword search."
+    },
+    {
+      "id": "mq50",
+      "d": "foundry",
+      "t": "agents",
+      "q": "What does a Foundry IQ knowledge base contain?",
+      "o": [
+        "One or more knowledge sources and settings that control retrieval behavior",
+        "Only the conversation history for a single agent",
+        "Only documents uploaded directly to a language model",
+        "A single, fixed embedding model with no configuration"
+      ],
+      "a": 0,
+      "s": "Knowledge sources + retrieval settings",
+      "e": "A knowledge base bundles one or more sources together with settings that shape how retrieval behaves — it isn't a per-agent conversation log or a bare document dump handed straight to a model."
+    },
+    {
+      "id": "mq51",
+      "d": "foundry",
+      "t": "agents",
+      "q": "What does agentic retrieval do with a complex user question?",
+      "o": [
+        "It can decompose the question, search relevant sources in parallel, rerank results, and return cited evidence",
+        "It permanently adds the question and answer to the model's training data",
+        "It searches every source with an exact keyword match and returns results without ranking",
+        "It forwards the question unmodified to a single source"
+      ],
+      "a": 0,
+      "s": "Decomposes, searches in parallel, reranks, cites",
+      "e": "Agentic retrieval is a multi-step process — breaking a complex question apart, searching multiple sources at once, ranking what comes back, and citing evidence — not a single exact-match lookup or a training-data update."
+    },
+    {
+      "id": "mq52",
+      "d": "foundry",
+      "t": "agents",
+      "q": "Why should an agent be instructed to cite knowledge base sources?",
+      "o": [
+        "Citations help users trace and verify the evidence supporting a response",
+        "Citations allow the agent to bypass permissions on the source documents",
+        "Citations cause the language model to retrain itself after every response",
+        "Citations reduce the number of tokens used in the response"
+      ],
+      "a": 0,
+      "s": "Lets users trace and verify evidence",
+      "e": "Citations make an answer auditable — a person can check the actual source behind a claim. They have no effect on permissions, retraining, or token usage."
+    },
+    {
+      "id": "mq53",
+      "d": "concepts",
+      "t": "rai",
+      "q": "Which practice helps protect enterprise information in a Foundry IQ solution?",
+      "o": [
+        "Use identities and access controls so retrieval returns only content the caller is authorized to access",
+        "Copy every source into one public index so all agents retrieve the same content",
+        "Trust retrieved document text as agent instructions",
+        "Disable logging so retrieval activity leaves no trace"
+      ],
+      "a": 0,
+      "s": "Identity-aware access control on retrieval",
+      "e": "This is the privacy and security responsible-AI principle in practice: retrieval should respect the caller's actual permissions, never return more than they're authorized to see. Pooling everything into one public index or blindly trusting retrieved text as instructions would do the opposite."
     }
   ]
 }
