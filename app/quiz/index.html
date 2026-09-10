@@ -263,9 +263,10 @@ code{font-family:var(--font-mono);font-size:.9em;background:var(--raise);border:
   font-family:var(--font-mono);font-size:12px;font-weight:600;
   font-variant-numeric:tabular-nums;transition:border-color .14s,background .14s;
 }
-.size:hover{border-color:var(--accent)}
+.size:hover:not(:disabled){border-color:var(--accent)}
 .size[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
-.size[data-over="1"]:not([aria-pressed="true"]){color:var(--muted);border-style:dashed}
+.size:disabled{opacity:.4;cursor:not-allowed;border-style:dashed}
+.size:disabled[aria-pressed="true"]{background:var(--surface);border-color:var(--line);color:var(--muted)}
 .size.wide{flex:1 1 100%;padding:6px 10px}
 .panel-note{font-size:11.5px;color:var(--muted);margin:10px 0 0;line-height:1.45}
 
@@ -900,9 +901,10 @@ function sidebar(){
   }).join("");
 
   const avail=pool().length;
+  const sizeExceeds = typeof ui.size==="number" && ui.size>avail;
   const sizeBtns=SIZES.map(n=>
-    `<button class="size" data-size="${n}" aria-pressed="${ui.size===n}"${n>avail?' data-over="1" title="Only '+avail+' cards match the current filter"':""}>${n}</button>`
-  ).join("")+`<button class="size wide" data-size="all" aria-pressed="${ui.size==="all"}">All ${avail}</button>`;
+    `<button class="size" data-size="${n}" aria-pressed="${ui.size===n}"${n>avail?` data-over="1" disabled title="Only ${avail} card${avail===1?"":"s"} match the current filter — pick All ${avail} instead"`:""}>${n}</button>`
+  ).join("")+`<button class="size wide" data-size="all" aria-pressed="${ui.size==="all"||sizeExceeds}">All ${avail}</button>`;
 
   return `<div class="panel">
     <h2>Session length</h2>
