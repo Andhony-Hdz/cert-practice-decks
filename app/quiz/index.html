@@ -965,13 +965,11 @@ function attemptsSection(){
 function shareText(){
   const n=session.answered, pct=n?Math.round(session.points/n*100):0;
   const passed=pct>=PASS_PCT;
-  const grid=session.log.map(e=>e.frac>=1?"🟩":e.frac>0?"🟨":"🟥").join("");
   const wall=session.startedAt?Date.now()-session.startedAt:0;
   const url=location.origin+location.pathname+`?cert=${encodeURIComponent(META.id)}`;
   const status=passed?"✅ Passed":"📚 Still practicing";
   return `🎯 ${META.examCode||META.title} practice — ${pct}%\n`
-    +`${status} · ${n} question${n===1?"":"s"} · ${fmtDur(wall)}\n`
-    +`${grid}\n\n`
+    +`${status} · ${n} question${n===1?"":"s"} · ${fmtDur(wall)}\n\n`
     +`Free, timed practice for Microsoft certs — no signup. Think you can beat my score? 👉 ${url}`;
 }
 
