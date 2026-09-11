@@ -229,6 +229,23 @@ code{font-family:var(--font-mono);font-size:.9em;background:var(--raise);border:
 .readiness{background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:18px 20px;margin-bottom:22px}
 .readiness h3{font-family:var(--font-display);font-size:15px;font-weight:600;margin:0 0 4px}
 .readiness .note{font-size:12.5px;color:var(--muted);margin:0 0 18px;max-width:62ch}
+
+.streak{background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:18px 20px;margin-bottom:22px}
+.streak h3{font-family:var(--font-display);font-size:15px;font-weight:600;margin:0 0 4px}
+.streak .note{font-size:12.5px;color:var(--muted);margin:0 0 16px;max-width:62ch}
+.streak-stats{display:flex;gap:26px;margin-bottom:16px}
+.streak-stat{display:flex;flex-direction:column}
+.streak-stat .v{font-family:var(--font-display);font-weight:700;font-size:27px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.streak-stat .lab{font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.heatmap-wrap{overflow-x:auto;padding-bottom:2px}
+.heatmap{display:flex;gap:3px;width:max-content}
+.heat-col{display:flex;flex-direction:column;gap:3px}
+.heat-cell{width:11px;height:11px;border-radius:2px;background:var(--line-soft);display:block}
+.heat-cell[data-lvl="1"]{background:var(--accent-soft)}
+.heat-cell[data-lvl="2"]{background:color-mix(in srgb, var(--accent) 45%, var(--accent-soft))}
+.heat-cell[data-lvl="3"]{background:color-mix(in srgb, var(--accent) 75%, var(--accent-soft))}
+.heat-cell[data-lvl="4"]{background:var(--accent)}
+.heat-pad{visibility:hidden}
 .gauge{position:relative;height:34px;margin-bottom:8px}
 .gauge .bar{position:absolute;inset:11px 0 auto;height:12px;background:var(--line-soft);border-radius:6px;overflow:hidden}
 .gauge .fill{height:100%;background:var(--accent);border-radius:6px;transition:width .4s ease}
@@ -472,14 +489,27 @@ let PASS_PCT=70;   // overridden by meta.passPct once the deck loads
 /* ============================================================
    Progress state — localStorage only in this public build.
    ============================================================ */
-const fresh=()=>({v:1,updatedAt:0,cards:{},stats:{answered:0,correct:0,bestStreak:0},attempts:[]});
+const fresh=()=>({v:1,updatedAt:0,cards:{},stats:{answered:0,correct:0,bestStreak:0},attempts:[],activity:{}});
 let state=fresh();
+
+/* Local calendar date as "YYYY-MM-DD" — deliberately local, not UTC
+   (toISOString), so a late-night study session doesn't get counted
+   on the wrong day for the visitor's own timezone. Used for both the
+   study-streak counter and the heatmap. */
+function dateKey(d=new Date()){
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+}
 
 /* This build has no server-side storage — progress lives only in this
    browser's localStorage, which is what the "Local" indicator in the
    topbar communicates (it's static markup, not driven from here). */
 function persist(){
   state.updatedAt=Date.now();
+  if(state.activity){
+    const cutoff=new Date(); cutoff.setDate(cutoff.getDate()-380);
+    const cutoffKey=dateKey(cutoff);
+    Object.keys(state.activity).forEach(k=>{ if(k<cutoffKey) delete state.activity[k]; });
+  }
   try{ localStorage.setItem(LS_KEY,JSON.stringify(state)); }catch(e){}
 }
 
@@ -497,6 +527,9 @@ function recordAnswer(id,frac){
   else c.status="seen";
   c.last=Date.now();
   state.cards[id]=c;
+  state.activity=state.activity||{};
+  const today=dateKey();
+  state.activity[today]=(state.activity[today]||0)+1;
   const ms=Math.min(Date.now()-(session.qStart||Date.now()), MAX_Q_MS);
   state.stats.answered++; state.stats.correct+=frac;
   session.answered++; session.points+=frac; session.log.push({id:id,frac:frac,ms:ms});
@@ -1001,12 +1034,66 @@ function sidebar(){
   </div>`;
 }
 
+/* Current streak counts consecutive days with activity ending today
+   (or, if nothing's logged yet today, ending yesterday — so the
+   streak doesn't zero out just because you haven't studied *yet*
+   today). Best streak scans the full activity history for the
+   longest run of consecutive calendar days on record. */
+function computeStreaks(activity){
+  const keys=Object.keys(activity).sort();
+  if(!keys.length) return {current:0,best:0};
+  let cursor=new Date(); cursor.setHours(0,0,0,0);
+  if(!activity[dateKey(cursor)]) cursor.setDate(cursor.getDate()-1);
+  let current=0;
+  while(activity[dateKey(cursor)]){ current++; cursor.setDate(cursor.getDate()-1); }
+  let best=0, run=0, prevDate=null;
+  keys.forEach(k=>{
+    const d=new Date(k+"T00:00:00");
+    run = (prevDate && Math.round((d-prevDate)/86400000)===1) ? run+1 : 1;
+    if(run>best) best=run;
+    prevDate=d;
+  });
+  return {current, best:Math.max(best,current)};
+}
+/* Builds a GitHub-style contribution grid: columns of 7 day-cells
+   (row 0 = Sunday), padded at the front so the real days line up
+   with the correct weekday row, ending on today. */
+function buildHeatmapCols(activity, weeks){
+  const today=new Date(); today.setHours(0,0,0,0);
+  const totalDays=weeks*7;
+  const start=new Date(today); start.setDate(start.getDate()-(totalDays-1));
+  const startDow=start.getDay();
+  const cells=[];
+  for(let i=0;i<totalDays;i++){
+    const d=new Date(start); d.setDate(d.getDate()+i);
+    cells.push({date:d, count:activity[dateKey(d)]||0});
+  }
+  const padded=new Array(startDow).fill(null).concat(cells);
+  const cols=[];
+  for(let i=0;i<padded.length;i+=7) cols.push(padded.slice(i,i+7));
+  return cols;
+}
+function heatmapHtml(activity){
+  const bucket=n=>n===0?0:n<=2?1:n<=4?2:n<=7?3:4;
+  const cols=buildHeatmapCols(activity, 18).map(col=>{
+    const cellsHtml=col.map(cell=>{
+      if(!cell) return `<i class="heat-cell heat-pad"></i>`;
+      const when=cell.date.toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"});
+      const title=`${cell.count} question${cell.count===1?"":"s"} answered — ${when}`;
+      return `<i class="heat-cell" data-lvl="${bucket(cell.count)}" title="${esc(title)}"></i>`;
+    }).join("");
+    return `<div class="heat-col">${cellsHtml}</div>`;
+  }).join("");
+  return `<div class="heatmap-wrap"><div class="heatmap">${cols}</div></div>`;
+}
+
 function progressView(){
   const s=state.stats;
   const acc=s.answered?Math.round(s.correct/s.answered*100):0;
   const known=CARDS.filter(c=>cardState(c.id).status==="known").length;
   const weak=CARDS.filter(c=>cardState(c.id).status==="review").length;
   const unseen=CARDS.filter(c=>cardState(c.id).status==="unseen").length;
+  const streaks=computeStreaks(state.activity||{});
 
   const rows=[];
   Object.entries(DOMAINS).forEach(([d,meta])=>{
@@ -1039,6 +1126,16 @@ function progressView(){
     <div class="tile"><span class="lab">Best streak</span><span class="val">${s.bestStreak}</span></div>
     <div class="tile"><span class="lab">Not yet seen</span><span class="val">${unseen}</span></div>
   </div>
+
+  <section class="streak">
+    <h3>Study streak</h3>
+    <p class="note">Days with at least one answered question, tracked locally on this device.</p>
+    <div class="streak-stats">
+      <div class="streak-stat"><span class="v">${streaks.current}</span><span class="lab">day streak</span></div>
+      <div class="streak-stat"><span class="v">${streaks.best}</span><span class="lab">longest streak</span></div>
+    </div>
+    ${heatmapHtml(state.activity||{})}
+  </section>
 
   <section class="readiness">
     <h3>Readiness</h3>
