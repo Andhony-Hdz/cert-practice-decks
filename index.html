@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Certification Practice Decks">
 <meta property="og:title" content="Certification Practice Decks">
-<meta property="og:description" content="Free, exam-style practice decks for Microsoft certifications — timed drill sessions, flashcards, and progress tracking, kept entirely in your browser.">
+<meta property="og:description" content="Free, exam-style practice decks for Microsoft certifications — timed drills, exam simulations, and progress tracking, kept entirely in your browser.">
 <meta property="og:url" content="https://andhony-hdz.github.io/cert-practice-decks/">
 <meta property="og:image" content="https://andhony-hdz.github.io/cert-practice-decks/assets/og-image.png">
 <meta property="og:image:width" content="2400">
@@ -19,7 +19,7 @@
 <meta property="article:published_time" content="2026-09-07">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Certification Practice Decks">
-<meta name="twitter:description" content="Free, exam-style practice decks for Microsoft certifications — timed drill sessions, flashcards, and progress tracking, kept entirely in your browser.">
+<meta name="twitter:description" content="Free, exam-style practice decks for Microsoft certifications — timed drills, exam simulations, and progress tracking, kept entirely in your browser.">
 <meta name="twitter:image" content="https://andhony-hdz.github.io/cert-practice-decks/assets/og-image.png">
 <script src="assets/theme.js"></script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,6 +42,11 @@
 }
 .claude-badge:hover{color:var(--ink);border-color:var(--accent)}
 .claude-badge b{color:var(--accent-ink);font-weight:600}
+.icon-btn{
+  font-size:15px;line-height:1;color:var(--muted);background:var(--surface);
+  border:1px solid var(--line);border-radius:6px;padding:8px 10px;cursor:pointer;
+}
+.icon-btn:hover{border-color:var(--accent);color:var(--ink)}
 
 /* Title + Claude badge + theme toggle can't all fit one line on a
    phone (~486px of content vs ~320-390px available). Past this
@@ -53,6 +58,38 @@
   .topbar-in{padding:14px 16px;gap:10px}
   .brand{font-size:15px}
 }
+
+.btn{
+  border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  border-radius:7px;padding:8px 15px;cursor:pointer;font-weight:500;font-size:13.5px;
+  transition:border-color .14s,background .14s;
+}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn.ghost{background:transparent}
+.tip-close{
+  flex:none;border:0;background:transparent;cursor:pointer;color:var(--muted);
+  font-size:14px;line-height:1;padding:3px 5px;border-radius:4px;
+}
+.tip-close:hover{color:var(--ink)}
+.modal-overlay{
+  position:fixed;inset:0;z-index:50;background:rgba(13,17,24,.6);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.modal-box{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow);padding:20px 22px;max-width:440px;width:100%;
+}
+.modal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.modal-head h3{font-family:var(--font-display);font-size:16px;font-weight:600;margin:0}
+.share-textarea{
+  width:100%;min-height:130px;resize:vertical;
+  font-family:var(--font-mono);font-size:12.5px;line-height:1.6;
+  background:var(--raise);border:1px solid var(--line);border-radius:8px;
+  padding:12px;color:var(--ink);margin-bottom:14px;
+}
+.modal-actions{display:flex;gap:9px;flex-wrap:wrap}
 
 .wrap{max-width:960px;margin:0 auto;padding:44px 20px 64px}
 .intro h1{
@@ -157,6 +194,7 @@
   <div class="topbar-in">
     <span class="brand">Certification Practice Decks</span>
     <a class="claude-badge" href="https://claude.com/claude-code" target="_blank" rel="noopener" title="This site's content and code were built with Claude">Built with <b>Claude</b></a>
+    <button class="icon-btn" id="shareSiteBtn" aria-label="Share this tool" title="Share this tool">🔗</button>
     <button class="theme-toggle" data-theme-toggle aria-pressed="false"></button>
   </div>
 </header>
@@ -164,7 +202,7 @@
 <main class="wrap">
   <div class="intro">
     <h1>Pick a certification to study</h1>
-    <p>Free, exam-style practice decks — timed drill sessions, flashcards, and progress tracking, kept entirely in your browser. Choose a deck below to get started. More certifications are on the way.</p>
+    <p>Free, exam-style practice decks — timed drills, exam simulations, and progress tracking, kept entirely in your browser. Choose a deck below to get started. More certifications are on the way.</p>
   </div>
   <div class="toolbar">
     <input type="search" id="search" class="search" placeholder="Search by name, code, or keyword…" aria-label="Search certifications">
@@ -190,6 +228,8 @@
   <p class="foot-note">Progress is stored locally in your browser per deck and never leaves your device. Have a certification you'd like added? <a href="https://github.com/Andhony-Hdz/cert-practice-decks/issues/new?title=Certification+request%3A+&amp;body=Certification+name+and+exam+code%3A%0A%0AResources+link+%28official+study+guide%2C+etc.%29%3A%0A%0AWhy+you%27d+like+it+added%3A%0A" target="_blank" rel="noopener">Open an issue on the repository</a>.</p>
 </main>
 
+<div id="shareModalRoot"></div>
+
 <script>
 const esc=s=>String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
 const fmtUpdated=iso=>{
@@ -198,6 +238,61 @@ const fmtUpdated=iso=>{
   if(isNaN(d)) return "";
   return "Updated "+d.toLocaleDateString(undefined,{month:"short",year:"numeric"});
 };
+
+/* A modal with the invite text in a selectable textarea, rather than
+   handing straight off to navigator.share() — same pattern used on
+   the quiz summary page's "Share result", but inviting people to the
+   tool itself rather than sharing a personal score. */
+function siteShareText(){
+  const url=location.origin+location.pathname;
+  return `📚 Certification Practice Decks — free, exam-style practice for Microsoft certs\n`
+    +`Timed drills, exam simulations, and progress tracking, all in your browser. No signup, no cost.\n\n`
+    +`AI-901 and AI-103 are live today, more certs on the way. Give it a shot 👉 ${url}`;
+}
+
+let shareOpen=false;
+function shareModalHtml(){
+  if(!shareOpen) return "";
+  const text=siteShareText();
+  return `<div class="modal-overlay" data-act="close-share">
+    <div class="modal-box" data-act="noop">
+      <div class="modal-head">
+        <h3>Share this tool</h3>
+        <button class="tip-close" data-act="close-share" aria-label="Close">✕</button>
+      </div>
+      <textarea class="share-textarea" id="siteShareText" readonly>${esc(text)}</textarea>
+      <div class="modal-actions">
+        <button class="btn primary" data-act="copy-share">Copy to clipboard</button>
+        <button class="btn ghost" data-act="native-share" id="siteNativeShareBtn" hidden>Share via…</button>
+      </div>
+    </div>
+  </div>`;
+}
+function renderShareModal(){
+  const root=document.getElementById("shareModalRoot");
+  root.innerHTML=shareModalHtml();
+  root.querySelectorAll("[data-act]").forEach(el=>el.onclick=ev=>{
+    const act=el.dataset.act;
+    ev.stopPropagation();
+    if(act==="close-share"){ shareOpen=false; renderShareModal(); }
+    else if(act==="copy-share"){
+      const flash=label=>{ el.textContent=label; setTimeout(()=>{ if(document.body.contains(el)) el.textContent="Copy to clipboard"; },1800); };
+      const text=siteShareText();
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(text).then(()=>flash("Copied!")).catch(()=>flash("Couldn't copy — select the text instead"));
+      } else {
+        const ta=document.getElementById("siteShareText");
+        if(ta){ ta.select(); document.execCommand("copy"); flash("Copied!"); }
+      }
+    }
+    else if(act==="native-share"){ navigator.share({text:siteShareText()}).catch(()=>{}); }
+  });
+  const ta=document.getElementById("siteShareText");
+  if(ta){ ta.onclick=()=>ta.select(); ta.focus(); ta.select(); }
+  const nb=document.getElementById("siteNativeShareBtn");
+  if(nb && navigator.share) nb.hidden=false;
+}
+document.getElementById("shareSiteBtn").onclick=()=>{ shareOpen=true; renderShareModal(); };
 
 let ALL_CERTS=[];
 const filters={q:"",platform:"",role:"",level:""};
