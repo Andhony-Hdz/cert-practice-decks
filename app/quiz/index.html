@@ -386,6 +386,24 @@ select.combo:disabled{opacity:1;cursor:default;background:transparent;border-sty
 }
 .tip-close:hover{color:var(--ink)}
 
+.modal-overlay{
+  position:fixed;inset:0;z-index:50;background:rgba(13,17,24,.6);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.modal-box{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow);padding:20px 22px;max-width:440px;width:100%;
+}
+.modal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.modal-head h3{font-family:var(--font-display);font-size:16px;font-weight:600;margin:0}
+.share-textarea{
+  width:100%;min-height:130px;resize:vertical;
+  font-family:var(--font-mono);font-size:12.5px;line-height:1.6;
+  background:var(--raise);border:1px solid var(--line);border-radius:8px;
+  padding:12px;color:var(--ink);margin-bottom:14px;
+}
+.modal-actions{display:flex;gap:9px;flex-wrap:wrap}
+
 /* ---------- ready / start screen ---------- */
 .ready{
   background:var(--surface);border:1px solid var(--line);border-radius:12px;
@@ -568,7 +586,7 @@ const MAX_Q_MS=15*60*1000;   // cap one question so a coffee break can't skew th
 const session={answered:0,points:0,streak:0,log:[],startedAt:null,qStart:null,qIndex:-1};
 const ui={view:"drill",domain:"all",topic:null,weakOnly:false,shuffle:true,size:20,
           started:false,i:0,picked:null,picks:{},checked:false,done:false,
-          order:[],perms:{},confirmReset:false};
+          order:[],perms:{},confirmReset:false,shareOpen:false};
 
 function shuffledIdx(n){
   const p=[...Array(n).keys()];
@@ -620,7 +638,7 @@ function rebuild(){
   }
   if(ui.size!=="all") ui.order=ui.order.slice(0,ui.size);
   ui.perms={}; ui.i=0; ui.picked=null; ui.picks={}; ui.checked=false;
-  ui.done=false; ui.started=false;
+  ui.done=false; ui.started=false; ui.shareOpen=false;
   resetSession();
 }
 const current=()=>CARDS.find(c=>c.id===ui.order[ui.i]);
@@ -954,6 +972,30 @@ function shareText(){
     +`${n} question${n===1?"":"s"} · ${fmtDur(wall)}\n${grid}\n${url}`;
 }
 
+/* A modal with the share text in a selectable textarea, rather than
+   handing straight off to navigator.share() — that opens the OS
+   share sheet, which only lists apps registered as share targets
+   (Teams, WhatsApp, whatever's installed) and isn't great for "paste
+   this into a social network's compose box". The modal works the
+   same everywhere and lets you paste it wherever you actually want. */
+function shareModalHtml(){
+  if(!ui.shareOpen) return "";
+  const text=shareText();
+  return `<div class="modal-overlay" data-act="close-share">
+    <div class="modal-box" data-act="noop">
+      <div class="modal-head">
+        <h3>Share your result</h3>
+        <button class="tip-close" data-act="close-share" aria-label="Close">✕</button>
+      </div>
+      <textarea class="share-textarea" id="shareText" readonly>${esc(text)}</textarea>
+      <div class="modal-actions">
+        <button class="btn primary" data-act="copy-share">Copy to clipboard</button>
+        <button class="btn ghost" data-act="native-share" id="nativeShareBtn" hidden>Share via…</button>
+      </div>
+    </div>
+  </div>`;
+}
+
 function summaryView(){
   const n=session.answered, pct=n?Math.round(session.points/n*100):0;
   const passed = pct>=PASS_PCT;
@@ -1012,7 +1054,8 @@ function summaryView(){
     <h3>What you missed</h3>
     <p class="note">Partial scores come from dropdown items where some blanks were right.</p>
     <div class="wlist">${missed}</div>
-  </section>`:`<section class="weak"><h3>Clean sweep</h3><p class="note">Every question in this session was fully correct.</p></section>`}`;
+  </section>`:`<section class="weak"><h3>Clean sweep</h3><p class="note">Every question in this session was fully correct.</p></section>`}
+  ${shareModalHtml()}`;
 }
 
 function emptyView(){
@@ -1302,18 +1345,24 @@ function wire(){
       try{ localStorage.setItem("onboarded.v1","1"); }catch(e){}
       render();
     }
-    else if(act==="share"){
+    else if(act==="share"){ ui.shareOpen=true; render(); }
+    else if(act==="close-share"){ ui.shareOpen=false; render(); }
+    else if(act==="copy-share"){
+      const flash=label=>{ el.textContent=label; setTimeout(()=>{ if(document.body.contains(el)) el.textContent="Copy to clipboard"; },1800); };
       const text=shareText();
-      const flash=label=>{ el.textContent=label; setTimeout(()=>{ el.textContent="Share result"; },1800); };
-      if(navigator.share){
-        navigator.share({text}).catch(()=>{});
-      } else if(navigator.clipboard){
-        navigator.clipboard.writeText(text).then(()=>flash("Copied!")).catch(()=>flash("Couldn't copy"));
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(text).then(()=>flash("Copied!")).catch(()=>flash("Couldn't copy — select the text instead"));
       } else {
-        flash("Couldn't share");
+        const ta=document.getElementById("shareText");
+        if(ta){ ta.select(); document.execCommand("copy"); flash("Copied!"); }
       }
     }
+    else if(act==="native-share"){ navigator.share({text:shareText()}).catch(()=>{}); }
   });
+  const shareTa=document.getElementById("shareText");
+  if(shareTa){ shareTa.onclick=()=>shareTa.select(); shareTa.focus(); shareTa.select(); }
+  const nativeBtn=document.getElementById("nativeShareBtn");
+  if(nativeBtn && navigator.share) nativeBtn.hidden=false;
 }
 document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
   if(!CARDS) return;
