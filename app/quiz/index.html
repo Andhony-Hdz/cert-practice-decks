@@ -373,6 +373,19 @@ select.combo:disabled{opacity:1;cursor:default;background:transparent;border-sty
 .delta{font-family:var(--font-mono);font-size:11.5px;font-weight:600;white-space:nowrap}
 .delta[data-v="up"]{color:var(--ok)}
 .delta[data-v="down"]{color:var(--bad)}
+.tip-banner{
+  display:flex;align-items:flex-start;gap:12px;
+  background:var(--accent-soft);border:1px solid var(--accent);border-radius:10px;
+  padding:12px 14px;margin-bottom:16px;
+}
+.tip-banner p{margin:0;font-size:13px;line-height:1.55;color:var(--ink)}
+.tip-banner b{color:var(--accent-ink)}
+.tip-close{
+  flex:none;border:0;background:transparent;cursor:pointer;color:var(--muted);
+  font-size:14px;line-height:1;padding:3px 5px;border-radius:4px;
+}
+.tip-close:hover{color:var(--ink)}
+
 /* ---------- ready / start screen ---------- */
 .ready{
   background:var(--surface);border:1px solid var(--line);border-radius:12px;
@@ -853,8 +866,19 @@ function readyView(){
     : ui.domain==="all" ? "Full pool" : DOMAINS[ui.domain].label;
   const est=Math.max(1,Math.round(n*PACE_MS/60000));
   const last=(state.attempts||[]).slice(-1)[0];
+  let tip="";
+  try{
+    if(!localStorage.getItem("onboarded.v1")){
+      tip=`<div class="tip-banner">
+        <p><b>Drill</b> gives instant feedback and explanations as you go.
+        <b>Exam</b> hides right/wrong until you finish, for realistic timed practice.
+        <b>Progress</b> tracks your mastery, streak, and weak spots over time.</p>
+        <button class="tip-close" data-act="dismiss-tip" aria-label="Dismiss tip">✕</button>
+      </div>`;
+    }
+  }catch(e){}
 
-  return `<section class="ready">
+  return `${tip}<section class="ready">
     <span class="lab">Ready when you are</span>
     <h2 class="ready-n">${n}<small> question${n===1?"":"s"}</small></h2>
     <dl class="ready-meta">
@@ -1274,6 +1298,10 @@ function wire(){
       persist(); rebuild(); render();
     }
     else if(act==="cancel-reset"){ ui.confirmReset=false; render(); }
+    else if(act==="dismiss-tip"){
+      try{ localStorage.setItem("onboarded.v1","1"); }catch(e){}
+      render();
+    }
     else if(act==="share"){
       const text=shareText();
       const flash=label=>{ el.textContent=label; setTimeout(()=>{ el.textContent="Share result"; },1800); };
