@@ -6,6 +6,11 @@
 body{margin:0}
 img{max-width:100%}
 [hidden]{display:none!important}
+/* iOS Safari reveals <html>'s background during the elastic overscroll
+   bounce past the end of the page. Without this it defaults to white,
+   showing as a big blank/mismatched block below the footer on iPhone
+   (most noticeable in dark mode) — keep it in sync with the page. */
+html{background:var(--paper)}
 
 :root{
   color-scheme:light;
