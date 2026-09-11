@@ -1860,7 +1860,11 @@
       ],
       "a": 0,
       "s": "Creates original content from a prompt",
-      "e": "Generative AI models produce new content — text, images, code — in response to a prompt, using patterns learned during training. It's not an older or outdated technique, and modern tools put it within reach of non-specialists too."
+      "e": "Generative AI models produce new content — text, images, code — in response to a prompt, using patterns learned during training. It's not an older or outdated technique, and modern tools put it within reach of non-specialists too.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-ai-fundamentals/",
+        "title": "Introduction to AI concepts"
+      }
     },
     {
       "id": "mq2",
@@ -1875,7 +1879,11 @@
       ],
       "a": 0,
       "s": "An AI application acting on a user's behalf",
-      "e": "An agent is software that can reason about a goal and act — not a job title for the humans who build or use AI systems, and not a dataset."
+      "e": "An agent is software that can reason about a goal and act — not a job title for the humans who build or use AI systems, and not a dataset.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-ai-fundamentals/",
+        "title": "Introduction to AI concepts"
+      }
     },
     {
       "id": "mq3",
@@ -1890,7 +1898,11 @@
       ],
       "a": 0,
       "s": "Speech synthesis",
-      "e": "Speech synthesis (text to speech) generates spoken audio from text — reading email aloud. Speech recognition runs the opposite direction (audio to text), which questions frequently swap."
+      "e": "Speech synthesis (text to speech) generates spoken audio from text — reading email aloud. Speech recognition runs the opposite direction (audio to text), which questions frequently swap.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-ai-fundamentals/",
+        "title": "Introduction to AI concepts"
+      }
     },
     {
       "id": "mq4",
@@ -1905,7 +1917,11 @@
       ],
       "a": 0,
       "s": "A model designed to generate human-like text",
-      "e": "LLMs are trained on huge amounts of text to predict and generate human-like language. A model built for images isn't an LLM, and 'small, efficient, for mobile devices' describes the opposite class — small language models."
+      "e": "LLMs are trained on huge amounts of text to predict and generate human-like language. A model built for images isn't an LLM, and 'small, efficient, for mobile devices' describes the opposite class — small language models.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/fundamentals-generative-ai/",
+        "title": "Introduction to generative AI and agents"
+      }
     },
     {
       "id": "mq5",
@@ -1920,7 +1936,11 @@
       ],
       "a": 0,
       "s": "Breaks text into smaller units",
-      "e": "Tokenization splits text into the word- or sub-word-sized units a model actually processes. It has nothing to do with translation, alphabetizing, or raw binary encoding."
+      "e": "Tokenization splits text into the word- or sub-word-sized units a model actually processes. It has nothing to do with translation, alphabetizing, or raw binary encoding.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/fundamentals-generative-ai/",
+        "title": "Introduction to generative AI and agents"
+      }
     },
     {
       "id": "mq6",
@@ -1935,7 +1955,11 @@
       ],
       "a": 0,
       "s": "Vector representations capturing meaning",
-      "e": "Embeddings represent tokens as vectors positioned so that semantically similar meanings end up close together — the foundation of semantic search, not a text-generation trick or a model class of their own."
+      "e": "Embeddings represent tokens as vectors positioned so that semantically similar meanings end up close together — the foundation of semantic search, not a text-generation trick or a model class of their own.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/fundamentals-generative-ai/",
+        "title": "Introduction to generative AI and agents"
+      }
     },
     {
       "id": "mq7",
@@ -1950,7 +1974,11 @@
       ],
       "a": 0,
       "s": "Weighs relationships between tokens",
-      "e": "Attention is what lets a transformer weigh how relevant every other token is to the one it's currently processing — the core mechanism behind capturing context, not a content filter or a cleanup step."
+      "e": "Attention is what lets a transformer weigh how relevant every other token is to the one it's currently processing — the core mechanism behind capturing context, not a content filter or a cleanup step.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/fundamentals-generative-ai/",
+        "title": "Introduction to generative AI and agents"
+      }
     },
     {
       "id": "mq8",
@@ -1965,7 +1993,11 @@
       ],
       "a": 0,
       "s": "Provides context and instructions",
-      "e": "The system prompt (or system message) sets persona, rules, and context that frame the whole exchange. It isn't an OS setting, a preferences store, or a length limiter."
+      "e": "The system prompt (or system message) sets persona, rules, and context that frame the whole exchange. It isn't an OS setting, a preferences store, or a length limiter.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/fundamentals-generative-ai/",
+        "title": "Introduction to generative AI and agents"
+      }
     },
     {
       "id": "mq9",
@@ -1980,7 +2012,11 @@
       ],
       "a": 0,
       "s": "An AI system acting on a user's behalf",
-      "e": "Agents reason about a goal and take action — calling tools, using knowledge — on a user's behalf, distinct from a human escalation contact or a static script with no autonomy."
+      "e": "Agents reason about a goal and take action — calling tools, using knowledge — on a user's behalf, distinct from a human escalation contact or a static script with no autonomy.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/fundamentals-generative-ai/",
+        "title": "Introduction to generative AI and agents"
+      }
     },
     {
       "id": "mq10",
@@ -1994,7 +2030,11 @@
       ],
       "a": 0,
       "s": "Breaks text into analyzable units",
-      "e": "In NLP specifically, tokenization is the first step that turns raw text into units — words or sub-words — that statistical and semantic techniques can then analyze. It doesn't translate or summarize on its own."
+      "e": "In NLP specifically, tokenization is the first step that turns raw text into units — words or sub-words — that statistical and semantic techniques can then analyze. It doesn't translate or summarize on its own.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-language/",
+        "title": "Introduction to natural language processing concepts"
+      }
     },
     {
       "id": "mq11",
@@ -2009,7 +2049,11 @@
       ],
       "a": 0,
       "s": "TF-IDF",
-      "e": "TF-IDF specifically scores how important a term is to one document relative to a larger corpus — high frequency in this document, low frequency elsewhere. Naïve Bayes is a classifier, and Word2Vec/attention are about representing meaning, not scoring document-relative importance."
+      "e": "TF-IDF specifically scores how important a term is to one document relative to a larger corpus — high frequency in this document, low frequency elsewhere. Naïve Bayes is a classifier, and Word2Vec/attention are about representing meaning, not scoring document-relative importance.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-language/",
+        "title": "Introduction to natural language processing concepts"
+      }
     },
     {
       "id": "mq12",
@@ -2024,7 +2068,11 @@
       ],
       "a": 0,
       "s": "Capture semantic relationships in vector space",
-      "e": "Embedding vectors place tokens in a multi-dimensional space so that semantically related tokens land near each other — not a translation mechanism, a stopword list, or a compression technique."
+      "e": "Embedding vectors place tokens in a multi-dimensional space so that semantically related tokens land near each other — not a translation mechanism, a stopword list, or a compression technique.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-language/",
+        "title": "Introduction to natural language processing concepts"
+      }
     },
     {
       "id": "mq13",
@@ -2039,7 +2087,11 @@
       ],
       "a": 0,
       "s": "Extracting feature vectors from the waveform",
-      "e": "Pre-processing turns the raw audio waveform into feature vectors a model can work with — it doesn't convert to a video container format, deliberately add noise, or translate (that's a separate, later capability)."
+      "e": "Pre-processing turns the raw audio waveform into feature vectors a model can work with — it doesn't convert to a video container format, deliberately add noise, or translate (that's a separate, later capability).",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-ai-speech/",
+        "title": "Introduction to AI speech concepts"
+      }
     },
     {
       "id": "mq14",
@@ -2054,7 +2106,11 @@
       ],
       "a": 0,
       "s": "The smallest unit of speech sound",
-      "e": "Phonemes are the basic distinct sound units that make up spoken language — a linguistics concept, not audio-cleanup artifacts or a class of model."
+      "e": "Phonemes are the basic distinct sound units that make up spoken language — a linguistics concept, not audio-cleanup artifacts or a class of model.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-ai-speech/",
+        "title": "Introduction to AI speech concepts"
+      }
     },
     {
       "id": "mq15",
@@ -2069,7 +2125,11 @@
       ],
       "a": 0,
       "s": "Natural pronunciation and cadence",
-      "e": "Prosody covers the rhythm, stress, and intonation that make synthesized speech sound natural rather than flat and robotic — unrelated to volume, translation, or file compression."
+      "e": "Prosody covers the rhythm, stress, and intonation that make synthesized speech sound natural rather than flat and robotic — unrelated to volume, translation, or file compression.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-ai-speech/",
+        "title": "Introduction to AI speech concepts"
+      }
     },
     {
       "id": "mq16",
@@ -2084,7 +2144,11 @@
       ],
       "a": 0,
       "s": "Pixels",
-      "e": "Computer vision techniques operate on pixel values — the actual visual data — not file metadata like timestamps, filenames, or the capturing device's specs."
+      "e": "Computer vision techniques operate on pixel values — the actual visual data — not file metadata like timestamps, filenames, or the capturing device's specs.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-computer-vision/",
+        "title": "Introduction to computer vision concepts"
+      }
     },
     {
       "id": "mq17",
@@ -2099,7 +2163,11 @@
       ],
       "a": 0,
       "s": "Extract numeric features for the network",
-      "e": "CNN filters (kernels) slide across the image to extract numeric features — edges, textures, shapes — that feed the network's classification decision. They aren't cosmetic effects, a compression step, or metadata readers."
+      "e": "CNN filters (kernels) slide across the image to extract numeric features — edges, textures, shapes — that feed the network's classification decision. They aren't cosmetic effects, a compression step, or metadata readers.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-computer-vision/",
+        "title": "Introduction to computer vision concepts"
+      }
     },
     {
       "id": "mq18",
@@ -2114,7 +2182,11 @@
       ],
       "a": 0,
       "s": "Attention over image patches",
-      "e": "A Vision Transformer splits an image into patches and applies the same attention mechanism transformers use for text, producing contextual embeddings — not a visual filter, a model converter, or a compression tool."
+      "e": "A Vision Transformer splits an image into patches and applies the same attention mechanism transformers use for text, producing contextual embeddings — not a visual filter, a model converter, or a compression tool.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-computer-vision/",
+        "title": "Introduction to computer vision concepts"
+      }
     },
     {
       "id": "mq19",
@@ -2129,7 +2201,11 @@
       ],
       "a": 0,
       "s": "Extracting fields/values from unstructured content",
-      "e": "Information extraction turns unstructured content — documents, images — into structured fields and values. It isn't database querying, file copying, or compression, even though all of those might appear in a broader pipeline."
+      "e": "Information extraction turns unstructured content — documents, images — into structured fields and values. It isn't database querying, file copying, or compression, even though all of those might appear in a broader pipeline.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-information-extraction/",
+        "title": "Introduction to AI-powered information extraction concepts"
+      }
     },
     {
       "id": "mq20",
@@ -2144,7 +2220,11 @@
       ],
       "a": 0,
       "s": "Converts images of text to machine-readable text",
-      "e": "OCR (optical character recognition) is specifically about reading text out of images — the necessary first step before you can extract structured fields from a scanned document. The other expansions of the acronym here are invented distractors."
+      "e": "OCR (optical character recognition) is specifically about reading text out of images — the necessary first step before you can extract structured fields from a scanned document. The other expansions of the acronym here are invented distractors.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-information-extraction/",
+        "title": "Introduction to AI-powered information extraction concepts"
+      }
     },
     {
       "id": "mq21",
@@ -2159,7 +2239,11 @@
       ],
       "a": 0,
       "s": "Semantic matching of values to fields",
-      "e": "Generative, semantic models can understand field intent well enough to map extracted values to the right schema fields without hand-coded rules per document type — a flexibility classic rules-based extraction lacks."
+      "e": "Generative, semantic models can understand field intent well enough to map extracted values to the right schema fields without hand-coded rules per document type — a flexibility classic rules-based extraction lacks.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-information-extraction/",
+        "title": "Introduction to AI-powered information extraction concepts"
+      }
     },
     {
       "id": "mq22",
@@ -2174,7 +2258,11 @@
       ],
       "a": 0,
       "s": "Grounds responses in retrieved data",
-      "e": "RAG retrieves relevant content at query time and feeds it into the prompt so the model answers from real, current information — without retraining the model or discarding it in favor of a plain search engine."
+      "e": "RAG retrieves relevant content at query time and feeds it into the prompt so the model answers from real, current information — without retraining the model or discarding it in favor of a plain search engine.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/rag-fundamentals/",
+        "title": "Introduction to retrieval-augmented generation concepts"
+      }
     },
     {
       "id": "mq23",
@@ -2189,7 +2277,11 @@
       ],
       "a": 0,
       "s": "Focused, prompt-sized retrievable passages",
-      "e": "Chunking keeps each retrievable unit small and focused enough to fit efficiently into a prompt alongside the user's question — it's a retrieval-efficiency technique, not a training or storage strategy."
+      "e": "Chunking keeps each retrievable unit small and focused enough to fit efficiently into a prompt alongside the user's question — it's a retrieval-efficiency technique, not a training or storage strategy.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/rag-fundamentals/",
+        "title": "Introduction to retrieval-augmented generation concepts"
+      }
     },
     {
       "id": "mq24",
@@ -2204,7 +2296,11 @@
       ],
       "a": 0,
       "s": "A vector capturing semantic meaning",
-      "e": "In RAG, embeddings are the numeric vectors used to find semantically similar content at retrieval time — not instructions, not the final answer, and not a response cache."
+      "e": "In RAG, embeddings are the numeric vectors used to find semantically similar content at retrieval time — not instructions, not the final answer, and not a response cache.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/rag-fundamentals/",
+        "title": "Introduction to retrieval-augmented generation concepts"
+      }
     },
     {
       "id": "mq25",
@@ -2219,7 +2315,11 @@
       ],
       "a": 0,
       "s": "Semantic vector search",
-      "e": "Semantic search matches based on meaning captured in embeddings, so differently worded but conceptually related queries and passages still connect — something purely keyword- or filename-based matching would miss."
+      "e": "Semantic search matches based on meaning captured in embeddings, so differently worded but conceptually related queries and passages still connect — something purely keyword- or filename-based matching would miss.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/rag-fundamentals/",
+        "title": "Introduction to retrieval-augmented generation concepts"
+      }
     },
     {
       "id": "mq26",
@@ -2234,7 +2334,11 @@
       ],
       "a": 0,
       "s": "Check what was actually retrieved",
-      "e": "A fluent-but-wrong RAG answer usually traces back to a retrieval problem — the wrong or stale passage was supplied as context — which is the first thing to check, well before response length, unrelated documents, or speed."
+      "e": "A fluent-but-wrong RAG answer usually traces back to a retrieval problem — the wrong or stale passage was supplied as context — which is the first thing to check, well before response length, unrelated documents, or speed.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/rag-fundamentals/",
+        "title": "Introduction to retrieval-augmented generation concepts"
+      }
     },
     {
       "id": "mq27",
@@ -2249,7 +2353,11 @@
       ],
       "a": 0,
       "s": "AI is the goal; ML is a method to get there",
-      "e": "AI is the broad goal of building systems with human-like intelligence; machine learning is one (very successful) data-driven approach to reaching that goal. The terms aren't interchangeable, and neither is limited the way the distractors claim."
+      "e": "AI is the broad goal of building systems with human-like intelligence; machine learning is one (very successful) data-driven approach to reaching that goal. The terms aren't interchangeable, and neither is limited the way the distractors claim.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-with-ai-in-azure/",
+        "title": "Get started with AI in Azure"
+      }
     },
     {
       "id": "mq28",
@@ -2264,7 +2372,11 @@
       ],
       "a": 0,
       "s": "Foundry is built on Azure infrastructure",
-      "e": "Foundry is a platform layered on top of Azure, relying on core Azure resources — compute, networking, identity, security — rather than replacing Azure or running independently of it."
+      "e": "Foundry is a platform layered on top of Azure, relying on core Azure resources — compute, networking, identity, security — rather than replacing Azure or running independently of it.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-with-ai-in-azure/",
+        "title": "Get started with AI in Azure"
+      }
     },
     {
       "id": "mq29",
@@ -2279,7 +2391,11 @@
       ],
       "a": 0,
       "s": "Endpoint = URL; key = authentication credential",
-      "e": "The endpoint is where you send the request; the key (ideally kept as a secret, e.g. in Key Vault) authenticates that request. Neither one stores responses, controls data volume, or configures model parameters."
+      "e": "The endpoint is where you send the request; the key (ideally kept as a secret, e.g. in Key Vault) authenticates that request. Neither one stores responses, controls data volume, or configures model parameters.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-with-ai-in-azure/",
+        "title": "Get started with AI in Azure"
+      }
     },
     {
       "id": "mq30",
@@ -2294,7 +2410,11 @@
       ],
       "a": 0,
       "s": "The user-facing app calling the endpoint",
-      "e": "The client application is what the user actually interacts with — it sends requests to a model endpoint and shows the response. Hosting and running inference is the deployment's job, not the client's."
+      "e": "The client application is what the user actually interacts with — it sends requests to a model endpoint and shows the response. Hosting and running inference is the deployment's job, not the client's.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-with-ai-in-azure/",
+        "title": "Get started with AI in Azure"
+      }
     },
     {
       "id": "mq31",
@@ -2309,7 +2429,11 @@
       ],
       "a": 0,
       "s": "A hub to discover and compare many providers' models",
-      "e": "The model catalog spans models from multiple providers, not just Microsoft's own, letting you filter and compare before deploying — it doesn't touch subscription or billing management."
+      "e": "The model catalog spans models from multiple providers, not just Microsoft's own, letting you filter and compare before deploying — it doesn't touch subscription or billing management.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-with-generative-ai-and-agents/",
+        "title": "Get started with generative AI and agents in Azure"
+      }
     },
     {
       "id": "mq32",
@@ -2324,7 +2448,11 @@
       ],
       "a": 0,
       "s": "Large, pretrained, usable immediately or customized",
-      "e": "Foundation models are large and pretrained on broad data, so they're useful out of the box and can optionally be customized further — the opposite of a small model that's useless until fine-tuned."
+      "e": "Foundation models are large and pretrained on broad data, so they're useful out of the box and can optionally be customized further — the opposite of a small model that's useless until fine-tuned.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-with-generative-ai-and-agents/",
+        "title": "Get started with generative AI and agents in Azure"
+      }
     },
     {
       "id": "mq33",
@@ -2339,7 +2467,11 @@
       ],
       "a": 0,
       "s": "Test and capture settings before coding",
-      "e": "The playground lets you iterate on prompts and settings interactively, then carry proven settings into code — it doesn't remove the need for an API, write your system prompt for you, or touch safety filters."
+      "e": "The playground lets you iterate on prompts and settings interactively, then carry proven settings into code — it doesn't remove the need for an API, write your system prompt for you, or touch safety filters.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-with-generative-ai-and-agents/",
+        "title": "Get started with generative AI and agents in Azure"
+      }
     },
     {
       "id": "mq34",
@@ -2354,7 +2486,11 @@
       ],
       "a": 0,
       "s": "A managed, shareable resource with a stable endpoint",
-      "e": "Publishing gives an agent a stable, shareable endpoint as a managed resource — callers don't need access to your project or source. It doesn't make usage free, and the Project API remains the way to call it programmatically."
+      "e": "Publishing gives an agent a stable, shareable endpoint as a managed resource — callers don't need access to your project or source. It doesn't make usage free, and the Project API remains the way to call it programmatically.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-with-generative-ai-and-agents/",
+        "title": "Get started with generative AI and agents in Azure"
+      }
     },
     {
       "id": "mq35",
@@ -2369,7 +2505,11 @@
       ],
       "a": 0,
       "s": "responses.create with an agent_reference in extra_body",
-      "e": "Passing agent_reference in extra_body on responses.create is what targets a published agent instead of a bare model deployment. Getting the agent object or the OpenAI client are earlier setup steps, not the call that actually invokes the agent."
+      "e": "Passing agent_reference in extra_body on responses.create is what targets a published agent instead of a bare model deployment. Getting the agent object or the OpenAI client are earlier setup steps, not the call that actually invokes the agent.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-with-generative-ai-and-agents/",
+        "title": "Get started with generative AI and agents in Azure"
+      }
     },
     {
       "id": "mq36",
@@ -2384,7 +2524,11 @@
       ],
       "a": 0,
       "s": "Azure Language SDK for deterministic output",
-      "e": "When you need the same input to reliably produce the same structured result, a deterministic, statistically-grounded service like Azure Language is the right fit — a generative model can vary its wording run to run."
+      "e": "When you need the same input to reliably produce the same structured result, a deterministic, statistically-grounded service like Azure Language is the right fit — a generative model can vary its wording run to run.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-text-analysis-azure/",
+        "title": "Get started with text analysis in Azure"
+      }
     },
     {
       "id": "mq37",
@@ -2399,7 +2543,11 @@
       ],
       "a": 0,
       "s": "Mediates calls to the service",
-      "e": "A service client object is the code-level handle that sends requests to and receives results from the Azure Language service — it doesn't hold UI settings, the raw text itself, or perform translation."
+      "e": "A service client object is the code-level handle that sends requests to and receives results from the Azure Language service — it doesn't hold UI settings, the raw text itself, or perform translation.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-text-analysis-azure/",
+        "title": "Get started with text analysis in Azure"
+      }
     },
     {
       "id": "mq38",
@@ -2414,7 +2562,11 @@
       ],
       "a": 0,
       "s": "Exposes Language capabilities via MCP",
-      "e": "The Language MCP server's job is making Azure Language's text-analysis capabilities available to an agent as MCP tools — it doesn't generate UI, replace the agent's model, or manage its credentials."
+      "e": "The Language MCP server's job is making Azure Language's text-analysis capabilities available to an agent as MCP tools — it doesn't generate UI, replace the agent's model, or manage its credentials.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-text-analysis-azure/",
+        "title": "Get started with text analysis in Azure"
+      }
     },
     {
       "id": "mq39",
@@ -2429,7 +2581,11 @@
       ],
       "a": 0,
       "s": "Integrates recognition into real application code",
-      "e": "The playground is for interactive testing; the SDK is what actually lets you embed speech recognition into a real application. It doesn't replace the underlying speech models or gate portal uploads."
+      "e": "The playground is for interactive testing; the SDK is what actually lets you embed speech recognition into a real application. It doesn't replace the underlying speech models or gate portal uploads.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-speech-azure/",
+        "title": "Get started with speech in Azure"
+      }
     },
     {
       "id": "mq40",
@@ -2444,7 +2600,11 @@
       ],
       "a": 0,
       "s": "Auth, networking, and audio generation",
-      "e": "The SDK handles the full mechanics of calling the service and producing audio — authentication, network calls, and generation — sparing you from wiring that up by hand. It doesn't manage long-term storage or translation on its own."
+      "e": "The SDK handles the full mechanics of calling the service and producing audio — authentication, network calls, and generation — sparing you from wiring that up by hand. It doesn't manage long-term storage or translation on its own.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-speech-azure/",
+        "title": "Get started with speech in Azure"
+      }
     },
     {
       "id": "mq41",
@@ -2459,7 +2619,11 @@
       ],
       "a": 0,
       "s": "Real-time streaming, responses, and interruptions",
-      "e": "The Voice Live SDK manages the live, real-time conversational loop — streaming audio both ways and handling interruptions — rather than device hardware, permanent storage, or offline file processing."
+      "e": "The Voice Live SDK manages the live, real-time conversational loop — streaming audio both ways and handling interruptions — rather than device hardware, permanent storage, or offline file processing.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-speech-azure/",
+        "title": "Get started with speech in Azure"
+      }
     },
     {
       "id": "mq42",
@@ -2474,7 +2638,11 @@
       ],
       "a": 0,
       "s": "Understands more than one data type",
-      "e": "Multimodal means the model handles multiple kinds of input/output together — text and images being the common case — not a single-modality (image-only or video-only) model, and not merely a bundle of smaller model files."
+      "e": "Multimodal means the model handles multiple kinds of input/output together — text and images being the common case — not a single-modality (image-only or video-only) model, and not merely a bundle of smaller model files.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-vision-azure/",
+        "title": "Get started with computer vision in Azure"
+      }
     },
     {
       "id": "mq43",
@@ -2489,7 +2657,11 @@
       ],
       "a": 0,
       "s": "Text prompts via the Responses API",
-      "e": "Programmatic image generation goes through the same API pattern as text — sending a prompt via the Responses API to a deployed image-generation model — not by manual UI uploads or calling an unrelated text model's endpoint."
+      "e": "Programmatic image generation goes through the same API pattern as text — sending a prompt via the Responses API to a deployed image-generation model — not by manual UI uploads or calling an unrelated text model's endpoint.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-vision-azure/",
+        "title": "Get started with computer vision in Azure"
+      }
     },
     {
       "id": "mq44",
@@ -2504,7 +2676,11 @@
       ],
       "a": 0,
       "s": "Your deployment name",
-      "e": "Just like text models, image-generation calls address the deployment name you chose, not the catalog's base model name — passing the catalog name instead of the deployment name is a common first-run error."
+      "e": "Just like text models, image-generation calls address the deployment name you chose, not the catalog's base model name — passing the catalog name instead of the deployment name is a common first-run error.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-vision-azure/",
+        "title": "Get started with computer vision in Azure"
+      }
     },
     {
       "id": "mq45",
@@ -2519,7 +2695,11 @@
       ],
       "a": 0,
       "s": "Resource-intensive and time-consuming",
-      "e": "Generating video is far heavier and slower than generating text or a single image, so it's run as an async job you poll for completion rather than blocking the caller — it's a practical necessity, not an API limitation."
+      "e": "Generating video is far heavier and slower than generating text or a single image, so it's run as an async job you poll for completion rather than blocking the caller — it's a practical necessity, not an API limitation.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-vision-azure/",
+        "title": "Get started with computer vision in Azure"
+      }
     },
     {
       "id": "mq46",
@@ -2534,7 +2714,11 @@
       ],
       "a": 0,
       "s": "Understands structure, maps to a schema",
-      "e": "OCR alone gives you the raw text on a page; Content Understanding goes further, understanding structure and mapping values to the specific schema you define — the real differentiator, not raw speed."
+      "e": "OCR alone gives you the raw text on a page; Content Understanding goes further, understanding structure and mapping values to the specific schema you define — the real differentiator, not raw speed.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-information-extraction/",
+        "title": "Get started with AI-powered information extraction in Azure"
+      }
     },
     {
       "id": "mq47",
@@ -2549,7 +2733,11 @@
       ],
       "a": 0,
       "s": "Defines processing and the output schema",
-      "e": "An analyzer bundles the content type, field schema, and processing settings into a reusable configuration — it doesn't itself store results, reformat JSON into prose, or generate test documents."
+      "e": "An analyzer bundles the content type, field schema, and processing settings into a reusable configuration — it doesn't itself store results, reformat JSON into prose, or generate test documents.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-information-extraction/",
+        "title": "Get started with AI-powered information extraction in Azure"
+      }
     },
     {
       "id": "mq48",
@@ -2564,7 +2752,11 @@
       ],
       "a": 0,
       "s": "Poll the operation URL until done",
-      "e": "Analysis runs asynchronously — you submit the job and poll an operation URL until it completes — rather than blocking for an immediate synchronous result. Nothing about submission retrains the analyzer."
+      "e": "Analysis runs asynchronously — you submit the job and poll an operation URL until it completes — rather than blocking for an immediate synchronous result. Nothing about submission retrains the analyzer.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-information-extraction/",
+        "title": "Get started with AI-powered information extraction in Azure"
+      }
     },
     {
       "id": "mq49",
@@ -2579,7 +2771,11 @@
       ],
       "a": 0,
       "s": "A managed, permission-aware knowledge layer",
-      "e": "Foundry IQ gives agents a shared, managed way to retrieve enterprise information while respecting access permissions — it doesn't train new models from your documents or replace agents with plain keyword search."
+      "e": "Foundry IQ gives agents a shared, managed way to retrieve enterprise information while respecting access permissions — it doesn't train new models from your documents or replace agents with plain keyword search.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-foundry-iq/",
+        "title": "Get started with Microsoft Foundry IQ"
+      }
     },
     {
       "id": "mq50",
@@ -2594,7 +2790,11 @@
       ],
       "a": 0,
       "s": "Knowledge sources + retrieval settings",
-      "e": "A knowledge base bundles one or more sources together with settings that shape how retrieval behaves — it isn't a per-agent conversation log or a bare document dump handed straight to a model."
+      "e": "A knowledge base bundles one or more sources together with settings that shape how retrieval behaves — it isn't a per-agent conversation log or a bare document dump handed straight to a model.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-foundry-iq/",
+        "title": "Get started with Microsoft Foundry IQ"
+      }
     },
     {
       "id": "mq51",
@@ -2609,7 +2809,11 @@
       ],
       "a": 0,
       "s": "Decomposes, searches in parallel, reranks, cites",
-      "e": "Agentic retrieval is a multi-step process — breaking a complex question apart, searching multiple sources at once, ranking what comes back, and citing evidence — not a single exact-match lookup or a training-data update."
+      "e": "Agentic retrieval is a multi-step process — breaking a complex question apart, searching multiple sources at once, ranking what comes back, and citing evidence — not a single exact-match lookup or a training-data update.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-foundry-iq/",
+        "title": "Get started with Microsoft Foundry IQ"
+      }
     },
     {
       "id": "mq52",
@@ -2624,7 +2828,11 @@
       ],
       "a": 0,
       "s": "Lets users trace and verify evidence",
-      "e": "Citations make an answer auditable — a person can check the actual source behind a claim. They have no effect on permissions, retraining, or token usage."
+      "e": "Citations make an answer auditable — a person can check the actual source behind a claim. They have no effect on permissions, retraining, or token usage.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-foundry-iq/",
+        "title": "Get started with Microsoft Foundry IQ"
+      }
     },
     {
       "id": "mq53",
@@ -2639,7 +2847,11 @@
       ],
       "a": 0,
       "s": "Identity-aware access control on retrieval",
-      "e": "This is the privacy and security responsible-AI principle in practice: retrieval should respect the caller's actual permissions, never return more than they're authorized to see. Pooling everything into one public index or blindly trusting retrieved text as instructions would do the opposite."
+      "e": "This is the privacy and security responsible-AI principle in practice: retrieval should respect the caller's actual permissions, never return more than they're authorized to see. Pooling everything into one public index or blindly trusting retrieved text as instructions would do the opposite.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/get-started-foundry-iq/",
+        "title": "Get started with Microsoft Foundry IQ"
+      }
     }
   ]
 }

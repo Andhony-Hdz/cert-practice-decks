@@ -167,6 +167,9 @@
   text-transform:uppercase;color:var(--muted);display:block;margin-bottom:7px;
 }
 .why p{margin:0;max-width:65ch}
+.card-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px}
+.card-links a{font-size:12px;color:var(--muted);text-decoration:none}
+.card-links a:hover{color:var(--accent-ink);text-decoration:underline}
 .why .verdict{
   font-family:var(--font-display);font-weight:600;font-size:14px;
   letter-spacing:.01em;margin-bottom:10px;display:flex;align-items:center;gap:7px;
@@ -577,6 +580,24 @@ function rebuild(){
 const current=()=>CARDS.find(c=>c.id===ui.order[ui.i]);
 const esc=s=>String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
 const topicName=(d,t)=>(DOMAINS[d]&&DOMAINS[d].topics[t])||t;
+
+/* Per-card links shown under the explanation: a "report an issue"
+   link (always) that opens a prefilled GitHub issue, plus a "learn
+   more" link to the official source module when the card has one —
+   only the questions pulled from Microsoft Learn module knowledge
+   checks carry c.source today, so this is intentionally optional. */
+function cardMetaLinks(c){
+  const title=`Question issue: ${META.id}/${c.id}`;
+  const body=`Deck: ${META.title} (${META.id})\nCard ID: ${c.id}\nQuestion: ${c.q}\n\nWhat's wrong with it?\n`;
+  const reportHref=`https://github.com/Andhony-Hdz/cert-practice-decks/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+  const sourceLink=c.source
+    ? `<a href="${esc(c.source.url)}" target="_blank" rel="noopener">${esc(c.source.title||"Learn more")} →</a>`
+    : "";
+  return `<div class="card-links">
+    ${sourceLink}
+    <a href="${reportHref}" target="_blank" rel="noopener">Report an issue with this question →</a>
+  </div>`;
+}
 const scaledPass=()=>Math.round(PASS_PCT*10);   // e.g. 70% → "700 pass mark"
 
 /* ---------- renderers ---------- */
@@ -662,6 +683,7 @@ function comboView(){
         <span class="qtime">${fmtShort(session.lastMs||0)}</span></div>
       <span class="why-tag">Why</span>
       <p>${c.e}</p>
+      ${cardMetaLinks(c)}
     </div>`;
   }
   return `${meterRow()}
@@ -707,6 +729,7 @@ function mcqView(){
         <span class="qtime">${fmtShort(session.lastMs||0)}</span></div>
       <span class="why-tag">Why</span>
       <p>${c.e}</p>
+      ${cardMetaLinks(c)}
     </div>`:"";
   return `${meterRow()}
   <article class="card">

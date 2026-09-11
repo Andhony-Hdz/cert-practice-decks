@@ -1462,7 +1462,11 @@
       ],
       "a": 0,
       "s": "The Microsoft Foundry portal",
-      "e": "Models, agents, files, and evaluations for a project are managed in the Microsoft Foundry portal. The Azure portal manages the underlying Azure resource (networking, access, billing), not day-to-day project assets."
+      "e": "Models, agents, files, and evaluations for a project are managed in the Microsoft Foundry portal. The Azure portal manages the underlying Azure resource (networking, access, billing), not day-to-day project assets.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/",
+        "title": "Plan and prepare to develop AI solutions on Azure"
+      }
     },
     {
       "id": "mq2",
@@ -1477,7 +1481,11 @@
       ],
       "a": 0,
       "s": "Foundry Tools",
-      "e": "Foundry Tools bundles ready-made AI services — Language, Speech, Vision, Translator, Content Safety, and more — for common tasks. Foundry Models is the catalog of deployable LLMs/SLMs, a different layer of the platform."
+      "e": "Foundry Tools bundles ready-made AI services — Language, Speech, Vision, Translator, Content Safety, and more — for common tasks. Foundry Models is the catalog of deployable LLMs/SLMs, a different layer of the platform.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/",
+        "title": "Plan and prepare to develop AI solutions on Azure"
+      }
     },
     {
       "id": "mq3",
@@ -1492,7 +1500,11 @@
       ],
       "a": 0,
       "s": "Foundry Toolkit for Visual Studio Code",
-      "e": "The Foundry Toolkit extension brings project, model, and agent management into VS Code. The Python extension and GitHub Copilot are general-purpose dev tools, not Foundry-specific."
+      "e": "The Foundry Toolkit extension brings project, model, and agent management into VS Code. The Python extension and GitHub Copilot are general-purpose dev tools, not Foundry-specific.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/",
+        "title": "Plan and prepare to develop AI solutions on Azure"
+      }
     },
     {
       "id": "mq4",
@@ -1507,7 +1519,11 @@
       ],
       "a": 0,
       "s": "Throughput",
-      "e": "Throughput measures how fast a model processes input and returns output — the speed-of-response benchmark. Quality index and cost are separate benchmark dimensions covering accuracy and price, not speed."
+      "e": "Throughput measures how fast a model processes input and returns output — the speed-of-response benchmark. Quality index and cost are separate benchmark dimensions covering accuracy and price, not speed.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/",
+        "title": "Select, deploy, and evaluate Microsoft Foundry models"
+      }
     },
     {
       "id": "mq5",
@@ -1522,7 +1538,11 @@
       ],
       "a": 0,
       "s": "Global Standard",
-      "e": "Global Standard routes across Microsoft's global capacity, which is what gives it the largest available quota for general-purpose use. Data-residency-constrained tiers and Developer/trial tiers trade that quota away for other guarantees."
+      "e": "Global Standard routes across Microsoft's global capacity, which is what gives it the largest available quota for general-purpose use. Data-residency-constrained tiers and Developer/trial tiers trade that quota away for other guarantees.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/",
+        "title": "Select, deploy, and evaluate Microsoft Foundry models"
+      }
     },
     {
       "id": "mq6",
@@ -1537,7 +1557,11 @@
       ],
       "a": 0,
       "s": "Fluency",
-      "e": "Fluency scores how grammatically correct and natural the generated language reads. Groundedness and relevance are about whether the content is supported by sources and on-topic — different, complementary evaluation dimensions."
+      "e": "Fluency scores how grammatically correct and natural the generated language reads. Groundedness and relevance are about whether the content is supported by sources and on-topic — different, complementary evaluation dimensions.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/model-catalog-evaluate/",
+        "title": "Select, deploy, and evaluate Microsoft Foundry models"
+      }
     },
     {
       "id": "mq7",
@@ -1552,7 +1576,11 @@
       ],
       "a": 0,
       "s": "The Azure OpenAI endpoint",
-      "e": "The Azure OpenAI endpoint is the OpenAI-API-compatible surface with the widest coverage of the OpenAI API set. The Foundry project endpoint is convenient for project-scoped access but doesn't expose the full OpenAI API surface."
+      "e": "The Azure OpenAI endpoint is the OpenAI-API-compatible surface with the widest coverage of the OpenAI API set. The Foundry project endpoint is convenient for project-scoped access but doesn't expose the full OpenAI API surface.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/",
+        "title": "Develop a generative AI chat app with Microsoft Foundry"
+      }
     },
     {
       "id": "mq8",
@@ -1567,7 +1595,11 @@
       ],
       "a": 0,
       "s": "azure-ai-projects",
-      "e": "azure-ai-projects is the current Foundry SDK package, providing AIProjectClient. The other package names either don't exist or belong to the older, classic azure-ai-inference pattern."
+      "e": "azure-ai-projects is the current Foundry SDK package, providing AIProjectClient. The other package names either don't exist or belong to the older, classic azure-ai-inference pattern.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/",
+        "title": "Develop a generative AI chat app with Microsoft Foundry"
+      }
     },
     {
       "id": "mq9",
@@ -1582,7 +1614,11 @@
       ],
       "a": 0,
       "s": "client.responses.create()",
-      "e": "responses.create() is the current, recommended call for generating a response. chat.completions.create() is the older Chat Completions shape that still works but isn't the current default recommendation."
+      "e": "responses.create() is the current, recommended call for generating a response. chat.completions.create() is the older Chat Completions shape that still works but isn't the current default recommendation.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/foundry-sdk/",
+        "title": "Develop a generative AI chat app with Microsoft Foundry"
+      }
     },
     {
       "id": "mq10",
@@ -1597,7 +1633,11 @@
       ],
       "a": 0,
       "s": "file_search",
-      "e": "file_search retrieves from documents you've uploaded as grounding knowledge. web_search reaches the public internet, and code_interpreter executes code — neither reads your uploaded policy files."
+      "e": "file_search retrieves from documents you've uploaded as grounding knowledge. web_search reaches the public internet, and code_interpreter executes code — neither reads your uploaded policy files.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/",
+        "title": "Develop generative AI apps that use tools"
+      }
     },
     {
       "id": "mq11",
@@ -1612,7 +1652,11 @@
       ],
       "a": 0,
       "s": "Run the function yourself, then return the output",
-      "e": "Function calling is a two-step handoff: the model asks for a function call, but your application code actually executes it and sends the result back as a function_call_output so the model can incorporate it. The model never runs your code itself."
+      "e": "Function calling is a two-step handoff: the model asks for a function call, but your application code actually executes it and sends the result back as a function_call_output so the model can incorporate it. The model never runs your code itself.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/",
+        "title": "Develop generative AI apps that use tools"
+      }
     },
     {
       "id": "mq12",
@@ -1627,7 +1671,11 @@
       ],
       "a": 0,
       "s": "Runs Python in a sandbox",
-      "e": "Code Interpreter executes Python in a managed sandbox — computing over data, generating charts and files. It doesn't have general internet access during execution, and it does perform real calculations, not just handle uploads."
+      "e": "Code Interpreter executes Python in a managed sandbox — computing over data, generating charts and files. It doesn't have general internet access during execution, and it does perform real calculations, not just handle uploads.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/use-generative-ai-tools/",
+        "title": "Develop generative AI apps that use tools"
+      }
     },
     {
       "id": "mq13",
@@ -1642,7 +1690,11 @@
       ],
       "a": 0,
       "s": "Frames role, behavior, and constraints",
-      "e": "The system message sets persona, rules, and output expectations for the whole exchange. It doesn't retrain the model (that's fine-tuning) or fetch external data (that's a retrieval/tool step)."
+      "e": "The system message sets persona, rules, and output expectations for the whole exchange. It doesn't retrain the model (that's fine-tuning) or fetch external data (that's a retrieval/tool step).",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/",
+        "title": "Optimize generative AI model performance with Microsoft Foundry"
+      }
     },
     {
       "id": "mq14",
@@ -1657,7 +1709,11 @@
       ],
       "a": 0,
       "s": "When you need current or domain-specific data",
-      "e": "RAG's job is supplying facts the model doesn't already know from training — current or proprietary data. Consistent style/format is a prompt-engineering (or fine-tuning) concern, not a retrieval one."
+      "e": "RAG's job is supplying facts the model doesn't already know from training — current or proprietary data. Consistent style/format is a prompt-engineering (or fine-tuning) concern, not a retrieval one.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/",
+        "title": "Optimize generative AI model performance with Microsoft Foundry"
+      }
     },
     {
       "id": "mq15",
@@ -1672,7 +1728,11 @@
       ],
       "a": 0,
       "s": "Randomness of token selection",
-      "e": "Temperature controls how much the model favors its single most likely next token (low) versus a wider spread of plausible ones (high) — creativity/randomness, not length, speed, or tool access."
+      "e": "Temperature controls how much the model favors its single most likely next token (low) versus a wider spread of plausible ones (high) — creativity/randomness, not length, speed, or tool access.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/",
+        "title": "Optimize generative AI model performance with Microsoft Foundry"
+      }
     },
     {
       "id": "mq16",
@@ -1687,7 +1747,11 @@
       ],
       "a": 0,
       "s": "Behavioral/style consistency",
-      "e": "Fine-tuning updates model weights to make behavior, tone, and output format more consistent for a task. It doesn't give the model new facts — that's what grounding/RAG is for."
+      "e": "Fine-tuning updates model weights to make behavior, tone, and output format more consistent for a task. It doesn't give the model new facts — that's what grounding/RAG is for.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/",
+        "title": "Optimize generative AI model performance with Microsoft Foundry"
+      }
     },
     {
       "id": "mq17",
@@ -1702,7 +1766,11 @@
       ],
       "a": 0,
       "s": "Combine RAG + fine-tuning + prompt engineering",
-      "e": "Each technique solves a different problem: RAG supplies current catalog facts, fine-tuning bakes in consistent brand voice, and prompt engineering handles per-conversation instructions. Real applications usually combine, rather than pick just one."
+      "e": "Each technique solves a different problem: RAG supplies current catalog facts, fine-tuning bakes in consistent brand voice, and prompt engineering handles per-conversation instructions. Real applications usually combine, rather than pick just one.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/optimize-generative-ai-model-performance/",
+        "title": "Optimize generative AI model performance with Microsoft Foundry"
+      }
     },
     {
       "id": "mq18",
@@ -1717,7 +1785,11 @@
       ],
       "a": 0,
       "s": "Documents purpose, use, and potential harms",
-      "e": "An AI Impact Assessment is a planning artifact that records intended use, users, and foreseeable harms early, so mitigations can be designed in from the start — not a liability shield or a cost estimate."
+      "e": "An AI Impact Assessment is a planning artifact that records intended use, users, and foreseeable harms early, so mitigations can be designed in from the start — not a liability shield or a cost estimate.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/",
+        "title": "Implement a responsible generative AI solution in Microsoft Foundry"
+      }
     },
     {
       "id": "mq19",
@@ -1732,7 +1804,11 @@
       ],
       "a": 0,
       "s": "Guardrails",
-      "e": "Guardrails (content filters and related safety controls) operate at the safety-system layer, screening prompts and outputs regardless of which model is deployed. Fine-tuning changes model behavior but isn't itself a runtime safety control."
+      "e": "Guardrails (content filters and related safety controls) operate at the safety-system layer, screening prompts and outputs regardless of which model is deployed. Fine-tuning changes model behavior but isn't itself a runtime safety control.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/",
+        "title": "Implement a responsible generative AI solution in Microsoft Foundry"
+      }
     },
     {
       "id": "mq20",
@@ -1747,7 +1823,11 @@
       ],
       "a": 0,
       "s": "Catch issues before broad release",
-      "e": "Phased delivery — limited pilot, then wider rollout — lets you observe real behavior and catch problems while the blast radius is small. It doesn't replace the map/measure/mitigate/manage responsible-AI cycle; it's a delivery pattern that works alongside it."
+      "e": "Phased delivery — limited pilot, then wider rollout — lets you observe real behavior and catch problems while the blast radius is small. It doesn't replace the map/measure/mitigate/manage responsible-AI cycle; it's a delivery pattern that works alongside it.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/responsible-ai-studio/",
+        "title": "Implement a responsible generative AI solution in Microsoft Foundry"
+      }
     },
     {
       "id": "mq21",
@@ -1762,7 +1842,11 @@
       ],
       "a": 0,
       "s": "Managed tool calling, state, and infrastructure",
-      "e": "Agent Service takes over the plumbing — invoking tools, keeping conversation state, running infrastructure — that you'd otherwise hand-build against raw APIs. Model access and subscription requirements are unrelated to this benefit."
+      "e": "Agent Service takes over the plumbing — invoking tools, keeping conversation state, running infrastructure — that you'd otherwise hand-build against raw APIs. Model access and subscription requirements are unrelated to this benefit.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/",
+        "title": "Develop AI agents with Microsoft Foundry and Visual Studio Code"
+      }
     },
     {
       "id": "mq22",
@@ -1777,7 +1861,11 @@
       ],
       "a": 0,
       "s": "Automatically, via the Responses API",
-      "e": "Conversation state is kept server-side and managed automatically once you're working through the Responses API — you don't hand-roll history storage or wire up your own database."
+      "e": "Conversation state is kept server-side and managed automatically once you're working through the Responses API — you don't hand-roll history storage or wire up your own database.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/",
+        "title": "Develop AI agents with Microsoft Foundry and Visual Studio Code"
+      }
     },
     {
       "id": "mq23",
@@ -1792,7 +1880,11 @@
       ],
       "a": 0,
       "s": "Unrestricted data access is the bad practice",
-      "e": "Least-privilege access is a core agent-governance principle — giving an agent unrestricted access to all enterprise data is exactly what you should avoid. RBAC, prompt filtering, and logging are all genuinely recommended controls."
+      "e": "Least-privilege access is a core agent-governance principle — giving an agent unrestricted access to all enterprise data is exactly what you should avoid. RBAC, prompt filtering, and logging are all genuinely recommended controls.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/",
+        "title": "Develop AI agents with Microsoft Foundry and Visual Studio Code"
+      }
     },
     {
       "id": "mq24",
@@ -1807,7 +1899,11 @@
       ],
       "a": 0,
       "s": "The agent invokes it and incorporates the result",
-      "e": "By default an agent calls a tool it decides it needs, folds the result back into its reasoning, and continues — that automatic loop is the point of giving it tools. (Higher-risk actions can still be gated behind an approval workflow as a separate governance control.)"
+      "e": "By default an agent calls a tool it decides it needs, folds the result back into its reasoning, and continues — that automatic loop is the point of giving it tools. (Higher-risk actions can still be gated behind an approval workflow as a separate governance control.)",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-azure-vs-code/",
+        "title": "Develop AI agents with Microsoft Foundry and Visual Studio Code"
+      }
     },
     {
       "id": "mq25",
@@ -1822,7 +1918,11 @@
       ],
       "a": 0,
       "s": "Callable functions extending the agent",
-      "e": "Custom tools are functions you define and register so the agent can call them — reaching your own APIs or logic beyond what built-in tools cover. They aren't an IDE extension or a model variant."
+      "e": "Custom tools are functions you define and register so the agent can call them — reaching your own APIs or logic beyond what built-in tools cover. They aren't an IDE extension or a model variant.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/",
+        "title": "Integrate custom tools into your agent"
+      }
     },
     {
       "id": "mq26",
@@ -1837,7 +1937,11 @@
       ],
       "a": 0,
       "s": "Add it as an OpenAPI spec tool",
-      "e": "Agents can consume an existing OpenAPI 3.0 spec directly as a tool definition, so there's no need to rewrite the service as a hard-coded function or manually paste its schema into instructions."
+      "e": "Agents can consume an existing OpenAPI 3.0 spec directly as a tool definition, so there's no need to rewrite the service as a hard-coded function or manually paste its schema into instructions.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/",
+        "title": "Integrate custom tools into your agent"
+      }
     },
     {
       "id": "mq27",
@@ -1852,7 +1956,11 @@
       ],
       "a": 0,
       "s": "Function calling",
-      "e": "Function calling is exactly the mechanism for exposing a function that lives in your own application code to the agent. Code Interpreter runs sandboxed Python the agent writes itself, not your existing function."
+      "e": "Function calling is exactly the mechanism for exposing a function that lives in your own application code to the agent. Code Interpreter runs sandboxed Python the agent writes itself, not your existing function.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/build-agent-with-custom-tools/",
+        "title": "Integrate custom tools into your agent"
+      }
     },
     {
       "id": "mq28",
@@ -1867,7 +1975,11 @@
       ],
       "a": 0,
       "s": "Hosts and exposes tool definitions",
-      "e": "An MCP server's job is to host tool definitions so a client (the agent side) can discover and invoke them — it isn't itself running the agent's reasoning or acting as a general network manager."
+      "e": "An MCP server's job is to host tool definitions so a client (the agent side) can discover and invoke them — it isn't itself running the agent's reasoning or acting as a general network manager.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/",
+        "title": "Integrate MCP Tools with Azure AI Agents"
+      }
     },
     {
       "id": "mq29",
@@ -1882,7 +1994,11 @@
       ],
       "a": 0,
       "s": "session.list_tools()",
-      "e": "MCP clients query the server's live tool catalog through a call like session.list_tools(), rather than relying on a static file or a documentation page that could drift out of sync with what the server actually offers."
+      "e": "MCP clients query the server's live tool catalog through a call like session.list_tools(), rather than relying on a static file or a documentation page that could drift out of sync with what the server actually offers.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/",
+        "title": "Integrate MCP Tools with Azure AI Agents"
+      }
     },
     {
       "id": "mq30",
@@ -1897,7 +2013,11 @@
       ],
       "a": 0,
       "s": "Non-blocking tool invocation",
-      "e": "Wrapping MCP tool calls as async lets the agent invoke them without blocking the rest of its execution — important when tools involve network round-trips to the MCP server."
+      "e": "Wrapping MCP tool calls as async lets the agent invoke them without blocking the rest of its execution — important when tools involve network round-trips to the MCP server.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/connect-agent-to-mcp-tools/",
+        "title": "Integrate MCP Tools with Azure AI Agents"
+      }
     },
     {
       "id": "mq31",
@@ -1912,7 +2032,11 @@
       ],
       "a": 0,
       "s": "Grounded, source-transparent answers",
-      "e": "RAG's value is grounding — answers backed by current organizational content with traceable sources — not replacing the language model or auto-retraining it whenever documents change."
+      "e": "RAG's value is grounding — answers backed by current organizational content with traceable sources — not replacing the language model or auto-retraining it whenever documents change.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/",
+        "title": "Build knowledge-enhanced AI agents with Foundry IQ"
+      }
     },
     {
       "id": "mq32",
@@ -1927,7 +2051,11 @@
       ],
       "a": 0,
       "s": "SharePoint Remote — live, governed queries",
-      "e": "SharePoint Remote queries content live, preserving Microsoft 365 permissions and governance at query time. An indexed/pre-processed copy trades that real-time governance for retrieval speed."
+      "e": "SharePoint Remote queries content live, preserving Microsoft 365 permissions and governance at query time. An indexed/pre-processed copy trades that real-time governance for retrieval speed.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/",
+        "title": "Build knowledge-enhanced AI agents with Foundry IQ"
+      }
     },
     {
       "id": "mq33",
@@ -1942,7 +2070,11 @@
       ],
       "a": 0,
       "s": "Boost important fields in ranking",
-      "e": "Scoring profiles let you weight certain fields or attributes more heavily in ranking, so the most relevant results surface first — a relevance-tuning tool, not an encryption or access-control mechanism."
+      "e": "Scoring profiles let you weight certain fields or attributes more heavily in ranking, so the most relevant results surface first — a relevance-tuning tool, not an encryption or access-control mechanism.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/",
+        "title": "Build knowledge-enhanced AI agents with Foundry IQ"
+      }
     },
     {
       "id": "mq34",
@@ -1957,7 +2089,11 @@
       ],
       "a": 0,
       "s": "Prevents ungrounded, uncited answers",
-      "e": "Explicit retrieval instructions push the agent to actually use the knowledge base and cite it, instead of quietly falling back on what it learned in training — a real failure mode if left unaddressed. They don't change the underlying ranking algorithm or auto-update content."
+      "e": "Explicit retrieval instructions push the agent to actually use the knowledge base and cite it, instead of quietly falling back on what it learned in training — a real failure mode if left unaddressed. They don't change the underlying ranking algorithm or auto-update content.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/",
+        "title": "Build knowledge-enhanced AI agents with Foundry IQ"
+      }
     },
     {
       "id": "mq35",
@@ -1972,7 +2108,11 @@
       ],
       "a": 0,
       "s": "Azure Bot Service",
-      "e": "Publishing a Foundry agent to Teams provisions an Azure Bot Service resource behind the scenes, since that's the standard integration surface for Teams-facing bots."
+      "e": "Publishing a Foundry agent to Teams provisions an Azure Bot Service resource behind the scenes, since that's the standard integration surface for Teams-facing bots.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/",
+        "title": "Integrate your agent with Microsoft 365"
+      }
     },
     {
       "id": "mq36",
@@ -1987,7 +2127,11 @@
       ],
       "a": 0,
       "s": "Org scope needs admin approval",
-      "e": "Organization-wide publishing goes through an admin approval gate before every user in the tenant can reach the agent; shared scope is a lighter-weight distribution option without that org-wide review step."
+      "e": "Organization-wide publishing goes through an admin approval gate before every user in the tenant can reach the agent; shared scope is a lighter-weight distribution option without that org-wide review step.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/",
+        "title": "Integrate your agent with Microsoft 365"
+      }
     },
     {
       "id": "mq37",
@@ -2002,7 +2146,11 @@
       ],
       "a": 0,
       "s": "Permissions transfer automatically",
-      "e": "Publishing carries the agent's existing tool permissions over to the Teams-published version automatically — you don't need to manually reconfigure access or reassign a new identity."
+      "e": "Publishing carries the agent's existing tool permissions over to the Teams-published version automatically — you don't need to manually reconfigure access or reassign a new identity.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/",
+        "title": "Integrate your agent with Microsoft 365"
+      }
     },
     {
       "id": "mq38",
@@ -2017,7 +2165,11 @@
       ],
       "a": 0,
       "s": "CLI + MCP server for M365 data access",
-      "e": "Work IQ is the CLI/MCP-server layer that lets agents reach Microsoft 365 workplace data with proper governance — not an analytics model, a Teams replacement, or an IDE extension."
+      "e": "Work IQ is the CLI/MCP-server layer that lets agents reach Microsoft 365 workplace data with proper governance — not an analytics model, a Teams replacement, or an IDE extension.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/",
+        "title": "Integrate your agent with Microsoft 365"
+      }
     },
     {
       "id": "mq39",
@@ -2032,7 +2184,11 @@
       ],
       "a": 0,
       "s": "When you need customization beyond direct publish",
-      "e": "Direct publishing from Foundry covers the common case; the Agents Toolkit is for when you need more control — custom single sign-on, middleware, or promoting through multiple environments — not a blanket replacement for every deployment."
+      "e": "Direct publishing from Foundry covers the common case; the Agents Toolkit is for when you need more control — custom single sign-on, middleware, or promoting through multiple environments — not a blanket replacement for every deployment.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/integrate-foundry-agent-with-m365/",
+        "title": "Integrate your agent with Microsoft 365"
+      }
     },
     {
       "id": "mq40",
@@ -2047,7 +2203,11 @@
       ],
       "a": 0,
       "s": "Agent node",
-      "e": "An Agent node is the workflow building block that calls into a specific agent. Logic and data-transformation nodes handle branching and reshaping data, not invoking an agent."
+      "e": "An Agent node is the workflow building block that calls into a specific agent. Logic and data-transformation nodes handle branching and reshaping data, not invoking an agent.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/",
+        "title": "Build agent-driven workflows using Microsoft Foundry"
+      }
     },
     {
       "id": "mq41",
@@ -2062,7 +2222,11 @@
       ],
       "a": 0,
       "s": "For-Each node",
-      "e": "A For-Each node loops the same set of steps over a collection of items — exactly what avoids hand-duplicating the same nodes once per ticket. If/Else handles branching, not iteration."
+      "e": "A For-Each node loops the same set of steps over a collection of items — exactly what avoids hand-duplicating the same nodes once per ticket. If/Else handles branching, not iteration.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/",
+        "title": "Build agent-driven workflows using Microsoft Foundry"
+      }
     },
     {
       "id": "mq42",
@@ -2077,7 +2241,11 @@
       ],
       "a": 0,
       "s": "Predictable data driving variables/conditions/steps",
-      "e": "Structured outputs give a workflow something reliable to act on — stored in variables, checked in conditions, used to trigger the next step — rather than replacing control-flow nodes or being purely for logging."
+      "e": "Structured outputs give a workflow something reliable to act on — stored in variables, checked in conditions, used to trigger the next step — rather than replacing control-flow nodes or being purely for logging.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/build-agent-workflows-microsoft-foundry/",
+        "title": "Build agent-driven workflows using Microsoft Foundry"
+      }
     },
     {
       "id": "mq43",
@@ -2092,7 +2260,11 @@
       ],
       "a": 0,
       "s": "AzureAIAgentClient → ChatAgent → AgentThread",
-      "e": "The Agent Framework's flow is: build a client, define a ChatAgent with its instructions and tools, then create an AgentThread to carry a conversation — the model and tools live on the ChatAgent, not the thread."
+      "e": "The Agent Framework's flow is: build a client, define a ChatAgent with its instructions and tools, then create an AgentThread to carry a conversation — the model and tools live on the ChatAgent, not the thread.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/",
+        "title": "Develop an AI agent with Microsoft Agent Framework"
+      }
     },
     {
       "id": "mq44",
@@ -2107,7 +2279,11 @@
       ],
       "a": 0,
       "s": "AgentThread",
-      "e": "AgentThread is the object responsible for holding conversation state and message history. ChatAgent defines behavior (instructions, tools); AzureAIAgentClient is the connection to the Foundry project."
+      "e": "AgentThread is the object responsible for holding conversation state and message history. ChatAgent defines behavior (instructions, tools); AzureAIAgentClient is the connection to the Foundry project.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/",
+        "title": "Develop an AI agent with Microsoft Agent Framework"
+      }
     },
     {
       "id": "mq45",
@@ -2122,7 +2298,11 @@
       ],
       "a": 0,
       "s": "Typed Python functions passed as tools",
-      "e": "Custom functionality is added the same way as function calling generally: well-typed, well-described Python functions handed to the agent's tools parameter — no portal configuration or model surgery involved."
+      "e": "Custom functionality is added the same way as function calling generally: well-typed, well-described Python functions handed to the agent's tools parameter — no portal configuration or model surgery involved.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/",
+        "title": "Develop an AI agent with Microsoft Agent Framework"
+      }
     },
     {
       "id": "mq46",
@@ -2137,7 +2317,11 @@
       ],
       "a": 0,
       "s": "Define your agents first",
-      "e": "Before you can orchestrate agents together, you first define each agent and what it can do — the orchestration pattern (sequential, group chat, etc.) and the runtime come after that foundation is in place."
+      "e": "Before you can orchestrate agents together, you first define each agent and what it can do — the orchestration pattern (sequential, group chat, etc.) and the runtime come after that foundation is in place.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/",
+        "title": "Orchestrate a multi-agent solution using the Microsoft Agent Framework"
+      }
     },
     {
       "id": "mq47",
@@ -2152,7 +2336,11 @@
       ],
       "a": 0,
       "s": "Group Chat",
-      "e": "Group Chat orchestration lets multiple agents converse with each other in a shared thread, which fits open-ended brainstorming. Sequential and concurrent patterns are for ordered or parallel task execution, not free-form discussion."
+      "e": "Group Chat orchestration lets multiple agents converse with each other in a shared thread, which fits open-ended brainstorming. Sequential and concurrent patterns are for ordered or parallel task execution, not free-form discussion.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/",
+        "title": "Orchestrate a multi-agent solution using the Microsoft Agent Framework"
+      }
     },
     {
       "id": "mq48",
@@ -2167,7 +2355,11 @@
       ],
       "a": 0,
       "s": "Handoff",
-      "e": "Handoff orchestration is specifically about passing control from one agent to another as context changes — e.g., triage to specialist — which is different from running agents in parallel (concurrent) or strict order (sequential)."
+      "e": "Handoff orchestration is specifically about passing control from one agent to another as context changes — e.g., triage to specialist — which is different from running agents in parallel (concurrent) or strict order (sequential).",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/orchestrate-semantic-kernel-multi-agent-solution/",
+        "title": "Orchestrate a multi-agent solution using the Microsoft Agent Framework"
+      }
     },
     {
       "id": "mq49",
@@ -2182,7 +2374,11 @@
       ],
       "a": 0,
       "s": "Routes requests between clients and agents",
-      "e": "An A2A server's job is routing and connecting — mediating requests between a client and the remote agents it can reach — not running the agent's own business logic itself."
+      "e": "An A2A server's job is routing and connecting — mediating requests between a client and the remote agents it can reach — not running the agent's own business logic itself.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/",
+        "title": "Discover Azure AI Agents with A2A"
+      }
     },
     {
       "id": "mq50",
@@ -2197,7 +2393,11 @@
       ],
       "a": 0,
       "s": "Processes requests, generates responses/events",
-      "e": "The Agent Executor is where the actual work happens — taking an incoming request and producing a response or event. Network management and monitoring UIs are separate concerns handled elsewhere in the stack."
+      "e": "The Agent Executor is where the actual work happens — taking an incoming request and producing a response or event. Network management and monitoring UIs are separate concerns handled elsewhere in the stack.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/",
+        "title": "Discover Azure AI Agents with A2A"
+      }
     },
     {
       "id": "mq51",
@@ -2212,7 +2412,11 @@
       ],
       "a": 0,
       "s": "Metadata: capabilities and functions",
-      "e": "An agent card is a discovery artifact — metadata describing what an agent can do — which is how other agents or clients find out its capabilities before invoking it. It isn't a credential, a dashboard, or a log."
+      "e": "An agent card is a discovery artifact — metadata describing what an agent can do — which is how other agents or clients find out its capabilities before invoking it. It isn't a credential, a dashboard, or a log.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/discover-agents-with-a2a/",
+        "title": "Discover Azure AI Agents with A2A"
+      }
     },
     {
       "id": "mq52",
@@ -2227,7 +2431,11 @@
       ],
       "a": 0,
       "s": "Named entity recognition",
-      "e": "Named entity recognition finds and types exactly this kind of content — people, places, dates — for indexing. PII extraction is built for redacting personal data, a different goal even though some entity types overlap."
+      "e": "Named entity recognition finds and types exactly this kind of content — people, places, dates — for indexing. PII extraction is built for redacting personal data, a different goal even though some entity types overlap.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-ai-language/",
+        "title": "Analyze text with Azure Language in Foundry Tools"
+      }
     },
     {
       "id": "mq53",
@@ -2242,7 +2450,11 @@
       ],
       "a": 0,
       "s": "PII detection and redaction",
-      "e": "PII detection and redaction is purpose-built for finding and removing personal details before publishing text — language detection and summarization don't address the privacy requirement at all."
+      "e": "PII detection and redaction is purpose-built for finding and removing personal details before publishing text — language detection and summarization don't address the privacy requirement at all.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/analyze-text-ai-language/",
+        "title": "Analyze text with Azure Language in Foundry Tools"
+      }
     },
     {
       "id": "mq54",
@@ -2257,7 +2469,11 @@
       ],
       "a": 0,
       "s": "Exposes Azure Language as MCP tools",
-      "e": "The Language MCP server's job is making Azure Language's text analysis capabilities discoverable and callable as MCP tools for an agent — not training models or managing deployments."
+      "e": "The Language MCP server's job is making Azure Language's text analysis capabilities discoverable and callable as MCP tools for an agent — not training models or managing deployments.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/",
+        "title": "Develop a text analysis agent with the Azure Language MCP server"
+      }
     },
     {
       "id": "mq55",
@@ -2272,7 +2488,11 @@
       ],
       "a": 0,
       "s": "Matches prompt intent to tool descriptions",
-      "e": "The agent itself reasons over the tool descriptions the MCP server exposes and picks the matching one — no hand-written routing logic from the developer, and the server itself doesn't do the routing."
+      "e": "The agent itself reasons over the tool descriptions the MCP server exposes and picks the matching one — no hand-written routing logic from the developer, and the server itself doesn't do the routing.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/",
+        "title": "Develop a text analysis agent with the Azure Language MCP server"
+      }
     },
     {
       "id": "mq56",
@@ -2287,7 +2507,11 @@
       ],
       "a": 0,
       "s": "agent_reference in extra_body",
-      "e": "You keep calling the same OpenAI-compatible client and target a specific agent through the agent_reference field in extra_body, rather than switching to a different client type or repurposing the model parameter."
+      "e": "You keep calling the same OpenAI-compatible client and target a specific agent through the agent_reference field in extra_body, rather than switching to a different client type or repurposing the model parameter.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/",
+        "title": "Develop a text analysis agent with the Azure Language MCP server"
+      }
     },
     {
       "id": "mq57",
@@ -2302,7 +2526,11 @@
       ],
       "a": 0,
       "s": "Key-based (Ocp-Apim-Subscription-Key)",
-      "e": "The Language MCP server connection uses the standard Cognitive Services key header (Ocp-Apim-Subscription-Key) for authentication — simpler than a full OAuth client-certificate flow, and not anonymous."
+      "e": "The Language MCP server connection uses the standard Cognitive Services key header (Ocp-Apim-Subscription-Key) for authentication — simpler than a full OAuth client-certificate flow, and not anonymous.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-text-analysis-agent-language-mcp/",
+        "title": "Develop a text analysis agent with the Azure Language MCP server"
+      }
     },
     {
       "id": "mq58",
@@ -2317,7 +2545,11 @@
       ],
       "a": 0,
       "s": "gpt-4o-mini-transcribe",
-      "e": "The -transcribe variant is built for speech-to-text. The -tts variant runs the opposite direction, turning text into speech — easy to mix up by name alone."
+      "e": "The -transcribe variant is built for speech-to-text. The -tts variant runs the opposite direction, turning text into speech — easy to mix up by name alone.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-audio-apps/",
+        "title": "Develop a speech-capable generative AI application"
+      }
     },
     {
       "id": "mq59",
@@ -2332,7 +2564,11 @@
       ],
       "a": 0,
       "s": "gpt-4o-mini-tts",
-      "e": "The -tts variant generates spoken audio from text. -transcribe does the reverse (audio to text) — the naming keeps the two directions distinct."
+      "e": "The -tts variant generates spoken audio from text. -transcribe does the reverse (audio to text) — the naming keeps the two directions distinct.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-audio-apps/",
+        "title": "Develop a speech-capable generative AI application"
+      }
     },
     {
       "id": "mq60",
@@ -2347,7 +2583,11 @@
       ],
       "a": 0,
       "s": "Endpoint + key",
-      "e": "The Speech SDK, like most Foundry Tools, is wired up with the resource's endpoint and a key (or a keyless credential). Subscription/resource-group identifiers are Azure-management concepts, not what the SDK itself needs to make calls."
+      "e": "The Speech SDK, like most Foundry Tools, is wired up with the resource's endpoint and a key (or a keyless credential). Subscription/resource-group identifiers are Azure-management concepts, not what the SDK itself needs to make calls.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/",
+        "title": "Create speech-enabled apps with Azure Speech in Microsoft Foundry Tools"
+      }
     },
     {
       "id": "mq61",
@@ -2362,7 +2602,11 @@
       ],
       "a": 0,
       "s": "AudioConfig",
-      "e": "AudioConfig specifies the audio source — a file, the microphone, or a stream. SpeechConfig carries resource/auth and language settings; SpeechRecognizer is the object that actually performs recognition using both."
+      "e": "AudioConfig specifies the audio source — a file, the microphone, or a stream. SpeechConfig carries resource/auth and language settings; SpeechRecognizer is the object that actually performs recognition using both.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/",
+        "title": "Create speech-enabled apps with Azure Speech in Microsoft Foundry Tools"
+      }
     },
     {
       "id": "mq62",
@@ -2377,7 +2621,11 @@
       ],
       "a": 0,
       "s": "speech_synthesis_voice_name on SpeechConfig",
-      "e": "Voice selection is a property on SpeechConfig (speech_synthesis_voice_name). Output format controls the audio encoding, not which voice speaks, and AudioConfig is about the audio source/destination, not voice choice."
+      "e": "Voice selection is a property on SpeechConfig (speech_synthesis_voice_name). Output format controls the audio encoding, not which voice speaks, and AudioConfig is about the audio source/destination, not voice choice.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/create-speech-enabled-apps/",
+        "title": "Create speech-enabled apps with Azure Speech in Microsoft Foundry Tools"
+      }
     },
     {
       "id": "mq63",
@@ -2392,7 +2640,11 @@
       ],
       "a": 0,
       "s": "Speech recognition + speech synthesis",
-      "e": "The Speech MCP server's whole purpose is exposing the two core speech directions — recognition and synthesis — as callable MCP tools. Translation, NER, and OCR belong to other services entirely."
+      "e": "The Speech MCP server's whole purpose is exposing the two core speech directions — recognition and synthesis — as callable MCP tools. Translation, NER, and OCR belong to other services entirely.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/",
+        "title": "Develop a speech agent with the Azure Speech MCP server"
+      }
     },
     {
       "id": "mq64",
@@ -2407,7 +2659,11 @@
       ],
       "a": 0,
       "s": "Stores input/output audio files",
-      "e": "Audio in and out needs somewhere to live during processing, so the Speech MCP server relies on Blob Storage for that — not for holding agent configuration or tool metadata, which live elsewhere."
+      "e": "Audio in and out needs somewhere to live during processing, so the Speech MCP server relies on Blob Storage for that — not for holding agent configuration or tool metadata, which live elsewhere.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/",
+        "title": "Develop a speech agent with the Azure Speech MCP server"
+      }
     },
     {
       "id": "mq65",
@@ -2422,7 +2678,11 @@
       ],
       "a": 0,
       "s": "Resource key + blob container SAS URL",
-      "e": "The connection needs both a key for the Foundry/Speech resource itself and a SAS URL so the server can read and write audio files in blob storage — two distinct credentials for two distinct responsibilities."
+      "e": "The connection needs both a key for the Foundry/Speech resource itself and a SAS URL so the server can read and write audio files in blob storage — two distinct credentials for two distinct responsibilities.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/",
+        "title": "Develop a speech agent with the Azure Speech MCP server"
+      }
     },
     {
       "id": "mq66",
@@ -2437,7 +2697,11 @@
       ],
       "a": 0,
       "s": "Name the voice in your prompt",
-      "e": "Since the agent interprets natural-language requests, you can simply ask for a specific voice by name in your prompt — no separate server configuration or environment variable required for a per-request choice."
+      "e": "Since the agent interprets natural-language requests, you can simply ask for a specific voice by name in your prompt — no separate server configuration or environment variable required for a per-request choice.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-speech-agent-speech-mcp/",
+        "title": "Develop a speech agent with the Azure Speech MCP server"
+      }
     },
     {
       "id": "mq67",
@@ -2452,7 +2716,11 @@
       ],
       "a": 0,
       "s": "Entra ID (keyless) + API key",
-      "e": "Voice Live supports the same two-track pattern as most Foundry Tools: keyless Entra ID auth as the recommended path, with an API key as the fallback — not OAuth/JWT or basic auth."
+      "e": "Voice Live supports the same two-track pattern as most Foundry Tools: keyless Entra ID auth as the recommended path, with an API key as the fallback — not OAuth/JWT or basic auth.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/",
+        "title": "Develop an Azure Speech Voice Live Agent in Microsoft Foundry"
+      }
     },
     {
       "id": "mq68",
@@ -2467,7 +2735,11 @@
       ],
       "a": 0,
       "s": "WebRTC",
-      "e": "WebRTC is the real-time streaming protocol used for avatar video/audio in Voice Live, suited to low-latency bidirectional media — not a general-purpose protocol like HTTP/2 or gRPC."
+      "e": "WebRTC is the real-time streaming protocol used for avatar video/audio in Voice Live, suited to low-latency bidirectional media — not a general-purpose protocol like HTTP/2 or gRPC.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/",
+        "title": "Develop an Azure Speech Voice Live Agent in Microsoft Foundry"
+      }
     },
     {
       "id": "mq69",
@@ -2482,7 +2754,11 @@
       ],
       "a": 0,
       "s": "The Voice Live playground",
-      "e": "Foundry provides a dedicated Voice Live playground under Azure Speech in Foundry Tools specifically for configuring and testing this integration in the portal, not just via raw API/SDK access."
+      "e": "Foundry provides a dedicated Voice Live playground under Azure Speech in Foundry Tools specifically for configuring and testing this integration in the portal, not just via raw API/SDK access.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/",
+        "title": "Develop an Azure Speech Voice Live Agent in Microsoft Foundry"
+      }
     },
     {
       "id": "mq70",
@@ -2497,7 +2773,11 @@
       ],
       "a": 0,
       "s": "Handle the speech-started server event",
-      "e": "Voice Live emits a server event when it detects the user starting to speak; handling that event is how you interrupt (barge in on) ongoing playback, rather than resetting the whole session."
+      "e": "Voice Live emits a server event when it detects the user starting to speak; handling that event is how you interrupt (barge in on) ongoing playback, rather than resetting the whole session.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-voice-live-agent/",
+        "title": "Develop an Azure Speech Voice Live Agent in Microsoft Foundry"
+      }
     },
     {
       "id": "mq71",
@@ -2512,7 +2792,11 @@
       ],
       "a": 0,
       "s": "translate",
-      "e": "translate() converts meaning between languages (Chinese to English). transliterate() instead converts the same language's text between scripts — it wouldn't change the meaning to English at all."
+      "e": "translate() converts meaning between languages (Chinese to English). transliterate() instead converts the same language's text between scripts — it wouldn't change the meaning to English at all.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/",
+        "title": "Translate text and speech with Microsoft Foundry Tools"
+      }
     },
     {
       "id": "mq72",
@@ -2527,7 +2811,11 @@
       ],
       "a": 0,
       "s": "transliterate",
-      "e": "Converting the same word between scripts (Cyrillic to Latin) without changing its meaning or language is transliteration, not translation — translate() would instead produce the English word \"thank you\"."
+      "e": "Converting the same word between scripts (Cyrillic to Latin) without changing its meaning or language is transliteration, not translation — translate() would instead produce the English word \"thank you\".",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/",
+        "title": "Translate text and speech with Microsoft Foundry Tools"
+      }
     },
     {
       "id": "mq73",
@@ -2542,7 +2830,11 @@
       ],
       "a": 0,
       "s": "SpeechTranslationConfig",
-      "e": "SpeechTranslationConfig extends the base config specifically to add target translation languages. Plain SpeechConfig covers recognition/synthesis settings but has no notion of a translation target."
+      "e": "SpeechTranslationConfig extends the base config specifically to add target translation languages. Plain SpeechConfig covers recognition/synthesis settings but has no notion of a translation target.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/translate-text-speech/",
+        "title": "Translate text and speech with Microsoft Foundry Tools"
+      }
     },
     {
       "id": "mq74",
@@ -2557,7 +2849,11 @@
       ],
       "a": 0,
       "s": "Multimodal models",
-      "e": "Multimodal models accept image input alongside text and reason over both. Embedding models produce vectors for similarity search — they don't 'respond' to a visual prompt in conversation."
+      "e": "Multimodal models accept image input alongside text and reason over both. Embedding models produce vectors for similarity search — they don't 'respond' to a visual prompt in conversation.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-vision-apps/",
+        "title": "Develop a vision-enabled generative AI application"
+      }
     },
     {
       "id": "mq75",
@@ -2572,7 +2868,11 @@
       ],
       "a": 0,
       "s": "One multi-part user message: text + image",
-      "e": "A single user message can carry multiple content parts — text and image together — so the model sees both in the same turn, rather than needing two separate prompts or misusing the system message for image content."
+      "e": "A single user message can carry multiple content parts — text and image together — so the model sees both in the same turn, rather than needing two separate prompts or misusing the system message for image content.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-vision-apps/",
+        "title": "Develop a vision-enabled generative AI application"
+      }
     },
     {
       "id": "mq76",
@@ -2587,7 +2887,11 @@
       ],
       "a": 0,
       "s": "URL or binary data",
-      "e": "Multimodal messages accept an image either by reference (a URL) or inline as binary/base64 data — both paths are supported, not just one."
+      "e": "Multimodal messages accept an image either by reference (a URL) or inline as binary/base64 data — both paths are supported, not just one.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/develop-generative-ai-vision-apps/",
+        "title": "Develop a vision-enabled generative AI application"
+      }
     },
     {
       "id": "mq77",
@@ -2602,7 +2906,11 @@
       ],
       "a": 0,
       "s": "Text to image",
-      "e": "Image-generation models are catalogued under the text-to-image inference task — the direction from a written prompt to a picture. Image-to-text is the reverse (captioning), a different task filter entirely."
+      "e": "Image-generation models are catalogued under the text-to-image inference task — the direction from a written prompt to a picture. Image-to-text is the reverse (captioning), a different task filter entirely.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/generate-images-azure-openai/",
+        "title": "Generate images with AI"
+      }
     },
     {
       "id": "mq78",
@@ -2617,7 +2925,11 @@
       ],
       "a": 0,
       "s": "The Image API",
-      "e": "Image-generation models are called through the dedicated Image API. Video generation has its own separate API surface, and there's no generic 'Graphics' API."
+      "e": "Image-generation models are called through the dedicated Image API. Video generation has its own separate API surface, and there's no generic 'Graphics' API.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/generate-images-azure-openai/",
+        "title": "Generate images with AI"
+      }
     },
     {
       "id": "mq79",
@@ -2632,7 +2944,11 @@
       ],
       "a": 0,
       "s": "4, 8, or 12 seconds",
-      "e": "Sora 2 in Foundry generates clips at fixed duration options — 4, 8, or 12 seconds — rather than an arbitrary continuous range."
+      "e": "Sora 2 in Foundry generates clips at fixed duration options — 4, 8, or 12 seconds — rather than an arbitrary continuous range.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/",
+        "title": "Generate videos with Microsoft Foundry"
+      }
     },
     {
       "id": "mq80",
@@ -2647,7 +2963,11 @@
       ],
       "a": 0,
       "s": "Resolution must match the target video size",
-      "e": "A reference image used to seed or guide Sora 2 generation needs to match the output video's resolution — a technical constraint of how the model conditions on it, unrelated to file size or subject matter."
+      "e": "A reference image used to seed or guide Sora 2 generation needs to match the output video's resolution — a technical constraint of how the model conditions on it, unrelated to file size or subject matter.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/",
+        "title": "Generate videos with Microsoft Foundry"
+      }
     },
     {
       "id": "mq81",
@@ -2662,7 +2982,11 @@
       ],
       "a": 0,
       "s": "Targeted edits without full regeneration",
-      "e": "Remix lets you adjust specific aspects of a video you already generated — a scene detail, an element — without discarding it and starting over, similar in spirit to inpainting for images but applied to video."
+      "e": "Remix lets you adjust specific aspects of a video you already generated — a scene detail, an element — without discarding it and starting over, similar in spirit to inpainting for images but applied to video.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/generate-video-with-foundry/",
+        "title": "Generate videos with Microsoft Foundry"
+      }
     },
     {
       "id": "mq82",
@@ -2677,7 +3001,11 @@
       ],
       "a": 0,
       "s": "Locates the source region behind a value",
-      "e": "Grounding points to exactly where in the content — which region of an image, frame, or page — an extracted value came from, which is what makes human review and audit practical."
+      "e": "Grounding points to exactly where in the content — which region of an image, frame, or page — an extracted value came from, which is what makes human review and audit practical.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/",
+        "title": "Analyze images with Content Understanding"
+      }
     },
     {
       "id": "mq83",
@@ -2692,7 +3020,11 @@
       ],
       "a": 0,
       "s": "High confidence — safe for automation",
-      "e": "A confidence score close to 1.0 signals the extracted value is reliable enough to accept automatically, versus routing lower-confidence extractions to a human reviewer. It says nothing about the extraction method used."
+      "e": "A confidence score close to 1.0 signals the extracted value is reliable enough to accept automatically, versus routing lower-confidence extractions to a human reviewer. It says nothing about the extraction method used.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/",
+        "title": "Analyze images with Content Understanding"
+      }
     },
     {
       "id": "mq84",
@@ -2707,7 +3039,11 @@
       ],
       "a": 0,
       "s": "prebuilt-receipt",
-      "e": "The prebuilt-receipt analyzer is purpose-built for retail receipt fields like vendor and totals. prebuilt-invoice targets a different (though related) document type with its own field set."
+      "e": "The prebuilt-receipt analyzer is purpose-built for retail receipt fields like vendor and totals. prebuilt-invoice targets a different (though related) document type with its own field set.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/analyze-images-with-content-understanding/",
+        "title": "Analyze images with Content Understanding"
+      }
     },
     {
       "id": "mq85",
@@ -2722,7 +3058,11 @@
       ],
       "a": 0,
       "s": "Multimodal extraction analyzers",
-      "e": "Content Understanding's whole premise is building analyzers across all four modalities — documents, images, video, audio — not translation, image generation, or plain-text web indexing."
+      "e": "Content Understanding's whole premise is building analyzers across all four modalities — documents, images, video, audio — not translation, image generation, or plain-text web indexing.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/",
+        "title": "Create a multimodal analysis solution with Azure Content Understanding"
+      }
     },
     {
       "id": "mq86",
@@ -2737,7 +3077,11 @@
       ],
       "a": 0,
       "s": "Content Understanding Studio",
-      "e": "Content Understanding has its own dedicated portal experience — Content Understanding Studio — distinct from Visual Studio, Azure ML studio, or Document Intelligence Studio (which targets a related but separate service)."
+      "e": "Content Understanding has its own dedicated portal experience — Content Understanding Studio — distinct from Visual Studio, Azure ML studio, or Document Intelligence Studio (which targets a related but separate service).",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/",
+        "title": "Create a multimodal analysis solution with Azure Content Understanding"
+      }
     },
     {
       "id": "mq87",
@@ -2752,7 +3096,11 @@
       ],
       "a": 0,
       "s": "A schema",
-      "e": "You describe the fields you want as a schema, which the analyzer then extracts, generates, or classifies against — indexes and clusters are concepts from search and data science, not how Content Understanding is configured."
+      "e": "You describe the fields you want as a schema, which the analyzer then extracts, generates, or classifies against — indexes and clusters are concepts from search and data science, not how Content Understanding is configured.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai/",
+        "title": "Create a multimodal analysis solution with Azure Content Understanding"
+      }
     },
     {
       "id": "mq88",
@@ -2767,7 +3115,11 @@
       ],
       "a": 0,
       "s": "Endpoint + key",
-      "e": "Like other Foundry Tools APIs, the Content Understanding API is called using the resource's endpoint and a key (or keyless credential) — not management-plane identifiers like a resource group or subscription ID."
+      "e": "Like other Foundry Tools APIs, the Content Understanding API is called using the resource's endpoint and a key (or keyless credential) — not management-plane identifiers like a resource group or subscription ID.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/",
+        "title": "Create an Azure Content Understanding client application"
+      }
     },
     {
       "id": "mq89",
@@ -2782,7 +3134,11 @@
       ],
       "a": 0,
       "s": "The analyzer's name",
-      "e": "Calling analyze requires naming which analyzer configuration to run against the content — the resource name and subscription ID are connection-level details set up earlier, not per-call parameters."
+      "e": "Calling analyze requires naming which analyzer configuration to run against the content — the resource name and subscription ID are connection-level details set up earlier, not per-call parameters.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/",
+        "title": "Create an Azure Content Understanding client application"
+      }
     },
     {
       "id": "mq90",
@@ -2797,7 +3153,11 @@
       ],
       "a": 0,
       "s": "Type-specific values",
-      "e": "Extracted fields come back typed to match what was requested — a number, a date, a string, and so on — rather than everything flattened to plain strings or bundled into one undifferentiated blob."
+      "e": "Extracted fields come back typed to match what was requested — a number, a date, a string, and so on — rather than everything flattened to plain strings or bundled into one undifferentiated blob.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/analyze-content-ai-api/",
+        "title": "Create an Azure Content Understanding client application"
+      }
     },
     {
       "id": "mq91",
@@ -2812,7 +3172,11 @@
       ],
       "a": 0,
       "s": "The layout model",
-      "e": "The layout model extracts text plus structural elements like tables, independent of a fixed field schema — a good fit for varied formats where you don't need named fields. The read model gets you text but not table structure; invoice/custom models assume a specific document type."
+      "e": "The layout model extracts text plus structural elements like tables, independent of a fixed field schema — a good fit for varied formats where you don't need named fields. The read model gets you text but not table structure; invoice/custom models assume a specific document type.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/",
+        "title": "Extract data with Azure Document Intelligence"
+      }
     },
     {
       "id": "mq92",
@@ -2827,7 +3191,11 @@
       ],
       "a": 0,
       "s": "Sample forms + ocr.json + labels.json + fields.json",
-      "e": "Training a custom model via the REST API needs the sample documents plus the supporting OCR, label, and field-definition JSON files together in blob storage — sample forms alone aren't enough."
+      "e": "Training a custom model via the REST API needs the sample documents plus the supporting OCR, label, and field-definition JSON files together in blob storage — sample forms alone aren't enough.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/",
+        "title": "Extract data with Azure Document Intelligence"
+      }
     },
     {
       "id": "mq93",
@@ -2842,7 +3210,11 @@
       ],
       "a": 0,
       "s": "A composed model / classifier + extraction models",
-      "e": "Composed models (or a classifier in front of dedicated extraction models) route each incoming document to the right extraction model automatically behind one endpoint — cleaner than merging document types into a single custom model or maintaining separate apps."
+      "e": "Composed models (or a classifier in front of dedicated extraction models) route each incoming document to the right extraction model automatically behind one endpoint — cleaner than merging document types into a single custom model or maintaining separate apps.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/extract-data-with-document-intelligence/",
+        "title": "Extract data with Azure Document Intelligence"
+      }
     },
     {
       "id": "mq94",
@@ -2857,7 +3229,11 @@
       ],
       "a": 0,
       "s": "Indexer",
-      "e": "The indexer is the component that runs (on a schedule or on demand) to pull data from a source, run enrichment, and populate the index. Projections shape enriched output for storage; queries happen after the index already exists."
+      "e": "The indexer is the component that runs (on a schedule or on demand) to pull data from a source, run enrichment, and populate the index. Projections shape enriched output for storage; queries happen after the index already exists.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/",
+        "title": "Create a knowledge mining solution with Azure AI Search"
+      }
     },
     {
       "id": "mq95",
@@ -2872,7 +3248,11 @@
       ],
       "a": 0,
       "s": "Foundry Tools",
-      "e": "Azure AI Search's built-in cognitive skills (entity recognition, translation, image analysis, and so on) are backed by Foundry Tools. Azure Functions is what you'd use for a *custom* skill instead of a built-in one."
+      "e": "Azure AI Search's built-in cognitive skills (entity recognition, translation, image analysis, and so on) are backed by Foundry Tools. Azure Functions is what you'd use for a *custom* skill instead of a built-in one.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/",
+        "title": "Create a knowledge mining solution with Azure AI Search"
+      }
     },
     {
       "id": "mq96",
@@ -2887,7 +3267,11 @@
       ],
       "a": 0,
       "s": "Table projection",
-      "e": "A table projection shapes enriched data into a relational schema suitable for structured storage. Object and file projections instead produce JSON documents or files, not relational tables."
+      "e": "A table projection shapes enriched data into a relational schema suitable for structured storage. Object and file projections instead produce JSON documents or files, not relational tables.",
+      "source": {
+        "url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/",
+        "title": "Create a knowledge mining solution with Azure AI Search"
+      }
     }
   ]
 }

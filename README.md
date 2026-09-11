@@ -78,7 +78,8 @@ is what makes the Platform filter show up — no code change required.
   "cards": [
     { "id": "…", "d": "domainKey", "t": "topicKey",
       "q": "…", "o": ["correct answer first", "…", "…", "…"], "a": 0,
-      "s": "short verdict", "e": "explanation" }
+      "s": "short verdict", "e": "explanation",
+      "source": { "url": "https://learn.microsoft.com/…", "title": "Module name" } }
   ]
 }
 ```
@@ -87,7 +88,11 @@ Multiple-choice cards use `o`/`a` (options, with the correct one always
 listed **first** — the UI shuffles display order at runtime). Dropdown
 ("select the right answer per row") cards instead use `type:"combo"` with a
 `rows` array; see any existing entry in `certs/ai-901.json` for the exact
-shape.
+shape. `source` is optional — when present, a "Learn more" link to the
+official module/doc shows next to the "Report an issue" link under the
+explanation. It's only populated today for cards pulled from Microsoft
+Learn module knowledge checks (the "mq" ids); hand-authored cards don't
+have one, which is fine — the link just doesn't render.
 
 ## Social share image
 
