@@ -42,6 +42,18 @@
 }
 .claude-badge:hover{color:var(--ink);border-color:var(--accent)}
 .claude-badge b{color:var(--accent-ink);font-weight:600}
+
+/* Title + Claude badge + theme toggle can't all fit one line on a
+   phone (~486px of content vs ~320-390px available). Past this
+   width they fit naturally with no help; below it, drop the Claude
+   badge (still shown on wider screens) and trim padding/title size
+   just enough for the title and toggle to share a single row. */
+@media (max-width:520px){
+  .claude-badge{display:none}
+  .topbar-in{padding:14px 16px;gap:10px}
+  .brand{font-size:15px}
+}
+
 .wrap{max-width:960px;margin:0 auto;padding:44px 20px 64px}
 .intro h1{
   font-family:var(--font-display);font-weight:700;font-size:34px;
