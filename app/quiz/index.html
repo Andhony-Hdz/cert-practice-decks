@@ -158,6 +158,8 @@
 .opt[data-r="wrong"] .key{border-color:var(--bad);color:var(--bad)}
 .opt[data-r="wrong"] .mark{opacity:1;color:var(--bad)}
 .opt[data-r="dim"]{opacity:.5}
+.opt[data-r="picked"]{border-color:var(--accent);background:var(--accent-soft)}
+.opt[data-r="picked"] .key{border-color:var(--accent);color:var(--accent-ink)}
 
 .why{margin-top:20px;border-top:1px solid var(--line-soft);padding-top:18px}
 .why-tag{
@@ -188,18 +190,6 @@ code{font-family:var(--font-mono);font-size:.9em;background:var(--raise);border:
 .btn.ghost{background:transparent}
 .hint{margin-left:auto;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;color:var(--muted)}
 @media (max-width:600px){.hint{display:none}}
-
-/* flip cards */
-.flip{cursor:pointer}
-.flip .a{margin-top:18px;border-top:1px solid var(--line-soft);padding-top:18px}
-.reveal-cue{
-  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.07em;
-  text-transform:uppercase;color:var(--muted);margin-top:22px;
-}
-.answer-line{
-  font-family:var(--font-display);font-weight:600;font-size:17px;line-height:1.4;
-  color:var(--ok);margin:0 0 12px;letter-spacing:-.008em;
-}
 
 /* ---------- sidebar ---------- */
 .side{display:flex;flex-direction:column;gap:14px;min-width:0}
@@ -450,7 +440,7 @@ select.combo:disabled{opacity:1;cursor:default;background:transparent;border-sty
     </div>
     <div class="tabs" role="tablist" aria-label="Study mode">
       <button class="tab" role="tab" id="tab-drill" aria-selected="true" data-view="drill">Drill</button>
-      <button class="tab" role="tab" id="tab-cards" aria-selected="false" data-view="cards">Flashcards</button>
+      <button class="tab" role="tab" id="tab-exam" aria-selected="false" data-view="exam">Exam</button>
       <button class="tab" role="tab" id="tab-prog" aria-selected="false" data-view="prog">Progress</button>
     </div>
     <div class="sync" title="Progress is saved in this browser only — it stays on this device">
@@ -528,7 +518,7 @@ const PACE_MS=60000;
 const MAX_Q_MS=15*60*1000;   // cap one question so a coffee break can't skew the stats
 const session={answered:0,points:0,streak:0,log:[],startedAt:null,qStart:null,qIndex:-1};
 const ui={view:"drill",domain:"all",topic:null,weakOnly:false,shuffle:true,size:20,
-          started:false,i:0,picked:null,picks:{},checked:false,flipped:false,done:false,
+          started:false,i:0,picked:null,picks:{},checked:false,done:false,
           order:[],perms:{},confirmReset:false};
 
 function shuffledIdx(n){
@@ -580,7 +570,7 @@ function rebuild(){
     for(let i=ui.order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ui.order[i],ui.order[j]]=[ui.order[j],ui.order[i]];}
   }
   if(ui.size!=="all") ui.order=ui.order.slice(0,ui.size);
-  ui.perms={}; ui.i=0; ui.picked=null; ui.picks={}; ui.checked=false; ui.flipped=false;
+  ui.perms={}; ui.i=0; ui.picked=null; ui.picks={}; ui.checked=false;
   ui.done=false; ui.started=false;
   resetSession();
 }
@@ -599,7 +589,7 @@ function render(){
     stage.innerHTML = !ui.order.length ? emptyView()
       : ui.done ? summaryView()
       : !ui.started ? readyView()
-      : ui.view==="drill" ? drillView() : flashView();
+      : ui.view==="drill" ? drillView() : examView();
     side.innerHTML=sidebar();
   }
   wire();
@@ -735,31 +725,66 @@ function mcqView(){
   </article>`;
 }
 
-function flashView(){
-  const c=current();
-  const answer = c.type==="combo"
-    ? `<div class="qrows">${c.rows.map(r=>
-        `<div class="qrow ok"><span class="qrow-label">${esc(r.label)}</span>
-         <span class="qrow-pick"><b class="answer-inline">${esc(r.o[r.a])}</b></span></div>`).join("")}</div>`
-    : `<p class="answer-line">${esc(c.o[c.a])}</p>`;
-  const back=ui.flipped?`<div class="a">
-      ${answer}
-      <span class="why-tag">Why</span>
-      <p>${c.e}</p>
-    </div>`:`<p class="reveal-cue">Click the card or press space to reveal</p>`;
+/* Exam simulation: pick freely, change your mind, nothing is graded
+   or revealed until you finish the whole session — same as sitting
+   the real thing. Scoring reuses recordAnswer()/comboScore(), only
+   deferred to the moment you advance instead of the moment you pick. */
+function examView(){ return current().type==="combo" ? examComboView() : examMcqView(); }
+
+function examMcqView(){
+  const c=current(), answered=ui.picked!==null;
+  const perm=optOrder(c);
+  const opts=perm.map((orig,i)=>
+    `<button class="opt" data-pick="${i}" ${ui.picked===i?'data-r="picked"':""}>
+      <span class="key">${i+1}</span>
+      <span class="txt">${esc(c.o[orig])}</span>
+      <span class="mark"></span>
+    </button>`
+  ).join("");
   return `${meterRow()}
-  <article class="card flip" data-act="flip">
+  <article class="card">
     ${cardHead(c)}
     <div class="card-body">
       <h2 class="q">${esc(c.q)}</h2>
-      ${c.code?`<pre class="snippet">${esc(c.code)}</pre>`:""}
-      ${back}
+      <div class="opts">${opts}</div>
     </div>
     <div class="card-foot">
-      ${ui.flipped?`<button class="btn primary" data-act="got">Got it</button>
-        <button class="btn" data-act="mark-review">Needs review</button>`
-        :`<button class="btn" data-act="flip">Reveal</button>`}
-      <span class="hint">Space → reveal · Enter → next</span>
+      ${answered
+        ? `<button class="btn primary" data-act="exam-next">Next question</button>`
+        : `<button class="btn ghost" data-act="skip">Skip</button>`}
+      <span class="hint">${answered?"Enter → next":"1–4 to answer"}</span>
+    </div>
+  </article>`;
+}
+
+function examComboView(){
+  const c=current();
+  const rows=c.rows.map((row,ri)=>{
+    const perm=optOrder(c,ri), pick=ui.picks[ri];
+    const opts=perm.map((orig,i)=>
+      `<option value="${i}"${pick===i?" selected":""}>${esc(row.o[orig])}</option>`).join("");
+    return `<div class="qrow">
+      <span class="qrow-label">${esc(row.label)}</span>
+      <span class="qrow-pick">
+        <select class="combo" data-row="${ri}" aria-label="${esc(row.label)}">
+          <option value=""${pick===undefined?" selected":""}>Choose…</option>${opts}
+        </select>
+      </span>
+    </div>`;
+  }).join("");
+  const picked=Object.keys(ui.picks).length;
+  return `${meterRow()}
+  <article class="card">
+    ${cardHead(c)}
+    <div class="card-body">
+      <h2 class="q">${esc(c.q)}</h2>
+      <p class="q-note">Each blank is scored separately, so partial credit counts — same as the real exam.</p>
+      ${c.code?`<pre class="snippet">${esc(c.code)}</pre>`:""}
+      <div class="qrows">${rows}</div>
+    </div>
+    <div class="card-foot">
+      <button class="btn primary" data-act="exam-next">Next question</button>
+      <span class="hint">${picked} of ${c.rows.length} selected</span>
     </div>
   </article>`;
 }
@@ -778,13 +803,13 @@ function readyView(){
     <h2 class="ready-n">${n}<small> question${n===1?"":"s"}</small></h2>
     <dl class="ready-meta">
       <div><dt>Drawn from</dt><dd>${esc(scope)}</dd></div>
-      <div><dt>Mode</dt><dd>${ui.view==="drill"?"Drill — answer and explain":"Flashcards — reveal and self-rate"}</dd></div>
+      <div><dt>Mode</dt><dd>${ui.view==="drill"?"Drill — answer and explain":"Exam simulation — no feedback until you finish"}</dd></div>
       <div><dt>Dropdown items</dt><dd>${combos} of ${n}${combos?" (partial credit)":""}</dd></div>
       <div><dt>Rough pace</dt><dd>about ${est} minute${est===1?"":"s"}</dd></div>
     </dl>
-    <button class="btn primary big" data-act="start">Start${ui.view==="drill"?" the timer":""}</button>
+    <button class="btn primary big" data-act="start">Start the timer</button>
     <p class="ready-note">The clock starts when you press Start, and each question is timed from the moment it appears.
-      Pass mark is ${PASS_PCT}%.${last?` Your last attempt: <b>${last.pct}%</b> — ${last.passed?"passed":"not passed"}.`:""}</p>
+      Pass mark is ${PASS_PCT}%.${ui.view==="exam"?" You can change your answer before moving on, but you won't see right or wrong until the summary at the end — just like the real thing.":""}${last?` Your last attempt: <b>${last.pct}%</b> — ${last.passed?"passed":"not passed"}.`:""}</p>
   </section>`;
 }
 
@@ -1050,7 +1075,7 @@ function scrollTop(){ window.scrollTo(0,0); }
 
 function next(){
   if(ui.i+1<ui.order.length){
-    ui.i++; ui.picked=null; ui.picks={}; ui.checked=false; ui.flipped=false;
+    ui.i++; ui.picked=null; ui.picks={}; ui.checked=false;
   } else {
     finishSession();
   }
@@ -1059,8 +1084,9 @@ function next(){
 }
 function wire(){
   document.querySelectorAll("[data-pick]").forEach(b=>b.onclick=()=>{
-    if(ui.picked!==null) return;
     const c=current();
+    if(ui.view==="exam"){ ui.picked=+b.dataset.pick; render(); return; }
+    if(ui.picked!==null) return;
     ui.picked=+b.dataset.pick;
     recordAnswer(c.id, optOrder(c)[ui.picked]===c.a ? 1 : 0);
     render();
@@ -1087,7 +1113,6 @@ function wire(){
 
   document.querySelectorAll("[data-act]").forEach(el=>el.onclick=ev=>{
     const act=el.dataset.act;
-    if(act==="flip"){ ev.stopPropagation(); if(!ui.flipped){ui.flipped=true; render();} return; }
     ev.stopPropagation();
     if(act==="check"){
       const c=current(), sc=comboScore(c);
@@ -1095,10 +1120,15 @@ function wire(){
       recordAnswer(c.id, sc.right/sc.total);
       render(); return;
     }
+    if(act==="exam-next"){
+      const c=current();
+      if(c.type==="combo"){ const sc=comboScore(c); recordAnswer(c.id, sc.right/sc.total); }
+      else{ recordAnswer(c.id, optOrder(c)[ui.picked]===c.a ? 1 : 0); }
+      next(); return;
+    }
     if(act==="start"){ ui.started=true; render(); scrollTop(); return; }
     if(act==="new-session"){ rebuild(); ui.started=true; render(); scrollTop(); return; }
     if(act==="next"||act==="skip") next();
-    else if(act==="got"){ markCard(current().id,"known"); next(); }
     else if(act==="mark-review"){ markCard(current().id,"review"); next(); }
     else if(act==="clear-filters"){ ui.domain="all"; ui.topic=null; ui.weakOnly=false; rebuild(); render(); scrollTop(); }
     else if(act==="drill-weak"){ ui.view="drill"; ui.weakOnly=true; ui.domain="all"; ui.topic=null; rebuild(); render(); scrollTop(); }
@@ -1131,15 +1161,24 @@ document.addEventListener("keydown",e=>{
   }
   const c=current(); if(!c) return;
   const combo = c.type==="combo";
+  if(ui.view==="exam"){
+    if(!combo&&/^[1-4]$/.test(e.key)){
+      const b=document.querySelector(`[data-pick="${+e.key-1}"]`); if(b){e.preventDefault();b.click();} return;
+    }
+    if(e.key==="Enter"&&(combo||ui.picked!==null)){
+      e.preventDefault();
+      document.querySelector('[data-act="exam-next"]')?.click();
+    }
+    return;
+  }
   if(ui.view==="drill"&&!combo&&/^[1-4]$/.test(e.key)){
     const b=document.querySelector(`[data-pick="${+e.key-1}"]`); if(b&&!b.disabled){e.preventDefault();b.click();} return;
   }
-  if(e.key===" "&&ui.view==="cards"&&!ui.flipped){ e.preventDefault(); ui.flipped=true; render(); return; }
   if(e.key==="Enter"&&ui.view==="drill"&&combo&&!ui.checked){
     e.preventDefault();
     const sc=comboScore(c); ui.checked=true; recordAnswer(c.id, sc.right/sc.total); render(); return;
   }
-  const canAdvance = ui.view==="cards" ? ui.flipped : (combo ? ui.checked : ui.picked!==null);
+  const canAdvance = combo ? ui.checked : ui.picked!==null;
   if((e.key==="Enter"||e.key===" ")&&canAdvance){ e.preventDefault(); next(); }
 });
 
