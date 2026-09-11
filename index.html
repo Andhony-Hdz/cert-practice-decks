@@ -84,10 +84,16 @@
 .modal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
 .modal-head h3{font-family:var(--font-display);font-size:16px;font-weight:600;margin:0}
 .share-textarea{
-  width:100%;min-height:130px;resize:vertical;
+  width:100%;min-height:130px;resize:vertical;overflow:hidden;
   font-family:var(--font-mono);font-size:12.5px;line-height:1.6;
   background:var(--raise);border:1px solid var(--line);border-radius:8px;
   padding:12px;color:var(--ink);margin-bottom:14px;
+}
+/* iOS Safari auto-zooms the page when a focused input/textarea has
+   font-size under 16px — keep it at 16px on small screens so tapping
+   into the textarea (e.g. to select text manually) doesn't zoom. */
+@media (max-width:480px){
+  .share-textarea{font-size:16px}
 }
 .modal-actions{display:flex;gap:9px;flex-wrap:wrap}
 
@@ -288,7 +294,7 @@ function renderShareModal(){
     else if(act==="native-share"){ navigator.share({text:siteShareText()}).catch(()=>{}); }
   });
   const ta=document.getElementById("siteShareText");
-  if(ta){ ta.onclick=()=>ta.select(); ta.focus(); ta.select(); }
+  if(ta){ ta.style.height="auto"; ta.style.height=(ta.scrollHeight+2)+"px"; }
   const nb=document.getElementById("siteNativeShareBtn");
   if(nb && navigator.share) nb.hidden=false;
 }
