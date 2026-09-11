@@ -916,6 +916,20 @@ function attemptsSection(){
   </section>`;
 }
 
+/* Wordle-style shareable result: a colored grid of right/partial/
+   wrong per question, in order — shows the shape of your run
+   without spoiling which specific questions or answers were right,
+   same spirit as sharing a Wordle grid. */
+function shareText(){
+  const n=session.answered, pct=n?Math.round(session.points/n*100):0;
+  const passed=pct>=PASS_PCT;
+  const grid=session.log.map(e=>e.frac>=1?"🟩":e.frac>0?"🟨":"🟥").join("");
+  const wall=session.startedAt?Date.now()-session.startedAt:0;
+  const url=location.origin+location.pathname+`?cert=${encodeURIComponent(META.id)}`;
+  return `${META.examCode||META.title} practice — ${pct}% (${passed?"Passed ✅":"Not passed"})\n`
+    +`${n} question${n===1?"":"s"} · ${fmtDur(wall)}\n${grid}\n${url}`;
+}
+
 function summaryView(){
   const n=session.answered, pct=n?Math.round(session.points/n*100):0;
   const passed = pct>=PASS_PCT;
@@ -963,6 +977,7 @@ function summaryView(){
     <div class="sactions">
       <button class="btn primary" data-act="new-session">Start another ${ui.size==="all"?"full":ui.size+"-question"} session</button>
       ${missed?`<button class="btn" data-act="drill-weak">Drill what I missed</button>`:""}
+      <button class="btn ghost" data-act="share">Share result</button>
     </div>
   </section>
   <section class="breakdown">
@@ -1259,6 +1274,17 @@ function wire(){
       persist(); rebuild(); render();
     }
     else if(act==="cancel-reset"){ ui.confirmReset=false; render(); }
+    else if(act==="share"){
+      const text=shareText();
+      const flash=label=>{ el.textContent=label; setTimeout(()=>{ el.textContent="Share result"; },1800); };
+      if(navigator.share){
+        navigator.share({text}).catch(()=>{});
+      } else if(navigator.clipboard){
+        navigator.clipboard.writeText(text).then(()=>flash("Copied!")).catch(()=>flash("Couldn't copy"));
+      } else {
+        flash("Couldn't share");
+      }
+    }
   });
 }
 document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
