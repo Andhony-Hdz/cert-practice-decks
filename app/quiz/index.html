@@ -76,6 +76,27 @@
 }
 .sync .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex:none}
 
+/* On narrow screens the single-row topbar (back arrow, title, card
+   count, tabs, sync status, theme toggle) doesn't fit and wraps into
+   an untidy 3-line stack. Force a deliberate, compact 2-row layout
+   instead: brand + theme toggle on row 1, full-width tabs on row 2.
+   The "Local" sync status is dropped here — it's a nice-to-have, not
+   essential, and there's no room left to say it tidily. */
+@media (max-width:640px){
+  .topbar-in{
+    display:grid;grid-template-columns:1fr auto;
+    grid-template-areas:"brand toggle" "tabs tabs";
+    align-items:center;row-gap:8px;column-gap:10px;
+    padding:10px 16px;
+  }
+  .brand{grid-area:brand;margin-right:0;min-width:0}
+  .brand h1{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .sync{display:none}
+  .theme-toggle{grid-area:toggle;justify-self:end}
+  .tabs{grid-area:tabs;width:100%}
+  .tabs .tab{flex:1;text-align:center}
+}
+
 .wrap{max-width:1120px;margin:0 auto;padding:22px 20px 64px;display:grid;grid-template-columns:minmax(0,1fr) 268px;gap:26px;align-items:start}
 @media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr);gap:20px}}
 
