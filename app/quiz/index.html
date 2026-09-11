@@ -45,8 +45,10 @@
 }
 .brand{display:flex;align-items:baseline;gap:9px;margin-right:auto}
 .brand .back{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:40px;min-height:40px;margin:-8px 2px -8px -8px;
   font-family:var(--font-display);font-weight:600;font-size:16px;
-  color:var(--muted);text-decoration:none;margin-right:2px;
+  color:var(--muted);text-decoration:none;
 }
 .brand .back:hover{color:var(--ink)}
 .brand h1{
@@ -63,7 +65,7 @@
   border:0;background:transparent;cursor:pointer;
   font-family:var(--font-mono);font-size:11px;font-weight:600;
   letter-spacing:.07em;text-transform:uppercase;
-  padding:6px 13px;border-radius:5px;color:var(--muted);
+  padding:10px 13px;border-radius:5px;color:var(--muted);
 }
 .tab:hover{color:var(--ink)}
 .tab[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(19,25,34,.09)}
@@ -256,10 +258,10 @@ code{font-family:var(--font-mono);font-size:.9em;background:var(--raise);border:
 .foot-note a{color:var(--accent-ink)}
 
 /* ---------- session length ---------- */
-.sizes{display:flex;flex-wrap:wrap;gap:5px}
+.sizes{display:flex;flex-wrap:wrap;gap:7px}
 .size{
   border:1px solid var(--line);background:var(--surface);border-radius:6px;
-  padding:6px 0;cursor:pointer;flex:1 1 40px;min-width:40px;
+  padding:10px 0;cursor:pointer;flex:1 1 40px;min-width:40px;
   font-family:var(--font-mono);font-size:12px;font-weight:600;
   font-variant-numeric:tabular-nums;transition:border-color .14s,background .14s;
 }
@@ -267,7 +269,7 @@ code{font-family:var(--font-mono);font-size:.9em;background:var(--raise);border:
 .size[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .size:disabled{opacity:.4;cursor:not-allowed;border-style:dashed}
 .size:disabled[aria-pressed="true"]{background:var(--surface);border-color:var(--line);color:var(--muted)}
-.size.wide{flex:1 1 100%;padding:6px 10px}
+.size.wide{flex:1 1 100%;padding:10px 10px}
 .panel-note{font-size:11.5px;color:var(--muted);margin:10px 0 0;line-height:1.45}
 
 /* ---------- dropdown items ---------- */
@@ -1017,6 +1019,14 @@ function finishSession(){
     persist();
   }
 }
+/* Reset scroll when moving to a genuinely new screen (a new question,
+   starting a session, switching tabs) — without this, a mobile user
+   who scrolled down to tap Start/Next lands mid-way into the new
+   content instead of seeing the question from the top. Filter/sidebar
+   controls deliberately don't call this, so adjusting them doesn't
+   yank the page out from under the user. */
+function scrollTop(){ window.scrollTo(0,0); }
+
 function next(){
   if(ui.i+1<ui.order.length){
     ui.i++; ui.picked=null; ui.picks={}; ui.checked=false; ui.flipped=false;
@@ -1024,6 +1034,7 @@ function next(){
     finishSession();
   }
   render();
+  scrollTop();
 }
 function wire(){
   document.querySelectorAll("[data-pick]").forEach(b=>b.onclick=()=>{
@@ -1063,13 +1074,13 @@ function wire(){
       recordAnswer(c.id, sc.right/sc.total);
       render(); return;
     }
-    if(act==="start"){ ui.started=true; render(); return; }
-    if(act==="new-session"){ rebuild(); ui.started=true; render(); return; }
+    if(act==="start"){ ui.started=true; render(); scrollTop(); return; }
+    if(act==="new-session"){ rebuild(); ui.started=true; render(); scrollTop(); return; }
     if(act==="next"||act==="skip") next();
     else if(act==="got"){ markCard(current().id,"known"); next(); }
     else if(act==="mark-review"){ markCard(current().id,"review"); next(); }
-    else if(act==="clear-filters"){ ui.domain="all"; ui.topic=null; ui.weakOnly=false; rebuild(); render(); }
-    else if(act==="drill-weak"){ ui.view="drill"; ui.weakOnly=true; ui.domain="all"; ui.topic=null; rebuild(); render(); }
+    else if(act==="clear-filters"){ ui.domain="all"; ui.topic=null; ui.weakOnly=false; rebuild(); render(); scrollTop(); }
+    else if(act==="drill-weak"){ ui.view="drill"; ui.weakOnly=true; ui.domain="all"; ui.topic=null; rebuild(); render(); scrollTop(); }
     else if(act==="reset"){
       if(!ui.confirmReset){ ui.confirmReset=true; render(); return; }
       ui.confirmReset=false;
@@ -1081,7 +1092,7 @@ function wire(){
 }
 document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
   if(!CARDS) return;
-  ui.view=t.dataset.view; render();
+  ui.view=t.dataset.view; render(); scrollTop();
 });
 
 document.addEventListener("keydown",e=>{
@@ -1090,11 +1101,11 @@ document.addEventListener("keydown",e=>{
   if(/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) return;
   if(ui.view==="prog") return;
   if(ui.done){
-    if(e.key==="Enter"){ e.preventDefault(); rebuild(); ui.started=true; render(); }
+    if(e.key==="Enter"){ e.preventDefault(); rebuild(); ui.started=true; render(); scrollTop(); }
     return;
   }
   if(!ui.started){
-    if((e.key==="Enter"||e.key===" ")&&ui.order.length){ e.preventDefault(); ui.started=true; render(); }
+    if((e.key==="Enter"||e.key===" ")&&ui.order.length){ e.preventDefault(); ui.started=true; render(); scrollTop(); }
     return;
   }
   const c=current(); if(!c) return;
