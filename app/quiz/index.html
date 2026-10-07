@@ -590,9 +590,14 @@ const SIZES=[5,10,20,30,40,50,60];
 const PACE_MS=60000;
 const MAX_Q_MS=15*60*1000;   // cap one question so a coffee break can't skew the stats
 const session={answered:0,points:0,streak:0,log:[],startedAt:null,qStart:null,qIndex:-1};
-const ui={view:"drill",domain:"all",topic:null,weakOnly:false,shuffle:true,size:20,
+const ui={view:"drill",domain:"all",topic:null,source:"all",weakOnly:false,shuffle:true,size:20,
           started:false,i:0,picked:null,picks:{},checked:false,done:false,
           order:[],perms:{},confirmReset:false,shareOpen:false};
+/* Every card either came from a Microsoft Learn module's end-of-module
+   knowledge check (tagged with a `source` link back to that module) or
+   was hand-authored for this deck — that's the whole taxonomy today. */
+const cardOrigin=c=>c.source?"module":"custom";
+const SOURCE_LABELS={custom:"My questions",module:"Module knowledge checks"};
 
 function shuffledIdx(n){
   const p=[...Array(n).keys()];
@@ -631,6 +636,7 @@ function pool(){
   let list=CARDS.filter(c=>{
     if(ui.domain!=="all" && c.d!==ui.domain) return false;
     if(ui.topic && c.t!==ui.topic) return false;
+    if(ui.source!=="all" && cardOrigin(c)!==ui.source) return false;
     if(ui.weakOnly && cardState(c.id).status!=="review") return false;
     return true;
   });
@@ -885,9 +891,10 @@ function examComboView(){
 function readyView(){
   const n=ui.order.length;
   const combos=ui.order.filter(id=>{const c=CARDS.find(x=>x.id===id); return c&&c.type==="combo";}).length;
-  const scope = ui.weakOnly ? "Weak spots only"
+  const scopeBase = ui.weakOnly ? "Weak spots only"
     : ui.topic ? topicName(ui.domain,ui.topic)
     : ui.domain==="all" ? "Full pool" : DOMAINS[ui.domain].label;
+  const scope = ui.source==="all" ? scopeBase : `${scopeBase} · ${SOURCE_LABELS[ui.source]}`;
   const est=Math.max(1,Math.round(n*PACE_MS/60000));
   const last=(state.attempts||[]).slice(-1)[0];
   let tip="";
@@ -1099,10 +1106,21 @@ function sidebar(){
     `<button class="size" data-size="${n}" aria-pressed="${ui.size===n}"${n>avail?` data-over="1" disabled title="Only ${avail} card${avail===1?"":"s"} match the current filter — pick All ${avail} instead"`:""}>${n}</button>`
   ).join("")+`<button class="size wide" data-size="all" aria-pressed="${ui.size==="all"||sizeExceeds}">All ${avail}</button>`;
 
+  const srcCounts={all:CARDS.length,custom:0,module:0};
+  CARDS.forEach(c=>srcCounts[cardOrigin(c)]++);
+  const srcBtns=["all","custom","module"].map(s=>
+    `<button class="filter" data-source="${s}" aria-pressed="${ui.source===s}">${s==="all"?"All sources":esc(SOURCE_LABELS[s])}<span class="n">${srcCounts[s]}</span></button>`
+  ).join("");
+
   return `<div class="panel">
     <h2>Session length</h2>
     <div class="sizes">${sizeBtns}</div>
     <p class="panel-note">Drawn at random from ${avail} matching ${avail===1?"card":"cards"} in a pool of ${CARDS.length}. Changing this starts a new session.</p>
+  </div>
+  <div class="panel">
+    <h2>Source</h2>
+    <div class="filters">${srcBtns}</div>
+    <p class="panel-note">Module knowledge checks come from the official end-of-module quizzes on Microsoft Learn; everything else was written for this deck.</p>
   </div>
   <div class="panel">
     <h2>Deck</h2>
@@ -1269,7 +1287,8 @@ function finishSession(){
       t:Date.now(), n:session.answered, pts:Math.round(session.points*100)/100,
       pct:pct, passed:pct>=PASS_PCT, ms:answerMs,
       wall:session.startedAt?Date.now()-session.startedAt:answerMs,
-      scope:ui.topic?topicName(ui.domain,ui.topic):(ui.domain==="all"?"Full pool":DOMAINS[ui.domain].label)
+      scope:(ui.topic?topicName(ui.domain,ui.topic):(ui.domain==="all"?"Full pool":DOMAINS[ui.domain].label))
+        +(ui.source==="all"?"":` · ${SOURCE_LABELS[ui.source]}`)
     }]).slice(-25);
     persist();
   }
@@ -1314,6 +1333,9 @@ function wire(){
   document.querySelectorAll("[data-domain]").forEach(b=>b.onclick=()=>{
     ui.domain=b.dataset.domain; ui.topic=null; rebuild(); render();
   });
+  document.querySelectorAll("[data-source]").forEach(b=>b.onclick=()=>{
+    ui.source=b.dataset.source; rebuild(); render();
+  });
   document.querySelectorAll("[data-topic]").forEach(b=>b.onclick=()=>{
     ui.topic = ui.topic===b.dataset.topic ? null : b.dataset.topic; rebuild(); render();
   });
@@ -1339,8 +1361,8 @@ function wire(){
     if(act==="new-session"){ rebuild(); ui.started=true; render(); scrollTop(); return; }
     if(act==="next"||act==="skip") next();
     else if(act==="mark-review"){ markCard(current().id,"review"); next(); }
-    else if(act==="clear-filters"){ ui.domain="all"; ui.topic=null; ui.weakOnly=false; rebuild(); render(); scrollTop(); }
-    else if(act==="drill-weak"){ ui.view="drill"; ui.weakOnly=true; ui.domain="all"; ui.topic=null; rebuild(); render(); scrollTop(); }
+    else if(act==="clear-filters"){ ui.domain="all"; ui.topic=null; ui.source="all"; ui.weakOnly=false; rebuild(); render(); scrollTop(); }
+    else if(act==="drill-weak"){ ui.view="drill"; ui.weakOnly=true; ui.domain="all"; ui.topic=null; ui.source="all"; rebuild(); render(); scrollTop(); }
     else if(act==="reset"){
       if(!ui.confirmReset){ ui.confirmReset=true; render(); return; }
       ui.confirmReset=false;
