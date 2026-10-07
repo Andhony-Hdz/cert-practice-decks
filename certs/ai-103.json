@@ -3943,6 +3943,70 @@
       ],
       "e": "Common document types such as IDs and receipts have prebuilt models that need no training. A company-specific form needs a custom model, and a custom neural model handles layout variation better than a custom template model. The layout model returns structure, not named business fields.",
       "pool": "exam"
+    },
+    {
+      "id": "ex37",
+      "d": "plan",
+      "t": "manage",
+      "q": "Finance requires an email notification whenever the monthly spend on your Foundry resource group approaches a set amount. What should you configure?",
+      "o": [
+        "A budget with alert thresholds in Microsoft Cost Management, scoped to the resource group",
+        "Tracing to Application Insights",
+        "Lower token limits in every request",
+        "Stricter content filters"
+      ],
+      "a": 0,
+      "s": "Cost Management budget + alerts",
+      "e": "Budgets in Cost Management track actual and forecast spend for a scope and send alerts at the thresholds you choose. Tracing monitors runs, not spend; lowering token limits may reduce cost but doesn't notify anyone; content filters are unrelated.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex38",
+      "d": "genai",
+      "t": "genapp",
+      "q": "In long conversations, your chat app starts failing because the accumulated message history no longer fits in the model's context window. Users still expect the assistant to remember earlier key points. What should you do?",
+      "o": [
+        "Keep the system message and recent turns, and replace older turns with a running summary",
+        "Send only the latest user message with each request",
+        "Increase the temperature",
+        "Move the app to a Global Batch deployment"
+      ],
+      "a": 0,
+      "s": "Summarize or trim older turns",
+      "e": "Summarizing older turns preserves the key context in far fewer tokens while recent turns stay verbatim. Sending only the latest message loses all memory, temperature doesn't change token counts, and batch deployments are asynchronous and unsuitable for chat.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex39",
+      "d": "text",
+      "t": "analysis",
+      "q": "After each sales call, managers want the transcript turned into a short list of decisions and action items, each with an owner, in the same layout every time. What should you use?",
+      "o": [
+        "A language model with a prompt that defines the required summary layout",
+        "Key phrase extraction",
+        "Sentiment analysis",
+        "Language detection"
+      ],
+      "a": 0,
+      "s": "Prompted language model — task-specific summarization",
+      "e": "Producing decisions and action items with owners requires understanding and rewriting the content, which a language model does well when the prompt specifies the output layout. Key phrase extraction only lists terms, and sentiment or language detection return a label, not a summary.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex40",
+      "d": "extract",
+      "t": "retrieval",
+      "q": "Your RAG app switches to a new embedding model for user queries. The existing search index was built with the previous embedding model. What must you do?",
+      "o": [
+        "Re-generate the document embeddings with the new model and re-index, because query and document vectors must come from the same model",
+        "Nothing — vectors from different embedding models are interchangeable",
+        "Only rename the index",
+        "Retrieve more results per query to compensate"
+      ],
+      "a": 0,
+      "s": "Re-embed the documents with the same model as the queries",
+      "e": "Each embedding model defines its own vector space (and often a different number of dimensions), so similarity between vectors from different models is meaningless. Documents must be re-embedded with the new model. Retrieving more results doesn't fix vectors that can't be compared.",
+      "pool": "exam"
     }
   ]
 }

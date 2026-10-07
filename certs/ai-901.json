@@ -3434,6 +3434,204 @@
       "s": "Custom extraction model — teach it your own fields",
       "e": "When your document type and fields aren't covered by a prebuilt model, you label a set of sample documents and train a custom extraction model. The receipt model only knows receipt fields, key phrases aren't field values, and better OCR still doesn't tell you which text is the cost center.",
       "pool": "exam"
+    },
+    {
+      "id": "ex31",
+      "d": "concepts",
+      "t": "rai",
+      "q": "A support chatbot is grounded on years of customer support tickets. Before launch, the team removes personal details from the data, restricts who can access the index, and verifies the bot never returns another customer's account information. Which responsible AI principle are they primarily addressing?",
+      "o": [
+        "Privacy and security",
+        "Fairness",
+        "Inclusiveness",
+        "Transparency"
+      ],
+      "a": 0,
+      "s": "Privacy and security — protect personal data and control access",
+      "e": "Removing personal data, restricting access, and preventing leakage of other customers' information are all about protecting data — the privacy and security principle. The scenario doesn't involve unequal treatment of groups, accessibility, or explaining how the system works.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex32",
+      "d": "concepts",
+      "t": "model",
+      "q": "A user pastes the full text of a 600-page manual into a chat app and the request fails with an error saying the input is too long. What is the cause?",
+      "o": [
+        "The prompt exceeds the model's context window (its maximum number of tokens)",
+        "The temperature is set too high",
+        "A content filter blocked the manual",
+        "max_tokens is set too low"
+      ],
+      "a": 0,
+      "s": "Context window exceeded",
+      "e": "Every model has a context window — the maximum tokens it can process for input plus output. A 600-page manual is far beyond it, so the request is rejected. A low max_tokens would truncate the <i>answer</i>, not reject the input; temperature and content filters produce different behavior. The usual fix is RAG: retrieve only the relevant sections.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex33",
+      "d": "concepts",
+      "t": "model",
+      "type": "combo",
+      "q": "For each statement about generative AI models, select Yes if the statement is true. Otherwise, select No.",
+      "rows": [
+        {
+          "label": "A large language model generates text by repeatedly predicting the next token from the tokens that came before it",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 0
+        },
+        {
+          "label": "A language model always returns exactly the same answer to the same prompt, regardless of its settings",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 1
+        },
+        {
+          "label": "Fine-tuning changes a model's weights, whereas retrieval-augmented generation (RAG) adds information to the prompt at query time",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 0
+        }
+      ],
+      "e": "LLMs work token by token, each step predicting the next likely token. Sampling settings such as temperature introduce variation, so identical prompts can produce different answers. Fine-tuning trains the model itself; RAG leaves the model unchanged and supplies relevant content in the prompt.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex34",
+      "d": "concepts",
+      "t": "work",
+      "q": "An airline wants a website assistant that understands free-form questions about baggage rules and can also complete tasks such as changing a passenger's seat. Which type of AI solution fits best?",
+      "o": [
+        "A conversational AI agent built on a generative model, with tools that call the airline's systems",
+        "An image classification model",
+        "A text-to-speech service",
+        "A document field extraction model"
+      ],
+      "a": 0,
+      "s": "An agent — understands requests and takes actions through tools",
+      "e": "Understanding open-ended questions and then <i>acting</i> (changing a seat) is what agents do: a generative model reasons over the request and calls tools connected to back-end systems. The other options handle images, audio output, or documents — none can hold a conversation and complete a task.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex35",
+      "d": "foundry",
+      "t": "agents",
+      "q": "An HR agent uses file search over the employee handbook. When asked about topics the handbook doesn't cover, it answers from general knowledge instead. You want it to say it doesn't know in those cases. What should you change?",
+      "o": [
+        "Update the agent's instructions to answer only from the handbook and to say when the answer isn't found there",
+        "Increase the temperature",
+        "Add Grounding with Bing Search",
+        "Add the code interpreter tool"
+      ],
+      "a": 0,
+      "s": "Tighten the instructions — answer only from the source",
+      "e": "An agent's instructions define its boundaries: telling it to answer only from retrieved content and to admit when nothing relevant is found is the standard fix. Higher temperature makes answers less predictable, Bing would add even more outside knowledge, and code interpreter is unrelated.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex36",
+      "d": "foundry",
+      "t": "sdk",
+      "q": "You use the Azure AI Projects SDK for Python to work with agents and models in a Foundry project. What does the AIProjectClient need in order to connect?",
+      "o": [
+        "The project endpoint and a credential, such as DefaultAzureCredential",
+        "Only your Azure subscription ID",
+        "The model's version number",
+        "A storage account connection string"
+      ],
+      "a": 0,
+      "s": "Project endpoint + credential",
+      "e": "AIProjectClient is created with the project's endpoint (shown on the project overview page) and a token credential such as DefaultAzureCredential. The subscription ID alone doesn't identify a project, model versions belong to deployments, and storage connection strings aren't part of the client setup.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex37",
+      "d": "foundry",
+      "t": "speech",
+      "q": "Recorded meetings must be transcribed with each line labeled by speaker (Speaker 1, Speaker 2, and so on). The speakers don't need to be identified by name. Which feature should you enable?",
+      "o": [
+        "Speech-to-text with speaker diarization",
+        "Text-to-speech",
+        "Speech translation",
+        "Language detection"
+      ],
+      "a": 0,
+      "s": "Diarization — separates who spoke when",
+      "e": "Diarization splits a transcript into segments by distinct voices and labels them, without needing to know who the speakers are. Text-to-speech generates audio, translation changes language, and language detection only identifies which language is spoken.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex38",
+      "d": "foundry",
+      "t": "vision",
+      "q": "A community website must automatically check user-uploaded images for sexual or violent content before they are published. What should you use?",
+      "o": [
+        "Image moderation in Azure AI Content Safety",
+        "Optical character recognition (OCR)",
+        "Image captioning",
+        "Object detection"
+      ],
+      "a": 0,
+      "s": "Content Safety image analysis — harm categories with severity",
+      "e": "Azure AI Content Safety analyzes images for harm categories such as sexual content and violence and returns severity levels you can threshold. OCR reads text, captioning describes the scene, and object detection finds objects — none of them classify harmful content.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex39",
+      "d": "foundry",
+      "t": "extract",
+      "q": "One shared mailbox receives invoices, receipts, and contracts mixed together. Each document must be sent to the right extraction model automatically. What should you add first?",
+      "o": [
+        "A custom classification model in Document Intelligence that identifies the document type",
+        "The prebuilt invoice model applied to every document",
+        "Sentiment analysis on each document",
+        "Key phrase extraction on each document"
+      ],
+      "a": 0,
+      "s": "Classify first, then extract with the matching model",
+      "e": "A Document Intelligence classification model detects each document's type so it can be routed to the right extraction model. Running the invoice model on receipts and contracts would return poor or empty results, and sentiment or key phrases don't identify document types.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex40",
+      "d": "foundry",
+      "t": "extract",
+      "type": "combo",
+      "q": "For each statement about extracting information from documents, select Yes if the statement is true. Otherwise, select No.",
+      "rows": [
+        {
+          "label": "The prebuilt receipt model can extract the merchant name and total without any training",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Training a custom extraction model requires labeled sample documents",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 0
+        },
+        {
+          "label": "OCR on its own returns named fields, such as InvoiceTotal, paired with their values",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 1
+        }
+      ],
+      "e": "Prebuilt models work out of the box for their document types. Custom models learn your fields from labeled examples. OCR returns the text and its position on the page, but not which text is which field — that's what extraction models add.",
+      "pool": "exam"
     }
   ]
 }
