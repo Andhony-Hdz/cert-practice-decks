@@ -597,7 +597,7 @@ const ui={view:"drill",domain:"all",topic:null,source:"all",weakOnly:false,shuff
    knowledge check (tagged with a `source` link back to that module) or
    was hand-authored for this deck — that's the whole taxonomy today. */
 const cardOrigin=c=>c.source?"module":"custom";
-const SOURCE_LABELS={custom:"My questions",module:"Module knowledge checks"};
+const SOURCE_LABELS={custom:"Custom questions",module:"Module knowledge checks"};
 
 function shuffledIdx(n){
   const p=[...Array(n).keys()];
@@ -632,11 +632,22 @@ function touchTimers(){
   if(session.qIndex!==ui.i){ session.qIndex=ui.i; session.qStart=Date.now(); }
 }
 
+/* Exam mode has its own bank of harder, exam-style cards (pool:"exam");
+   Drill uses everything else. "Weak spots only" in Drill also pulls in
+   missed exam cards, so they can be reviewed with explanations. */
+const bankOf=()=>ui.view==="exam"?"exam":"drill";
+function inBank(c){
+  const isExam=c.pool==="exam";
+  if(ui.view==="exam") return isExam;
+  return !isExam || ui.weakOnly;
+}
+const bankCards=()=>CARDS.filter(c=>(c.pool==="exam")===(bankOf()==="exam"));
 function pool(){
   let list=CARDS.filter(c=>{
+    if(!inBank(c)) return false;
     if(ui.domain!=="all" && c.d!==ui.domain) return false;
     if(ui.topic && c.t!==ui.topic) return false;
-    if(ui.source!=="all" && cardOrigin(c)!==ui.source) return false;
+    if(ui.view!=="exam" && ui.source!=="all" && cardOrigin(c)!==ui.source) return false;
     if(ui.weakOnly && cardState(c.id).status!=="review") return false;
     return true;
   });
@@ -650,7 +661,7 @@ function rebuild(){
   }
   if(ui.size!=="all") ui.order=ui.order.slice(0,ui.size);
   ui.perms={}; ui.i=0; ui.picked=null; ui.picks={}; ui.checked=false;
-  ui.done=false; ui.started=false; ui.shareOpen=false;
+  ui.done=false; ui.started=false; ui.shareOpen=false; ui.builtFor=bankOf();
   resetSession();
 }
 const current=()=>CARDS.find(c=>c.id===ui.order[ui.i]);
@@ -812,6 +823,7 @@ function mcqView(){
     ${cardHead(c)}
     <div class="card-body">
       <h2 class="q">${esc(c.q)}</h2>
+      ${c.code?`<pre class="snippet">${esc(c.code)}</pre>`:""}
       <div class="opts">${opts}</div>
       ${why}
     </div>
@@ -845,6 +857,7 @@ function examMcqView(){
     ${cardHead(c)}
     <div class="card-body">
       <h2 class="q">${esc(c.q)}</h2>
+      ${c.code?`<pre class="snippet">${esc(c.code)}</pre>`:""}
       <div class="opts">${opts}</div>
     </div>
     <div class="card-foot">
@@ -894,7 +907,8 @@ function readyView(){
   const scopeBase = ui.weakOnly ? "Weak spots only"
     : ui.topic ? topicName(ui.domain,ui.topic)
     : ui.domain==="all" ? "Full pool" : DOMAINS[ui.domain].label;
-  const scope = ui.source==="all" ? scopeBase : `${scopeBase} · ${SOURCE_LABELS[ui.source]}`;
+  const scope = ui.view==="exam" ? `${scopeBase} · Exam bank`
+    : ui.source==="all" ? scopeBase : `${scopeBase} · ${SOURCE_LABELS[ui.source]}`;
   const est=Math.max(1,Math.round(n*PACE_MS/60000));
   const last=(state.attempts||[]).slice(-1)[0];
   let tip="";
@@ -902,7 +916,7 @@ function readyView(){
     if(!localStorage.getItem("onboarded.v1")){
       tip=`<div class="tip-banner">
         <p><b>Drill</b> gives instant feedback and explanations as you go.
-        <b>Exam</b> hides right/wrong until you finish, for realistic timed practice.
+        <b>Exam</b> uses a separate set of harder, exam-style questions and hides right/wrong until you finish.
         <b>Progress</b> tracks your mastery, streak, and weak spots over time.</p>
         <button class="tip-close" data-act="dismiss-tip" aria-label="Dismiss tip">✕</button>
       </div>`;
@@ -914,7 +928,7 @@ function readyView(){
     <h2 class="ready-n">${n}<small> question${n===1?"":"s"}</small></h2>
     <dl class="ready-meta">
       <div><dt>Drawn from</dt><dd>${esc(scope)}</dd></div>
-      <div><dt>Mode</dt><dd>${ui.view==="drill"?"Drill — answer and explain":"Exam simulation — no feedback until you finish"}</dd></div>
+      <div><dt>Mode</dt><dd>${ui.view==="drill"?"Drill — answer and explain":"Exam simulation — harder exam-style questions, no feedback until you finish"}</dd></div>
       <div><dt>Dropdown items</dt><dd>${combos} of ${n}${combos?" (partial credit)":""}</dd></div>
       <div><dt>Rough pace</dt><dd>about ${est} minute${est===1?"":"s"}</dd></div>
     </dl>
@@ -1084,15 +1098,16 @@ function emptyView(){
 }
 
 function sidebar(){
-  const counts={all:CARDS.length};
-  Object.keys(DOMAINS).forEach(d=>{counts[d]=CARDS.filter(c=>c.d===d).length;});
-  const weak=CARDS.filter(c=>cardState(c.id).status==="review").length;
+  const BANK=bankCards();
+  const counts={all:BANK.length};
+  Object.keys(DOMAINS).forEach(d=>{counts[d]=BANK.filter(c=>c.d===d).length;});
+  const weak=(ui.view==="exam"?BANK:CARDS).filter(c=>cardState(c.id).status==="review").length;
   const known=CARDS.filter(c=>cardState(c.id).status==="known").length;
 
   const domBlocks=Object.entries(DOMAINS).map(([d,meta])=>{
     const on=ui.domain===d;
     const subs=on?`<div class="sub">${Object.entries(meta.topics).map(([t,name])=>{
-      const n=CARDS.filter(c=>c.d===d&&c.t===t).length;
+      const n=BANK.filter(c=>c.d===d&&c.t===t).length;
       return `<button class="filter" data-topic="${t}" aria-pressed="${ui.topic===t}">${esc(name)}<span class="n">${n}</span></button>`;
     }).join("")}</div>`:"";
     return `<button class="filter" data-domain="${d}" aria-pressed="${on}">
@@ -1106,22 +1121,28 @@ function sidebar(){
     `<button class="size" data-size="${n}" aria-pressed="${ui.size===n}"${n>avail?` data-over="1" disabled title="Only ${avail} card${avail===1?"":"s"} match the current filter — pick All ${avail} instead"`:""}>${n}</button>`
   ).join("")+`<button class="size wide" data-size="all" aria-pressed="${ui.size==="all"||sizeExceeds}">All ${avail}</button>`;
 
-  const srcCounts={all:CARDS.length,custom:0,module:0};
-  CARDS.forEach(c=>srcCounts[cardOrigin(c)]++);
+  const srcCounts={all:BANK.length,custom:0,module:0};
+  BANK.forEach(c=>srcCounts[cardOrigin(c)]++);
   const srcBtns=["all","custom","module"].map(s=>
     `<button class="filter" data-source="${s}" aria-pressed="${ui.source===s}">${s==="all"?"All sources":esc(SOURCE_LABELS[s])}<span class="n">${srcCounts[s]}</span></button>`
   ).join("");
+  const sourcePanel = ui.view==="exam"
+    ? `<div class="panel">
+    <h2>Exam bank</h2>
+    <p class="panel-note" style="margin-top:0">Exam mode draws only from ${BANK.length} harder, exam-style questions — scenario-based, with constraints like "minimize cost" and Yes/No statement sets — kept separate from the Drill deck.</p>
+  </div>`
+    : `<div class="panel">
+    <h2>Source</h2>
+    <div class="filters">${srcBtns}</div>
+    <p class="panel-note">Module knowledge checks come from the official end-of-module quizzes on Microsoft Learn; everything else was written for this deck.</p>
+  </div>`;
 
   return `<div class="panel">
     <h2>Session length</h2>
     <div class="sizes">${sizeBtns}</div>
-    <p class="panel-note">Drawn at random from ${avail} matching ${avail===1?"card":"cards"} in a pool of ${CARDS.length}. Changing this starts a new session.</p>
+    <p class="panel-note">Drawn at random from ${avail} matching ${avail===1?"card":"cards"} in a pool of ${BANK.length}. Changing this starts a new session.</p>
   </div>
-  <div class="panel">
-    <h2>Source</h2>
-    <div class="filters">${srcBtns}</div>
-    <p class="panel-note">Module knowledge checks come from the official end-of-module quizzes on Microsoft Learn; everything else was written for this deck.</p>
-  </div>
+  ${sourcePanel}
   <div class="panel">
     <h2>Deck</h2>
     <div class="filters">
@@ -1288,7 +1309,7 @@ function finishSession(){
       pct:pct, passed:pct>=PASS_PCT, ms:answerMs,
       wall:session.startedAt?Date.now()-session.startedAt:answerMs,
       scope:(ui.topic?topicName(ui.domain,ui.topic):(ui.domain==="all"?"Full pool":DOMAINS[ui.domain].label))
-        +(ui.source==="all"?"":` · ${SOURCE_LABELS[ui.source]}`)
+        +(ui.view==="exam"?" · Exam bank":ui.source==="all"?"":` · ${SOURCE_LABELS[ui.source]}`)
     }]).slice(-25);
     persist();
   }
@@ -1395,7 +1416,9 @@ function wire(){
 }
 document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
   if(!CARDS) return;
-  ui.view=t.dataset.view; render(); scrollTop();
+  ui.view=t.dataset.view;
+  if(ui.view!=="progress" && ui.builtFor!==bankOf()) rebuild();
+  render(); scrollTop();
 });
 
 document.addEventListener("keydown",e=>{

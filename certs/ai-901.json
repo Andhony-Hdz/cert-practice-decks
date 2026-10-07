@@ -8,7 +8,7 @@
     "description": "Free practice deck for Microsoft's AI-901 Azure AI Fundamentals certification: 104 exam-style questions, timed sessions, and explanations.",
     "lsKey": "ai901.progress.v1",
     "passPct": 70,
-    "updated": "2026-09-09",
+    "updated": "2026-10-07",
     "officialGuideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-901",
     "footNote": "Content follows the official AI-901 skills-measured outline (updated April 2026) and is enriched with the \"Knowledge check\" questions from every module across the official Microsoft Learn training paths behind this certification. AI-900 retired on 30 June 2026 — AI-901 is the exam that now earns the Azure AI Fundamentals credential. Always confirm against the <a href=\"https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-901\" target=\"_blank\" rel=\"noopener\">Microsoft study guide</a>."
   },
@@ -2852,6 +2852,588 @@
         "url": "https://learn.microsoft.com/en-us/training/modules/get-started-foundry-iq/",
         "title": "Get started with Microsoft Foundry IQ"
       }
+    },
+    {
+      "id": "ex01",
+      "d": "concepts",
+      "t": "rai",
+      "q": "A hospital deploys a model that scores each patient's risk of readmission. Clinicians must be able to see which factors drove a specific patient's score, and a named review board must approve every model update before it reaches production. Which two responsible AI principles do these requirements address?",
+      "o": [
+        "Transparency and accountability",
+        "Fairness and inclusiveness",
+        "Reliability and safety, and privacy and security",
+        "Inclusiveness and transparency"
+      ],
+      "a": 0,
+      "s": "Transparency (explain the score) and accountability (a board owns updates)",
+      "e": "Being able to explain which factors produced a score is <b>transparency</b>. Having named people who approve changes and answer for the system's outcomes is <b>accountability</b>. Nothing in the scenario is about unequal treatment of groups (fairness), access for everyone (inclusiveness), or protecting data (privacy and security).",
+      "pool": "exam"
+    },
+    {
+      "id": "ex02",
+      "d": "concepts",
+      "t": "rai",
+      "q": "Testing shows a voice-controlled banking assistant fails far more often for users with speech impairments. The team adds speech samples from those users to the evaluation set and adds an equivalent text-input option to every voice flow. Which principle is the team primarily acting on?",
+      "o": [
+        "Inclusiveness",
+        "Transparency",
+        "Accountability",
+        "Privacy and security"
+      ],
+      "a": 0,
+      "s": "Inclusiveness — design so everyone, including people with disabilities, can use it",
+      "e": "Inclusiveness means AI systems should empower and engage everyone, including people with disabilities. Testing with affected users and offering an alternative input mode are classic inclusive-design steps. The scenario doesn't involve explaining decisions, ownership of outcomes, or data protection.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex03",
+      "d": "concepts",
+      "t": "rai",
+      "type": "combo",
+      "q": "For each statement about responsible AI, select Yes if the statement is true. Otherwise, select No.",
+      "rows": [
+        {
+          "label": "Telling users they are chatting with an AI system, not a person, supports the transparency principle",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Encrypting a model's training data at rest primarily addresses the fairness principle",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 1
+        },
+        {
+          "label": "Defining who is answerable for an AI system's decisions and their consequences is part of the accountability principle",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 0
+        }
+      ],
+      "e": "Disclosing that an AI is involved is a core transparency practice. Encryption protects data, which is <b>privacy and security</b> — fairness is about equitable treatment of groups. Accountability is precisely about people being answerable for how the system behaves.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex04",
+      "d": "concepts",
+      "t": "rai",
+      "q": "A public-facing chatbot built on a generative model must block responses containing hate or violence, and must also detect user messages that try to override the system instructions (jailbreak attempts). Which capability meets both requirements?",
+      "o": [
+        "Azure AI Content Safety content filters together with Prompt Shields",
+        "Groundedness detection only",
+        "Protected material detection only",
+        "PII detection in Azure AI Language"
+      ],
+      "a": 0,
+      "s": "Content filters (harmful categories) + Prompt Shields (jailbreaks)",
+      "e": "Content filters classify prompts and completions across harm categories such as hate and violence. Prompt Shields specifically detect jailbreak and prompt-injection attempts. Groundedness detection checks answers against source material, protected material detection looks for copyrighted text or code, and PII detection finds personal data — none of them alone covers both requirements.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex05",
+      "d": "concepts",
+      "t": "model",
+      "q": "A FAQ chatbot gives noticeably different answers to the same question and sometimes adds invented details. You need more consistent, focused answers without retraining or redeploying the model. Which setting should you change?",
+      "o": [
+        "Lower the temperature",
+        "Increase the maximum number of output tokens",
+        "Raise top_p to 1",
+        "Increase the presence penalty"
+      ],
+      "a": 0,
+      "s": "Lower temperature — less randomness, more consistent answers",
+      "e": "Temperature controls how random token selection is; lowering it makes the model favor the most likely tokens, so answers become more consistent and conservative. More output tokens only allows longer answers, raising top_p widens the token pool (more variety, not less), and a presence penalty pushes the model toward new topics.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex06",
+      "d": "concepts",
+      "t": "model",
+      "q": "A model must answer employee questions about HR policies that are revised every month. Answers must reflect the current policy text, and you want to minimize ongoing cost and effort. What should you do?",
+      "o": [
+        "Use retrieval-augmented generation (RAG) over an index of the current policy documents",
+        "Fine-tune the model on the policy documents every month",
+        "Train a new language model from scratch on the policies",
+        "Paste every policy document into the system message of each request"
+      ],
+      "a": 0,
+      "s": "RAG — ground answers in the latest documents at query time",
+      "e": "RAG retrieves the relevant, current passages at query time, so updating the index is all it takes to keep answers current. Monthly fine-tuning is costly and still doesn't reliably teach facts; training from scratch is far more expensive; and stuffing every document into each prompt wastes tokens and quickly hits context limits.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex07",
+      "d": "concepts",
+      "t": "model",
+      "q": "Your app sends a 2,000-token prompt to a pay-as-you-go model deployment and receives a 500-token response. Which statement about how this request is billed is correct?",
+      "o": [
+        "Both the input (prompt) and output (completion) tokens are billed, typically at different per-token rates",
+        "Only the 500 output tokens are billed",
+        "Only the 2,000 input tokens are billed",
+        "Billing is based on the number of words, not tokens"
+      ],
+      "a": 0,
+      "s": "Input and output tokens are both billed",
+      "e": "Pay-as-you-go language model usage is metered in tokens, and both prompt and completion tokens count — usually with output tokens priced higher than input tokens. That's why long system messages and large retrieved contexts directly affect cost.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex08",
+      "d": "concepts",
+      "t": "model",
+      "q": "An internal knowledge base must show \"related articles\" for the article a user is reading, based on meaning rather than shared keywords. Thousands of articles exist and new ones are added daily. Which approach is most appropriate?",
+      "o": [
+        "Generate an embedding vector for each article and compare vectors by similarity",
+        "Ask a chat model to rate the similarity of every pair of articles",
+        "Assign each article one category label with a text classification model",
+        "Run sentiment analysis on each article and group articles by sentiment"
+      ],
+      "a": 0,
+      "s": "Embeddings — vectors whose distance reflects meaning",
+      "e": "Embeddings represent text as vectors so semantically similar articles end up close together, and a new article only needs one new embedding. Pairwise chat comparisons grow quadratically and are slow and expensive; a single category label is far too coarse; sentiment says nothing about topic.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex09",
+      "d": "concepts",
+      "t": "model",
+      "type": "combo",
+      "q": "Select the type of model that best fits each requirement.",
+      "rows": [
+        {
+          "label": "Answer customers' questions about photos they upload during a chat",
+          "o": [
+            "A multimodal (vision-capable) chat model",
+            "An embedding model",
+            "A text-to-speech model",
+            "An image generation model"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Create a marketing image from a written description",
+          "o": [
+            "An image generation model",
+            "A multimodal (vision-capable) chat model",
+            "An embedding model",
+            "A text-to-speech model"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Power semantic search across a document library",
+          "o": [
+            "An embedding model",
+            "An image generation model",
+            "A text-to-speech model",
+            "A multimodal (vision-capable) chat model"
+          ],
+          "a": 0
+        }
+      ],
+      "e": "Understanding an image and talking about it needs a model that accepts image input; creating a new image needs an image generation model; semantic search relies on embedding vectors. The trap is mixing up <i>analyzing</i> images (multimodal chat) with <i>creating</i> them (image generation).",
+      "pool": "exam"
+    },
+    {
+      "id": "ex10",
+      "d": "concepts",
+      "t": "work",
+      "q": "A retailer wants to count how many people walk through each store entrance per hour, using existing ceiling cameras. Individuals must not be identified. Which computer vision capability should the solution use?",
+      "o": [
+        "Object detection",
+        "Image classification",
+        "Facial recognition",
+        "Optical character recognition (OCR)"
+      ],
+      "a": 0,
+      "s": "Object detection — locate and count multiple instances",
+      "e": "Counting people means finding every instance of a \"person\" in each frame, which is what object detection does (it returns each object's location). Image classification assigns one label to a whole image and can't count; facial recognition identifies individuals, which the requirement forbids; OCR reads text.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex11",
+      "d": "concepts",
+      "t": "work",
+      "q": "A bank receives scanned loan application forms and must store the applicant name, annual income, and requested amount as separate fields in a database. Which approach meets the requirement?",
+      "o": [
+        "Document field extraction with a document intelligence model",
+        "Optical character recognition (OCR) that returns the full page text",
+        "Image classification of each scanned page",
+        "Key phrase extraction on the scanned images"
+      ],
+      "a": 0,
+      "s": "Field extraction — returns named values, not just text",
+      "e": "The requirement is <i>structured fields</i>. A document intelligence (information extraction) model returns labeled key-value pairs such as name and income. Plain OCR returns all the text on the page with no notion of which value is which, so you'd still have to write parsing logic. Classification and key phrases don't produce field values.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex12",
+      "d": "concepts",
+      "t": "work",
+      "type": "combo",
+      "q": "For each statement, select Yes if the statement is true. Otherwise, select No.",
+      "rows": [
+        {
+          "label": "Detecting the language a customer review is written in is a natural language processing workload",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Writing a summary of a long report is an example of a generative AI workload",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Identifying which animals appear in a photo and drawing a box around each one is image classification",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 1
+        }
+      ],
+      "e": "Language detection is a text/NLP task, and producing new text such as a summary is generative AI. Returning a bounding box for each animal is <b>object detection</b>; image classification only labels the image as a whole.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex13",
+      "d": "concepts",
+      "t": "work",
+      "q": "A contact center wants live captions during customer calls and, after each call, an indication of whether the customer ended the call satisfied. Which combination of AI capabilities is required?",
+      "o": [
+        "Speech-to-text, then sentiment analysis of the transcript",
+        "Text-to-speech, then key phrase extraction",
+        "Speech translation, then entity recognition",
+        "Speaker recognition, then language detection"
+      ],
+      "a": 0,
+      "s": "Speech-to-text (captions) + sentiment analysis (satisfaction)",
+      "e": "Captions require converting speech to text, and judging satisfaction is sentiment analysis on that transcript. Text-to-speech goes the other way; translation isn't required; speaker recognition identifies who is talking, not how they feel.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex14",
+      "d": "foundry",
+      "t": "agents",
+      "q": "You build an agent in Microsoft Foundry that must answer questions using several hundred product manuals stored as PDF files. You want the agent to search the manuals without you writing any retrieval code. Which tool should you add to the agent?",
+      "o": [
+        "File search",
+        "Code interpreter",
+        "Function calling",
+        "Grounding with Bing Search"
+      ],
+      "a": 0,
+      "s": "File search — built-in retrieval over uploaded files",
+      "e": "File search ingests your files, chunks and indexes them, and retrieves relevant passages for the agent automatically. Code interpreter runs Python on data, function calling invokes your own code, and Bing grounding searches the public web — not your manuals.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex15",
+      "d": "foundry",
+      "t": "agents",
+      "q": "An agent must report the live status of a customer's order. Status is only available from your company's internal order REST API and changes every few minutes. Which tool should the agent use?",
+      "o": [
+        "Function calling (or an OpenAPI tool) that calls the order API",
+        "File search over a nightly export of orders",
+        "Grounding with Bing Search",
+        "Code interpreter"
+      ],
+      "a": 0,
+      "s": "Call the live API through a function/OpenAPI tool",
+      "e": "Live, private data has to come from the system that owns it, so the agent needs a tool that calls your API at request time. A nightly export is stale within minutes, Bing can't see internal systems, and code interpreter runs code in a sandbox — it doesn't reach your private API.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex16",
+      "d": "foundry",
+      "t": "agents",
+      "q": "Users upload a CSV file of monthly sales to an agent and ask it to calculate growth rates and return a chart. Which tool lets the agent do this reliably?",
+      "o": [
+        "Code interpreter",
+        "File search",
+        "Grounding with Bing Search",
+        "A higher temperature setting"
+      ],
+      "a": 0,
+      "s": "Code interpreter — runs Python to compute and plot",
+      "e": "Code interpreter lets the agent write and execute Python in a sandbox, so calculations are exact and it can generate chart images. File search retrieves text passages but doesn't compute; Bing searches the web; temperature only changes randomness.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex17",
+      "d": "foundry",
+      "t": "agents",
+      "q": "A model sometimes ignores the response layout your application expects. Without fine-tuning, which change is most likely to make its output follow the layout consistently?",
+      "o": [
+        "Describe the required layout in the system message and include a few example responses (few-shot)",
+        "Increase the temperature",
+        "Increase the maximum output tokens",
+        "Remove the system message so the model has fewer constraints"
+      ],
+      "a": 0,
+      "s": "Clear instructions plus few-shot examples",
+      "e": "Explicit instructions in the system message combined with a few examples of the exact output are the standard prompt-engineering fix for format drift. Raising temperature adds randomness, more tokens only allows longer output, and removing the system message removes the very instructions you need.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex18",
+      "d": "foundry",
+      "t": "agents",
+      "type": "combo",
+      "q": "For each statement about prompts and agents, select Yes if the statement is true. Otherwise, select No.",
+      "rows": [
+        {
+          "label": "An agent's instructions (system message) are a good place to define its role, tone, and boundaries",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Adding few-shot examples to a prompt requires you to fine-tune the model first",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 1
+        },
+        {
+          "label": "Grounding a model's answers in your own data helps reduce fabricated responses",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 0
+        }
+      ],
+      "e": "Instructions set the agent's persona and limits. Few-shot examples are just part of the prompt — no training involved. Grounding gives the model real source material to draw from, which reduces (but doesn't eliminate) hallucinations.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex19",
+      "d": "foundry",
+      "t": "sdk",
+      "q": "Your Python app calls a chat model in your Foundry project using an OpenAI-compatible client. Which value must you pass as the model parameter in client.chat.completions.create(model=...)?",
+      "o": [
+        "The name you gave the model deployment",
+        "The name of the resource group",
+        "The Azure subscription ID",
+        "The name of the Foundry hub or project"
+      ],
+      "a": 0,
+      "s": "The deployment name",
+      "e": "With Azure-hosted OpenAI-compatible endpoints, requests are routed to a specific <b>deployment</b>, so the model parameter takes the deployment name you chose when you deployed the model. Resource groups, subscriptions, and projects identify where things live, not which deployment to call.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex20",
+      "d": "foundry",
+      "t": "sdk",
+      "q": "A Python app must authenticate to your Foundry project without any keys in code or configuration. In production it runs on Azure with a managed identity; locally, developers use their own Azure sign-in. Which credential should the code use?",
+      "o": [
+        "DefaultAzureCredential from the azure-identity package",
+        "AzureKeyCredential with a key stored in an environment variable",
+        "AzureKeyCredential with a key hard-coded in the source",
+        "A shared access signature (SAS) token"
+      ],
+      "a": 0,
+      "s": "DefaultAzureCredential — managed identity in Azure, dev sign-in locally",
+      "e": "DefaultAzureCredential tries a chain of Microsoft Entra ID sources, so the same code uses the managed identity in Azure and the developer's Azure CLI / Visual Studio sign-in locally — no secrets anywhere. Both key options still rely on secrets, and SAS tokens are a Storage concept.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex21",
+      "d": "foundry",
+      "t": "sdk",
+      "q": "Users report that the travel suggestions returned by the following code often stop mid-sentence. What is the most likely cause?",
+      "code": "response = client.chat.completions.create(\n    model=\"travel-chat\",\n    messages=[\n        {\"role\": \"system\", \"content\": \"You are a helpful travel assistant.\"},\n        {\"role\": \"user\", \"content\": \"Suggest five things to do in Lisbon, with a short description of each.\"}\n    ],\n    max_tokens=50\n)",
+      "o": [
+        "max_tokens is too low for the requested answer",
+        "The system message is too short",
+        "The temperature parameter is missing",
+        "The model doesn't support system messages"
+      ],
+      "a": 0,
+      "s": "max_tokens caps the output — 50 tokens is too few",
+      "e": "max_tokens limits how many tokens the model may generate. Five suggestions with descriptions need far more than 50 tokens, so the response is cut off (the finish reason would be <code>length</code>). Omitting temperature just uses the default, and the system message's length doesn't truncate output.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex22",
+      "d": "foundry",
+      "t": "sdk",
+      "q": "You build a multi-turn chat using the chat completions API. On the third turn the model doesn't remember what the user said in the first turn. What must your code do?",
+      "o": [
+        "Send the earlier user and assistant messages in the messages list with every request",
+        "Set the temperature to 0 so the model keeps state",
+        "Put the word \"remember\" in the system message",
+        "Nothing — the deployment stores the conversation automatically"
+      ],
+      "a": 0,
+      "s": "The API is stateless — resend the conversation history",
+      "e": "Chat completions requests are stateless: the model only sees what you send. To keep context, the app appends each user message and assistant reply to the messages list and sends the whole history (trimmed as needed to fit the context window) each time.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex23",
+      "d": "foundry",
+      "t": "speech",
+      "q": "A company's phone system must speak with a synthetic voice that sounds like its well-known spokesperson. Which Azure AI Speech capability is designed for this?",
+      "o": [
+        "Custom neural voice (a limited-access feature trained on recordings of the voice talent)",
+        "Custom speech trained on call-center audio",
+        "Speaker recognition",
+        "Speech translation"
+      ],
+      "a": 0,
+      "s": "Custom neural voice — a branded synthetic voice",
+      "e": "Custom neural voice builds a text-to-speech voice from recordings of a specific speaker; because it can imitate a real person, it's a limited-access feature that requires approval and the speaker's consent. Custom speech improves speech-to-text accuracy, speaker recognition identifies who is speaking, and translation converts languages.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex24",
+      "d": "foundry",
+      "t": "speech",
+      "q": "Your text-to-speech output must pronounce product names correctly, pause after headings, and speak a disclaimer more slowly than the rest of the text. What should you use?",
+      "o": [
+        "Speech Synthesis Markup Language (SSML)",
+        "A custom speech-to-text model",
+        "Batch transcription",
+        "A higher temperature"
+      ],
+      "a": 0,
+      "s": "SSML — fine control over pronunciation, pauses, and rate",
+      "e": "SSML lets you mark up text with pronunciation (phonemes or aliases), breaks, and prosody such as speaking rate and pitch. Custom speech and batch transcription are speech-to-text features, and temperature applies to generative language models.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex25",
+      "d": "foundry",
+      "t": "speech",
+      "q": "During a live town-hall meeting the presenter speaks Spanish. Remote attendees need English captions with only a few seconds of delay. Which capability should you use?",
+      "o": [
+        "Real-time speech translation",
+        "Text-to-speech",
+        "Batch transcription after the meeting, followed by text translation",
+        "Language detection"
+      ],
+      "a": 0,
+      "s": "Speech translation — spoken Spanish to English text in real time",
+      "e": "Speech translation recognizes speech in one language and returns translated text (or speech) in another as the person talks. Batch transcription runs after the fact, so it fails the live requirement; text-to-speech and language detection don't translate.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex26",
+      "d": "foundry",
+      "t": "vision",
+      "q": "Field engineers photograph whiteboards covered in a mix of printed labels and handwritten notes. You need the text as editable content. Which capability should you use?",
+      "o": [
+        "Optical character recognition (the Read OCR feature)",
+        "Image tagging",
+        "Object detection",
+        "Image generation"
+      ],
+      "a": 0,
+      "s": "OCR — reads printed and handwritten text",
+      "e": "OCR extracts printed and handwritten text from images. Tags describe what's in the image (\"whiteboard\", \"person\"), object detection locates objects, and image generation creates new pictures.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex27",
+      "d": "foundry",
+      "t": "vision",
+      "q": "A content management system must automatically produce a one-sentence, human-readable description of each uploaded photo to use as accessibility alt text. Which capability fits best?",
+      "o": [
+        "Image captioning",
+        "Optical character recognition (OCR)",
+        "Face detection",
+        "Image generation"
+      ],
+      "a": 0,
+      "s": "Captioning — a natural-language sentence describing the image",
+      "e": "Image captioning generates a sentence that describes the scene, which is exactly what alt text needs. OCR only reads text in the image, face detection only finds faces, and image generation goes in the opposite direction (text to image).",
+      "pool": "exam"
+    },
+    {
+      "id": "ex28",
+      "d": "foundry",
+      "t": "vision",
+      "type": "combo",
+      "q": "For each statement about computer vision, select Yes if the statement is true. Otherwise, select No.",
+      "rows": [
+        {
+          "label": "Using facial recognition to identify specific individuals is subject to Microsoft's Limited Access policy",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Image classification returns the location of each object in an image",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 1
+        },
+        {
+          "label": "A vision-capable chat model can answer free-form questions about an image",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 0
+        }
+      ],
+      "e": "Identification and verification features of Face are gated behind Limited Access registration. Classification labels the whole image — locations come from object detection. Multimodal chat models accept images as input and can discuss them in natural language.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex29",
+      "d": "foundry",
+      "t": "extract",
+      "q": "You must extract the vendor name, invoice total, and due date from thousands of invoices from hundreds of suppliers, each with a different layout. You need to minimize development effort. What should you use?",
+      "o": [
+        "The prebuilt invoice model in Azure AI Document Intelligence",
+        "A custom template model trained separately for each supplier's layout",
+        "OCR plus hand-written regular expressions for each layout",
+        "Sentiment analysis"
+      ],
+      "a": 0,
+      "s": "Prebuilt invoice model — common invoice fields with no training",
+      "e": "The prebuilt invoice model already understands invoice fields across varied layouts, so there's nothing to train. Per-supplier template models or regex rules mean hundreds of artifacts to build and maintain — the opposite of minimal effort. Sentiment analysis is unrelated.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex30",
+      "d": "foundry",
+      "t": "extract",
+      "q": "Your company uses its own purchase-request form with fields such as cost center and approval tier. The prebuilt models don't return these fields. What should you do?",
+      "o": [
+        "Train a custom extraction model using labeled sample forms",
+        "Use the prebuilt receipt model",
+        "Run key phrase extraction on the form text",
+        "Increase the scan resolution and use OCR only"
+      ],
+      "a": 0,
+      "s": "Custom extraction model — teach it your own fields",
+      "e": "When your document type and fields aren't covered by a prebuilt model, you label a set of sample documents and train a custom extraction model. The receipt model only knows receipt fields, key phrases aren't field values, and better OCR still doesn't tell you which text is the cost center.",
+      "pool": "exam"
     }
   ]
 }

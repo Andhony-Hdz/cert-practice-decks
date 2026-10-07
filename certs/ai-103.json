@@ -8,7 +8,7 @@
     "description": "Free practice deck for Microsoft's AI-103 (beta) certification — Developing AI Apps and Agents on Azure: planning Foundry solutions, building generative apps and agents, computer vision, text analysis, and information extraction.",
     "lsKey": "ai103.progress.v1",
     "passPct": 70,
-    "updated": "2026-09-09",
+    "updated": "2026-10-07",
     "officialGuideUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103",
     "footNote": "Content follows the official AI-103 skills-measured outline (updated April 16, 2026) for Exam AI-103: Developing AI Apps and Agents on Azure — currently a beta exam — and is enriched with the \"Knowledge check\" questions from every module across the official Microsoft Learn training paths behind this certification. Always confirm against the <a href=\"https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103\" target=\"_blank\" rel=\"noopener\">Microsoft study guide</a>, since beta exam content is more likely to change."
   },
@@ -3272,6 +3272,677 @@
         "url": "https://learn.microsoft.com/en-us/training/modules/ai-knowldge-mining/",
         "title": "Create a knowledge mining solution with Azure AI Search"
       }
+    },
+    {
+      "id": "ex01",
+      "d": "plan",
+      "t": "choose",
+      "q": "A company needs a chat assistant that answers from 50,000 internal documents. Queries mix exact terms (part numbers) with natural-language questions, answers must cite their sources, and results must be filterable by department. You must minimize custom code. What should you use?",
+      "o": [
+        "An Azure AI Search index with hybrid (keyword + vector) search and semantic ranking, connected to a chat model",
+        "A chat model fine-tuned on all 50,000 documents",
+        "Blob Storage, with the matching documents pasted into each prompt",
+        "A custom question answering project in Azure AI Language"
+      ],
+      "a": 0,
+      "s": "Azure AI Search (hybrid + semantic ranker) as the retrieval layer for RAG",
+      "e": "Azure AI Search supports keyword and vector queries together, semantic re-ranking, filters on fields such as department, and returns the source documents needed for citations. Fine-tuning doesn't give reliable citations or easy updates; pasting documents doesn't scale; custom question answering is built for curated Q&amp;A pairs, not 50,000 free-form documents.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex02",
+      "d": "plan",
+      "t": "choose",
+      "q": "An app must solve multi-step quantitative planning problems where accuracy matters far more than response time. Which model choice is most appropriate?",
+      "o": [
+        "A reasoning model, with a higher reasoning effort setting",
+        "A small, fast chat model with temperature set to 0",
+        "An embedding model",
+        "A model deployed with the Batch deployment type"
+      ],
+      "a": 0,
+      "s": "Reasoning model — spends extra compute thinking through steps",
+      "e": "Reasoning models are designed for multi-step problems and trade latency for accuracy; the reasoning effort setting controls how much they think. A small model at temperature 0 is consistent but not more capable; embedding models don't generate answers; Batch is a deployment type for asynchronous bulk jobs, not a capability.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex03",
+      "d": "plan",
+      "t": "choose",
+      "type": "combo",
+      "q": "Select the model deployment type that best fits each requirement.",
+      "rows": [
+        {
+          "label": "Guaranteed throughput and predictable latency for a high-volume production app",
+          "o": [
+            "Provisioned (PTU)",
+            "Global Standard",
+            "Global Batch",
+            "Data Zone Standard"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Summarize one million records within 24 hours at the lowest cost; response time doesn't matter",
+          "o": [
+            "Global Batch",
+            "Provisioned (PTU)",
+            "Global Standard",
+            "Data Zone Standard"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Pay per token, but data must be processed only within the EU",
+          "o": [
+            "Data Zone Standard",
+            "Global Standard",
+            "Global Batch",
+            "Provisioned (PTU)"
+          ],
+          "a": 0
+        }
+      ],
+      "e": "Provisioned throughput reserves capacity for consistent performance. Batch deployments process large asynchronous jobs within a 24-hour window at a discount. Data Zone deployments keep processing inside a geographic zone such as the EU, while Global deployments may process anywhere in Azure's global infrastructure.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex04",
+      "d": "plan",
+      "t": "setup",
+      "q": "Developers must call Azure OpenAI chat deployments from their code using Microsoft Entra ID authentication. Following the principle of least privilege, which role should you assign them on the resource?",
+      "o": [
+        "Cognitive Services OpenAI User",
+        "Owner",
+        "Contributor",
+        "Reader"
+      ],
+      "a": 0,
+      "s": "Cognitive Services OpenAI User — inference access only",
+      "e": "Cognitive Services OpenAI User allows calling inference endpoints without permission to change the resource or deployments. Owner and Contributor grant management rights far beyond what's needed, and Reader can view the resource but can't call the model.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex05",
+      "d": "plan",
+      "t": "setup",
+      "q": "Security policy states that your Foundry resource must not be reachable from the public internet. An app running in an Azure virtual network must still call it. What should you configure?",
+      "o": [
+        "Disable public network access and create a private endpoint in the virtual network",
+        "Rotate the resource keys every 30 days",
+        "Enable content filters on every deployment",
+        "Assign the app the Reader role"
+      ],
+      "a": 0,
+      "s": "Private endpoint + public access disabled",
+      "e": "A private endpoint gives the resource a private IP inside your VNet, and disabling public network access blocks internet traffic. Key rotation, content filters, and RBAC are all useful, but none of them removes the public network path.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex06",
+      "d": "plan",
+      "t": "manage",
+      "q": "You need to debug a production agent by inspecting each run's prompts, tool calls, latency, and token usage. What should you do?",
+      "o": [
+        "Enable tracing to Application Insights (OpenTelemetry) for the Foundry project",
+        "Increase the deployment's tokens-per-minute quota",
+        "Turn on stricter content filters",
+        "Assign an Azure Policy to the resource group"
+      ],
+      "a": 0,
+      "s": "Tracing with Application Insights",
+      "e": "Tracing records each step of a run — model calls, tool invocations, timings, and token counts — and Foundry sends it to Application Insights via OpenTelemetry. Quota, content filters, and Azure Policy don't give you per-run diagnostic detail.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex07",
+      "d": "plan",
+      "t": "manage",
+      "q": "During peak hours, your app receives HTTP 429 (Too Many Requests) responses from a Standard model deployment. Which response addresses the problem?",
+      "o": [
+        "Retry with exponential backoff, and request a higher quota or move steady load to provisioned throughput",
+        "Lower the temperature",
+        "Reduce the number of few-shot examples to improve answer quality",
+        "Disable content filtering"
+      ],
+      "a": 0,
+      "s": "429 = rate limit — back off, then add capacity",
+      "e": "A 429 means the deployment's rate limits (tokens or requests per minute) were exceeded. Clients should honor retry-after and back off; the lasting fix is more quota or provisioned capacity. Temperature and content filters don't affect rate limits.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex08",
+      "d": "plan",
+      "t": "manage",
+      "q": "An agent must call a third-party service that only supports API-key authentication. Where should the key be stored?",
+      "o": [
+        "In Azure Key Vault, retrieved at runtime by the app's managed identity",
+        "In the application source code",
+        "In a configuration file committed to the repository",
+        "In the agent's system message"
+      ],
+      "a": 0,
+      "s": "Key Vault + managed identity",
+      "e": "Key Vault keeps secrets out of code and config, supports rotation, and the app reads them using its managed identity with no extra secret to manage. Code, repo files, and prompts all expose the key — a system message can even be revealed to users through prompt injection.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex09",
+      "d": "plan",
+      "t": "rai",
+      "q": "An agent can issue customer refunds through a tool. Company policy says refunds over $500 require approval by a human supervisor, and every approval must be auditable. What should you implement?",
+      "o": [
+        "Require human approval for refund tool calls above the threshold, and log each approval with the run trace",
+        "Add \"never refund more than $500\" to the system message",
+        "Lower the model's temperature",
+        "Enable the violence content filter"
+      ],
+      "a": 0,
+      "s": "Human-in-the-loop approval enforced outside the model, plus logging",
+      "e": "High-impact actions need controls that the model can't talk its way around: an approval step enforced in the tool or orchestration layer, with the decision recorded for audit. A system-message rule is only guidance and can be bypassed by prompt injection; temperature and content filters don't govern actions.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex10",
+      "d": "plan",
+      "t": "rai",
+      "q": "A RAG application sometimes states facts that aren't present in the retrieved documents. You need to detect these unsupported claims. Which capability should you use?",
+      "o": [
+        "Groundedness detection",
+        "Prompt Shields",
+        "Protected material detection",
+        "PII detection"
+      ],
+      "a": 0,
+      "s": "Groundedness detection — checks answers against the sources",
+      "e": "Groundedness detection compares a response with the provided source material and flags content that isn't supported by it. Prompt Shields catch jailbreak and injection attempts, protected material detection looks for copyrighted content, and PII detection finds personal data.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex11",
+      "d": "genai",
+      "t": "genapp",
+      "q": "A RAG app splits documents into 8,000-token chunks with no overlap and retrieves only the single best chunk. Answers frequently miss details that span sections. What should you change?",
+      "o": [
+        "Use smaller chunks with some overlap and retrieve several top-ranked chunks",
+        "Increase the temperature",
+        "Switch to an image generation model",
+        "Remove the system message"
+      ],
+      "a": 0,
+      "s": "Smaller overlapping chunks, top-k retrieval",
+      "e": "Very large chunks dilute relevance scoring, no overlap splits ideas across boundaries, and top-1 retrieval throws away related passages. Smaller, overlapping chunks with several results retrieved give the model more complete context. The other changes don't affect retrieval.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex12",
+      "d": "genai",
+      "t": "genapp",
+      "q": "A downstream service parses your model's output and fails whenever a field is missing or misnamed. You need output that always conforms to a specific JSON schema. What should you use?",
+      "o": [
+        "Structured outputs, supplying the JSON schema in the response format",
+        "A polite request in the prompt to \"please return valid JSON\"",
+        "A temperature of 2",
+        "A larger max_tokens value"
+      ],
+      "a": 0,
+      "s": "Structured outputs — schema-constrained responses",
+      "e": "Structured outputs constrain generation to the JSON schema you provide, so required fields and types are honored. Prompt instructions alone improve compliance but don't guarantee it; temperature and token limits are unrelated to schema adherence.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex13",
+      "d": "genai",
+      "t": "genapp",
+      "q": "Users of your chat app complain that nothing appears on screen until the entire answer has been generated, which can take several seconds. How should you improve the experience?",
+      "code": "stream = client.chat.completions.create(\n    model=\"support-chat\",\n    messages=history,\n    stream=True\n)\nfor chunk in stream:\n    ...",
+      "o": [
+        "Request a streamed response and render each chunk as it arrives, as in the snippet",
+        "Switch to a Global Batch deployment",
+        "Increase max_tokens",
+        "Send the request twice and use whichever finishes first"
+      ],
+      "a": 0,
+      "s": "Streaming — show tokens as they're generated",
+      "e": "With streaming, the service sends partial output as it's generated, so users see text almost immediately even though total generation time is unchanged. Batch deployments are asynchronous and slower, more tokens makes answers longer, and duplicate requests waste quota.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex14",
+      "d": "genai",
+      "t": "genapp",
+      "type": "combo",
+      "q": "For each statement, select Yes if the statement is true. Otherwise, select No.",
+      "rows": [
+        {
+          "label": "Few-shot examples in a prompt can improve output consistency without fine-tuning",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Fine-tuning is the preferred way to give a model access to documents that change every day",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 1
+        },
+        {
+          "label": "Setting temperature to 0 guarantees that a model will never hallucinate",
+          "o": [
+            "Yes",
+            "No"
+          ],
+          "a": 1
+        }
+      ],
+      "e": "Few-shot examples are pure prompt engineering. Fast-changing knowledge belongs in retrieval (RAG), not in model weights. Temperature 0 makes output more deterministic, but a model can still confidently produce wrong content — grounding and evaluation are what reduce hallucinations.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex15",
+      "d": "genai",
+      "t": "agents",
+      "q": "A content workflow needs one agent to research a topic, a second to write a draft, and a third to review it — and the reviewer must be able to send the draft back for revision. Which design is most appropriate?",
+      "o": [
+        "A multi-agent orchestration in which each specialized agent has its own instructions and tools",
+        "A single agent with a very long system message describing all three roles",
+        "Three separately fine-tuned models called in a fixed sequence with no feedback",
+        "A Batch deployment that processes the steps overnight"
+      ],
+      "a": 0,
+      "s": "Multi-agent orchestration with specialized agents",
+      "e": "Splitting responsibilities across agents keeps each one focused, and an orchestration (such as connected agents or a workflow) can route work back from the reviewer to the writer. One mega-prompt is harder to control and debug, a fixed pipeline can't loop back, and Batch is a deployment type for bulk requests.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex16",
+      "d": "genai",
+      "t": "agents",
+      "q": "An agent must answer questions about current events and cite the web pages it used. Which tool should you add?",
+      "o": [
+        "Grounding with Bing Search",
+        "File search",
+        "Code interpreter",
+        "An Azure AI Search index built last quarter"
+      ],
+      "a": 0,
+      "s": "Bing grounding — fresh public web results with citations",
+      "e": "Grounding with Bing Search retrieves current public web content and returns citations. File search and a last-quarter index only contain what you uploaded or indexed, and code interpreter executes code rather than searching.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex17",
+      "d": "genai",
+      "t": "agents",
+      "q": "An agent must call an internal inventory service that is described by an OpenAPI 3.0 specification. The service accepts Microsoft Entra ID tokens and you don't want to manage secrets. How should you connect the agent to the service?",
+      "o": [
+        "Add an OpenAPI tool from the specification, configured to authenticate with managed identity",
+        "Upload the specification to file search",
+        "Use code interpreter to read the specification",
+        "Add Grounding with Bing Search"
+      ],
+      "a": 0,
+      "s": "OpenAPI tool + managed identity auth",
+      "e": "The OpenAPI tool lets the agent call operations defined in the spec, and it supports managed identity authentication, so no secrets are stored. Putting the spec in file search only lets the agent <i>read about</i> the API; it doesn't call it.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex18",
+      "d": "genai",
+      "t": "agents",
+      "q": "Which statement correctly describes how function calling works with a chat model?",
+      "o": [
+        "The model returns the function name and arguments; your code runs the function and sends the result back to the model",
+        "The model executes the function directly on your server",
+        "Function calling requires fine-tuning the model on your function definitions",
+        "The model can call only one function per conversation"
+      ],
+      "a": 0,
+      "s": "Model proposes the call; your code executes it",
+      "e": "You describe functions in the request; the model decides when one is needed and returns a structured call with arguments. Your application executes it and returns the output as a tool message so the model can finish its answer. The model never runs your code, no fine-tuning is needed, and it can call functions many times.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex19",
+      "d": "genai",
+      "t": "agents",
+      "q": "Your agent must use tools exposed by a remote Model Context Protocol (MCP) server that another team operates. What should you configure?",
+      "o": [
+        "An MCP tool that points to the server's endpoint, specifying which tools are allowed and whether calls need approval",
+        "Code interpreter with the server's URL in the prompt",
+        "File search over the server's documentation",
+        "A fine-tuned model trained on the server's tool descriptions"
+      ],
+      "a": 0,
+      "s": "MCP tool — connect to the remote server and govern its tools",
+      "e": "An MCP tool connects the agent to a remote MCP server, discovers the tools it exposes, and lets you restrict which ones are allowed and require approval before calls. Pasting a URL into a prompt or indexing docs doesn't make the tools callable, and fine-tuning isn't involved.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex20",
+      "d": "genai",
+      "t": "optimize",
+      "q": "Before release, you must measure whether your RAG app's answers are grounded, relevant, and coherent across 500 test questions, and repeat the measurement after every prompt change. What should you do?",
+      "o": [
+        "Run an evaluation in Foundry using built-in AI-assisted evaluators on a test dataset",
+        "Have one team member read ten answers",
+        "Compare the average number of tokens per answer",
+        "Monitor CPU usage on the app server"
+      ],
+      "a": 0,
+      "s": "Evaluations with built-in evaluators on a dataset",
+      "e": "Foundry evaluations run built-in quality metrics such as groundedness, relevance, and coherence over a whole dataset and are repeatable, so you can compare prompt versions. A small manual spot-check isn't representative, and token counts or CPU usage don't measure answer quality.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex21",
+      "d": "genai",
+      "t": "optimize",
+      "q": "A high-volume app sends the same long system message and reference text at the start of every request, followed by a short user question. You need to reduce cost and latency without changing quality. What should you do?",
+      "o": [
+        "Keep the unchanging content at the start of the prompt so prompt caching can be applied",
+        "Move the unchanging content to the end of the prompt",
+        "Increase the temperature",
+        "Move the development environment to provisioned throughput"
+      ],
+      "a": 0,
+      "s": "Stable prefix first — enables prompt caching",
+      "e": "Prompt caching reuses computation for an identical prompt prefix, lowering cost and latency for repeated content. It only works when the repeated part comes first, so moving it to the end would defeat it. Temperature doesn't affect cost, and provisioned capacity for dev adds cost.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex22",
+      "d": "genai",
+      "t": "optimize",
+      "q": "A model must write in a highly specific house style and output layout. Detailed instructions and few-shot examples haven't been enough, and you have thousands of high-quality example input/output pairs. What should you do next?",
+      "o": [
+        "Fine-tune the model with the example pairs",
+        "Add retrieval over the style guide",
+        "Increase the temperature",
+        "Switch to an embedding model"
+      ],
+      "a": 0,
+      "s": "Fine-tuning — teach consistent style and format",
+      "e": "Fine-tuning is the right tool for changing <i>how</i> a model responds — style, tone, format — when prompting has plateaued and you have good examples. RAG adds knowledge rather than behavior, temperature adds randomness, and embedding models don't generate text.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex23",
+      "d": "vision",
+      "t": "gen",
+      "q": "A marketing team needs product images generated from text descriptions, and outputs must be screened for harmful content. What should you use?",
+      "o": [
+        "An image generation model deployed in Foundry, with content filtering enabled",
+        "A vision-capable chat model that analyzes existing photos",
+        "Optical character recognition",
+        "An embedding model"
+      ],
+      "a": 0,
+      "s": "Image generation model + content filters",
+      "e": "Creating images from text requires an image generation model, and Foundry applies content filtering to both the prompt and the generated image. A vision chat model analyzes images rather than creating them; OCR and embeddings don't generate images.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex24",
+      "d": "vision",
+      "t": "gen",
+      "q": "A social media team wants short video clips generated directly from text prompts. Which kind of model should you deploy?",
+      "o": [
+        "A video generation model, such as Sora",
+        "An image analysis model",
+        "A text-to-speech model",
+        "A custom image classification model"
+      ],
+      "a": 0,
+      "s": "Video generation model",
+      "e": "Text-to-video requires a video generation model such as Sora, available through Foundry. Image analysis and classification interpret existing visuals, and text-to-speech produces audio.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex25",
+      "d": "vision",
+      "t": "understand",
+      "q": "Insurance customers upload photos of vehicle damage. Adjusters want a written description of the damage and the ability to ask follow-up questions such as \"Is the headlight broken?\". What should you use?",
+      "o": [
+        "A multimodal chat model that accepts image input, with a task-specific prompt",
+        "Optical character recognition",
+        "An image classification model with fixed labels",
+        "Face detection"
+      ],
+      "a": 0,
+      "s": "Multimodal chat model — describe and discuss images",
+      "e": "A vision-capable chat model can describe a scene in natural language and answer arbitrary follow-up questions about it. OCR only reads text, fixed-label classification can't answer open questions, and face detection is irrelevant.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex26",
+      "d": "vision",
+      "t": "understand",
+      "q": "You must turn hours of recorded training videos into structured output — scene descriptions, spoken content, and timestamps of key events — with minimal custom code. What should you use?",
+      "o": [
+        "Azure AI Content Understanding with a video analyzer",
+        "Speech translation",
+        "An image generation model",
+        "Custom question answering"
+      ],
+      "a": 0,
+      "s": "Content Understanding — structured extraction from video",
+      "e": "Content Understanding analyzes video (frames and audio) and returns structured fields such as descriptions, transcripts, and segment timestamps according to an analyzer schema. Speech translation only handles audio language conversion; the other options don't analyze video.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex27",
+      "d": "vision",
+      "t": "rai",
+      "q": "Users of your image generation app try to create images depicting graphic violence. You must block these requests and any such outputs. What should you configure?",
+      "o": [
+        "Content filtering for the image generation deployment, covering both prompts and generated images",
+        "A lower output image resolution",
+        "OCR on each generated image",
+        "A higher temperature"
+      ],
+      "a": 0,
+      "s": "Content filters on prompts and outputs",
+      "e": "Content filters evaluate the incoming prompt and the generated image against harm categories such as violence and block them according to your configured thresholds. Resolution, OCR, and temperature do nothing to stop harmful content.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex28",
+      "d": "text",
+      "t": "analysis",
+      "q": "Support transcripts must have names, phone numbers, and account numbers removed before they are stored for analytics. Which capability should you use?",
+      "o": [
+        "PII detection with redaction",
+        "Sentiment analysis",
+        "Key phrase extraction",
+        "Language detection"
+      ],
+      "a": 0,
+      "s": "PII detection — finds and redacts personal data",
+      "e": "PII detection identifies personal and sensitive entities and can return redacted text. Sentiment, key phrases, and language detection analyze the text but don't find or mask personal data.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex29",
+      "d": "text",
+      "t": "analysis",
+      "type": "combo",
+      "q": "Select the approach that best fits each text analysis requirement.",
+      "rows": [
+        {
+          "label": "Categorize tickets into categories that change every week; no labeled data exists",
+          "o": [
+            "A language model with zero-shot or few-shot prompting",
+            "Custom text classification trained on labeled data",
+            "Key phrase extraction",
+            "Language detection"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Identify the language of millions of short messages at the lowest cost",
+          "o": [
+            "Language detection",
+            "A language model with zero-shot or few-shot prompting",
+            "Custom text classification trained on labeled data",
+            "Key phrase extraction"
+          ],
+          "a": 0
+        },
+        {
+          "label": "List the main talking points in each customer review",
+          "o": [
+            "Key phrase extraction",
+            "Language detection",
+            "Custom text classification trained on labeled data",
+            "A language model with zero-shot or few-shot prompting"
+          ],
+          "a": 0
+        }
+      ],
+      "e": "Prompting a language model adapts instantly to categories that keep changing, with no training data. A prebuilt feature like language detection is far cheaper than a generative model for simple, high-volume tasks. Key phrase extraction returns the main points in a text. Custom classification needs labeled data and retraining whenever categories change.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex30",
+      "d": "text",
+      "t": "speech",
+      "q": "Each night you must transcribe thousands of hours of recorded call-center audio stored in Azure Blob Storage, at the lowest cost. Which approach should you use?",
+      "o": [
+        "Batch transcription in Azure AI Speech",
+        "Real-time speech-to-text through the Speech SDK, one file at a time",
+        "Speech translation",
+        "Text-to-speech"
+      ],
+      "a": 0,
+      "s": "Batch transcription — asynchronous, large volumes of stored audio",
+      "e": "Batch transcription processes large sets of stored audio files asynchronously and is designed for exactly this offline workload. Streaming each file through real-time recognition is slower and more complex; translation and text-to-speech don't fit the task.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex31",
+      "d": "text",
+      "t": "speech",
+      "q": "Speech-to-text consistently misrecognizes your company's product names and specialized medical terms. What should you do to improve accuracy?",
+      "o": [
+        "Adapt recognition with custom speech trained on domain text or audio (or add a phrase list)",
+        "Use SSML in the request",
+        "Create a custom neural voice",
+        "Switch to speech translation"
+      ],
+      "a": 0,
+      "s": "Custom speech / phrase lists for domain vocabulary",
+      "e": "Custom speech adapts the recognition model with your domain vocabulary and audio, and phrase lists boost specific terms at runtime. SSML and custom neural voice are for text-to-speech output, and translation doesn't improve recognition.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex32",
+      "d": "extract",
+      "t": "retrieval",
+      "q": "Users search a product catalog with exact codes such as \"XR-2291\" as well as natural-language questions. Pure vector search often misses the exact codes. What should you configure in Azure AI Search?",
+      "o": [
+        "Hybrid search that combines keyword (BM25) and vector queries, with semantic ranking",
+        "Vector search with a larger embedding dimension",
+        "Only the semantic ranker, without a keyword query",
+        "A higher temperature on the chat model"
+      ],
+      "a": 0,
+      "s": "Hybrid search — exact matches and semantic matches together",
+      "e": "Keyword search excels at exact tokens like product codes, while vector search captures meaning; hybrid search merges both result sets, and the semantic ranker re-orders the top results. Changing embedding size doesn't fix exact-term matching, and temperature affects generation, not retrieval.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex33",
+      "d": "extract",
+      "t": "retrieval",
+      "q": "In a RAG app, each user may only see content from documents they are authorized to read. How should you enforce this?",
+      "o": [
+        "Store permitted group IDs in each indexed document and filter search results by the signed-in user's groups",
+        "Instruct the model in the system message to ignore confidential documents",
+        "Create a separate model deployment for each user",
+        "Retrieve more chunks per query"
+      ],
+      "a": 0,
+      "s": "Security trimming at query time",
+      "e": "Security trimming filters retrieval results by the user's identity, so unauthorized content never reaches the model. A prompt instruction can't reliably keep data the model has already been given from leaking, per-user deployments don't control data access, and more chunks increases exposure.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex34",
+      "d": "extract",
+      "t": "retrieval",
+      "q": "Documents in Azure Blob Storage change daily. Your search index must stay current, and new content must be chunked and embedded automatically without custom ingestion code. What should you use?",
+      "o": [
+        "An Azure AI Search indexer with a skillset that splits text and generates embeddings, running on a schedule",
+        "A daily manual upload of documents through the portal",
+        "A fine-tuned model retrained nightly",
+        "Code interpreter in an agent"
+      ],
+      "a": 0,
+      "s": "Indexer + skillset (integrated vectorization)",
+      "e": "Indexers pull from data sources such as Blob Storage on a schedule and detect changes, and a skillset with text-splitting and embedding skills chunks and vectorizes content during indexing. Manual uploads don't scale, retraining a model doesn't update a search index, and code interpreter isn't an ingestion pipeline.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex35",
+      "d": "extract",
+      "t": "documents",
+      "q": "You are preparing long contracts for a RAG pipeline and need to preserve headings, reading order, and tables so chunks stay meaningful. Which Document Intelligence model should you use?",
+      "o": [
+        "The layout model, with Markdown output",
+        "The prebuilt receipt model",
+        "The prebuilt ID document model",
+        "Read OCR, keeping only the plain text"
+      ],
+      "a": 0,
+      "s": "Layout model — structure-aware output for chunking",
+      "e": "The layout model returns text with structure — sections, headings, tables, reading order — and can output Markdown, which makes semantic chunking straightforward. Receipt and ID models extract specific fields, and plain OCR text loses the table and section structure.",
+      "pool": "exam"
+    },
+    {
+      "id": "ex36",
+      "d": "extract",
+      "t": "documents",
+      "type": "combo",
+      "q": "Select the Document Intelligence model that best fits each document type.",
+      "rows": [
+        {
+          "label": "Driver's licenses and passports collected during onboarding",
+          "o": [
+            "Prebuilt ID document model",
+            "Custom neural model",
+            "Prebuilt receipt model",
+            "Layout model"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Your company's own claim form, whose layout varies by region",
+          "o": [
+            "Custom neural model",
+            "Prebuilt ID document model",
+            "Prebuilt receipt model",
+            "Layout model"
+          ],
+          "a": 0
+        },
+        {
+          "label": "Receipts that employees submit with expense reports",
+          "o": [
+            "Prebuilt receipt model",
+            "Custom neural model",
+            "Layout model",
+            "Prebuilt ID document model"
+          ],
+          "a": 0
+        }
+      ],
+      "e": "Common document types such as IDs and receipts have prebuilt models that need no training. A company-specific form needs a custom model, and a custom neural model handles layout variation better than a custom template model. The layout model returns structure, not named business fields.",
+      "pool": "exam"
     }
   ]
 }
